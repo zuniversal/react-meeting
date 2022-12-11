@@ -2383,7 +2383,7 @@ export const assetDetailConfig = [
   },
 ];
 
-export const called = [
+export const calledConfig = [
   {
     value: '博士',
     label: '博士',
@@ -2402,7 +2402,7 @@ export const called = [
   },
 ];
 
-export const identity = [
+export const identityConfig = [
   {
     value: '论文通讯作者',
     label: '论文通讯作者',

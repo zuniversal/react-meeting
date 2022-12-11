@@ -1,14 +1,11 @@
 import React from 'react';
+import './style.less';
 import { Form, Checkbox } from 'antd';
-import { history, useIntl } from 'umi';
+import { useIntl } from 'umi';
 import SmartForm from '@/common/SmartForm';
 
 const LoginForm = props => {
   const { messages } = useIntl();
-
-  const goPage = path => {
-    history.push(path);
-  };
 
   const config = [
     {
@@ -31,25 +28,18 @@ const LoginForm = props => {
       },
     },
     <Form.Item
-      key="remember"
+      name="remember"
+      valuePropName="checked"
       wrapperCol={{
         offset: 0,
         span: 24,
       }}
       className={'formItems rememberItem'}
     >
-      <Form.Item
-        name="remember"
-        valuePropName="checked"
-        className={'formItems rememberItem'}
-      >
-        <Checkbox>{messages.login.remember}</Checkbox>
-      </Form.Item>
-      <Form.Item>
-        <span className="findPwd" onClick={() => goPage('forgetPwd')}>
-          {messages.login.findPwd}
-        </span>
-      </Form.Item>
+      <Checkbox>{messages.login.remember}</Checkbox>
+      <span className="findPwd" onClick={() => goPage('forgetPwd')}>
+        {messages.login.findPwd}
+      </span>
     </Form.Item>,
   ];
 

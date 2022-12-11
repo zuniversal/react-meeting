@@ -1,17 +1,20 @@
-import React, { useEffect } from 'react';
-import { useModel, } from 'umi';
+import React from 'react';
+import './style.less';
+import { useModel } from 'umi';
 import Header from './Header';
 
-const Layouts = (props) => {
-  console.log(' Layouts       ： ', props,  )
+const Layouts = props => {
+  console.log(' Layouts       ： ', props);
   // const userModel = useModel()
-  // console.log(' userModel ： ', userModel,  )// 
+  // console.log(' userModel ： ', userModel,  )//
   // useEffect(() => {
   // }, [])
-  return <div className="content">
-    <Header></Header>
-    {props.children}
-  </div>
-}
+  return (
+    <div className="content">
+      <Header></Header>
+      {props.children}
+    </div>
+  );
+};
 
-export default Layouts // 
+export default Layouts; //

@@ -1,0 +1,184 @@
+.home {
+  width: 100%;
+  height: 100%;
+  .banner {
+    height: 100%;
+    max-height: 100%;
+    background: url(~@/static/img/home/banner.png) no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+    .bannerCenter {
+      padding-top: 60px;
+      font-size: 30px;
+      font-weight: 900;
+      color: #333333;
+      .activity {
+        margin: 10px 0;
+        font-size: 18px;
+      }
+    }
+  }
+  .title {
+    font-size: 40px;
+    font-weight: bold;
+    color: #333333;
+  }
+  .subTitle {
+    font-size: 24px;
+    font-weight: 300;
+    color: #333333;
+  }
+  .meetingIntro {
+    display: flex;
+    position: relative;
+    padding: 0 360px;
+    padding-top: 200px;
+    .meetingIntroLeft {
+      max-width: 850px;
+      // flex: 2;
+      // display: flex;
+      // flex-direction: column;
+    }
+    .meetingIntroRight {
+      position: absolute;
+      right: 10%;
+      top: 100px;
+      .poemWrapper {
+        display: flex;
+        font-size: 28px;
+        width: 80px;
+        position: absolute;
+        top: 90px;
+        right: 40px;
+        .poem {
+          width: 40px;
+        }
+      }
+
+      // flex: 1;
+      // display: flex;
+      // flex-direction: column;
+    }
+
+    .meetingIntroText {
+      font-size: 24px;
+      font-weight: 300;
+      color: #666666;
+    }
+    .g1 {
+      width: 280px;
+      height: 280px;
+    }
+  }
+
+  .centerPic {
+    height: 1200px;
+    height: 800px;
+    background: url(~@/static/img/home/centerBg.png) no-repeat;
+    background-size: 100% 100%;
+    .centerBg {
+      // height: 800px;
+    }
+  }
+  .meetingTheme {
+    padding: 0 360px;
+    border-radius: 20px;
+    .meetingThemeGrid {
+      display: flex;
+      flex-wrap: wrap;
+      .meetingThemeGridItem {
+        flex: 0 0 250px;
+        height: 220px;
+        border: 1px solid #d1d5db;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .meetingThemeIcon {
+          width: 42px;
+          height: 42px;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+  .meetingReg {
+    position: relative;
+    padding: 0 360px;
+    height: 1000px;
+    .g2 {
+      width: 300px;
+      height: 300px;
+    }
+    .meetingRegLeft {
+      position: absolute;
+      // left: 0;
+      top: 100px;
+      .poemWrapper {
+        display: flex;
+        font-size: 28px;
+        width: 80px;
+        position: absolute;
+        top: 90px;
+        right: 40px;
+        .poem {
+          width: 40px;
+        }
+      }
+    }
+  }
+  .meetingInfo {
+    height: 762px;
+    padding: 160px 360px;
+    background: #f9f9f9;
+    position: relative;
+    .g3 {
+      position: absolute;
+      right: 0;
+      top: -260px;
+      // width: 300px;
+      // height: 300px;
+    }
+  }
+  .meetingTravel {
+    padding: 160px 360px;
+    .meetingTravelGrid {
+      display: flex;
+      .meetingTravelGridItem {
+        flex: 0 0 373px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .meetingTravelIcon {
+          margin-right: 41px;
+          margin-bottom: 32px;
+          height: 421px;
+        }
+      }
+    }
+  }
+  .supporter {
+    height: 762px;
+    padding: 160px 360px;
+    background: url(~@/static/img/home/bottomBg.png) no-repeat;
+    background-size: 100% 100%;
+    .supporterGrid {
+      display: flex;
+      margin-top: 51px;
+      .supporterGridItem {
+        flex: 0 0 373px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .supporterIcon {
+          width: 146px;
+          height: 132px;
+          border: 1px solid #d1d5db;
+          margin-bottom: 27px;
+        }
+      }
+    }
+  }
+}
