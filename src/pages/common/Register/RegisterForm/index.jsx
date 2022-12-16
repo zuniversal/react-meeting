@@ -11,7 +11,7 @@ const RegisterForm = props => {
     {
       formType: 'Radio',
       itemProps: {
-        label: messages.register.name,
+        label: messages.register.callID,
         name: 'password',
       },
       comProps: {
@@ -31,7 +31,7 @@ const RegisterForm = props => {
     {
       itemProps: {
         label: messages.register.lastName,
-        name: 'lastName',
+        name: 'secondName',
         className: 'lrItem50',
       },
       comProps: {
@@ -60,7 +60,7 @@ const RegisterForm = props => {
     {
       itemProps: {
         label: messages.register.tel,
-        name: 'tel',
+        name: 'phone',
         className: 'lrItem50',
       },
       comProps: {
@@ -70,7 +70,7 @@ const RegisterForm = props => {
     {
       itemProps: {
         label: messages.register.companyName,
-        name: 'companyName',
+        name: 'unitName',
       },
       comProps: {
         className: 'formItem',
@@ -79,7 +79,7 @@ const RegisterForm = props => {
     {
       itemProps: {
         label: messages.register.addr,
-        name: 'addr',
+        name: 'unitAddress',
       },
       comProps: {
         className: 'formItem',

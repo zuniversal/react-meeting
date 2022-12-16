@@ -3,7 +3,7 @@ import { history } from 'umi';
 import { login, regester, userCenter } from '@/services/user';
 import { setItem, getItem } from '@/utils';
 
-export default function users() {
+export default function systemConfig() {
   const [userInfo, setUserInfo] = useState(null);
 
   const loginAsync = useCallback(async params => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.less';
-import { connect, history } from 'umi';
+import { connect, history, useIntl } from 'umi';
 import { Tabs, Button, Dropdown, Menu } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import logo from '@/static/img/logo.png';
@@ -83,7 +83,13 @@ const TabsCom = props => {
 
 const HeaderAction = props => (
   <div className="btnWrapper">
-    <Button size="small" ghost onClick={() => props.goPage(`/login`)}>
+    <div className="" onClick={() => props.goPage(`/login`)}>
+      {props.messages.logan}
+    </div>
+    <div className="linking" onClick={() => props.goPage(`/register`)}>
+      {props.messages.reg}
+    </div>
+    {/* <Button size="small" ghost onClick={() => props.goPage(`/login`)}>
       登录
     </Button>
     <Button
@@ -92,18 +98,31 @@ const HeaderAction = props => (
       onClick={() => props.goPage(`/register`)}
     >
       注册
-    </Button>
+    </Button> */}
     {/* <Button size='small' type="primary" onClick={() => history.push(`/admin`)}>后台入口</Button> */}
   </div>
 );
 
+const UserInfo = props => (
+  <div className="userInfo">
+    <img src={props.info.avatar} className="avatar" />
+    <div className="userName">{props.info.name}</div>
+  </div>
+);
+
 const Header = props => {
-  console.log(' Header ： ', props); //
+  const { messages } = useIntl();
+  console.log(' Header ： ', props, messages); //
   const goPage = params => {
     history.push(params);
     // props.setActiveKey({
     //   activeKey: params,
     // })
+  };
+
+  const info = {
+    avatar: '',
+    name: 'zyb',
   };
 
   return (
@@ -119,7 +138,11 @@ const Header = props => {
           <TabsCom {...props}></TabsCom>
         </div>
         {/* {props.isShowTabs && <HeaderAction goPage={goPage}></HeaderAction>} */}
-        <HeaderAction goPage={goPage}></HeaderAction>
+        {!info ? (
+          <HeaderAction goPage={goPage} messages={messages}></HeaderAction>
+        ) : (
+          <UserInfo info={info}></UserInfo>
+        )}
       </div>
     </div>
   );

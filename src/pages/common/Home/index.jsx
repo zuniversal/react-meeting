@@ -148,8 +148,7 @@ const Supporter = props => {
 
 const Home = props => {
   console.log(' Home       ： ', props);
-  const intl = useIntl();
-  const { messages } = intl;
+  const { messages } = useIntl();
   return (
     <div className="home">
       <Banner msg={messages.home}></Banner>

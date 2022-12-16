@@ -3,6 +3,30 @@ import './style.less';
 import { Form, Button } from 'antd';
 import { useIntl, useModel } from 'umi';
 import PostPaperForm from './PostPaperForm';
+import { meetingThemeConfig } from './config';
+
+const DowntTpl = ({ messages }) => (
+  <div className="activeLinkWrapper">
+    <div className="activeLink">{messages.postPaper.downloadTpl}</div>
+    <div className="activeLink">{messages.postPaper.downloadAuth}</div>
+  </div>
+);
+
+const ImportantDate = ({ messages }) => {
+  return (
+    <div className="importantDate">
+      {meetingThemeConfig.map((v, i) => (
+        <div key={i} className="importantDateRow">
+          <div className="dayBox">{i}</div>
+          <div className="dayInfo">
+            <div className="">{messages.postPaper.downloadTpl}</div>
+            <div className="">{messages.postPaper.downloadTpl}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 const PostPaper = props => {
   const intl = useIntl();
@@ -16,10 +40,10 @@ const PostPaper = props => {
   };
 
   const content = (
-    <PostPaperForm name="form" onSubmit={onSubmit}>
+    <PostPaperForm name="form" onSubmit={onSubmit} messages={messages}>
       <Form.Item className={`btnFormItem`} noStyle>
         <Button type="primary" htmlType="submit" className="actionBtn">
-          {messages.confirm}
+          {messages.postPaper.confirmPost}
         </Button>
       </Form.Item>
     </PostPaperForm>
@@ -27,12 +51,22 @@ const PostPaper = props => {
 
   return (
     <div className="postPaper">
-      <div className="postPaperContent">
-        <div className="title">{messages.postPaper.psot}</div>
-        <div className="">
-          <div className="">{messages.postPaper.psot}</div>
+      <div className="conWrapper">
+        <div className="title">{messages.postPaper.post}</div>
+        {/* <div className="conWrapper"> */}
+        <div className="postPaperFormWrapper">
+          <DowntTpl messages={messages} />
+          {content}
         </div>
-        {content}
+        {/* </div> */}
+        <div className="">
+          <div className="title importantDateTitle">
+            {messages.postPaper.importantDate}
+          </div>
+          <div className="conWrapper">
+            <ImportantDate messages={messages}></ImportantDate>
+          </div>
+        </div>
       </div>
       <div className="bottomBg"></div>
     </div>

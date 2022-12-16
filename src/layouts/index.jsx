@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.less';
+import '@/static/css/index.less';
 import { useModel } from 'umi';
 import Header from './Header';
 

@@ -19,7 +19,7 @@ const SetPwdForm = props => {
     {
       itemProps: {
         label: messages.login.confirmPwd,
-        name: 'password',
+        name: 'confirmPwd',
       },
       comProps: {
         className: 'formItem',

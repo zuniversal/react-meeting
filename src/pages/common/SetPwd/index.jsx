@@ -3,17 +3,21 @@ import { Form, Button } from 'antd';
 import { useIntl, useModel } from 'umi';
 import LrWrapper from '@/pages/common/components/LrWrapper';
 import SetPwdForm from './SetPwdForm';
-import { setItem, getItem } from '@/utils';
+import { setItems, getItems } from '@/utils';
 
 const SetPwd = props => {
   const intl = useIntl();
   const { messages } = intl;
   console.log(' SetPwd   msg,   ： ', intl, messages);
-  const { loginAsync } = useModel('users');
-  console.log(' loginAsync ： ', loginAsync);
-  const onSubmit = params => {
-    console.log('onSubmit 提交 : ', params, props);
-    // loginAsync(params);
+  const { registerAsync } = useModel('users');
+  const onSubmit = async formProps => {
+    console.log('onSubmit 提交 : ', formProps, props, getItems('regInfo'));
+    const { confirmPwd, ...rest } = formProps.values;
+    const res = await registerAsync({
+      ...getItems('regInfo'),
+      ...rest,
+    });
+    console.log('  res await 结果  ：', res); //
   };
 
   const content = (

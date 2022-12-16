@@ -2,6 +2,7 @@ export default {
   name: `zyben`,
   succ: `成功`,
   reg: `注册`,
+  logan: `登录`,
   regTitle: `温馨提示`,
   regTip: `如您需要投稿论文或参加会议，可在个人中心页面选择相关功能`,
   confirm: `确认`,
@@ -63,6 +64,7 @@ export default {
     selectIdentity: `请选择身份`,
   },
   postPaper: {
+    importantDate: `重要日期`,
     post: `论文投稿`,
     downloadTpl: `论文模版下载`,
     downloadAuth: `版权文件下载`,
@@ -83,6 +85,23 @@ export default {
     uploadPdf: `只能上传pdf版本`,
     confirmPost: `确认投稿`,
   },
+  committee: {
+    internalCommittee: `国际常设委员会`,
+    localCommittee: `当地组委会`,
+    workUnit: `工作单位`,
+    area: `地区`,
+    position: `职务`,
+    name: `名字`,
+  },
+  exhibition: {
+    title: `大会展示`,
+  },
+  contactUs: {
+    title: `联系我们`,
+  },
+  activity: {
+    title: `晚间节目`,
+  },
 
   // 重要日期
   // 请关注您的邮件，会有专家审确修改意见给到您
@@ -90,10 +109,6 @@ export default {
 
   // succ: `投稿成功`,
   // succ: `投稿失败`,
-
-  // 国际常设委员会
-  // 当地组委会
-  // 工作单位
 
   // 地区
   // 职务
@@ -106,9 +121,6 @@ export default {
   // 以前的Df5会议
   // 时间
   // 地点
-
-  //   大会展示
-  //   联系我们
 
   //   用户中心
   //   缴费收据下载

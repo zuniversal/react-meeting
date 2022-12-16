@@ -713,14 +713,14 @@ class SmartTable extends PureComponent {
           // scroll={{ x: 800,  }}
           // rowKey={rowKey}
           loading={this.isShowLoading}
-          locale={{
-            emptyText: (
-              <div className={`noData ${!this.props.noPad && 'pad'}`}>
-                <img src={noData} className={`noDataImg`} />
-                <div className={`text`}>暂无数据</div>
-              </div>
-            ),
-          }}
+          // locale={{
+          //   emptyText: (
+          //     <div className={`noData ${!this.props.noPad && 'pad'}`}>
+          //       <img src={noData} className={`noDataImg`} />
+          //       <div className={`text`}>暂无数据</div>
+          //     </div>
+          //   ),
+          // }}
           size={'small'}
           rowSelection={{
             type: selectionType,

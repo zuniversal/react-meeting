@@ -12,7 +12,7 @@ const SelectIdentityForm = props => {
       formType: 'Radio',
       itemProps: {
         label: messages.register.name,
-        name: 'password',
+        name: 'titleID',
       },
       comProps: {
         className: 'lrRadioCol',

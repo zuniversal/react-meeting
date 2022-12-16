@@ -2385,38 +2385,38 @@ export const assetDetailConfig = [
 
 export const calledConfig = [
   {
-    value: '博士',
+    value: '1',
     label: '博士',
   },
   {
-    value: '教授',
+    value: '2',
     label: '教授',
   },
   {
-    value: '先生',
+    value: '3',
     label: '先生',
   },
   {
-    value: '小姐',
+    value: '4',
     label: '小姐',
   },
 ];
 
 export const identityConfig = [
   {
-    value: '论文通讯作者',
+    value: '1',
     label: '论文通讯作者',
   },
   {
-    value: '论文共同作者',
+    value: '2',
     label: '论文共同作者',
   },
   {
-    value: '审稿人',
+    value: '3',
     label: '审稿人',
   },
   {
-    value: '陪同人员',
+    value: '4',
     label: '陪同人员',
   },
 ];

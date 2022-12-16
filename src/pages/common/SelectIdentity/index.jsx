@@ -1,9 +1,9 @@
 import React from 'react';
 import { Form, Button } from 'antd';
-import { useIntl, useModel } from 'umi';
+import { useIntl, useModel, history } from 'umi';
 import LrWrapper from '@/pages/common/components/LrWrapper';
 import SelectIdentityForm from './SelectIdentityForm';
-import { setItem, getItem } from '@/utils';
+import { setItems, getItems } from '@/utils';
 
 const SelectIdentity = props => {
   const intl = useIntl();
@@ -13,7 +13,12 @@ const SelectIdentity = props => {
   console.log(' loginAsync ： ', loginAsync);
 
   const onSubmit = formProps => {
-    console.log('onSubmit 提交 : ', formProps, props);
+    console.log('onSubmit 提交 : ', formProps, props, getItems('regInfo'));
+    setItems('regInfo', {
+      ...getItems('regInfo'),
+      ...formProps.values,
+    });
+    history.push('/setPwd');
   };
 
   const content = (

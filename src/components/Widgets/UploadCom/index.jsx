@@ -73,6 +73,7 @@ const UploadCom = props => {
     isHide,
     formAction,
     succExtraText,
+    children,
   } = props;
   console.log(
     ' UploadCom   props, ,   ： ',
@@ -238,7 +239,9 @@ const UploadCom = props => {
           }}
           {...uploadProps}
         >
-          {isHide || formAction !== 'detail' ? (
+          {children ? (
+            children
+          ) : isHide || formAction !== 'detail' ? (
             isInputUpload ? (
               <div className={`${contentClass} ${isInputUpload ? 'dfc' : ''}`}>
                 <IconCom className={'icon'} />
