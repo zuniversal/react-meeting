@@ -13,4 +13,12 @@ export default [
   { path: '/oldMeetings', component: '@/pages/common/OldMeetings' },
   { path: '/exhibition', component: '@/pages/common/Exhibition' },
   { path: '/contactUs', component: '@/pages/common/ContactUs' },
+
+  { path: '/userCenter', component: '@/pages/common/UserCenter' },
+  { path: '/paperStatus', component: '@/pages/common/PaperStatus' },
+  { path: '/joinMeeting', component: '@/pages/common/JoinMeeting' },
+  { path: '/paymentResult', component: '@/pages/common/PaymentResult' },
+
+  { path: '/adminHome', component: '@/pages/common/AdminHome' },
+  { path: '/paperCount', component: '@/pages/common/PaperCount' },
 ];

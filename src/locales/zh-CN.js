@@ -102,6 +102,11 @@ export default {
   activity: {
     title: `晚间节目`,
   },
+  oldMeetings: {
+    title: `会议`,
+    time: `时间`,
+    place: `地点`,
+  },
 
   // 重要日期
   // 请关注您的邮件，会有专家审确修改意见给到您

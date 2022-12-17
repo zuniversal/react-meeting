@@ -1,11 +1,25 @@
 import React from 'react';
 import './style.less';
 import { useIntl } from 'umi';
+import OldMeetingsTable from './OldMeetingsTable';
 
-const SetPwd = props => {
+const OldMeetings = props => {
   const { messages } = useIntl();
 
-  return <div>xxx</div>;
+  return <div className="oldMeetings">
+    <div className="conWrapper">
+      <div className="oldMeetingsWrapper">
+        <div className="oldMeetingsItem">
+          <div className="title">{messages.oldMeetings.title}</div>
+          <OldMeetingsTable messages={messages}></OldMeetingsTable>
+        </div>
+        <div className="oldMeetingsItem">
+          <div className="title">{messages.oldMeetings.title}</div>
+          <OldMeetingsTable messages={messages}></OldMeetingsTable>
+        </div>
+      </div>
+    </div>
+  </div>;
 };
 
-export default SetPwd;
+export default OldMeetings;

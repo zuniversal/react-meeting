@@ -1,6 +1,10 @@
 import React from 'react';
 import './style.less';
 import { useIntl } from 'umi';
+import {
+  meetingThemeConfig,
+  meetingTravelConfig,
+} from '@/pages/common/Home/config';
 
 export const supporterConfig = [
   {
@@ -23,6 +27,7 @@ const Festival = ({ msg }) => {
         const info = (
           <div className="festivalInfoWrapper">
             <div className="festivalTitle">{msg.title}</div>
+            <div className="festivalContent">{msg.content}</div>
             <div className="festivalContent">{msg.content}</div>
           </div>
         );
@@ -53,7 +58,7 @@ const MeetingTravel = ({ msg }) => {
       <div className="title">{msg.meetingReg}</div>
       <div className="subTitle">{msg.meetingReg}</div>
       <div className="meetingTravelGrid">
-        {supporterConfig.map(v => (
+        {meetingTravelConfig.map(v => (
           <div key={v.src} className="meetingTravelGridItem">
             <img src={v.src} className="meetingTravelIcon" />
             <div>{v.label}</div>
@@ -70,6 +75,7 @@ const Activity = props => {
     <div className="activity">
       <div className="conWrapper">
         <div className="title">{messages.activity.title}</div>
+        <div className="subTitle">{messages.activity.title}</div>
         <Festival msg={messages.home}></Festival>
         <MeetingTravel msg={messages.home}></MeetingTravel>
         <MeetingTravel msg={messages.home}></MeetingTravel>

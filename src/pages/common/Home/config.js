@@ -12,6 +12,10 @@ import t11 from '@/static/img/home/meetingTheme/11.png';
 import p1 from '@/static/img/home/p1.png';
 import p2 from '@/static/img/home/p2.png';
 import p3 from '@/static/img/home/p3.png';
+import s1 from '@/static/img/home/sponsors/s1.png';
+import s2 from '@/static/img/home/sponsors/s2.png';
+import s3 from '@/static/img/home/sponsors/s3.png';
+import s4 from '@/static/img/home/sponsors/s4.png';
 
 export const meetingThemeConfig = [
   {
@@ -77,19 +81,19 @@ export const meetingTravelConfig = [
 
 export const supporterConfig = [
   {
-    src: t1,
+    src: s1,
     label: '博士',
   },
   {
-    src: t2,
+    src: s2,
     label: '博士',
   },
   {
-    src: t3,
+    src: s3,
     label: '博士',
   },
   {
-    src: t4,
+    src: s4,
     label: '博士',
   },
 ];
