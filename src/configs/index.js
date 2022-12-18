@@ -2420,3 +2420,14 @@ export const identityConfig = [
     label: '陪同人员',
   },
 ];
+
+export const ynRadioConfig = [
+  {
+    value: '1',
+    label: '是',
+  },
+  {
+    value: '2',
+    label: '否',
+  },
+];

@@ -20,6 +20,7 @@ export const CommitteeTable = props => {
   return (
     <SmartTable
       columns={columns}
+      className="whiteTable"
       {...props}
       rowSelection={null}
       noActionCol
@@ -46,8 +47,10 @@ export const CommitteeLocaleTable = props => {
   return (
     <SmartTable
       columns={columns}
+      className="whiteTable"
       {...props}
       rowSelection={null}
+      pagination={null}
       noActionCol
     ></SmartTable>
   );

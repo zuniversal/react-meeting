@@ -3,7 +3,7 @@ import './style.less';
 import { Form, Button } from 'antd';
 import { useIntl, useModel } from 'umi';
 import SmartFormModal from '@/common/SmartFormModal';
-import ResultModal from '@/components/Modal/ResultModal';
+import { SuccModal } from '../components/ResultModal';
 import PostPaperForm from './PostPaperForm';
 import { meetingThemeConfig } from './config';
 
@@ -24,8 +24,7 @@ const detailFormMap = {
   postFail: PostFail,
 };
 
-const titleMap = {
-};
+const titleMap = {};
 
 const DowntTpl = ({ messages }) => (
   <div className="activeLinkWrapper">
@@ -78,25 +77,41 @@ const PostPaper = props => {
     isShowCommonModal,
     visible: isShowCommonModal,
     closeCommonModal: () => {
-      setIsShowCommonModal(false)
+      setIsShowCommonModal(false);
     },
-  }
+  };
+  const isSucc = true;
+
+  const succTip = (
+    <div className="resultModal">
+      <div className="resultTitle">{messages.postPaper.postSucc}</div>
+      <div className="resultTip">{messages.postPaper.postSuccTip}</div>
+    </div>
+  );
+  const failTip = (
+    <div className="resultModal">
+      <div className="resultTitle">{messages.postPaper.postFail}</div>
+      <div className="resultTip">{messages.postPaper.postFailTip}</div>
+    </div>
+  );
   const resultModalProps = {
     modalProps: {
+      show: true,
       visible: isShowCommonModal,
-      header: null,  
-      title: '',
+      header: null,
+      title: null,
+      // title: '',
       onCancel: () => {
-        setIsShowCommonModal(false)
+        setIsShowCommonModal(false);
       },
     },
-    resProps: {
-    },   
-  }
+    resProps: {},
+    children: isSucc ? succTip : failTip,
+  };
 
   const onSubmit = params => {
     console.log('onSubmit 提交 : ', params, props);
-    setIsShowCommonModal(true)
+    setIsShowCommonModal(true);
     // loginAsync(params);
   };
 
@@ -119,9 +134,9 @@ const PostPaper = props => {
           <DowntTpl messages={messages} />
           {content}
         </div>
-        <Button size="small" onClick={onSubmit}>
+        {/* <Button size="small" onClick={onSubmit}>
           {messages.postPaper.confirmPost}
-        </Button>
+        </Button> */}
         {/* </div> */}
         <div className="">
           <div className="title importantDateTitle">
@@ -134,7 +149,7 @@ const PostPaper = props => {
       </div>
       <div className="bottomBg"></div>
       {/* <CommonModal common={common}></CommonModal> */}
-      <ResultModal {...resultModalProps}></ResultModal>
+      <SuccModal {...resultModalProps}></SuccModal>
     </div>
   );
 };

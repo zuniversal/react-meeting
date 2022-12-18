@@ -6,17 +6,17 @@ import { regoins } from '@/configs';
 import { formatConfig } from '@/utils';
 
 const SearchKwForm = props => {
-  const { beforeExtra, className, keyword } = props;
+  const { beforeExtra, className, keyword, customConfig } = props;
 
   const config = [
     {
-      // formType: 'Select',
       noLabel: props.noLabel,
       itemProps: {
         label: props.label,
         name: keyword,
       },
       searchSuffix: true,
+      ...customConfig,
     },
   ];
 

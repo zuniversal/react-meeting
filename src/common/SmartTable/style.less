@@ -4,8 +4,33 @@
   margin: 15px 0;
   overflow-x: auto;
 
-  .ant-table {
-    padding: 0 89px;
+  .ant-table-cell {
+    text-align: center;
+  }
+
+  .ant-table-cell {
+    font-size: 14px;
+  }
+  .ant-table-row {
+    font-size: 20px;
+    font-weight: 300;
+    color: #333333;
+  }
+  &.whiteTable {
+    box-shadow: 1px 5px 20px #ccc;
+    .ant-table-thead > tr > th {
+      background: #fff;
+    }
+    th {
+      border-bottom: none !important;
+    }
+    .ant-table-tbody {
+      .ant-table-row {
+        &:nth-child(even) {
+          background: #f7f8fb;
+        }
+      }
+    }
   }
 
   .ant-table-thead
@@ -13,7 +38,9 @@
     > th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
     border: none;
   }
-  .ant-table-thead > tr > th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before{
+  .ant-table-thead
+    > tr
+    > th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
     display: none;
   }
 

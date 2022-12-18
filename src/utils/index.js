@@ -335,7 +335,7 @@ export const mockFormData = (config, init) => {
   return mockData;
 };
 
-export const w320 = 'w-320';
+export const w320 = '';
 export const w240 = 'w-240';
 
 export const formatConfig = (

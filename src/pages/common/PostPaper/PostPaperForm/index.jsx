@@ -146,7 +146,7 @@ const PostPaperForm = props => {
 
   return (
     <SmartForm
-      className={`postPaperForm`}
+      className={`dcForm`}
       layout={'vertical'}
       noLabelLayout
       config={config}

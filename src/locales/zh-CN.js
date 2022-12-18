@@ -7,7 +7,14 @@ export default {
   regTip: `如您需要投稿论文或参加会议，可在个人中心页面选择相关功能`,
   confirm: `确认`,
   nextStep: `下一步`,
+  previousStep: `上一步`,
   upload: `上传`,
+  confirmEdit: `确认修改`,
+  uploadTime: `上传时间`,
+  action: `操作`,
+  remove: `删除`,
+  showDetail: `查看`,
+  expertPlatform: `专家审稿工作台`,
 
   home: {
     title: `第二届国际稳定与安全会议`,
@@ -84,6 +91,11 @@ export default {
     uploadAuthFile: `上传版权文件`,
     uploadPdf: `只能上传pdf版本`,
     confirmPost: `确认投稿`,
+
+    postSucc: `投稿成功`,
+    postSuccTip: `请关注您的邮件,会有专家审稿修改意见给到您`,
+    postFail: `投稿失败`,
+    postFailTip: `请核对论文格式,再重新投稿`,
   },
   committee: {
     internalCommittee: `国际常设委员会`,
@@ -98,6 +110,7 @@ export default {
   },
   contactUs: {
     title: `联系我们`,
+    content: `联系我们联系我们联系我们联系我们联系我们联系我们`,
   },
   activity: {
     title: `晚间节目`,
@@ -107,13 +120,88 @@ export default {
     time: `时间`,
     place: `地点`,
   },
+  userCenter: {
+    title: `用户中心`,
+    downReceipt: `缴费收据下载`,
+    goPost: `我要投稿`,
+    postStatus: `投稿状态`,
+    joinMeeting: `我要参会`,
+    userInfo: `个人信息`,
+    edit: `编辑`,
+    called: `称呼`,
+    surname: `姓`,
+    name: `名`,
+    email: `邮箱/用户名`,
+    phone: `电话`,
+    unitName: `单位名称`,
+    unitAddr: `单位地址`,
+    identity: `身份`,
+
+    editInfo: `信息编辑`,
+    changeAvatar: `更换头像`,
+    called: `称呼`,
+    choosePic: `选择照片`,
+    upload: `上传`,
+    tips: `仅支持JPG. PNG格式文件小于1M(方形图)`,
+    surname: `姓`,
+    name: `名`,
+  },
+  paperStatus: {
+    title: `投稿状态`,
+    searchPh: `输入论文标题进行搜本`,
+    no: `编号`,
+    paperTitle: `论文标题`,
+    paperType: `论文类型`,
+    approvalStatus: `审核状态`,
+    expertOpinion: `专家意见`,
+    uploadEditedPaper: `上传修改稿`,
+  },
+  joinMeeting: {
+    title: `具体信息`,
+    airplane: `航班`,
+    arriveTime: `到无锡时间`,
+    isNeedPick: `是否需要接机`,
+    hotelName: `酒店名称`,
+    hotelPrice: `酒店价格`,
+    hotelOrderNum: `酒店预定房间数`,
+    hotelOrderDay: `酒店预定日期`,
+    hotelOrderPrice: `酒店预定总价`,
+    paymentCost: `缴费费用`,
+    paymentInfo: `具体信息`,
+    paymentResult: `缴费状态`,
+    isNeedPick: `接机`,
+    hotelOrderTotal: `酒店预定总价`,
+    paymentTip: `您共需缴纳费用xxxxx元，请转账XX银行:585221474511`,
+  },
+  admin: {
+    approverTips: `如您是审稿人,请勾选`,
+  },
+  adminHome: {
+    regMan: `注册人员统计`,
+    joinMan: `参会人员统计`,
+    abstract: `摘要统计/全文统计`,
+    apprapproval: `缴费审核`,
+    distribute: `分配论文`,
+    picUpload: `图片上传`,
+  },
+  paperCount: {
+    title: `论文统计`,
+    searchPh: `输入论文标题或论文编号进行搜索`,
+    no: `编号`,
+    paperTitle: `论文标题`,
+    paperType: `论文类型`,
+    contactAuthor: `通讯作者`,
+    commonAuthor: `共同作者`,
+    approver: `审核人`,
+    approvalStatus: `审核状态`,
+  },
+
+  // postType: `投稿类型`,
+  // paperStatus: `论文状态`,
 
   // 重要日期
   // 请关注您的邮件，会有专家审确修改意见给到您
   // 请核对论文格式阿重新投稿
-
-  // succ: `投稿成功`,
-  // succ: `投稿失败`,
 
   // 地区
   // 职务
@@ -126,47 +214,4 @@ export default {
   // 以前的Df5会议
   // 时间
   // 地点
-
-  //   用户中心
-  //   缴费收据下载
-  //   我要投稿
-  //   投稿记录
-  //   我要参会
-  //   个人信息.
-  //   编辑
-  //   称呼博士
-  //   姓
-  //   名
-  //   邮箱/用户名
-  //   电话
-  //   单位名称
-  //   单位地址
-  //   身份论文通讯作者
-
-  //   信息编辑
-  //   更换头像
-  //   称呼
-  //   选择照片
-  //   上传
-  //   仅支持JPG. PNG格式文件小于1M(方形图)
-  //   姓
-  //   名
-  //   部箱/用户名
-  //   电话
-  //   单位名称
-  //   单位地址
-  //   身份
-  //   论文通讯作者 论文共同作者 审稿人 陪同人员
-  //   确认修改
-
-  //   投稿记录
-  //   输入论 文标题进行搜本
-  //   编号
-  //   论文标题
-  //   论文类型
-  //   投稿类型
-  //   论文状志
-  //   专家意见
-  //   上传时间
-  //   操作
 };

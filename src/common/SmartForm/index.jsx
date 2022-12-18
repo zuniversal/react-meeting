@@ -429,8 +429,8 @@ const SmartForm = (props, state) => {
 
     const realComProps = {
       // className: 'w-320',
-      ...comProps,
       placeholder: placeholder,
+      ...comProps,
     };
 
     const dynamicComProps = {

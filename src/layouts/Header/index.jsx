@@ -4,6 +4,7 @@ import { connect, history, useIntl } from 'umi';
 import { Tabs, Button, Dropdown, Menu } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import logo from '@/static/img/logo.png';
+import platformLogo from '@/static/img/platformLogo.png';
 const { TabPane } = Tabs;
 
 const tabConfigs = [
@@ -103,12 +104,18 @@ const HeaderAction = props => (
   </div>
 );
 
-const UserInfo = props => (
-  <div className="userInfo">
-    <img src={props.info.avatar} className="avatar" />
-    <div className="userName">{props.info.name}</div>
-  </div>
-);
+const UserInfo = props => {
+  const goPage = params => {
+    history.push(params);
+  };
+  const goUserCenter = params => goPage(`/userCenter`);
+  return (
+    <div className="userInfo" onClick={goUserCenter}>
+      <img src={props.info.avatar} className="avatar" />
+      <div className="userName">{props.info.name}</div>
+    </div>
+  );
+};
 
 const Header = props => {
   const { messages } = useIntl();
@@ -131,18 +138,26 @@ const Header = props => {
         <div className="headerLeft">
           {/* <div className="systemTitle">{props.systemTitle}</div> */}
           <div className="logoWarpper">
-            <img src={logo} className="logo" onClick={() => goPage(`/`)} />
+            <img src={logo} className="logo" onClick={() => goPage(`/home`)} />
           </div>
           {/* <TabsComWrapper></TabsComWrapper> */}
           {/* {props.isShowTabs && <TabsCom {...props}></TabsCom>} */}
           <TabsCom {...props}></TabsCom>
         </div>
         {/* {props.isShowTabs && <HeaderAction goPage={goPage}></HeaderAction>} */}
-        {!info ? (
-          <HeaderAction goPage={goPage} messages={messages}></HeaderAction>
-        ) : (
-          <UserInfo info={info}></UserInfo>
-        )}
+
+        <div className="headerRight">
+          <div className="logoWarpper" onClick={() => goPage(`/adminLogin`)}>
+            <img src={platformLogo} className="platformLogo" />
+            <div className="linking">{messages.expertPlatform}</div>
+          </div>
+          {info ? (
+            <HeaderAction goPage={goPage} messages={messages}></HeaderAction>
+          ) : (
+            <UserInfo info={info} messages={messages}></UserInfo>
+          )}
+          <UserInfo info={info} messages={messages}></UserInfo>
+        </div>
       </div>
     </div>
   );

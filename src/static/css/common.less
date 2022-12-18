@@ -56,6 +56,11 @@ body {
   cursor: pointer;
 }
 
+.greenLink {
+  color: @green;
+  cursor: pointer;
+}
+
 .posAbs {
   position: absolute;
   // position: fixed;
@@ -208,6 +213,7 @@ body {
   color: @primary;
   text-decoration: underline;
   display: inline-block;
+  font-size: 24px;
 }
 
 .activeRow {
@@ -256,11 +262,67 @@ body {
   margin: 0 auto;
 }
 
+.wrap1000 {
+  margin: 0 auto;
+  width: 1000px;
+}
+
 .title {
   font-size: 40px;
   font-weight: bold;
   color: #333333;
   margin-bottom: 55px;
+}
+
+.rawLink {
+  font-size: 24px;
+  font-weight: bold;
+  color: #999999;
+  text-decoration: underline;
+  text-underline-position: under;
+}
+
+.ant-btn {
+  width: 174px;
+  height: 58px;
+  // padding: 13px 40px;
+  font-size: 24px;
+  border-radius: 8px;
+  line-height: 1;
+}
+.blueBtn {
+  background-color: #5d6ba4 !important;
+  border-color: #5d6ba4 !important;
+}
+
+.greenBtn {
+  background-color: @green!important;
+  border-color: @green!important;
+}
+
+.adminBg {
+  width: 100%;
+  height: 100%;
+  background: #f4f4f4;
+  padding: 21px;
+}
+
+.primaryTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: #a45e5d;
+  margin-bottom: 24px;
+  margin-left: 32px;
+}
+
+.pagesTitle {
+  font-size: 16px;
+  font-weight: 900;
+  color: #333333;
+  padding-top: 15px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
 }
 
 // .d-ib {

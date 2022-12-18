@@ -13,11 +13,25 @@
   background: rgba(255, 255, 255, 0.5);
   background: #f4f4f4;
   background: #fff;
-  .linking {
-    margin-left: 22px;
+  .headerRight {
+    display: flex;
+    .logoWarpper {
+      display: flex;
+      margin-right: 14px;
+      .platformLogo {
+        margin-right: 6px;
+      }
+    }
   }
+  .btnWrapper {
+    .linking {
+      margin-left: 22px;
+    }
+  }
+
   .userInfo {
     display: flex;
+    cursor: pointer;
     .avatar {
       width: 22px;
       height: 22px;
@@ -33,8 +47,9 @@
   }
   .ant-tabs-ink-bar {
     position: absolute;
-    background: #A45E5D;
+    background: #a45e5d;
     pointer-events: none;
+    display: none;
   }
 
   .headerWarpper {
@@ -83,10 +98,10 @@
       // font-size: 12px;
     }
     .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-      color: #000;
+      // color: #000;
     }
     .ant-tabs-tab-btn:hover {
-      color: #000;
+      // color: #000;
     }
     .ant-tabs-nav::before {
       border-bottom: 1px solid transparent;

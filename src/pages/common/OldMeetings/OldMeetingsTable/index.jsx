@@ -13,12 +13,16 @@ const OldMeetingsTable = props => {
     },
   ];
 
-  return <SmartTable 
-    columns={columns} 
-    {...props}
-    rowSelection={null}
-    noActionCol
-  ></SmartTable>;
+  return (
+    <SmartTable
+      columns={columns}
+      className="whiteTable"
+      {...props}
+      rowSelection={null}
+      pagination={null}
+      noActionCol
+    ></SmartTable>
+  );
 };
 
 export default OldMeetingsTable;

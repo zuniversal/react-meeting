@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.less';
-import { Button,  } from 'antd';
+import { Button } from 'antd';
 import { useIntl, useModel } from 'umi';
 import g1 from '@/static/img/home/g1.png';
 import g2 from '@/static/img/home/g2.png';
@@ -19,9 +19,13 @@ const Banner = props => {
     <div className="banner">
       <div className="bannerCenter">
         <div className="title">{props.msg.title}</div>
-        <div className="subTitle">{props.msg.subTitle}</div>
-        <div className="activity">{props.msg.activity}</div>
-        <Button type="primary" onClick={() => props.goPage(`/postPaper`)}>
+        <div className="title">{props.msg.subTitle}</div>
+        <div className="activityInfo">{props.msg.activity}</div>
+        <Button
+          className="postBtn"
+          type="primary"
+          onClick={() => props.goPage(`/postPaper`)}
+        >
           {props.msg.goPost}
         </Button>
       </div>
@@ -44,7 +48,11 @@ const MeetingIntro = props => {
         <div className="title">{props.msg.meetingIntro}</div>
         <div className="meetingIntroText">{props.msg.title}</div>
         <div className="meetingIntroText">{props.msg.title}</div>
-        <Button type="primary" onClick={() => props.goPage(`/postPaper`)}>
+        <Button
+          className="blueBtn"
+          type="primary"
+          onClick={() => props.goPage(`/postPaper`)}
+        >
           {props.msg.goPost}
         </Button>
       </div>
@@ -168,7 +176,7 @@ const Home = props => {
   const { messages } = useIntl();
   return (
     <div className="home">
-      <Banner msg={messages.home}></Banner> 
+      <Banner msg={messages.home}></Banner>
       <MeetingIntro msg={messages.home}></MeetingIntro>
       <CenterPic msg={messages.home}></CenterPic>
       <MeetingTheme msg={messages.home}></MeetingTheme>

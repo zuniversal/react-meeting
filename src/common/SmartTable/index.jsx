@@ -765,7 +765,7 @@ SmartTable.defaultProps = {
   columns: [],
   newTbData: [],
   dataSource: [],
-  // dataSource: mockTbData(),
+  dataSource: mockTbData(),
   // rowKey: 'key',
   // rowKey: 'd_id', //
   rowKey: 'id',
