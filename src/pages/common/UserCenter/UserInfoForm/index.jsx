@@ -4,8 +4,12 @@ import { Input } from 'antd';
 import { calledConfig, identityConfig } from '@/configs';
 import SmartForm from '@/common/SmartForm';
 import UploadCom from '@/components/Widgets/UploadCom';
+import useHttp from '@/hooks/useHttp';
+import { getCalled } from '@/services/common';
 
 const UserInfoForm = props => {
+  // const { data: clientList, req: getClientAsync } = useHttp(getRelatived);
+
   const { messages } = props;
 
   const uploadPdf = () => {
