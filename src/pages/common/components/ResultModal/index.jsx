@@ -3,7 +3,13 @@ import './style.less';
 import { useIntl } from 'umi';
 import { Button, Form, Result } from 'antd';
 import SmartModal from '@/common/SmartModal';
-import logo from '@/static/img/logo.png';
+import succ from '@/static/img/common/succ.png';
+import fail from '@/static/img/common/fail.png';
+
+const statusImgMap = {
+  succ,
+  fail,
+}
 
 const ResultModal = props => {
   const [form] = Form.useForm();
@@ -33,10 +39,9 @@ const ResultModal = props => {
   );
 
   const statusMap = {
-    succ: 'success',
-    success: 'success',
+    succ: 'succ',
     error: 'error',
-    warning: 'warning',
+    warn: 'warn',
   }[status];
 
   // console.log(' statusMap ： ', statusMap, status);
@@ -54,6 +59,7 @@ const ResultModal = props => {
         {...resProps}
       >
       </Result> */}
+      <img src={statusImgMap[props.statusImg]} className="statusIcon" />
       {children}
 
       {(okText || cancelText) && btnCom}
@@ -64,6 +70,7 @@ const ResultModal = props => {
 ResultModal.defaultProps = {
   modalProps: {},
   resProps: {},
+  statusImg: 'succ',  
 };
 
 export default ResultModal;

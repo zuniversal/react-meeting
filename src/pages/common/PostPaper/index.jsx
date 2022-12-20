@@ -3,7 +3,8 @@ import './style.less';
 import { Form, Button } from 'antd';
 import { useIntl, useModel } from 'umi';
 import SmartFormModal from '@/common/SmartFormModal';
-import { SuccModal } from '../components/ResultModal';
+// import { SuccModal } from '../components/ResultModal';
+import ResultModal from '../components/ResultModal';
 import PostPaperForm from './PostPaperForm';
 import { meetingThemeConfig } from './config';
 
@@ -81,6 +82,7 @@ const PostPaper = props => {
     },
   };
   const isSucc = true;
+  // const isSucc = false;
 
   const succTip = (
     <div className="resultModal">
@@ -92,7 +94,7 @@ const PostPaper = props => {
     <div className="resultModal">
       <div className="resultTitle">{messages.postPaper.postFail}</div>
       <div className="resultTip">{messages.postPaper.postFailTip}</div>
-    </div>
+    </div> 
   );
   const resultModalProps = {
     modalProps: {
@@ -107,6 +109,7 @@ const PostPaper = props => {
     },
     resProps: {},
     children: isSucc ? succTip : failTip,
+    statusImg: isSucc ? 'succ' : 'fail',
   };
 
   const onSubmit = params => {
@@ -149,7 +152,7 @@ const PostPaper = props => {
       </div>
       <div className="bottomBg"></div>
       {/* <CommonModal common={common}></CommonModal> */}
-      <SuccModal {...resultModalProps}></SuccModal>
+      <ResultModal {...resultModalProps}></ResultModal>
     </div>
   );
 };
