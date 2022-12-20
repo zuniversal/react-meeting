@@ -1,10 +1,10 @@
 import React from 'react';
 import { Form, Checkbox } from 'antd';
-import { history, useIntl } from 'umi';
+import { history } from 'umi';
 import SmartForm from '@/common/SmartForm';
 
 const LoginForm = props => {
-  const { messages } = useIntl();
+  const { messages } = props;
 
   const goPage = path => {
     history.push(path);

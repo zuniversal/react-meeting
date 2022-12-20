@@ -1,11 +1,10 @@
 import React from 'react';
 import './style.less';
-import { useIntl } from 'umi';
 import SmartForm from '@/common/SmartForm';
 import { identityConfig } from '@/configs';
 
 const SelectIdentityForm = props => {
-  const { messages } = useIntl();
+  const { messages } = props;
 
   const config = [
     {

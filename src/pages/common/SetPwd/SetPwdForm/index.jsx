@@ -1,10 +1,9 @@
 import React from 'react';
 import { Form, Checkbox } from 'antd';
-import { useIntl } from 'umi';
 import SmartForm from '@/common/SmartForm';
 
 const SetPwdForm = props => {
-  const { messages } = useIntl();
+  const { messages } = props;
 
   const config = [
     {

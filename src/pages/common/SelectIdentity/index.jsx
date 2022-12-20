@@ -22,7 +22,7 @@ const SelectIdentity = props => {
   };
 
   const content = (
-    <SelectIdentityForm name="form" onSubmit={onSubmit}>
+    <SelectIdentityForm name="form" onSubmit={onSubmit} messages={messages}>
       <Form.Item className={`btnFormItem`} noStyle>
         <Button type="primary" htmlType="submit" className="actionBtn">
           {messages.nextStep}

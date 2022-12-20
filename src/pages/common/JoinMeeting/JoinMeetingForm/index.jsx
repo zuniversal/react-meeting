@@ -4,8 +4,10 @@ import { Input } from 'antd';
 import { ynRadioConfig } from '@/configs';
 import SmartForm from '@/common/SmartForm';
 import UploadCom from '@/components/Widgets/UploadCom';
+import { useCalledForm } from '@/hooks/useFormItem';
 
 const JoinMeetingForm = props => {
+  const calledForm = useCalledForm(props);
   const { messages } = props;
 
   const uploadPdf = () => {

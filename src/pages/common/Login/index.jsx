@@ -32,7 +32,7 @@ const Login = props => {
   };
 
   const content = (
-    <LoginForm name="form" onSubmit={onSubmit}>
+    <LoginForm name="form" onSubmit={onSubmit} messages={messages}>
       <Form.Item className={`btnFormItem`} noStyle>
         <Button type="primary" htmlType="submit" className="actionBtn">
           {messages.login.login}

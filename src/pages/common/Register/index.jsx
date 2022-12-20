@@ -30,7 +30,7 @@ const Register = props => {
   };
 
   const content = (
-    <RegisterForm name="form" onSubmit={onSubmit}>
+    <RegisterForm name="form" onSubmit={onSubmit} messages={messages}>
       <div onClick={onSubmit}>onSubmit</div>
       <Form.Item className={`btnFormItem`} noStyle>
         <Button type="primary" htmlType="submit" className="actionBtn">

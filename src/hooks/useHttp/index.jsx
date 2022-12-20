@@ -18,7 +18,7 @@ const useHttp = (http = () => {}, configs = {}) => {
   const {
     init = [], // 数据的初始值
     params,
-    attr = 'list', // 数据的固定格式属性
+    attr = 'data', // 数据的固定格式属性
     format = formatSelectList, // 格式化函数
     formatKey,
     formatVal, // 格式化方法的键和值文本
@@ -35,6 +35,7 @@ const useHttp = (http = () => {}, configs = {}) => {
 
   // 数据结果处理函数
   const handleRes = res => {
+    // console.log(' handleRes   res,   ： ', res, attr, datas, configs);
     setIsLoading(false);
     const attrRes = attr ? res[attr] : res; // 返回数结果值 是否使用 配置的属性值获取
     let datas = format ? format(attrRes, formatVal, formatKey) : attrRes;
@@ -71,6 +72,7 @@ const useHttp = (http = () => {}, configs = {}) => {
       setIsLoading(true);
       const asyncFn = async () => handleRes(await http());
       asyncFn();
+      console.log(' useHttp ： '); //
     }
   }, []);
 

@@ -6,10 +6,13 @@ import SmartForm from '@/common/SmartForm';
 import UploadCom from '@/components/Widgets/UploadCom';
 import useHttp from '@/hooks/useHttp';
 import { getCalled } from '@/services/common';
+import { useCalledForm, useIdentityForm } from '@/hooks/useFormItem';
 
 const UserInfoForm = props => {
   // const { data: clientList, req: getClientAsync } = useHttp(getRelatived);
 
+  const calledForm = useCalledForm(props);
+  const identityForm = useIdentityForm(props);
   const { messages } = props;
 
   const uploadPdf = () => {
@@ -39,17 +42,18 @@ const UserInfoForm = props => {
         defaultValue={messages.userCenter.chooseFile}
       />
     </UploadCom>,
-    {
-      formType: 'Radio',
-      itemProps: {
-        label: messages.userCenter.called,
-        name: 'called',
-        className: 'radioFormItem',
-      },
-      comProps: {
-        options: calledConfig,
-      },
-    },
+    // {
+    //   formType: 'Radio',
+    //   itemProps: {
+    //     label: messages.userCenter.called,
+    //     name: 'called',
+    //     className: 'radioFormItem',
+    //   },
+    //   comProps: {
+    //     options: calledConfig,
+    //   },
+    // },
+    calledForm,
     {
       itemProps: {
         label: messages.userCenter.surname,
@@ -104,17 +108,18 @@ const UserInfoForm = props => {
         className: 'formItem',
       },
     },
-    {
-      formType: 'Radio',
-      itemProps: {
-        label: messages.userCenter.identity,
-        name: 'dignity',
-        className: 'radioFormItem ant-col-24',
-      },
-      comProps: {
-        options: identityConfig,
-      },
-    },
+    // {
+    //   formType: 'Radio',
+    //   itemProps: {
+    //     label: messages.userCenter.identity,
+    //     name: 'dignity',
+    //     className: 'radioFormItem ant-col-24',
+    //   },
+    //   comProps: {
+    //     options: identityConfig,
+    //   },
+    // },
+    identityForm,
   ];
 
   return (

@@ -1,23 +1,26 @@
 import React from 'react';
 import './style.less';
-import { useIntl } from 'umi';
 import SmartForm from '@/common/SmartForm';
 import { calledConfig } from '@/configs';
+import { useCalledForm } from '@/hooks/useFormItem';
 
 const RegisterForm = props => {
-  const { messages } = useIntl();
+  const { messages } = props;
+  const calledForm = useCalledForm(props);
+  console.log(' calledForm ： ', calledForm); //
 
   const config = [
-    {
-      formType: 'Radio',
-      itemProps: {
-        label: messages.register.callID,
-        name: 'password',
-      },
-      comProps: {
-        options: calledConfig,
-      },
-    },
+    // {
+    //   formType: 'Radio',
+    //   itemProps: {
+    //     label: messages.register.callID,
+    //     name: 'callID',
+    //   },
+    //   comProps: {
+    //     options: calledConfig,
+    //   },
+    // },
+    calledForm,
     {
       itemProps: {
         label: messages.register.firstName,

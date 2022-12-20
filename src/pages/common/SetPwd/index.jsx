@@ -21,7 +21,7 @@ const SetPwd = props => {
   };
 
   const content = (
-    <SetPwdForm name="form" onSubmit={onSubmit}>
+    <SetPwdForm name="form" onSubmit={onSubmit} messages={messages}>
       <Form.Item className={`btnFormItem`} noStyle>
         <Button type="primary" htmlType="submit" className="actionBtn">
           {messages.confirm}
