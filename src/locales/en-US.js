@@ -165,7 +165,6 @@ export default {
     hotelPrice: `酒店价格`,
     hotelOrderNum: `酒店预定房间数`,
     hotelOrderDay: `酒店预定日期`,
-    hotelOrderPrice: `酒店预定总价`,
     paymentCost: `缴费费用`,
     paymentInfo: `具体信息`,
     paymentResult: `缴费状态`,

@@ -17,7 +17,7 @@ export const useCalledForm = props => {
   return {
     formType: 'Radio',
     itemProps: {
-      label: messages.register.callID,
+      label: messages.register.name,
       name: 'callID',
     },
     comProps: {
@@ -43,7 +43,8 @@ export const useIdentityForm = props => {
   return {
     formType: 'Radio',
     itemProps: {
-      label: messages.register.name,
+      label: messages.userCenter.identity,
+      label: '',
       name: 'titleID',
     },
     comProps: {

@@ -29,7 +29,7 @@ import axios from 'axios';
 
 // 封装的项目通用的 请求方法 操作
 // 支持 根据请求方式 自动判别是否显示操作 tips
-export const NORMAL_CODE = 100000;
+export const NORMAL_CODE = 200;
 export const AUTH_FAIL = 104000;
 // export const AUTH_FAIL = 104007;
 
@@ -96,47 +96,47 @@ export const isTips = res => {
   //   return;
   // }
   // console.log(' codecode ： ', code); //
-  // if (code && code !== NORMAL_CODE) {
-  if (code) {
-    // if (false) {
-    const codeMsg = getCodeMsg(code);
-    // console.log(
-    //   ' 提示 对吗  !codeMsg ',
-    //   history,
-    //   msg,
-    //   code,
-    //   !codeMsg,
-    //   codeMsg,
-    // );
+  if (code !== NORMAL_CODE) {
+    if (code) {
+      // if (code) {
+      // if (false) {
+      const codeMsg = getCodeMsg(code);
+      // console.log(
+      //   ' 提示 对吗  !codeMsg ',
+      //   history,
+      //   msg,
+      //   code,
+      //   !codeMsg,
+      //   codeMsg,
+      // );
 
-    if (code !== 200) {
-      tips(msg || codeMsg, 2);
-      console.log(' xxxxxx ： '); //
-      return;
-    }
-
-    if (code === AUTH_FAIL && !isDev) {
-      const { pathname } = history.location;
-      if (!noRedirectLoginPath.includes(pathname)) {
-        history.push(LOGIN);
+      if (code !== 200) {
+        tips(msg || codeMsg, 2);
+        return;
       }
+      if (code === AUTH_FAIL && !isDev) {
+        const { pathname } = history.location;
+        if (!noRedirectLoginPath.includes(pathname)) {
+          history.push(LOGIN);
+        }
+      }
+      // console.log(' codecode ： ', msg, msg ?? '操作成功', codeMsg); //
+      tips(msg || codeMsg, 2);
+      // if (!codeMsg) {
+      //   tips(codeMsg, 2);
+      // }
+      return;
+    } else {
+      // console.log(' 提示 对吗  !noTips ', !noTips, msg, noTips, status);
+      if (!noTips || (status != 200 && status != 201)) {
+        tips(msg, status != 200 && status != 201 ? 2 : 1);
+      }
+      // const isNormal = `${status}`.startsWith('2')
+      // console.log(' 提示 对吗  !noTips ', !noTips, noTips, status, isNormal);
+      // if (!noTips || isNormal) {
+      //   tips(msg, isNormal ? 2 : 1);
+      // }
     }
-    // console.log(' codecode ： ', msg, msg ?? '操作成功', codeMsg); //
-    tips(msg || codeMsg, 2);
-    // if (!codeMsg) {
-    //   tips(codeMsg, 2);
-    // }
-    return;
-  } else {
-    // console.log(' 提示 对吗  !noTips ', !noTips, msg, noTips, status);
-    if (!noTips || (status != 200 && status != 201)) {
-      tips(msg, status != 200 && status != 201 ? 2 : 1);
-    }
-    // const isNormal = `${status}`.startsWith('2')
-    // console.log(' 提示 对吗  !noTips ', !noTips, noTips, status, isNormal);
-    // if (!noTips || isNormal) {
-    //   tips(msg, isNormal ? 2 : 1);
-    // }
   }
 };
 
@@ -164,7 +164,7 @@ export class Request {
     // console.log(' super ： ',  )
     this.http.interceptors.request.use(
       config => {
-        config.headers.Authorization = getToken();
+        config.headers.token = getToken();
         // console.log('langlanglang LanguageLanguage：', getLang(),  )
         // config.headers.Authorization = getItems('token');
         // config.headers.authorization =

@@ -48,7 +48,7 @@ const AdminLoginForm = props => {
       extra: messages.admin.approverTips,
     },
     <Form.Item
-      key="remember"
+      key="adminRemember"
       wrapperCol={{
         offset: 0,
         span: 24,
@@ -56,7 +56,7 @@ const AdminLoginForm = props => {
       className={'formItems rememberItem'}
     >
       <Form.Item
-        name="remember"
+        name="adminRemember"
         valuePropName="checked"
         className={'formItems rememberItem'}
       >

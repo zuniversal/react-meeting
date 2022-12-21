@@ -41,6 +41,7 @@ const Committee = props => {
           <CommitteeLocaleTable messages={messages}></CommitteeLocaleTable>
         )}
       </div>
+      <div className="bottomBg"></div>
     </div>
   );
 };

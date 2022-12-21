@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.less';
 import { Button } from 'antd';
-import { useIntl, useModel } from 'umi';
+import { useIntl, history } from 'umi';
 import g1 from '@/static/img/home/g1.png';
 import g2 from '@/static/img/home/g2.png';
 import g3 from '@/static/img/home/g3.png';
@@ -10,6 +10,9 @@ import {
   meetingTravelConfig,
   supporterConfig,
 } from './config';
+
+const goPage = params => history.push(params);
+const goPost = params => goPage(`/postPaper`);
 
 const Banner = props => {
   const goPage = params => {
@@ -20,12 +23,8 @@ const Banner = props => {
       <div className="bannerCenter">
         <div className="title">{props.msg.title}</div>
         <div className="title">{props.msg.subTitle}</div>
-        <div className="activityInfo">{props.msg.activity}</div>
-        <Button
-          className="postBtn"
-          type="primary"
-          onClick={() => props.goPage(`/postPaper`)}
-        >
+        <div className="activityInfo/">{props.msg.activity}</div>
+        <Button className="postBtn" type="primary" onClick={goPost}>
           {props.msg.goPost}
         </Button>
       </div>
@@ -48,11 +47,7 @@ const MeetingIntro = props => {
         <div className="title">{props.msg.meetingIntro}</div>
         <div className="meetingIntroText">{props.msg.title}</div>
         <div className="meetingIntroText">{props.msg.title}</div>
-        <Button
-          className="blueBtn"
-          type="primary"
-          onClick={() => props.goPage(`/postPaper`)}
-        >
+        <Button className="blueBtn" type="primary" onClick={goPost}>
           {props.msg.goPost}
         </Button>
       </div>

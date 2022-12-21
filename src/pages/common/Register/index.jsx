@@ -25,7 +25,8 @@ const Register = props => {
       titleID: 1,
       password: '1',
     };
-    setItems('regInfo', datas);
+    // setItems('regInfo', datas);
+    setItems('regInfo', formProps.values);
     history.push('/selectIdentity');
   };
 

@@ -7,6 +7,14 @@ import UserCenterWrapper from '@/pages/common/components/UserCenterWrapper';
 import JoinMeetingForm from './JoinMeetingForm';
 import { joinMeetingConfig } from './config';
 
+const JoinMeetingTips = props => {
+  return (
+    <div className="joinMeetingTips">
+      {props.messages.joinMeeting.paymentTip}
+    </div>
+  );
+};
+
 const JoinMeeting = props => {
   const { messages } = useIntl();
 
@@ -36,7 +44,7 @@ const JoinMeeting = props => {
   );
 
   const config = joinMeetingConfig.map((v, i) =>
-    i === 0 ? { ...v, valCls: isPay ? 'greenLink' : 'linking' } : v,
+    i === 0 ? { ...v, valCls: isPay ? 'pay' : 'noPay' } : v,
   );
   console.log(' config ： ', config); //
 
@@ -47,6 +55,7 @@ const JoinMeeting = props => {
         msgKey={'joinMeeting'}
         config={config}
       ></InfoCol>
+      <JoinMeetingTips messages={messages}></JoinMeetingTips>
       <Button type="primary" onClick={toggleIsNext}>
         {messages.previousStep}
       </Button>
@@ -56,7 +65,7 @@ const JoinMeeting = props => {
   const titleKey = isNext ? 'title' : isPay ? 'paymentInfo' : 'paymentCost';
 
   return (
-    <UserCenterWrapper messages={messages}>
+    <UserCenterWrapper messages={messages} className="joinMeeting">
       <div className="primaryTitle">{messages.joinMeeting[titleKey]}</div>
       {isNext ? joinMeetingCom : paymentResult}
     </UserCenterWrapper>

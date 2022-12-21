@@ -9,7 +9,7 @@ export default function users() {
   const loginAsync = useCallback(async params => {
     const res = await login(params);
     console.log(' loginAsync res await 结果  ：', res);
-    // setItem(res.token)
+    setItem('token', res.token);
     if (res.code === 200) {
       history.push('/home');
     }

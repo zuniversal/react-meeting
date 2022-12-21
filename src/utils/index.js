@@ -699,7 +699,7 @@ export const createProperty = (arr, f) => {
   return origin;
 };
 
-export const TOKEN_PREFIX = 'AFAJWT '; //
+export const TOKEN_PREFIX = ''; //
 
 export const getToken = (k = 'token', prefix = TOKEN_PREFIX) => {
   const token =

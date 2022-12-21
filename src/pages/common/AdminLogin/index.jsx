@@ -13,16 +13,16 @@ const Login = props => {
   const onSubmit = formProps => {
     console.log('onSubmit 提交 : ', formProps, props);
     try {
-      const { remember, ...params } = formProps.values;
+      const { adminRemember, ...params } = formProps.values;
       console.log(
-        '  对吗  remember ',
-        remember,
-        remember ? params : undefined,
-        getItem('remember'),
+        '  对吗  adminRemember ',
+        adminRemember,
+        adminRemember ? params : undefined,
+        getItem('adminRemember'),
         getItem('loginInfo'),
       );
-      setItem('loginInfo', remember ? params : undefined);
-      setItem('remember', !!remember);
+      setItem('adminLoginInfo', adminRemember ? params : undefined);
+      setItem('adminadminRemember', !!adminRemember);
       loginAsync(params);
     } catch (error) {
       console.log(' onSubmit error ： ', error);

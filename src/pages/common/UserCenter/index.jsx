@@ -43,12 +43,15 @@ const UserCenter = props => {
   const userInfoDetail = (
     <div className="userInfoWrapper">
       <span className="primaryTitle">{messages.userCenter.userInfo}</span>
-      {/* <UserInfo messages={messages}></UserInfo> */}
-      <InfoCol
-        messages={messages}
-        msgKey={'userCenter'}
-        config={userInfoConfig}
-      ></InfoCol>
+      <div className="userInfo">
+        {/* <UserInfo messages={messages}></UserInfo> */}
+        <div className="avatar"></div>
+        <InfoCol
+          messages={messages}
+          msgKey={'userCenter'}
+          config={userInfoConfig}
+        ></InfoCol>
+      </div>
       {/* <Button type="primary" ghost onClick={goUserInfo}> */}
       <Button type="primary" ghost onClick={toggleIsEdit}>
         {messages.userCenter.edit}

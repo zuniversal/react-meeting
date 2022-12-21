@@ -3,9 +3,7 @@ import './style.less';
 import { history } from 'umi';
 import { Button, Divider } from 'antd';
 
-const goPage = params => {
-  history.push(params);
-};
+const goPage = params => history.push(params);
 const goPost = params => goPage(`/postPaper`);
 const goPaperStatus = params => goPage(`/paperStatus`);
 const goJoinMeeting = params => goPage(`/joinMeeting`);

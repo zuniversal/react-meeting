@@ -6,10 +6,9 @@ import SetPwdForm from './SetPwdForm';
 import { setItems, getItems } from '@/utils';
 
 const SetPwd = props => {
-  const intl = useIntl();
-  const { messages } = intl;
-  console.log(' SetPwd   msg,   ： ', intl, messages);
+  const { messages } = useIntl();
   const { registerAsync } = useModel('users');
+
   const onSubmit = async formProps => {
     console.log('onSubmit 提交 : ', formProps, props, getItems('regInfo'));
     const { confirmPwd, ...rest } = formProps.values;

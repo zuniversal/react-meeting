@@ -94,7 +94,7 @@ const PostPaper = props => {
     <div className="resultModal">
       <div className="resultTitle">{messages.postPaper.postFail}</div>
       <div className="resultTip">{messages.postPaper.postFailTip}</div>
-    </div> 
+    </div>
   );
   const resultModalProps = {
     modalProps: {
@@ -137,9 +137,7 @@ const PostPaper = props => {
           <DowntTpl messages={messages} />
           {content}
         </div>
-        {/* <Button size="small" onClick={onSubmit}>
-          {messages.postPaper.confirmPost}
-        </Button> */}
+        <span onClick={onSubmit}>{messages.postPaper.confirmPost}</span>
         {/* </div> */}
         <div className="">
           <div className="title importantDateTitle">

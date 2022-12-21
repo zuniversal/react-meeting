@@ -1,8 +1,12 @@
 export const joinMeetingConfig = [
   {
+    key: 'paymentResult',
+    langKey: 'paymentResult',
+    valCls: 'linking',
+  },
+  {
     key: 'called',
     langKey: 'called',
-    valCls: 'linking',
   },
   {
     key: 'airplane',
@@ -31,10 +35,6 @@ export const joinMeetingConfig = [
   {
     key: 'hotelOrderDay',
     langKey: 'hotelOrderDay',
-  },
-  {
-    key: 'hotelOrderPrice',
-    langKey: 'hotelOrderPrice',
   },
   {
     key: 'hotelOrderTotal',
