@@ -73,7 +73,29 @@ const CommonModal = props => {
 
 const PostPaper = props => {
   const { messages } = useIntl();
-  const { isShowCommonModal, setIsShowCommonModal } = useModel('postPaper');
+  const {
+    isShowCommonModal,
+    setIsShowCommonModal,
+    addPostAsync,
+    getPaperListAsync,
+    action,
+  } = useModel('postPaper');
+  const onSubmit2 = () => {
+    console.log(' onSubmit2   ,   ： ');
+    getPaperListAsync();
+    setIsShowCommonModal(true);
+  };
+  const onSubmit = formProps => {
+    console.log('onSubmit 提交 : ', formProps, props);
+    // addPostAsync(params);
+    addPostAsync({
+      ...formProps.values,
+      firstName: null,
+      secondName: null,
+      paperURL: '/paperURL',
+      copyrightFileURL: '/copyrightFileURL',
+    });
+  };
   const common = {
     isShowCommonModal,
     visible: isShowCommonModal,
@@ -108,14 +130,8 @@ const PostPaper = props => {
       },
     },
     resProps: {},
-    children: isSucc ? succTip : failTip,
-    statusImg: isSucc ? 'succ' : 'fail',
-  };
-
-  const onSubmit = params => {
-    console.log('onSubmit 提交 : ', params, props);
-    setIsShowCommonModal(true);
-    // loginAsync(params);
+    children: action === 'succ' ? succTip : failTip,
+    statusImg: action === 'succ' ? 'succ' : 'fail',
   };
 
   const content = (
@@ -137,7 +153,7 @@ const PostPaper = props => {
           <DowntTpl messages={messages} />
           {content}
         </div>
-        <span onClick={onSubmit}>{messages.postPaper.confirmPost}</span>
+        <span onClick={onSubmit2}>{messages.postPaper.confirmPost}</span>
         {/* </div> */}
         <div className="">
           <div className="title importantDateTitle">

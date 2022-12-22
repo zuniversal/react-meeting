@@ -18,7 +18,7 @@ const PostPaperForm = props => {
     {
       itemProps: {
         label: messages.postPaper.postTitle,
-        name: 'postTitle',
+        name: 'title',
       },
       comProps: {
         className: 'formItem',
@@ -27,7 +27,7 @@ const PostPaperForm = props => {
     {
       itemProps: {
         label: messages.postPaper.postAuth,
-        name: 'postAuth',
+        name: 'contactAuthor',
       },
       comProps: {
         className: 'formItem',
@@ -36,7 +36,7 @@ const PostPaperForm = props => {
     {
       itemProps: {
         label: messages.postPaper.postCommonAuthor,
-        name: 'postCommonAuthor',
+        name: 'commonAuthor',
       },
       comProps: {
         className: 'formItem',
@@ -54,30 +54,30 @@ const PostPaperForm = props => {
     {
       itemProps: {
         label: messages.postPaper.artType,
-        name: 'artType',
+        name: 'submitPaperCateID',
       },
       comProps: {
         className: 'formItem',
       },
     },
-    {
-      itemProps: {
-        label: messages.postPaper.uploadPost,
-        name: 'uploadPost',
-      },
-      comProps: {
-        className: 'formItem',
-      },
-    },
-    {
-      itemProps: {
-        label: messages.postPaper.uploadDoc,
-        name: 'uploadDoc',
-      },
-      comProps: {
-        className: 'formItem',
-      },
-    },
+    // {
+    //   itemProps: {
+    //     label: messages.postPaper.uploadPost,
+    //     name: 'uploadPost',
+    //   },
+    //   comProps: {
+    //     className: 'formItem',
+    //   },
+    // },
+    // {
+    //   itemProps: {
+    //     label: messages.postPaper.uploadDoc,
+    //     name: 'uploadDoc',
+    //   },
+    //   comProps: {
+    //     className: 'formItem',
+    //   },
+    // },
     // {
     //   itemProps: {
     //     label: messages.postPaper.uploadAuthFile,
@@ -100,9 +100,9 @@ const PostPaperForm = props => {
     // },
     <UploadCom
       label={messages.postPaper.uploadAuthFile}
-      key={'circuit_imgs'}
+      key={'paperURL'}
       action={'/api/v1/upload'}
-      name={'circuit_imgs'}
+      name={'paperURL'}
       extra={messages.postPaper.uploadDoc}
       uploadProps={{
         disabled: props.isDisabledAll || props.action === 'detail',
@@ -122,9 +122,9 @@ const PostPaperForm = props => {
     </UploadCom>,
     <UploadCom
       label={messages.postPaper.uploadPdf}
-      key={'circuit_imgs2'}
+      key={'copyrightFileURL'}
       action={'/api/v1/upload'}
-      name={'circuit_imgs2'}
+      name={'copyrightFileURL'}
       extra={messages.postPaper.uploadPdf}
       uploadProps={{
         disabled: props.isDisabledAll || props.action === 'detail',
