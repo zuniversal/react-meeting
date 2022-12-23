@@ -599,7 +599,7 @@ export const confirms = (type = 1, msg, time = 3, cb) => {
   message[msgMap](msg, time, cb);
 };
 
-export const tips = (msg, type = 1, time = 3, cb) => {
+export const tips = (msg, type = 1, time = 5, cb) => {
   console.log('confirms ：', type, time, cb);
   const msgMap = {
     0: 'error',

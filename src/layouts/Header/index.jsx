@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.less';
-import { connect, history, useIntl } from 'umi';
+import { connect, history, useIntl, useModel, } from 'umi';
 import { Tabs, Button, Dropdown, Menu } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import logo from '@/static/img/logo.png';
@@ -72,7 +72,11 @@ const TabsCom = props => {
     // })
   };
   return (
-    <Tabs activeKey={props.activeKey} onChange={onChange} items={tabConfigs}>
+    <Tabs
+      defaultActiveKey={props.activeKey}
+      onChange={onChange}
+      items={tabConfigs}
+    >
       {/* {tabConfigs.map((v, i) => (
         <TabPane {...v}></TabPane>
       ))} */}
@@ -111,15 +115,18 @@ const UserInfo = props => {
   const goUserCenter = params => goPage(`/userCenter`);
   return (
     <div className="userInfo" onClick={goUserCenter}>
-      <img src={props.info.avatar} className="avatar" />
-      <div className="userName">{props.info.name}</div>
+      <img src={props.userInfo.avatar} className="avatar" />
+      {/* <div className="userName">{props.userInfo.firstName + props.userInfo.secondName}</div> */}
+      <div className="userName">{props.userInfo.email}</div>
     </div>
   );
 };
 
 const Header = props => {
   const { messages } = useIntl();
-  console.log(' Header ： ', props, messages); //
+  const { userInfo, } = useModel('users');
+  console.log(' Header ： ', props, messages, userInfo); //
+  
   const goPage = params => {
     history.push(params);
     // props.setActiveKey({
@@ -142,7 +149,7 @@ const Header = props => {
           </div>
           {/* <TabsComWrapper></TabsComWrapper> */}
           {/* {props.isShowTabs && <TabsCom {...props}></TabsCom>} */}
-          <TabsCom {...props}></TabsCom>
+          <TabsCom activeKey={activeKey} {...props}></TabsCom>
         </div>
         {/* {props.isShowTabs && <HeaderAction goPage={goPage}></HeaderAction>} */}
 
@@ -151,12 +158,12 @@ const Header = props => {
             <img src={platformLogo} className="platformLogo" />
             <div className="linking">{messages.expertPlatform}</div>
           </div>
-          {info ? (
-            <HeaderAction goPage={goPage} messages={messages}></HeaderAction>
+          {Object.keys(userInfo).length ? (
+            <UserInfo userInfo={userInfo} messages={messages}></UserInfo>
           ) : (
-            <UserInfo info={info} messages={messages}></UserInfo>
+            <HeaderAction goPage={goPage} messages={messages}></HeaderAction>
           )}
-          <UserInfo info={info} messages={messages}></UserInfo>
+          {/* <UserInfo userInfo={userInfo} messages={messages}></UserInfo> */}
         </div>
       </div>
     </div>

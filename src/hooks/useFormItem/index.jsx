@@ -1,6 +1,6 @@
 import React from 'react';
 import useHttp from '@/hooks/useHttp';
-import { getCalled, getIdentity, getUserInfo } from '@/services/common';
+import { getCalled, getIdentity, getPaperType } from '@/services/common';
 
 export const useCalledForm = props => {
   const { messages } = props;
@@ -32,7 +32,7 @@ export const useIdentityForm = props => {
   const { data: identityList } = useHttp(getIdentity, {
     format: data => {
       console.log(' data ： ', data); //
-      return data.map(v => ({
+      return data.filter((v) => v.id != 1).map(v => ({
         label: v.titleName,
         value: v.id,
       }));
@@ -44,12 +44,38 @@ export const useIdentityForm = props => {
     formType: 'Radio',
     itemProps: {
       label: messages.userCenter.identity,
-      label: '',
+      // label: '',
       name: 'titleID',
     },
     comProps: {
-      className: 'lrRadioCol',
+      // className: 'lrRadioCol',
       options: identityList,
+    },
+  };
+};
+
+export const usePaperTypeForm = props => {
+  const { messages } = props;
+
+  const { data: paperTypeList } = useHttp(getPaperType, {
+    format: data => {
+      return data.map(v => ({
+        label: v.submitPaperCateName,
+        value: v.id,
+      }));
+    },
+  });
+  console.log(' paperTypeList ： ', paperTypeList, props); //
+
+  return {
+    formType: 'Select',
+    itemProps: {
+      label: messages.postPaper.artType,
+      name: 'submitPaperCateID',
+    },
+    comProps: {
+      className: 'formItem',
+      options: paperTypeList,
     },
   };
 };

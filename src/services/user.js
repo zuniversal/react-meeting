@@ -4,7 +4,6 @@ import {
 
 export const regester = p => req.post(`regester`, p);
 export const login = p => req.post(`login`, p);
-export const userCenter = p => req.post(`userCenter`, p);
 
-export const getCalled = p => req.get(`call`, p);
-export const getIdentity = p => req.get(`title`, p);
+export const getUserInfo = p => req.get(`userCenter`, p);
+export const editUserInfo = p => req.put(`userCenter`, p);

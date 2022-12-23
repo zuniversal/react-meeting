@@ -9,7 +9,6 @@ const Register = props => {
   const intl = useIntl();
   const { messages } = intl;
   console.log(' Register   msg,   ： ', intl, messages);
-  const { registerAsync } = useModel('users');
 
   const onSubmit = formProps => {
     console.log('onSubmit 提交 : ', formProps, props);
@@ -32,7 +31,7 @@ const Register = props => {
 
   const content = (
     <RegisterForm name="form" onSubmit={onSubmit} messages={messages}>
-      <div onClick={onSubmit}>onSubmit</div>
+      {/* <div onClick={onSubmit}>onSubmit</div> */}
       <Form.Item className={`btnFormItem`} noStyle>
         <Button type="primary" htmlType="submit" className="actionBtn">
           {messages.nextStep}

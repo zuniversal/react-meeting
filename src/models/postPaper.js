@@ -22,6 +22,8 @@ export default function postPaper() {
     const res = await addPaper(params);
     console.log(' addPostAsync res await 结果  ：', res);
     setIsShowCommonModal(true);
+    // setAction(res.code === 200 ? 'succ' : 'fail');
+    res.code !== 200 && setAction('fail');
   }, []);
 
   return {

@@ -7,6 +7,7 @@ import SmartFormModal from '@/common/SmartFormModal';
 import ResultModal from '../components/ResultModal';
 import PostPaperForm from './PostPaperForm';
 import { meetingThemeConfig } from './config';
+import { formatData } from './format';
 
 const PostSucc = ({ messages }) => (
   <div className="activeLinkWrapper">
@@ -88,13 +89,13 @@ const PostPaper = props => {
   const onSubmit = formProps => {
     console.log('onSubmit 提交 : ', formProps, props);
     // addPostAsync(params);
-    addPostAsync({
+    addPostAsync(formatData({
       ...formProps.values,
-      firstName: null,
-      secondName: null,
+      firstName: '',
+      secondName: '',
       paperURL: '/paperURL',
       copyrightFileURL: '/copyrightFileURL',
-    });
+    }));
   };
   const common = {
     isShowCommonModal,
@@ -153,7 +154,7 @@ const PostPaper = props => {
           <DowntTpl messages={messages} />
           {content}
         </div>
-        <span onClick={onSubmit2}>{messages.postPaper.confirmPost}</span>
+        {/* <span onClick={onSubmit2}>{messages.postPaper.confirmPost}</span> */}
         {/* </div> */}
         <div className="">
           <div className="title importantDateTitle">

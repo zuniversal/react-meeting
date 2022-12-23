@@ -3,9 +3,11 @@ import './style.less';
 import { Input } from 'antd';
 import SmartForm from '@/common/SmartForm';
 import UploadCom from '@/components/Widgets/UploadCom';
+import { usePaperTypeForm } from '@/hooks/useFormItem';
 
 const PostPaperForm = props => {
   const { messages } = props;
+  const paperTypeForm = usePaperTypeForm(props);
 
   const uploadAuthFile = () => {
     console.log(' uploadAuthFile   ,   ： ');
@@ -51,15 +53,17 @@ const PostPaperForm = props => {
         className: 'formItem',
       },
     },
-    {
-      itemProps: {
-        label: messages.postPaper.artType,
-        name: 'submitPaperCateID',
-      },
-      comProps: {
-        className: 'formItem',
-      },
-    },
+    paperTypeForm,
+    // {
+    //   formType: 'InputNumber',  
+    //   itemProps: {
+    //     label: messages.postPaper.artType,
+    //     name: 'submitPaperCateID',
+    //   },
+    //   comProps: {
+    //     className: 'formItem',
+    //   },
+    // },
     // {
     //   itemProps: {
     //     label: messages.postPaper.uploadPost,
@@ -100,9 +104,9 @@ const PostPaperForm = props => {
     // },
     <UploadCom
       label={messages.postPaper.uploadAuthFile}
-      key={'paperURL'}
+      key={'paperURLObj'}
       action={'/api/v1/upload'}
-      name={'paperURL'}
+      name={'paperURLObj'}
       extra={messages.postPaper.uploadDoc}
       uploadProps={{
         disabled: props.isDisabledAll || props.action === 'detail',
@@ -122,13 +126,13 @@ const PostPaperForm = props => {
     </UploadCom>,
     <UploadCom
       label={messages.postPaper.uploadPdf}
-      key={'copyrightFileURL'}
+      key={'copyrightFileURLObj'}
       action={'/api/v1/upload'}
-      name={'copyrightFileURL'}
+      name={'copyrightFileURLObj'}
       extra={messages.postPaper.uploadPdf}
       uploadProps={{
         disabled: props.isDisabledAll || props.action === 'detail',
-        accept: 'image/png,image/jpeg,image/pdf,application/pdf',
+        accept: 'image/pdf,application/pdf',
         multiple: true,
         listType: null,
       }}

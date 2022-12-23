@@ -18,8 +18,8 @@ const JoinMeetingTips = props => {
 const JoinMeeting = props => {
   const { messages } = useIntl();
 
-  // const [ isNext, setIsNext ] = useState(true)
-  const [isNext, setIsNext] = useState(false);
+  const [ isNext, setIsNext ] = useState(true)
+  // const [isNext, setIsNext] = useState(false);
   const isPay = false;
 
   const toggleIsNext = () => {
