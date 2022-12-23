@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.less';
-import { useIntl } from 'umi';
+import { useIntl, useModel } from 'umi';
 import UserCenterWrapper from '@/pages/common/components/UserCenterWrapper';
 import PaperStatusTable from './PaperStatusTable';
 
 const PaperStatus = props => {
   const { messages } = useIntl();
+  const { getPaperListAsync } = useModel('postPaper');
+  useEffect(() => {
+    getPaperListAsync();
+  }, []);
 
   return (
     <UserCenterWrapper messages={messages} className="paperStatus">

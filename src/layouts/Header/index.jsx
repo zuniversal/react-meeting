@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.less';
-import { connect, history, useIntl, useModel, } from 'umi';
+import { connect, history, useIntl, useModel } from 'umi';
 import { Tabs, Button, Dropdown, Menu } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import logo from '@/static/img/logo.png';
@@ -28,21 +28,21 @@ const tabConfigs = [
     label: '委员会/组委会',
     key: '/committee',
   },
-  {
-    tab: '活动安排',
-    label: '活动安排',
-    key: '/activity',
-  },
+  // {
+  //   tab: '活动安排',
+  //   label: '活动安排',
+  //   key: '/activity',
+  // },
   {
     tab: '过往会议',
     label: '过往会议',
     key: '/oldMeetings',
   },
-  {
-    tab: '大会展示',
-    label: '大会展示',
-    key: '/exhibition',
-  },
+  // {
+  //   tab: '大会展示',
+  //   label: '大会展示',
+  //   key: '/exhibition',
+  // },
   {
     tab: '联系我们',
     label: '联系我们',
@@ -118,20 +118,28 @@ const UserInfo = props => {
       <img src={props.userInfo.avatar} className="avatar" />
       {/* <div className="userName">{props.userInfo.firstName + props.userInfo.secondName}</div> */}
       <div className="userName">{props.userInfo.email}</div>
+      <div className="underline" onClick={props.logout}>
+        {props.messages.logout}
+      </div>
     </div>
   );
 };
 
 const Header = props => {
   const { messages } = useIntl();
-  const { userInfo, } = useModel('users');
+  const { userInfo } = useModel('users');
   console.log(' Header ： ', props, messages, userInfo); //
-  
+
   const goPage = params => {
     history.push(params);
     // props.setActiveKey({
     //   activeKey: params,
     // })
+  };
+
+  const logout = params => {
+    // props.logout()
+    goPage(`/login`);
   };
 
   const info = {
@@ -154,12 +162,16 @@ const Header = props => {
         {/* {props.isShowTabs && <HeaderAction goPage={goPage}></HeaderAction>} */}
 
         <div className="headerRight">
-          <div className="logoWarpper" onClick={() => goPage(`/adminLogin`)}>
+          <div className="logoWarpper" onClick={logout}>
             <img src={platformLogo} className="platformLogo" />
             <div className="linking">{messages.expertPlatform}</div>
           </div>
           {Object.keys(userInfo).length ? (
-            <UserInfo userInfo={userInfo} messages={messages}></UserInfo>
+            <UserInfo
+              userInfo={userInfo}
+              messages={messages}
+              logout={logout}
+            ></UserInfo>
           ) : (
             <HeaderAction goPage={goPage} messages={messages}></HeaderAction>
           )}

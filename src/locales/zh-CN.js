@@ -3,6 +3,7 @@ export default {
   succ: `成功`,
   reg: `注册`,
   logan: `登录`,
+  logout: `logout`,
   regTitle: `温馨提示`,
   regTip: `如您需要投稿论文或参加会议，可在个人中心页面选择相关功能`,
   confirm: `确认`,

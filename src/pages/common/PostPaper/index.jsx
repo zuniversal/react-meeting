@@ -30,8 +30,20 @@ const titleMap = {};
 
 const DowntTpl = ({ messages }) => (
   <div className="activeLinkWrapper">
-    <div className="activeLink">{messages.postPaper.downloadTpl}</div>
-    <div className="activeLink">{messages.postPaper.downloadAuth}</div>
+    <a
+      className="activeLink"
+      href="/api/download/paperTpl.docx"
+      download={'paperTpl.docx'}
+    >
+      {messages.postPaper.downloadTpl}
+    </a>
+    <a
+      className="activeLink"
+      href="/api/download/paperAuth.pdf"
+      download={'paperAuth.pdf'}
+    >
+      {messages.postPaper.downloadAuth}
+    </a>
   </div>
 );
 
@@ -89,13 +101,15 @@ const PostPaper = props => {
   const onSubmit = formProps => {
     console.log('onSubmit 提交 : ', formProps, props);
     // addPostAsync(params);
-    addPostAsync(formatData({
-      ...formProps.values,
-      firstName: '',
-      secondName: '',
-      paperURL: '/paperURL',
-      copyrightFileURL: '/copyrightFileURL',
-    }));
+    addPostAsync(
+      formatData({
+        ...formProps.values,
+        firstName: '',
+        secondName: '',
+        paperURL: '/paperURL',
+        copyrightFileURL: '/copyrightFileURL',
+      }),
+    );
   };
   const common = {
     isShowCommonModal,
