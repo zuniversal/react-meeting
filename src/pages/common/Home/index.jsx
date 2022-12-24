@@ -5,6 +5,7 @@ import { useIntl, history } from 'umi';
 import g1 from '@/static/img/home/g1.png';
 import g2 from '@/static/img/home/g2.png';
 import g3 from '@/static/img/home/g3.png';
+import backTop from '@/static/img/home/backTop.png';
 import {
   meetingThemeConfig,
   meetingTravelConfig,
@@ -13,6 +14,46 @@ import {
 
 const goPage = params => history.push(params);
 const goPost = params => goPage(`/postPaper`);
+
+const configs = [
+  {
+    className: 'backTop',
+    key: 'backTop',
+    icon: backTop,
+  },
+];
+
+const FloatButton = props => {
+  const onClick = params => {
+    console.log(' onClick   params,   ： ', params);
+    if (params.key === 'backTop') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  // return <div className='floatBtnWrapper' >
+  //   <img src={v.icon} className="floatIcon" />
+  // </div>
+  return (
+    <div className="floatingBtnWrapper">
+      {configs.map((v, i) => {
+        const floatingBtn = (
+          <div
+            className={`floatingBtn ${v.className ?? ''}`}
+            key={i}
+            onClick={() => onClick(v)}
+          >
+            <img src={v.icon} className="floatingIcon" />
+          </div>
+        );
+        return floatingBtn;
+      })}
+    </div>
+  );
+};
 
 const Banner = props => {
   const goPage = params => {
@@ -54,8 +95,8 @@ const MeetingIntro = props => {
       <div className="meetingIntroRight">
         <img src={g1} className="g1" />
         <div className="poemWrapper">
-          <div className="poem">{props.msg.title}</div>
-          <div className="poem">{props.msg.title}</div>
+          <div className="poem">魅力无锡，吴韵文化</div>
+          <div className="poem">太湖明珠</div>
         </div>
       </div>
     </div>
@@ -95,8 +136,8 @@ const MeetingReg = props => {
         <div className="meetingRegLeft">
           <img src={g2} className="g2" />
           <div className="poemWrapper">
-            <div className="poem">{props.msg.title}</div>
-            <div className="poem">{props.msg.title}</div>
+            <div className="poem">人文无锡，江南胜地</div>
+            <div className="poem">惠山锡山</div>
           </div>
         </div>
         <div className="meetingRegRight">
@@ -118,13 +159,13 @@ const MeetingInfo = props => {
     <div className="meetingInfo">
       <img src={g3} className="g3" />
       <div className="meetingInfoWrapper">
-        <div className="title">
-          {props.msg.meetingReg}
-          <div className="subTitle">{props.msg.meetingReg}</div>
+        <div className="meetingInfoRow">
+          <div className="meetingInfoTitle">{props.msg.meetingInfoTitle1}</div>
+          {props.msg.meetingInfoList1.map((v, i) => <div className="meetingInfoItem" key={i} >{v.label}</div>)}
         </div>
-        <div className="title">
-          {props.msg.meetingReg}
-          <div className="subTitle">{props.msg.meetingReg}</div>
+        <div className="meetingInfoRow">
+          <div className="meetingInfoTitle">{props.msg.meetingInfoTitle2}</div>
+          {props.msg.meetingInfoList2.map((v, i) => <div className="meetingInfoItem" key={i} >{v.label}</div>)}
         </div>
       </div>
     </div>
@@ -179,6 +220,7 @@ const Home = props => {
       <MeetingInfo msg={messages.home}></MeetingInfo>
       <MeetingTravel msg={messages.home}></MeetingTravel>
       <Supporter msg={messages.home}></Supporter>
+      <FloatButton></FloatButton>
     </div>
   );
 };

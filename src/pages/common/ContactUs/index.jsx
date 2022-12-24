@@ -2,14 +2,17 @@ import React from 'react';
 import './style.less';
 import { useIntl } from 'umi';
 import intro from '@/static/img/contactUs/intro.png';
+import {
+  infoConfig,
+} from './config';
 
-const ContactUsList = ({ messages }) => {
+const ContactUsList = ({ messages, config }) => {
   return (
-    <div className="contactUsList">
-      <img src={intro} className="contactUsImg" />
-      <div className="contactUsTitle">{messages.contactUs.title}</div>
-      <div className="contactUsContent">{messages.contactUs.content}</div>
-    </div>
+    config.map((v, i) => <div className="contactUsList" key={i}>
+      {/* <div className="contactUsContent">{messages.contactUs.content}</div> */}
+      {/* <div className="contactUsContent">{v}</div> */}
+      <div className="contactUsRow">{v}</div>
+    </div>)
   );
 };
 
@@ -19,7 +22,9 @@ const ContactUs = props => {
     <div className="contactUs">
       <div className="conWrapper">
         <div className="title">{messages.contactUs.title}</div>
-        <ContactUsList messages={messages}></ContactUsList>
+        <img src={intro} className="contactUsImg" />
+        <div className="contactUsTitle">{messages.contactUs.name}</div>
+        <ContactUsList messages={messages} config={infoConfig}></ContactUsList>
       </div>
       <div className="bottomBg"></div>
     </div>

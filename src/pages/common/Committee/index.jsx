@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import './style.less';
 import { Tabs } from 'antd';
 import { useIntl } from 'umi';
+import {
+  internalCommitteeData,
+  localCommitteeData,
+} from './config';
 import { CommitteeTable, CommitteeLocaleTable } from './CommitteeTable';
 
 const TabsCom = props => {
@@ -10,12 +14,12 @@ const TabsCom = props => {
     {
       tab: '大会展示',
       label: props.messages.committee.internalCommittee,
-      key: 'exhibition',
+      key: 'internalCommittee',
     },
     {
       tab: '联系我们',
       label: props.messages.committee.localCommittee,
-      key: 'contactUs',
+      key: 'localCommittee',
     },
   ];
   return (
@@ -29,16 +33,16 @@ const TabsCom = props => {
 
 const Committee = props => {
   const { messages } = useIntl();
-  const [tab, setTab] = useState('exhibition');
+  const [tab, setTab] = useState('internalCommittee');
   return (
     <div className="committee">
       <div className="committeeWrapper">
         <TabsCom messages={messages} setTab={setTab}></TabsCom>
-        {tab === 'exhibition' && (
-          <CommitteeTable messages={messages}></CommitteeTable>
+        {tab === 'internalCommittee' && (
+          <CommitteeTable messages={messages} dataSource={internalCommitteeData}></CommitteeTable>
         )}
-        {tab === 'contactUs' && (
-          <CommitteeLocaleTable messages={messages}></CommitteeLocaleTable>
+        {tab === 'localCommittee' && (
+          <CommitteeLocaleTable messages={messages} dataSource={localCommitteeData}></CommitteeLocaleTable>
         )}
       </div>
       <div className="bottomBg"></div>

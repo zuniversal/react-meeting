@@ -105,12 +105,12 @@ const PostPaperForm = props => {
     <UploadCom
       label={messages.postPaper.uploadAuthFile}
       key={'paperURLObj'}
-      action={'/api/v1/upload'}
+      action={'/api/uploadFile'}
       name={'paperURLObj'}
       extra={messages.postPaper.uploadDoc}
       uploadProps={{
         disabled: props.isDisabledAll || props.action === 'detail',
-        accept: 'image/png,image/jpeg,image/pdf,application/pdf',
+        accept: 'application/msword',
         multiple: true,
         listType: null,
       }}
@@ -127,7 +127,7 @@ const PostPaperForm = props => {
     <UploadCom
       label={messages.postPaper.uploadPdf}
       key={'copyrightFileURLObj'}
-      action={'/api/v1/upload'}
+      action={'/api/uploadFile'}
       name={'copyrightFileURLObj'}
       extra={messages.postPaper.uploadPdf}
       uploadProps={{

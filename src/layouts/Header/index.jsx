@@ -10,42 +10,42 @@ const { TabPane } = Tabs;
 const tabConfigs = [
   {
     tab: '首页',
-    label: '首页',
+    label: 'Home Page',
     key: '/home',
   },
   {
     tab: '大美无锡',
-    label: '大美无锡',
+    label: 'Beautiful Wuxi',
     key: '/beauty',
   },
   {
     tab: '论文投稿',
-    label: '论文投稿',
+    label: 'Paper Submission',
     key: '/postPaper',
   },
   {
     tab: '委员会/组委会',
-    label: '委员会/组委会',
+    label: 'Committee',
     key: '/committee',
   },
   // {
   //   tab: '活动安排',
-  //   label: '活动安排',
+  //   label: 'Events arrangement',
   //   key: '/activity',
   // },
   {
     tab: '过往会议',
-    label: '过往会议',
+    label: 'Precious Conferences',
     key: '/oldMeetings',
   },
   // {
   //   tab: '大会展示',
-  //   label: '大会展示',
+  //   label: 'Conference Review',
   //   key: '/exhibition',
   // },
   {
     tab: '联系我们',
-    label: '联系我们',
+    label: 'ContactUs',
     key: '/contactUs',
   },
 ];

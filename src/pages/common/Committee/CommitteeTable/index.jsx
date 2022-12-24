@@ -4,16 +4,16 @@ import SmartTable from '@/common/SmartTable';
 export const CommitteeTable = props => {
   const columns = [
     {
-      title: props.messages.committee.area,
-      dataIndex: 'id',
+      title: props.messages.committee.region,
+      dataIndex: 'region',
     },
     {
       title: props.messages.committee.position,
-      dataIndex: '姓名',
+      dataIndex: 'post',
     },
     {
       title: props.messages.committee.name,
-      dataIndex: '手机',
+      dataIndex: 'name',
     },
   ];
 
@@ -32,15 +32,15 @@ export const CommitteeLocaleTable = props => {
   const columns = [
     {
       title: props.messages.committee.workUnit,
-      dataIndex: 'id',
+      dataIndex: 'company',
     },
     {
       title: props.messages.committee.position,
-      dataIndex: '姓名',
+      dataIndex: 'status',
     },
     {
       title: props.messages.committee.name,
-      dataIndex: '手机',
+      dataIndex: 'name',
     },
   ];
 

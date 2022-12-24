@@ -6,7 +6,7 @@ import SmartFormModal from '@/common/SmartFormModal';
 // import { SuccModal } from '../components/ResultModal';
 import ResultModal from '../components/ResultModal';
 import PostPaperForm from './PostPaperForm';
-import { meetingThemeConfig } from './config';
+import { meetingThemeConfig, importantDateConfig } from './config';
 import { formatData } from './format';
 
 const PostSucc = ({ messages }) => (
@@ -50,12 +50,12 @@ const DowntTpl = ({ messages }) => (
 const ImportantDate = ({ messages }) => {
   return (
     <div className="importantDate">
-      {meetingThemeConfig.map((v, i) => (
+      {importantDateConfig.map((v, i) => (
         <div key={i} className="importantDateRow">
-          <div className="dayBox">{i}</div>
+          <div className="dayBox">0{i + 1}</div>
           <div className="dayInfo">
-            <div className="">{messages.postPaper.downloadTpl}</div>
-            <div className="">{messages.postPaper.downloadTpl}</div>
+            <div className="">{v.label}</div>
+            <div className="">{v.time}</div>
           </div>
         </div>
       ))}

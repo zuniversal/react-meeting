@@ -5,11 +5,11 @@ const OldMeetingsTable = props => {
   const columns = [
     {
       title: props.messages.oldMeetings.time,
-      dataIndex: 'id',
+      dataIndex: 'time',
     },
     {
       title: props.messages.oldMeetings.place,
-      dataIndex: '姓名',
+      dataIndex: 'place',
     },
   ];
 

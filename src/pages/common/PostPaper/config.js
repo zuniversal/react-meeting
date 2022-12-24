@@ -13,8 +13,7 @@ import p1 from '@/static/img/home/p1.png';
 import p2 from '@/static/img/home/p2.png';
 import p3 from '@/static/img/home/p3.png';
 
-export const meetingThemeConfig = [
-  {
+export const meetingThemeConfig = [{
     src: t1,
     label: '博士',
   },
@@ -60,8 +59,7 @@ export const meetingThemeConfig = [
   },
 ];
 
-export const meetingTravelConfig = [
-  {
+export const meetingTravelConfig = [{
     src: p1,
     label: '博士',
   },
@@ -75,8 +73,7 @@ export const meetingTravelConfig = [
   },
 ];
 
-export const supporterConfig = [
-  {
+export const supporterConfig = [{
     src: t1,
     label: '博士',
   },
@@ -93,3 +90,21 @@ export const supporterConfig = [
     label: '博士',
   },
 ];
+
+
+export const importantDateConfig = [{
+  label: 'Deadline for abstract submission',
+  time: 'Dec.20, 2023',
+}, {
+  label: 'Notification of abstract acceptance',
+  time: '10Jan, 2024',
+}, {
+  label: 'Deadline for paper submission',
+  time: 'Mar.31, 2024',
+}, {
+  label: 'Notification of paper acceptance',
+  time: 'May 31, 2024',
+}, {
+  label: 'Camera-ready submission',
+  time: 'June.30, 2024',
+}, ];

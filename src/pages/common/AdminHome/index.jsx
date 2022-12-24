@@ -16,8 +16,8 @@ const AdminHomeGrid = ({ messages }) => {
           onClick={() => goPage(v.path)}
         >
           <div className="adminHomeIcon">
-            {/* <img src={v.src} className="adminHomeIcon" /> */}
-            <img src={icon} className="" />
+            <img src={v.icon} className="" />
+            {/* <img src={icon} className="" /> */}
           </div>
           <div className="adminHomeCount">
             <div className="adminHomeLabel">
