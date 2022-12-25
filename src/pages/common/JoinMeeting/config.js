@@ -5,19 +5,15 @@ export const joinMeetingConfig = [
     valCls: 'linking',
   },
   {
-    key: 'called',
-    langKey: 'called',
-  },
-  {
-    key: 'airplane',
+    key: 'flight',
     langKey: 'airplane',
   },
   {
-    key: 'arriveTime',
+    key: 'arrivetimeMap',
     langKey: 'arriveTime',
   },
   {
-    key: 'isNeedPick',
+    key: 'isGreetMap',
     langKey: 'isNeedPick',
   },
   {
@@ -25,19 +21,21 @@ export const joinMeetingConfig = [
     langKey: 'hotelName',
   },
   {
-    key: 'hotelPrice',
+    key: 'price',
     langKey: 'hotelPrice',
+    prefix: '$',
   },
   {
-    key: 'hotelOrderNum',
+    key: 'hotelRoomNumber',
     langKey: 'hotelOrderNum',
   },
   {
-    key: 'hotelOrderDay',
+    key: 'hotelBookDateMap',
     langKey: 'hotelOrderDay',
   },
   {
-    key: 'hotelOrderTotal',
-    langKey: 'hotelOrderTotal',
+    key: 'hotelOrderPrice',
+    langKey: 'hotelOrderPrice',
+    prefix: '$',
   },
 ];

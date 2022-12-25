@@ -2423,11 +2423,43 @@ export const identityConfig = [
 
 export const ynRadioConfig = [
   {
-    value: '1',
-    label: '是',
+    value: 1,
+    label: 'Yes',
   },
   {
-    value: '2',
-    label: '否',
+    value: 0,
+    label: 'No',
   },
 ];
+
+export const ynRadioConfigMap = arrMapObj(ynRadioConfig);
+
+export const ynConfig = ynRadioConfig;
+
+export const approveStatusConfig = [
+  {
+    value: 1,
+    label: '审核通过',
+  },
+  {
+    value: 2,
+    label: '需要修改',
+  },
+  {
+    value: 0,
+    label: '审核不通过',
+  },
+];
+
+export const paymentConfig = [
+  {
+    value: 0,
+    label: '未缴费',
+  },
+  {
+    value: 1,
+    label: '已交费',
+  },
+];
+
+export const paymentConfigMap = arrMapObj(paymentConfig);

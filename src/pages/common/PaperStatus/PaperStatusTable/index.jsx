@@ -5,27 +5,27 @@ const PaperStatusTable = props => {
   const columns = [
     {
       title: props.messages.paperStatus.no,
-      dataIndex: 'no',
+      dataIndex: 'id',
     },
     {
       title: props.messages.paperStatus.paperTitle,
-      dataIndex: 'paperTitle',
+      dataIndex: 'title',
     },
     {
       title: props.messages.paperStatus.paperType,
-      dataIndex: 'paperType',
+      dataIndex: 'submitPaperCateID',
     },
     {
       title: props.messages.paperStatus.approvalStatus,
-      dataIndex: 'approvalStatus',
+      dataIndex: 'sumResult',
     },
     {
       title: props.messages.paperStatus.expertOpinion,
-      dataIndex: 'expertOpinion',
+      dataIndex: 'reviewOpinion',
     },
     {
-      title: props.messages.uploadTime,
-      dataIndex: 'uploadTime',
+      title: props.messages.paperStatus.submitTime,
+      dataIndex: 'submitTime',
     },
   ];
 

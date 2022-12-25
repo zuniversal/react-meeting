@@ -101,15 +101,28 @@ const PostPaper = props => {
   const onSubmit = formProps => {
     console.log('onSubmit 提交 : ', formProps, props);
     // addPostAsync(params);
-    addPostAsync(
-      formatData({
-        ...formProps.values,
-        firstName: '',
-        secondName: '',
-        paperURL: '/paperURL',
-        copyrightFileURL: '/copyrightFileURL',
-      }),
-    );
+    const res = formatData({
+      ...formProps.values,
+      firstName: '',
+      secondName: '',
+      // paperURL: '/paperURL',
+      // copyrightFileURL: '/copyrightFileURL',
+    });
+    const res2 = {
+      commonAuthor: '论文共同作者',
+      company: '单位名称',
+      contactAuthor: '论文通讯作者',
+      copyrightFileURL: '0ea005ef712f227010e10332a6208626fb056691.pdf',
+      file: null,
+      firstName: '',
+      paperURL: 'd210dd9779f6d56ed54f5748a68f21be37b34176.doc',
+      secondName: '',
+      submitPaperCateID: 2,
+      title: '论文标题',
+    };
+    console.log('  res2 ：', res2); //
+    // addPostAsync(res2);
+    addPostAsync(res);
   };
   const common = {
     isShowCommonModal,
@@ -152,7 +165,7 @@ const PostPaper = props => {
   const content = (
     <PostPaperForm name="form" onSubmit={onSubmit} messages={messages}>
       <Form.Item className={`btnFormItem`} noStyle>
-        <Button type="primary" htmlType="submit" className="actionBtn">
+        <Button type="primary" htmlType="submit" className="actionBtn bigBtn">
           {messages.postPaper.confirmPost}
         </Button>
       </Form.Item>

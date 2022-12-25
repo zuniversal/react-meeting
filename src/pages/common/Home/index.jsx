@@ -65,7 +65,7 @@ const Banner = props => {
         <div className="title">{props.msg.title}</div>
         <div className="title">{props.msg.subTitle}</div>
         <div className="activityInfo/">{props.msg.activity}</div>
-        <Button className="postBtn" type="primary" onClick={goPost}>
+        <Button className="postBtn bigBtn" type="primary" onClick={goPost}>
           {props.msg.goPost}
         </Button>
       </div>
@@ -86,9 +86,14 @@ const MeetingIntro = props => {
     <div className="meetingIntro">
       <div className="meetingIntroLeft">
         <div className="title">{props.msg.meetingIntro}</div>
-        <div className="meetingIntroText">{props.msg.title}</div>
-        <div className="meetingIntroText">{props.msg.title}</div>
-        <Button className="blueBtn" type="primary" onClick={goPost}>
+
+        {props.msg.meetingIntroContent.map((v, i) => (
+          <div key={i} className="meetingIntroText">
+            {v}
+          </div>
+        ))}
+        {/* <div className="meetingIntroText">{props.msg.title}</div> */}
+        <Button className="bigBtn" type="primary" onClick={goPost}>
           {props.msg.goPost}
         </Button>
       </div>
@@ -108,7 +113,7 @@ const MeetingTheme = props => {
     <div className="meetingThemeWrapper">
       <div className="meetingTheme">
         <div className="title">{props.msg.meetingTheme}</div>
-        <div className="subTitle">subTitle</div>
+        <div className="subTitle">{props.msg.meetingThemeSub}</div>
         <div className="meetingThemeGrid">
           {/* <Row>
             {meetingThemeConfig.map((v) => <Col span={6} key={v.src} className='meetingThemeGridItem'>
@@ -116,10 +121,14 @@ const MeetingTheme = props => {
               <div>{v.label}</div>
             </Col>)}
           </Row> */}
-          {meetingThemeConfig.map(v => (
+          {meetingThemeConfig.map((v, i) => (
             <div key={v.src} className="meetingThemeGridItem">
-              <img src={v.src} className="meetingThemeIcon" />
-              <div>{v.label}</div>
+              <div className="meetingThemeIcon">
+                <img src={v.src} className="" />
+              </div>
+              <div className="meetingThemeLabel">
+                {props.msg.meetingThemeList[i]}
+              </div>
             </div>
           ))}
         </div>
@@ -144,8 +153,11 @@ const MeetingReg = props => {
           {supporterConfig.map((v, index) => (
             <div key={v.src} className="meetingRegItem">
               <div className="meetingRegIndex">0{index + 1}</div>
-              <div className="meetingRegTitle">{v.label}</div>
-              <div>{v.label}</div>
+              {props.msg[`meetingRegList${[index + 1]}`].map((v, i) => (
+                <div className="meetingRegTitle" key={i}>
+                  {v.label}
+                </div>
+              ))}
             </div>
           ))}
         </div>
@@ -161,11 +173,19 @@ const MeetingInfo = props => {
       <div className="meetingInfoWrapper">
         <div className="meetingInfoRow">
           <div className="meetingInfoTitle">{props.msg.meetingInfoTitle1}</div>
-          {props.msg.meetingInfoList1.map((v, i) => <div className="meetingInfoItem" key={i} >{v.label}</div>)}
+          {props.msg.meetingInfoList1.map((v, i) => (
+            <div className="meetingInfoItem" key={i}>
+              {v.label}
+            </div>
+          ))}
         </div>
         <div className="meetingInfoRow">
           <div className="meetingInfoTitle">{props.msg.meetingInfoTitle2}</div>
-          {props.msg.meetingInfoList2.map((v, i) => <div className="meetingInfoItem" key={i} >{v.label}</div>)}
+          {props.msg.meetingInfoList2.map((v, i) => (
+            <div className="meetingInfoItem" key={i}>
+              {v.label}
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -175,13 +195,13 @@ const MeetingInfo = props => {
 const MeetingTravel = props => {
   return (
     <div className="meetingTravel">
-      <div className="title">{props.msg.meetingReg}</div>
-      <div className="subTitle">{props.msg.meetingReg}</div>
+      <div className="title">{props.msg.meetingTravel}</div>
+      <div className="subTitle">{props.msg.meetingTravelSub}</div>
       <div className="meetingTravelGrid">
-        {meetingTravelConfig.map(v => (
+        {meetingTravelConfig.map((v, i) => (
           <div key={v.src} className="meetingTravelGridItem">
             <img src={v.src} className="meetingTravelIcon" />
-            <div>{v.label}</div>
+            <div>{props.msg.meetingTravelList[i]}</div>
           </div>
         ))}
       </div>
@@ -195,10 +215,12 @@ const Supporter = props => {
       <div className="supporterWrapper">
         <div className="title">{props.msg.supporter}</div>
         <div className="supporterGrid">
-          {supporterConfig.map(v => (
+          {supporterConfig.map((v, i) => (
             <div key={v.src} className="supporterGridItem">
-              <img src={v.src} className="supporterIcon" />
-              <div>{v.label}</div>
+              <div className="supporterIcon">
+                <img src={v.src} className="" />
+              </div>
+              <div className="supporterLabel">{props.msg.supporterList[i]}</div>
             </div>
           ))}
         </div>

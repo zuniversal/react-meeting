@@ -16,7 +16,7 @@
         margin: 50px 0;
         font-size: 18px;
       }
-      .postBtn {
+      .bigBtn {
         margin-top: 40px;
         border-radius: 100px;
         padding: 4px 30px;
@@ -39,7 +39,7 @@
     padding-top: 200px;
     max-width: 1000px;
     margin: 0 auto;
-    .blueBtn {
+    .bigBtn {
       margin-top: 45px;
     }
 
@@ -76,6 +76,9 @@
       font-size: 24px;
       font-weight: 300;
       color: #666666;
+      width: 80%;
+      line-height: 2;
+      margin-bottom: 30px;
     }
     .g1 {
       width: 280px;
@@ -130,9 +133,17 @@
           border-bottom-left-radius: 25px;
         }
         .meetingThemeIcon {
+          flex: 1;
           width: 42px;
           height: 42px;
           margin-bottom: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+        }
+        .meetingThemeLabel {
+          flex: 1;
+          text-align: center;
         }
       }
     }
@@ -183,11 +194,14 @@
       }
       .meetingRegItem {
         font-size: 24px;
-        font-weight: bold;
+        font-size: 20px;
         margin-bottom: 98px;
         .meetingRegTitle {
           margin-top: 12px;
           margin-bottom: 18px;
+          &:nth-child(2) {
+            font-weight: bold;
+          }
         }
       }
     }
@@ -200,26 +214,26 @@
     background: #f9f9f9;
     position: relative;
     padding: 162px 0;
-    .meetingInfoRow{
+    .meetingInfoRow {
       &:not(:last-child) {
         margin-bottom: 50px;
       }
     }
-    .meetingInfoTitle{
+    .meetingInfoTitle {
       font-size: 40px;
       font-size: 26px;
       font-weight: bold;
       color: #333333;
       margin-bottom: 20px;
     }
-    .meetingInfoItem{
+    .meetingInfoItem {
       font-size: 24px;
       font-size: 16px;
       font-weight: 300;
       color: #333333;
       margin-bottom: 10px;
     }
-    
+
     .meetingInfoWrapper {
       max-width: 1000px;
       margin: 0 auto;
@@ -281,18 +295,28 @@
           // height: 132px;
           // border: 1px solid #d1d5db;
           margin-bottom: 27px;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        .supporterLabel {
+          // flex: 1;
+          text-align: center;
+          height: 50px;
         }
       }
     }
   }
 
-  .floatingBtnWrapper{
+  .floatingBtnWrapper {
     position: fixed;
     right: 5%;
     bottom: 10%;
     display: flex;
     flex-direction: column;
-    .floatingBtn{
+    .floatingBtn {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -300,7 +324,7 @@
       text-align: center;
       // padding: 5px;
       width: 59px;
-      height: 59px; 
+      height: 59px;
       border-radius: 6px;
       color: #fff;
       margin-bottom: 10px;
@@ -308,11 +332,11 @@
       cursor: default;
       &:nth-child(2) {
         cursor: pointer;
-      } 
-      &.backTop{
       }
-      .floatingIcon{
-        // height: 80%; 
+      &.backTop {
+      }
+      .floatingIcon {
+        // height: 80%;
       }
     }
   }

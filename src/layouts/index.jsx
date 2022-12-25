@@ -2,18 +2,25 @@ import React, { useEffect } from 'react';
 import './style.less';
 import '@/static/css/index.less';
 import { useModel } from 'umi';
+import { ConfigProvider } from 'antd';
 import Header from './Header';
+import { useSystemConfig } from '@/hooks/useSystemConfig';
+
+const locale = 'en';
 
 const Layouts = props => {
   console.log(' Layouts       ： ', props);
-  const { getUserInfoAsync } = useModel('users')
+  const { getUserInfoAsync } = useModel('users');
   useEffect(() => {
-    getUserInfoAsync()
-  }, [])
+    getUserInfoAsync();
+  }, []);
+  useSystemConfig();
   return (
     <div className="content">
-      <Header></Header>
-      {props.children}
+      <ConfigProvider locale={locale}>
+        <Header></Header>
+        {props.children}
+      </ConfigProvider>
     </div>
   );
 };

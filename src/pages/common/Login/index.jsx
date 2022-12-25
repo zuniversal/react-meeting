@@ -23,9 +23,13 @@ const Login = props => {
         getItem('remember'),
         getItem('loginInfo'),
       );
-      setItem('loginInfo', remember ? params : undefined);
+      const loginData = {
+        ...params,
+        isReviewer: params.isReviewer && params.isReviewer[0],
+      };
+      setItem('loginInfo', remember ? loginData : undefined);
       setItem('remember', !!remember);
-      loginAsync(params);
+      loginAsync(loginData);
     } catch (error) {
       console.log(' onSubmit error ： ', error);
     }

@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.less';
 import { Form, Checkbox } from 'antd';
 import { history } from 'umi';
 import SmartForm from '@/common/SmartForm';
@@ -9,6 +10,8 @@ const LoginForm = props => {
   const goPage = path => {
     history.push(path);
   };
+
+  const checkboxData = [{ label: '', value: 1 }];
 
   const config = [
     {
@@ -29,6 +32,20 @@ const LoginForm = props => {
       comProps: {
         className: 'formItem',
       },
+    },
+    {
+      noRule: true,
+      formType: 'Checkbox',
+      checkboxData: checkboxData,
+      itemProps: {
+        label: '',
+        name: 'isReviewer',
+        className: 'approverCheckbox',
+      },
+      comProps: {
+        className: 'rememberItem',
+      },
+      extra: messages.admin.approverTips,
     },
     <Form.Item
       key="remember"
@@ -55,9 +72,13 @@ const LoginForm = props => {
 
   return (
     <SmartForm
+      className="loginForm"
       layout={'vertical'}
       noLabelLayout
       config={config}
+      // init={{
+      //   isReviewer: 0,
+      // }}
       {...props}
     ></SmartForm>
   );

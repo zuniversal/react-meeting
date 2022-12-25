@@ -497,7 +497,7 @@ class SmartTable extends PureComponent {
     // 通用操作列
     const actionCol = {
       fixed: 'right',
-      title: '操作',
+      title: 'Operation',
       className: 'actionCol',
       render: (text, record, index) => {
         // console.log(' text, record, index ： ', text, record, index,  )//

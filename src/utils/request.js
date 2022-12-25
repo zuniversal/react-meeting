@@ -91,6 +91,19 @@ export const isTips = res => {
     tips(statusMap[status], 2);
     return;
   }
+  if (code !== NORMAL_CODE || status != NORMAL_CODE) {
+    const codeMsg = getCodeMsg(code);
+    tips(msg || codeMsg, 2);
+    return;
+  }
+  // console.log(' res.config.method ： ', res.config.method, res.config.method !== 'get' )//
+  if (res.config.method !== 'get' && !noTips) {
+    tips(msg, code != NORMAL_CODE ? 2 : 1);
+  }
+  // if ((noTips == undefined && noTips !== true)) {
+  //   tips(msg, status != NORMAL_CODE ? 2 : 1);
+  // }
+  return;
   // if (codeMap[code]) {
   //   tips(codeMap[code], 2);
   //   return;
@@ -137,6 +150,10 @@ export const isTips = res => {
       //   tips(msg, isNormal ? 2 : 1);
       // }
     }
+    // } else {
+    //   if (!noTips) {
+    //     tips(msg, );
+    //   }
   }
 };
 
@@ -215,7 +232,7 @@ export class Request {
         // console.log(' 返回请求22s ： ', res.data,   )//
         // return res.data
         const { data, ...rest } = res.data;
-        console.log('  对吗  res.data ', res.data, res.data.code !== 200);
+        // console.log('  对吗  res.data ', res.data, res.data.code !== 200);
         // if (res.data.code !== 200) {
         //   return
         // }

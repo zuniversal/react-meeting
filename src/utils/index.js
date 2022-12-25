@@ -783,7 +783,7 @@ const extension = window.devToolsExtension;
 // console.log(' extension ： ', extension, extension ? '111' : 222);
 export const tools = extension ? extension() : undefined;
 
-export const showTotal = total => `总共 ${total} 条`;
+export const showTotal = total => `Total ${total}`;
 
 export const pagination = total => ({
   pageSize: SIZE,

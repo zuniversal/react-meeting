@@ -6,7 +6,8 @@ import { useIdentityForm } from '@/hooks/useFormItem';
 
 const SelectIdentityForm = props => {
   const identityForm = useIdentityForm(props);
-  identityForm.comProps.className = 'lrRadioCol'
+  identityForm.itemProps.label = '';
+  identityForm.comProps.className = 'lrRadioCol';
   const { messages } = props;
 
   const config = [

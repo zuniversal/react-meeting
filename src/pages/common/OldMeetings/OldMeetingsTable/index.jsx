@@ -15,6 +15,7 @@ const OldMeetingsTable = props => {
 
   return (
     <SmartTable
+      rowKey="time"
       columns={columns}
       className="whiteTable"
       {...props}

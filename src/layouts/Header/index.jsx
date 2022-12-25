@@ -5,12 +5,13 @@ import { Tabs, Button, Dropdown, Menu } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import logo from '@/static/img/logo.png';
 import platformLogo from '@/static/img/platformLogo.png';
+import { removeItems } from '@/utils';
 const { TabPane } = Tabs;
 
 const tabConfigs = [
   {
     tab: '首页',
-    label: 'Home Page',
+    label: 'Home',
     key: '/home',
   },
   {
@@ -114,10 +115,16 @@ const UserInfo = props => {
   };
   const goUserCenter = params => goPage(`/userCenter`);
   return (
-    <div className="userInfo" onClick={goUserCenter}>
-      <img src={props.userInfo.avatar} className="avatar" />
+    <div className="userInfo">
+      <img
+        src={props.userInfo.avatar}
+        className="avatar"
+        onClick={goUserCenter}
+      />
       {/* <div className="userName">{props.userInfo.firstName + props.userInfo.secondName}</div> */}
-      <div className="userName">{props.userInfo.email}</div>
+      <div className="userName" onClick={goUserCenter}>
+        {props.userInfo.email}
+      </div>
       <div className="underline" onClick={props.logout}>
         {props.messages.logout}
       </div>
@@ -127,19 +134,14 @@ const UserInfo = props => {
 
 const Header = props => {
   const { messages } = useIntl();
-  const { userInfo } = useModel('users');
-  console.log(' Header ： ', props, messages, userInfo); //
+  const { userInfo, logout } = useModel('users');
+  // console.log(' Header ： ', props, messages, userInfo); //
 
   const goPage = params => {
     history.push(params);
     // props.setActiveKey({
     //   activeKey: params,
     // })
-  };
-
-  const logout = params => {
-    // props.logout()
-    goPage(`/login`);
   };
 
   const info = {
@@ -183,7 +185,7 @@ const Header = props => {
 };
 
 Header.defaultProps = {
-  systemTitle: '昂网通信',
+  systemTitle: '',
   isShowTabs: true,
 };
 

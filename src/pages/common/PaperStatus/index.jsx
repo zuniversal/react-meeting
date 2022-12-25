@@ -6,7 +6,7 @@ import PaperStatusTable from './PaperStatusTable';
 
 const PaperStatus = props => {
   const { messages } = useIntl();
-  const { getPaperListAsync } = useModel('postPaper');
+  const { getPaperListAsync, postList } = useModel('postPaper');
   useEffect(() => {
     getPaperListAsync();
   }, []);
@@ -14,7 +14,10 @@ const PaperStatus = props => {
   return (
     <UserCenterWrapper messages={messages} className="paperStatus">
       <div className="primaryTitle">{messages.paperStatus.title}</div>
-      <PaperStatusTable messages={messages}></PaperStatusTable>
+      <PaperStatusTable
+        messages={messages}
+        dataSource={postList}
+      ></PaperStatusTable>
     </UserCenterWrapper>
   );
 };

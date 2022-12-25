@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Input } from 'antd';
 import { isDev } from '@/constants';
+import { useIntl } from 'umi';
 
 // 通用的操作列组件
 const formatData = (record, rowKey) => {
@@ -9,6 +10,7 @@ const formatData = (record, rowKey) => {
 };
 
 const ActionCol = props => {
+  const { messages } = useIntl();
   const {
     authInfo,
     edit,
@@ -52,7 +54,7 @@ const ActionCol = props => {
                 isDev ? false : authInfo.edit !== true && authInfo.edit != null
               }
             >
-              编辑
+              {messages.edit}
             </a>
           )}
           {/* <a onClick={() => remove({action: 'remove', record})}>删除</a> */}
@@ -69,7 +71,7 @@ const ActionCol = props => {
                   : authInfo.delete !== true && authInfo.delete != null
               }
             >
-              删除
+              {messages.remove}
             </a>
           )}
         </>

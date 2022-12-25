@@ -12,6 +12,7 @@ const UserInfoForm = props => {
   // const { data: clientList, req: getClientAsync } = useHttp(getRelatived);
 
   const calledForm = useCalledForm(props);
+  // calledForm.itemProps.name = 'call'
   const identityForm = useIdentityForm(props);
   const { messages } = props;
 
@@ -22,9 +23,9 @@ const UserInfoForm = props => {
   const config = [
     <UploadCom
       label={messages.userCenter.changeAvatar}
-      key={'circuit_imgs'}
-      action={'/api/v1/upload'}
-      name={'circuit_imgs'}
+      key={'headObj'}
+      action={'/api/uploadFile'}
+      name={'headObj'}
       extra={messages.userCenter.tips}
       uploadProps={{
         disabled: props.isDisabledAll || props.action === 'detail',
@@ -56,8 +57,8 @@ const UserInfoForm = props => {
     calledForm,
     {
       itemProps: {
-        label: messages.userCenter.surname,
-        name: 'surname',
+        label: messages.userCenter.firstName,
+        name: 'firstName',
       },
       comProps: {
         className: 'formItem',
@@ -65,8 +66,8 @@ const UserInfoForm = props => {
     },
     {
       itemProps: {
-        label: messages.userCenter.name,
-        name: 'name',
+        label: messages.userCenter.lastName,
+        name: 'secondName',
       },
       comProps: {
         className: 'formItem',
@@ -79,6 +80,7 @@ const UserInfoForm = props => {
       },
       comProps: {
         className: 'formItem',
+        disabled: true,
       },
     },
     {
@@ -102,7 +104,7 @@ const UserInfoForm = props => {
     {
       itemProps: {
         label: messages.userCenter.unitAddr,
-        name: 'unitAddr',
+        name: 'unitAddress',
       },
       comProps: {
         className: 'formItem',

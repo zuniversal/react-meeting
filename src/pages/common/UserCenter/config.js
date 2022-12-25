@@ -1,15 +1,15 @@
 export const userInfoConfig = [
   {
-    key: 'called',
+    key: 'callMap',
     langKey: 'called',
   },
   {
-    key: 'surname',
-    langKey: 'surname',
+    key: 'firstName',
+    langKey: 'firstName',
   },
   {
-    key: 'name',
-    langKey: 'name',
+    key: 'secondName',
+    langKey: 'lastName',
   },
   {
     key: 'email',
@@ -24,11 +24,11 @@ export const userInfoConfig = [
     langKey: 'unitName',
   },
   {
-    key: 'unitAddr',
+    key: 'unitAddress',
     langKey: 'unitAddr',
   },
   {
-    key: 'dignity',
-    langKey: 'dignity',
+    key: 'titleIDMap',
+    langKey: 'identity',
   },
 ];

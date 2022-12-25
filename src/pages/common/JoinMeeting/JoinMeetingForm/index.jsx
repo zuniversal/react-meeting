@@ -7,6 +7,7 @@ import UploadCom from '@/components/Widgets/UploadCom';
 import { useCalledForm } from '@/hooks/useFormItem';
 
 const JoinMeetingForm = props => {
+  console.log(' JoinMeetingForm ： ', props); //
   const calledForm = useCalledForm(props);
   const { messages } = props;
 
@@ -18,7 +19,7 @@ const JoinMeetingForm = props => {
     {
       itemProps: {
         label: messages.joinMeeting.airplane,
-        name: 'airplane',
+        name: 'flight',
       },
       comProps: {
         className: 'formItem',
@@ -28,7 +29,7 @@ const JoinMeetingForm = props => {
       formType: 'DatePicker',
       itemProps: {
         label: messages.joinMeeting.arriveTime,
-        name: 'arriveTime',
+        name: 'arrivetime',
       },
       comProps: {
         className: 'formItem',
@@ -38,7 +39,7 @@ const JoinMeetingForm = props => {
       formType: 'Radio',
       itemProps: {
         label: messages.joinMeeting.isNeedPick,
-        name: 'isNeedPick',
+        name: 'isGreet',
         className: 'radioFormItem',
       },
       comProps: {
@@ -55,40 +56,46 @@ const JoinMeetingForm = props => {
       },
     },
     {
+      formType: 'InputNumber',
       itemProps: {
         label: messages.joinMeeting.hotelPrice,
-        name: 'hotelPrice',
+        name: 'price',
       },
       comProps: {
         className: 'formItem',
+        min: 0,
       },
     },
     {
+      formType: 'InputNumber',
       itemProps: {
         label: messages.joinMeeting.hotelOrderNum,
-        name: 'hotelOrderNum',
+        name: 'hotelRoomNumber',
       },
       comProps: {
         className: 'formItem',
+        min: 0,
       },
     },
     {
-      formType: 'DatePicker',
+      formType: 'RangePicker',
       itemProps: {
         label: messages.joinMeeting.hotelOrderDay,
-        name: 'hotelOrderDay',
+        name: 'hotelBookDate',
       },
       comProps: {
         className: 'formItem',
       },
     },
     {
+      formType: 'InputNumber',
       itemProps: {
         label: messages.joinMeeting.hotelOrderPrice,
         name: 'hotelOrderPrice',
       },
       comProps: {
         className: 'formItem',
+        disabled: true,
       },
     },
   ];

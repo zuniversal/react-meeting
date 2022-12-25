@@ -1,11 +1,15 @@
 import React from 'react';
 import useHttp from '@/hooks/useHttp';
-import { getCalled, getIdentity, getPaperType } from '@/services/common';
+import {
+  getCalledList,
+  getIdentityList,
+  getPaperTypeList,
+} from '@/services/common';
 
 export const useCalledForm = props => {
   const { messages } = props;
 
-  const { data: calledList } = useHttp(getCalled, {
+  const { data: calledList } = useHttp(getCalledList, {
     format: data =>
       data.map(v => ({
         label: v.callName,
@@ -29,13 +33,15 @@ export const useCalledForm = props => {
 export const useIdentityForm = props => {
   const { messages } = props;
 
-  const { data: identityList } = useHttp(getIdentity, {
+  const { data: identityList } = useHttp(getIdentityList, {
     format: data => {
       console.log(' data ： ', data); //
-      return data.filter((v) => v.id != 1).map(v => ({
-        label: v.titleName,
-        value: v.id,
-      }));
+      return data
+        .filter(v => v.id != 1)
+        .map(v => ({
+          label: v.titleName,
+          value: v.id,
+        }));
     },
   });
   console.log(' identityList ： ', identityList, props); //
@@ -57,7 +63,7 @@ export const useIdentityForm = props => {
 export const usePaperTypeForm = props => {
   const { messages } = props;
 
-  const { data: paperTypeList } = useHttp(getPaperType, {
+  const { data: paperTypeList } = useHttp(getPaperTypeList, {
     format: data => {
       return data.map(v => ({
         label: v.submitPaperCateName,

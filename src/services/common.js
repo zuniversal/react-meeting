@@ -1,6 +1,6 @@
 import { req } from '@/utils/request';
 
-export const getCalled = p => req.get(`call`, p);
-export const getIdentity = p => req.get(`title`, p);
-export const getPaperType = p => req.get(`submitPaperCate`, p);
+export const getCalledList = p => req.get(`call`, p);
+export const getIdentityList = p => req.get(`title`, p);
+export const getPaperTypeList = p => req.get(`submitPaperCate`, p);
 export const getUserInfo = p => req.get(`userCenter`, p);

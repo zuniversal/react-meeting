@@ -5,7 +5,6 @@ export default [
     component: '@/pages/cs/AlarmNotify',
     title: '基本信息',
   },
-  { path: '/postPaper', component: '@/pages/common/PostPaper' },
   { path: '/beauty', component: '@/pages/common/Beauty' },
   { path: '/postPaper', component: '@/pages/common/PostPaper' },
   { path: '/committee', component: '@/pages/common/Committee' },
@@ -15,12 +14,11 @@ export default [
   { path: '/contactUs', component: '@/pages/common/ContactUs' },
 
   { path: '/userCenter', component: '@/pages/common/UserCenter' },
-  { path: '/userInfo', component: '@/pages/common/UserInfo' },
   { path: '/paperStatus', component: '@/pages/common/PaperStatus' },
   { path: '/joinMeeting', component: '@/pages/common/JoinMeeting' },
   { path: '/paymentResult', component: '@/pages/common/PaymentResult' },
 
-  { path: '/adminLogin', component: '@/pages/common/AdminLogin' },
-  { path: '/adminHome', component: '@/pages/common/AdminHome' },
-  { path: '/paperCount', component: '@/pages/common/PaperCount' },
+  // { path: '/adminLogin', component: '@/pages/common/AdminLogin' },
+  // { path: '/adminHome', component: '@/pages/common/AdminHome' },
+  // { path: '/paperCount', component: '@/pages/common/PaperCount' },
 ];

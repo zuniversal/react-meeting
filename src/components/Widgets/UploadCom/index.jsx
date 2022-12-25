@@ -235,7 +235,7 @@ const UploadCom = props => {
           //   return <SmartImg src={file.thumbUrl}></SmartImg>
           // }}
           headers={{
-            Authorization: getToken(),
+            token: getToken(),
           }}
           {...uploadProps}
         >

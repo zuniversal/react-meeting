@@ -43,6 +43,9 @@ export const BIG_SCREEN =
 
 export const TEST_URL = `/api`;
 export const PROXY_URL = `/api`;
+export const DOWNLOAD_URL = '/api/download/';
+export const DOWNLOADS_URL = '/api/downloads/';
+export const UPLOADFILE_URL = '/api/uploadFile/';
 // export const PROXY_URL = ``;
 // export const PROXY_URL = `/api/v1/cnosole/`;
 // export const BASE_URL = isDev ? PROXY_URL : TEST_URL;
@@ -68,10 +71,14 @@ export const tagColorMap = {
 // const account = 'admin'
 // const pwd = 'afafa'
 
-export const SELECT_TXT = '请选择';
-export const INPUT_TXT = '请输入';
-export const WORD = '关键字';
-export const REQUIRE = '字段必填！';
+// export const SELECT_TXT = '请选择';
+// export const INPUT_TXT = '请输入';
+// export const WORD = '关键字';
+// export const REQUIRE = '字段必填！';
+export const SELECT_TXT = 'Please select';
+export const INPUT_TXT = 'Please input';
+export const WORD = 'keyword';
+export const REQUIRE = 'Field Required!';
 
 export const SIZE = 10;
 export const PAGE = 1;

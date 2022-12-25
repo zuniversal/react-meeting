@@ -510,7 +510,7 @@ const SmartForm = (props, state) => {
           {...realComProps}
         />
       ),
-      InputNumber: <InputNumber allowClear maxLength={32} {...realComProps} />,
+      InputNumber: <InputNumber maxLength={32} {...realComProps} />,
       // InputCompact: <Input allowClear maxLength={32} {...realComProps} />,
       TextArea: (
         <TextArea
@@ -557,10 +557,10 @@ const SmartForm = (props, state) => {
       RangePicker: (
         <RangePicker
           format={'YYYY/MM/DD'}
-          ranges={{
-            今天: [moment(), moment()],
-            这个月: [moment().startOf('month'), moment().endOf('month')],
-          }}
+          // ranges={{
+          //   今天: [moment(), moment()],
+          //   这个月: [moment().startOf('month'), moment().endOf('month')],
+          // }}
           {...realComProps}
         />
       ),

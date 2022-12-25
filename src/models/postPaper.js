@@ -14,7 +14,7 @@ export default function postPaper() {
   const getPaperListAsync = useCallback(async params => {
     const res = await getPaperList(params);
     console.log(' getPaperList res await 结果  ：', res);
-    setPostList(res);
+    setPostList(res.data);
     // setAction('fail')
   }, []);
 
@@ -27,6 +27,7 @@ export default function postPaper() {
   }, []);
 
   return {
+    postList,
     isShowCommonModal,
     setIsShowCommonModal,
     getPaperListAsync,

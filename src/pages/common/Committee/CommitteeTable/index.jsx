@@ -19,6 +19,7 @@ export const CommitteeTable = props => {
 
   return (
     <SmartTable
+      rowKey="region"
       columns={columns}
       className="whiteTable"
       {...props}
@@ -46,6 +47,7 @@ export const CommitteeLocaleTable = props => {
 
   return (
     <SmartTable
+      rowKey="name"
       columns={columns}
       className="whiteTable"
       {...props}
