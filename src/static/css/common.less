@@ -218,6 +218,7 @@ body {
 .activeLink {
   color: @primary;
   text-decoration: underline;
+  text-underline-position: under;
   display: inline-block;
   font-size: 24px;
 }
@@ -281,7 +282,7 @@ body {
 }
 
 .uploadLink {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .rawLink {
@@ -308,11 +309,19 @@ body {
 .blueBtn {
   background-color: #5d6ba4 !important;
   border-color: #5d6ba4 !important;
+  &.active {
+    background-color: #fff !important;
+    color: #5d6ba4 !important;
+  }
 }
 
 .greenBtn {
   background-color: @green!important;
   border-color: @green!important;
+  &.active {
+    background-color: #fff !important;
+    color: @green !important;
+  }
 }
 
 .adminBg {
@@ -345,6 +354,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.tbSelect {
+  width: 200px !important;
+}
+
+.bottomImg {
+  width: 100%;
 }
 
 // .d-ib {

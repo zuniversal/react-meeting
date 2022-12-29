@@ -1,9 +1,12 @@
 import { NORMAL_CODE } from '@/utils/request';
+import { IMG_PREFIX } from '@/constants';
 import moment from 'moment';
 
 export const formatFileRes = (data = {}, key = '') => {
-  return data[key]?.file.response.code === NORMAL_CODE
-    ? data[key]?.file.response.data
+  return typeof data[key] === 'string'
+    ? data[key].split(IMG_PREFIX)[1]
+    : data[key]?.file?.response.code === NORMAL_CODE
+    ? data[key]?.file?.response.data
     : '';
 };
 

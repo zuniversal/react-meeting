@@ -5,11 +5,11 @@ const UploadImgHistoryTable = props => {
   const columns = [
     {
       title: props.messages.uploadImgHistory.imgTitle,
-      dataIndex: 'imgTitle',
+      dataIndex: 'title',
     },
     {
       title: props.messages.uploadImgHistory.imgDesc,
-      dataIndex: 'imgDesc',
+      dataIndex: 'note',
     },
   ];
 

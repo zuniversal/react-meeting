@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './style.less';
-import { history, useIntl } from 'umi';
+import { history, useIntl, useModel } from 'umi';
 import { bgCountConfig } from './config';
 import icon from '@/static/img/home/meetingTheme/1.png';
+import bottomImg from '@/static/img/login/bg.png';
 
-const AdminHomeGrid = ({ messages }) => {
+const AdminHomeGrid = ({ messages, data }) => {
   // const goPage = params => history.push(params);
   const goPage = params => window.open(`/#${params}`);
   return (
@@ -24,7 +25,7 @@ const AdminHomeGrid = ({ messages }) => {
             <div className="adminHomeLabel">
               {messages.adminHome[v.langKey]}
             </div>
-            <div className="adminHomeNum">888</div>
+            <div className="adminHomeNum">{v.key && data[v.key]}</div>
           </div>
         </div>
       ))}
@@ -34,10 +35,23 @@ const AdminHomeGrid = ({ messages }) => {
 
 const AdminHome = props => {
   const { messages } = useIntl();
+  const { adminHomeCount, getAdminHomeCountAsync } = useModel('admin');
+  console.log(' adminHomeCount ： ', adminHomeCount); //
+
+  useEffect(() => {
+    getAdminHomeCountAsync();
+  }, []);
+
   return (
     <div className="adminHome">
       <div className="conWrapper">
-        <AdminHomeGrid messages={messages}></AdminHomeGrid>
+        <AdminHomeGrid
+          messages={messages}
+          data={adminHomeCount}
+        ></AdminHomeGrid>
+      </div>
+      <div className="bottomBg">
+        <img src={bottomImg} className="bottomImg" />
       </div>
     </div>
   );

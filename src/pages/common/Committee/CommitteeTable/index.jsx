@@ -1,6 +1,10 @@
 import React from 'react';
 import SmartTable from '@/common/SmartTable';
 
+const pageConfig = {
+  page_size: 50,
+};
+
 export const CommitteeTable = props => {
   const columns = [
     {
@@ -25,6 +29,7 @@ export const CommitteeTable = props => {
       {...props}
       rowSelection={null}
       noActionCol
+      searchInfo={pageConfig}
     ></SmartTable>
   );
 };
@@ -52,8 +57,8 @@ export const CommitteeLocaleTable = props => {
       className="whiteTable"
       {...props}
       rowSelection={null}
-      pagination={null}
       noActionCol
+      searchInfo={pageConfig}
     ></SmartTable>
   );
 };

@@ -47,7 +47,7 @@ const UserCenter = props => {
       <div className="userInfo">
         {/* <UserInfo messages={messages}></UserInfo> */}
         {/* <div className="avatar"></div> */}
-        <img src={userInfo.headMap} className="avatar" />
+        {/* <img src={userInfo.headMap} className="avatar" /> */}
         <InfoCol
           data={userInfoMap}
           messages={messages}

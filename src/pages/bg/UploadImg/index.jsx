@@ -1,41 +1,35 @@
 import React, { useState } from 'react';
 import './style.less';
-import { history, useIntl } from 'umi';
+import { history, useIntl, useModel } from 'umi';
 import { Button } from 'antd';
 import UploadImgForm from './UploadImgForm';
+import { formatData } from './format';
 
 const goPage = params => history.push(params);
 const goUploadImgHistory = params => goPage(`/uploadImgHistory`);
 
 const UploadImg = props => {
   const { messages } = useIntl();
+  const {
+    meetingImgDetail,
+    addMeetingImgAsync,
+    editMeetingImgAsync,
+  } = useModel('meetingImg');
+  console.log(' meetingImgDetail ： ', meetingImgDetail); //
+
   const cancel = params => {
     console.log(' cancel   params,   ： ', params);
   };
   const onSubmit = formProps => {
     console.log('onSubmit 提交 : ', formProps, props);
-    // const res = formatData({
-    //   ...formProps.values,
-    //   firstName: '',
-    //   secondName: '',
-    //   // paperURL: '/paperURL',
-    //   // copyrightFileURL: '/copyrightFileURL',
-    // })
-    // const res2 = {
-    //   commonAuthor: "论文共同作者",
-    //   company: "单位名称",
-    //   contactAuthor: "论文通讯作者",
-    //   copyrightFileURL: "0ea005ef712f227010e10332a6208626fb056691.pdf",
-    //   file: null,
-    //   firstName: "",
-    //   paperURL: "d210dd9779f6d56ed54f5748a68f21be37b34176.doc",
-    //   secondName: "",
-    //   submitPaperCateID: 2,
-    //   title: "论文标题",
-    // }
-    // console.log('  res2 ：', res2,  )//
-    // // addPostAsync(res2);
-    // addPostAsync(res);
+    const res = formatData(formProps.values);
+    meetingImgDetail.id
+      ? editMeetingImgAsync({
+          ...res,
+          id: meetingImgDetail.id,
+        })
+      : addMeetingImgAsync(res);
+    formProps.form;
   };
   return (
     <div className="adminBg">
@@ -47,7 +41,11 @@ const UploadImg = props => {
               {messages.uploadImg.history}
             </Button>
           </div>
-          <UploadImgForm onSubmit={onSubmit} messages={messages}>
+          <UploadImgForm
+            init={meetingImgDetail}
+            onSubmit={onSubmit}
+            messages={messages}
+          >
             <div className="btnWrapper">
               <Button size="large" onClick={cancel}>
                 {messages.cancel}

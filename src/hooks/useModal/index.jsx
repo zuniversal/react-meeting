@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 export const useModal = props => {
   const [isShowCommonModal, setIsShowCommonModal] = useState(false);
   const [action, setAction] = useState('');
+  const [extraData, setExtraData] = useState(null);
 
   const common = {
+    extraData,
     action,
     isShowCommonModal,
     visible: isShowCommonModal,
@@ -17,7 +19,8 @@ export const useModal = props => {
   const showModal = params => {
     console.log(' showModal ： ', params); //
     setIsShowCommonModal(true);
-    setAction(params);
+    setAction(params.action);
+    setExtraData(params);
   };
 
   return {

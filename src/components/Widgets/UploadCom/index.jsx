@@ -24,7 +24,12 @@ import { REQUIRE } from '@/constants';
 import SmartImg from '@/common/SmartImg';
 
 const formatFile = data =>
-  data.map(url => ({ uid: `-${url}`, url, response: { url } }));
+  data.map(url => ({
+    uid: `-${url}`,
+    name: url,
+    url,
+    response: { url, code: 200, data: url },
+  }));
 
 // const formatFileList = fileData => {
 //   const fileList = typeof fileData === 'string' ? [{uid: fileData, url: fileData, }] : formatFile(fileData)

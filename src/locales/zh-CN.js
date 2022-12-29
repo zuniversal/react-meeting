@@ -13,7 +13,10 @@ export default {
   confirmEdit: `确认修改`,
   uploadTime: `上传时间`,
   action: `操作`,
-  remove: `remove`,
+  edit: `Edit`,
+  remove: `Remove`,
+  delete: `Delete`,
+  check: `Check`,
   showDetail: `查看`,
   yes: `Yes`,
   no: `No`,
@@ -48,6 +51,7 @@ export default {
     subTitle: `AND SAFETYOF SHIPS AND OCEAN VEHICLES`,
     activity: `13rd 18th, October, 2024, Wuxi, Jiangsu, China`,
     goPost: `Submit my paper`,
+    callPaper: `call my paper`,
     meetingIntro: `Conference Overview`,
     meetingIntroContent: [
       `The aim of the STAB&s Confcrenccs ( Stability and safety of ships and occan
@@ -60,7 +64,8 @@ export default {
         network and to present, discuss andshare information on developments in safe operation
         and capsize preventitypcs and sizes of foating structures.`,
       `The 2nd Conference, STAB&S 2024, organisedby China Ship Scientific Research Center,
-        will support and further this aim through asttong technical programme with`,
+        will support and further this aim through asttong technical programme with 
+        contributions from industry and academia worldwide. `,
     ],
     meetingTheme: `Conference Topics`,
     meetingThemeSub: `The conference sessions will cover a wide range of topics, including the followring key areas: `,
@@ -186,11 +191,11 @@ export default {
 
     postTitle: `Title`,
     postAuth: `Corresponding author`,
-    postCommonAuthor: `Co-author`,
+    postCommonAuthor: `Co-authors`,
     company: `Company name`,
     artType: `Type of the paper`,
     uploadPost: `Upload the paper`,
-    uploadDoc: `Only documents with a .docx suffx allowed`,
+    uploadDoc: `Only documents with .docx or .doc suffix allowed`,
     uploadAuthFile: `Upload the copyright document`,
     uploadPdf: `Only documents with a .pdf suffix allowed`,
     confirmPost: `Confirm`,
@@ -259,11 +264,14 @@ export default {
     paperType: `Type`,
     approvalStatus: `Rate`,
     expertOpinion: `Reciewer's opinion`,
-    uploadEditedPaper: `Submit the revision`,
+    adviseText: `opinions`,
+    adviseFile: `file of opinions`,
+    uploadEditedRevision: `Submit the revision`,
+    uploadEditedPaper: `Submit the paper`,
     submitTime: `Submission time`,
   },
   joinMeeting: {
-    title: `details`,
+    title: `Details`,
     airplane: `Flight`,
     arriveTime: `Arrival time`,
     isNeedPick: `Need to pick up ?`,
@@ -279,7 +287,7 @@ export default {
     paymentTip: `您共需缴纳费用xxxxx元，请转账XX银行:585221474511`,
   },
   admin: {
-    approverTips: `如您是审稿人,请勾选`,
+    approverTips: `If you are a reviewer，please check`,
   },
   adminHome: {
     regMan: `注册人员统计`,

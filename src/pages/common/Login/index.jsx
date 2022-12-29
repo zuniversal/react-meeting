@@ -1,14 +1,17 @@
 import React from 'react';
 import { Form, Button } from 'antd';
-import { useIntl, useModel } from 'umi';
+import { history, useIntl, useModel } from 'umi';
 import LrWrapper from '@/pages/common/components/LrWrapper';
 import LoginForm from './LoginForm';
 import { setItem, getItem } from '@/utils';
 
 const Login = props => {
-  const intl = useIntl();
-  const { messages } = intl;
-  console.log(' Login   msg,   ： ', intl, messages);
+  const { messages } = useIntl();
+  console.log(' Login   msg,   ： ', messages, history);
+  const {
+    location: { query },
+  } = history;
+  const isBgPlatform = !!query.p;
   const { loginAsync } = useModel('users');
   console.log(' loginAsync ： ', loginAsync);
 
@@ -36,7 +39,12 @@ const Login = props => {
   };
 
   const content = (
-    <LoginForm name="form" onSubmit={onSubmit} messages={messages}>
+    <LoginForm
+      name="form"
+      onSubmit={onSubmit}
+      messages={messages}
+      isBgPlatform={isBgPlatform}
+    >
       <Form.Item className={`btnFormItem`} noStyle>
         <Button type="primary" htmlType="submit" className="actionBtn">
           {messages.login.login}
@@ -45,7 +53,13 @@ const Login = props => {
     </LoginForm>
   );
 
-  return <LrWrapper title={messages.login.title} content={content}></LrWrapper>;
+  return (
+    <LrWrapper
+      isBgPlatform={isBgPlatform}
+      title={messages.login.title}
+      content={content}
+    ></LrWrapper>
+  );
 };
 
 export default Login;

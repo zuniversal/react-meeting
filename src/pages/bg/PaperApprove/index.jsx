@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.less';
-import { useIntl } from 'umi';
+import { useIntl, useModel } from 'umi';
 import SearchKwForm from '@/components/Form/SearchKwForm';
 import SmartFormModal from '@/common/SmartFormModal';
 import PaperApproveTable from './PaperApproveTable';
@@ -42,6 +42,15 @@ const CommonModal = props => {
 
 const PaperApprove = props => {
   const { messages } = useIntl();
+  const { paperApproverList, getPaperApproverListAsync } = useModel(
+    'paperApprove',
+  );
+  console.log(' paperApproverList ： ', paperApproverList); //
+
+  useEffect(() => {
+    getPaperApproverListAsync();
+  }, []);
+
   const downBatch = params => {
     console.log(' downBatch ： ', params); //
   };
@@ -74,7 +83,7 @@ const PaperApprove = props => {
 
   const edit = params => {
     console.log(' edit ： ', params); //
-    showModal(params.action);
+    showModal(params);
   };
 
   return (

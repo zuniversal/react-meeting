@@ -1,17 +1,21 @@
 import React from 'react';
 import './style.less';
-import { history } from 'umi';
+import { history, useModel } from 'umi';
 import { Button, Divider } from 'antd';
 import { DOWNLOAD_URL } from '@/constants';
-
-const goPage = params => history.push(params);
-const goPost = params => goPage(`/postPaper`);
-const goPaperStatus = params => goPage(`/paperStatus`);
-const goJoinMeeting = params => goPage(`/joinMeeting`);
+import cls from 'classnames';
 
 const UserCenterWrapper = props => {
+  const { activeKey, setActiveKey } = useModel('systemConfig');
+  const goPage = params => {
+    setActiveKey(params);
+    history.push(params);
+  };
+  const goPost = params => goPage(`/postPaper`);
+  const goPaperStatus = params => goPage(`/paperStatus`);
+  const goJoinMeeting = params => goPage(`/joinMeeting`);
+
   const { messages, className, data } = props;
-  console.log(' UserCenterWrapper messages ： ', messages); //
   const title = props.title || messages.userCenter.title;
   const href = DOWNLOAD_URL + data.payPhotographUrl;
   const linkAttr = data.payPhotographUrl
@@ -36,14 +40,20 @@ const UserCenterWrapper = props => {
           </Button>
           <Button
             type="primary"
-            className="blueBtn bigBtn"
+            className={cls({
+              active: activeKey === '/paperStatus',
+              'blueBtn bigBtn': true,
+            })}
             onClick={goPaperStatus}
           >
             {messages.userCenter.postStatus}
           </Button>
           <Button
             type="primary"
-            className="greenBtn bigBtn"
+            className={cls({
+              active: activeKey === '/joinMeeting',
+              'greenBtn bigBtn': true,
+            })}
             onClick={goJoinMeeting}
           >
             {messages.userCenter.joinMeeting}

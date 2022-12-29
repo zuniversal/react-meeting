@@ -6,6 +6,13 @@ import { DownOutlined } from '@ant-design/icons';
 import logo from '@/static/img/logo.png';
 import platformLogo from '@/static/img/platformLogo.png';
 import { removeItems } from '@/utils';
+import cls from 'classnames';
+import {
+  hiddenTabsConfig,
+  bgRoutes,
+  hiddenRoutes,
+  hiddenFeTabs,
+} from './config';
 const { TabPane } = Tabs;
 
 const tabConfigs = [
@@ -49,10 +56,20 @@ const tabConfigs = [
     label: 'ContactUs',
     key: '/contactUs',
   },
+  ...hiddenFeTabs,
+  ...hiddenTabsConfig,
 ];
 
+const tabKeys = tabConfigs.map(v => v.key);
+
 const activeKey = window.location.hash.split('#')[1];
-console.log(' activeKey ： ', activeKey); //
+console.log(
+  ' activeKey ： ',
+  hiddenFeTabs,
+  hiddenTabsConfig,
+  tabKeys,
+  activeKey,
+); //
 
 // const mapStateToProps = ({tab}) => tab;
 // export default connect(mapStateToProps, dispatch => {
@@ -68,9 +85,9 @@ const TabsCom = props => {
   const onChange = key => {
     console.log(key);
     history.push(key);
-    // props.setActiveKey({
-    //   activeKey: key,
-    // })
+    props.setActiveKey({
+      activeKey: key,
+    });
   };
   return (
     <Tabs
@@ -89,10 +106,16 @@ const TabsCom = props => {
 
 const HeaderAction = props => (
   <div className="btnWrapper">
-    <div className="" onClick={() => props.goPage(`/login`)}>
+    <div
+      className={cls({ linking: props.activeKey === '/login', loginBtn: true })}
+      onClick={() => props.goPage(`/login`)}
+    >
       {props.messages.logan}
     </div>
-    <div className="linking" onClick={() => props.goPage(`/register`)}>
+    <div
+      className={cls({ linking: props.activeKey === '/register' })}
+      onClick={() => props.goPage(`/register`)}
+    >
       {props.messages.reg}
     </div>
     {/* <Button size="small" ghost onClick={() => props.goPage(`/login`)}>
@@ -116,13 +139,19 @@ const UserInfo = props => {
   const goUserCenter = params => goPage(`/userCenter`);
   return (
     <div className="userInfo">
-      <img
+      {/* <img
         src={props.userInfo.avatar}
         className="avatar"
         onClick={goUserCenter}
-      />
+      /> */}
       {/* <div className="userName">{props.userInfo.firstName + props.userInfo.secondName}</div> */}
-      <div className="userName" onClick={goUserCenter}>
+      <div
+        className={cls({
+          linking: hiddenRoutes.includes(props.activeKey),
+          userName: true,
+        })}
+        onClick={goUserCenter}
+      >
         {props.userInfo.email}
       </div>
       <div className="underline" onClick={props.logout}>
@@ -134,14 +163,25 @@ const UserInfo = props => {
 
 const Header = props => {
   const { messages } = useIntl();
+  const { activeKey, setActiveKey } = useModel('systemConfig');
   const { userInfo, logout } = useModel('users');
-  // console.log(' Header ： ', props, messages, userInfo); //
+  console.log(
+    ' Header ： ',
+    bgRoutes.includes(activeKey),
+    activeKey,
+    props,
+    messages,
+    userInfo,
+  ); //
 
   const goPage = params => {
     history.push(params);
-    // props.setActiveKey({
-    //   activeKey: params,
-    // })
+    setActiveKey(params);
+  };
+
+  const logoutProxy = params => {
+    setActiveKey('/login?p=admin');
+    logout('/login?p=admin');
   };
 
   const info = {
@@ -159,24 +199,35 @@ const Header = props => {
           </div>
           {/* <TabsComWrapper></TabsComWrapper> */}
           {/* {props.isShowTabs && <TabsCom {...props}></TabsCom>} */}
-          <TabsCom activeKey={activeKey} {...props}></TabsCom>
+          <TabsCom
+            activeKey={activeKey}
+            setActiveKey={setActiveKey}
+            {...props}
+          ></TabsCom>
         </div>
         {/* {props.isShowTabs && <HeaderAction goPage={goPage}></HeaderAction>} */}
 
         <div className="headerRight">
-          <div className="logoWarpper" onClick={logout}>
-            <img src={platformLogo} className="platformLogo" />
-            <div className="linking">{messages.expertPlatform}</div>
-          </div>
           {Object.keys(userInfo).length ? (
             <UserInfo
+              activeKey={activeKey}
               userInfo={userInfo}
               messages={messages}
               logout={logout}
             ></UserInfo>
           ) : (
-            <HeaderAction goPage={goPage} messages={messages}></HeaderAction>
+            <HeaderAction
+              activeKey={activeKey}
+              goPage={goPage}
+              messages={messages}
+            ></HeaderAction>
           )}
+          <div className="logoWarpper" onClick={logoutProxy}>
+            <img src={platformLogo} className="platformLogo" />
+            <div className={cls({ linking: bgRoutes.includes(activeKey) })}>
+              {messages.expertPlatform}
+            </div>
+          </div>
           {/* <UserInfo userInfo={userInfo} messages={messages}></UserInfo> */}
         </div>
       </div>

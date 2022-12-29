@@ -12,6 +12,7 @@ export const formatData = data => {
 
   newData.copyrightFileURL = formatFileRes(newData, 'copyrightFileURLObj');
   newData.paperURL = formatFileRes(newData, 'paperURLObj');
+  newData.commonAuthor = newData.commonAuthor.join(',');
 
   if (newData.file) {
     return;

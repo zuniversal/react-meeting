@@ -3,9 +3,10 @@ import './style.less';
 import { Form, Checkbox } from 'antd';
 import { history } from 'umi';
 import SmartForm from '@/common/SmartForm';
+import { emailRule } from '@/configs';
 
 const LoginForm = props => {
-  const { messages } = props;
+  const { messages, isBgPlatform } = props;
 
   const goPage = path => {
     history.push(path);
@@ -22,6 +23,7 @@ const LoginForm = props => {
       comProps: {
         className: 'formItem',
       },
+      formRules: [emailRule],
     },
     {
       formType: 'Password',
@@ -33,20 +35,24 @@ const LoginForm = props => {
         className: 'formItem',
       },
     },
-    {
-      noRule: true,
-      formType: 'Checkbox',
-      checkboxData: checkboxData,
-      itemProps: {
-        label: '',
-        name: 'isReviewer',
-        className: 'approverCheckbox',
-      },
-      comProps: {
-        className: 'rememberItem',
-      },
-      extra: messages.admin.approverTips,
-    },
+    ...(isBgPlatform
+      ? [
+          {
+            noRule: true,
+            formType: 'Checkbox',
+            checkboxData: checkboxData,
+            itemProps: {
+              label: '',
+              name: 'isReviewer',
+              className: 'approverCheckbox',
+            },
+            comProps: {
+              className: 'rememberItem',
+            },
+            extra: messages.admin.approverTips,
+          },
+        ]
+      : []),
     <Form.Item
       key="remember"
       wrapperCol={{

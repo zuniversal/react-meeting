@@ -1,0 +1,27 @@
+.customTabs {
+  .ant-tabs-top > .ant-tabs-nav::before {
+    border-bottom: none;
+  }
+  .ant-tabs-ink-bar {
+    display: none;
+  }
+
+  .bottomBarWrapper {
+    width: 100%;
+    height: 3px;
+    display: flex;
+    justify-content: center;
+    .bottomBarTrack {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      .bottomBar {
+        width: 56px;
+        height: 4px;
+        &.activeBar {
+          background: #a45e5d;
+        }
+      }
+    }
+  }
+}

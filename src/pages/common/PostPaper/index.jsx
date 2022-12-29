@@ -8,6 +8,7 @@ import ResultModal from '../components/ResultModal';
 import PostPaperForm from './PostPaperForm';
 import { meetingThemeConfig, importantDateConfig } from './config';
 import { formatData } from './format';
+import bottomImg from '@/static/img/postPaper/bg.png';
 
 const PostSucc = ({ messages }) => (
   <div className="activeLinkWrapper">
@@ -192,7 +193,9 @@ const PostPaper = props => {
           </div>
         </div>
       </div>
-      <div className="bottomBg"></div>
+      <div className="bottomBg">
+        <img src={bottomImg} className="bottomImg" />
+      </div>
       {/* <CommonModal common={common}></CommonModal> */}
       <ResultModal {...resultModalProps}></ResultModal>
     </div>

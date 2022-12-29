@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.less';
-import { useIntl } from 'umi';
+import { useIntl, useModel } from 'umi';
 import SearchKwForm from '@/components/Form/SearchKwForm';
 import PaperDistributeTable from './PaperDistributeTable';
 
 const PaperDistribute = props => {
   const { messages } = useIntl();
+  const { approverList, getApproverListAsync } = useModel('paperDistribute');
+  console.log(' approverList ： ', approverList); //
+
+  useEffect(() => {
+    getApproverListAsync();
+  }, []);
+
   const onFieldChange = params => {
     console.log(' onFieldChange ： ', params); //
   };
@@ -32,16 +39,6 @@ const PaperDistribute = props => {
       uploadTime: 'uploadTime',
     },
   ];
-  const approveList = [
-    {
-      value: 'jack',
-      label: 'Jack',
-    },
-    {
-      value: 'lucy',
-      label: 'Lucy',
-    },
-  ];
 
   return (
     <div className="adminBg">
@@ -60,7 +57,7 @@ const PaperDistribute = props => {
           </div>
           <PaperDistributeTable
             setApprover={setApprover}
-            approveList={approveList}
+            approverList={approverList}
             messages={messages}
             dataSource={dataSource}
           ></PaperDistributeTable>

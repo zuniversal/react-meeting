@@ -5,10 +5,10 @@ import { identityConfig } from '@/configs';
 import { useIdentityForm } from '@/hooks/useFormItem';
 
 const SelectIdentityForm = props => {
-  const identityForm = useIdentityForm(props);
-  identityForm.itemProps.label = '';
-  identityForm.comProps.className = 'lrRadioCol';
   const { messages } = props;
+  const identityForm = useIdentityForm(props);
+  identityForm.itemProps.label = messages.post.selectIdentity;
+  identityForm.comProps.className = 'lrRadioCol';
 
   const config = [
     // {
@@ -27,6 +27,7 @@ const SelectIdentityForm = props => {
 
   return (
     <SmartForm
+      className={'selectIdentityForm'}
       layout={'vertical'}
       noLabelLayout
       config={config}

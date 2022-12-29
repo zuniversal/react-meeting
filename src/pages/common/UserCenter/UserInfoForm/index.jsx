@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.less';
 import { Input } from 'antd';
-import { calledConfig, identityConfig } from '@/configs';
+import { calledConfig, emailRule, identityConfig, phoneRule } from '@/configs';
 import SmartForm from '@/common/SmartForm';
 import UploadCom from '@/components/Widgets/UploadCom';
 import useHttp from '@/hooks/useHttp';
@@ -21,28 +21,28 @@ const UserInfoForm = props => {
   };
 
   const config = [
-    <UploadCom
-      label={messages.userCenter.changeAvatar}
-      key={'headObj'}
-      action={'/api/uploadFile'}
-      name={'headObj'}
-      extra={messages.userCenter.tips}
-      uploadProps={{
-        disabled: props.isDisabledAll || props.action === 'detail',
-        accept: 'image/png,image/jpeg,image/pdf,application/pdf',
-        multiple: true,
-        listType: null,
-      }}
-      formAction={props.action}
-      noRule
-      formItemCls={'formItems'}
-    >
-      <Input
-        className="uploadInput"
-        addonAfter={<div onClick={uploadPdf}>{messages.upload}</div>}
-        defaultValue={messages.userCenter.chooseFile}
-      />
-    </UploadCom>,
+    // <UploadCom
+    //   label={messages.userCenter.changeAvatar}
+    //   key={'headObj'}
+    //   action={'/api/uploadFile'}
+    //   name={'headObj'}
+    //   extra={messages.userCenter.tips}
+    //   uploadProps={{
+    //     disabled: props.isDisabledAll || props.action === 'detail',
+    //     accept: 'image/png,image/jpeg,image/pdf,application/pdf',
+    //     multiple: true,
+    //     listType: null,
+    //   }}
+    //   formAction={props.action}
+    //   noRule
+    //   formItemCls={'formItems'}
+    // >
+    //   <Input
+    //     className="uploadInput"
+    //     addonAfter={<div onClick={uploadPdf}>{messages.upload}</div>}
+    //     defaultValue={messages.userCenter.chooseFile}
+    //   />
+    // </UploadCom>,
     // {
     //   formType: 'Radio',
     //   itemProps: {
@@ -82,6 +82,7 @@ const UserInfoForm = props => {
         className: 'formItem',
         disabled: true,
       },
+      formRules: [emailRule],
     },
     {
       itemProps: {
@@ -91,6 +92,7 @@ const UserInfoForm = props => {
       comProps: {
         className: 'formItem',
       },
+      formRules: [phoneRule],
     },
     {
       itemProps: {

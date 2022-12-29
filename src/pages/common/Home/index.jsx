@@ -5,7 +5,9 @@ import { useIntl, history } from 'umi';
 import g1 from '@/static/img/home/g1.png';
 import g2 from '@/static/img/home/g2.png';
 import g3 from '@/static/img/home/g3.png';
+import bannerImg from '@/static/img/home/banner.png';
 import backTop from '@/static/img/home/backTop.png';
+import bottomImg from '@/static/img/home/bottomBg.png';
 import {
   meetingThemeConfig,
   meetingTravelConfig,
@@ -69,6 +71,9 @@ const Banner = props => {
           {props.msg.goPost}
         </Button>
       </div>
+      <div className="bannerImgWrapper">
+        <img src={bannerImg} className="bannerImg" />
+      </div>
     </div>
   );
 };
@@ -93,8 +98,8 @@ const MeetingIntro = props => {
           </div>
         ))}
         {/* <div className="meetingIntroText">{props.msg.title}</div> */}
-        <Button className="bigBtn" type="primary" onClick={goPost}>
-          {props.msg.goPost}
+        <Button className="blueBtn bigBtn" type="primary" onClick={goPost}>
+          {props.msg.callPaper}
         </Button>
       </div>
       <div className="meetingIntroRight">

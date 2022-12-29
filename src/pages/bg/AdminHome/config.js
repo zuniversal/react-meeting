@@ -7,6 +7,7 @@ import p6 from '@/static/img/adminHome/p6.png';
 
 export const bgCountConfig = [
   {
+    key: 'usersSum',
     langKey: 'regMan',
     path: '/registerCount',
     icon: p1,
@@ -14,6 +15,7 @@ export const bgCountConfig = [
     bg: '#A45E5D',
   },
   {
+    key: 'joinMettingSum',
     langKey: 'joinMan',
     path: '/joinCount',
     icon: p2,
@@ -21,6 +23,7 @@ export const bgCountConfig = [
     bg: '#5D6BA4',
   },
   {
+    key: 'paperSum',
     langKey: 'abstract',
     path: '/paperCount',
     icon: p3,

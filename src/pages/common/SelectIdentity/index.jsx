@@ -33,7 +33,7 @@ const SelectIdentity = props => {
 
   return (
     <LrWrapper
-      title={messages.post.selectIdentity}
+      // title={messages.post.selectIdentity}
       content={content}
     ></LrWrapper>
   );

@@ -41,7 +41,7 @@ const ActionCol = props => {
                 props.dataSource.length > 0
                   ? edit({
                       action: 'edit',
-                      // ...record,
+                      record,
                       d_id: record[rowKey],
                     })
                   : props.showFormModal({
@@ -71,7 +71,7 @@ const ActionCol = props => {
                   : authInfo.delete !== true && authInfo.delete != null
               }
             >
-              {messages.remove}
+              {messages.delete}
             </a>
           )}
         </>

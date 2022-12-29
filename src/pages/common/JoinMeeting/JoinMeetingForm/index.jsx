@@ -33,6 +33,7 @@ const JoinMeetingForm = props => {
       },
       comProps: {
         className: 'formItem',
+        showTime: true,
       },
     },
     {

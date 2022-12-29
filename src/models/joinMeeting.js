@@ -31,7 +31,7 @@ const formatItem = v => {
   };
 };
 
-export default function postPaper() {
+export default function joinMeeting() {
   const [joinMeetingList, setJoinMeetingList] = useState([]);
   const joinMeetingItem = joinMeetingList[0] ?? {};
 

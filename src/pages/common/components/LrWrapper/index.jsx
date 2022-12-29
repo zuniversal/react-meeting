@@ -1,10 +1,14 @@
 import React from 'react';
 import './style.less';
 import Header from '@/layouts/Header';
+import cls from 'classnames';
+import bg from '@/static/img/login/bg.png';
+import adminBg from '@/static/img/login/adminBg.png';
 
 const LrWrapper = props => {
+  const bgImg = props.isBgPlatform ? adminBg : bg;
   return (
-    <div className="lrWrapper">
+    <div className={cls({ isBgPlatform: props.isBgPlatform, lrWrapper: true })}>
       <Header></Header>
       <div className="lrFormWrapper">
         <div className="lrForm">
@@ -12,7 +16,9 @@ const LrWrapper = props => {
           {props.content}
         </div>
         {props.children}
-        {/* <div className="bgPic"></div> */}
+      </div>
+      <div className="bgPic">
+        <img src={bgImg} className="bottomImg" />
       </div>
     </div>
   );

@@ -1,30 +1,70 @@
 import React from 'react';
 import SmartTable from '@/common/SmartTable';
+import { downLoad } from '@/utils';
+import { downUrlKeys } from '../config';
+
+const batchDown = (data, urlKeys = downUrlKeys) =>
+  urlKeys.filter(k => data[k]).map(k => downLoad(data[k], { name: data[k] }));
 
 const PaperStatusTable = props => {
+  const { messages } = props; //
   const columns = [
     {
-      title: props.messages.paperStatus.no,
+      title: messages.paperStatus.no,
       dataIndex: 'id',
     },
     {
-      title: props.messages.paperStatus.paperTitle,
+      title: messages.paperStatus.paperTitle,
       dataIndex: 'title',
     },
     {
-      title: props.messages.paperStatus.paperType,
+      title: messages.paperStatus.paperType,
       dataIndex: 'submitPaperCateID',
     },
     {
-      title: props.messages.paperStatus.approvalStatus,
+      title: messages.paperStatus.approvalStatus,
       dataIndex: 'sumResult',
     },
     {
-      title: props.messages.paperStatus.expertOpinion,
-      dataIndex: 'reviewOpinion',
+      title: messages.paperStatus.adviseText,
+      dataIndex: 'adviseText',
+      // detailFn: record =>
+      //   props.showAdviseText({
+      //     action: 'showAdviseText',
+      //     d_id: record.customer_id,
+      //     record,
+      //   }),
+      render: (text, record, index, config) => {
+        return (
+          <div
+            onClick={() =>
+              props.showAdviseText({
+                action: 'showAdviseText',
+                d_id: record.customer_id,
+                record,
+              })
+            }
+          >
+            {messages.paperStatus.adviseText}
+          </div>
+        );
+      },
     },
     {
-      title: props.messages.paperStatus.submitTime,
+      title: messages.paperStatus.adviseFile,
+      dataIndex: 'adviseFile',
+      render: (text, record, index, config) => {
+        return (
+          downUrlKeys.filter(k => record[k]).length > 0 && (
+            <a onClick={() => batchDown(record)}>
+              {messages.paperStatus.adviseFile}
+            </a>
+          )
+        );
+      },
+    },
+    {
+      title: messages.paperStatus.submitTime,
       dataIndex: 'submitTime',
     },
   ];
@@ -39,27 +79,37 @@ const PaperStatusTable = props => {
           });
         }}
       >
-        {props.messages.remove}
+        {messages.delete}
       </a>
       <a
         onClick={() => {
           props.edit({
-            action: 'approvalPass',
+            action: 'showDetail',
             d_id: record.id,
           });
         }}
       >
-        {props.messages.showDetail}
+        {messages.check}
       </a>
       <a
         onClick={() => {
           props.edit({
-            action: 'approvalPass',
+            action: 'uploadEditedPaper',
             d_id: record.id,
           });
         }}
       >
-        {props.messages.paperStatus.uploadEditedPaper}
+        {messages.paperStatus.uploadEditedPaper}
+      </a>
+      <a
+        onClick={() => {
+          props.edit({
+            action: 'uploadEditedRevision',
+            d_id: record.id,
+          });
+        }}
+      >
+        {messages.paperStatus.uploadEditedRevision}
       </a>
     </>
   );

@@ -105,6 +105,7 @@ export const formatSelectList = (
   labelKey = 'name',
   idKey = 'id',
 ) => {
+  console.log(' datadatadata ： ', data); //
   const res = data.map(v => ({
     ...v,
     label: v[labelKey],

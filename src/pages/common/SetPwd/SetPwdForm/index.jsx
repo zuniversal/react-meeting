@@ -10,6 +10,7 @@ const SetPwdForm = props => {
       itemProps: {
         label: messages.login.password,
         name: 'password',
+        extra: 'Tips: 请输入大于或等于6位密码，不限制英文或数字！',
       },
       comProps: {
         className: 'formItem',
@@ -19,6 +20,23 @@ const SetPwdForm = props => {
       itemProps: {
         label: messages.login.confirmPwd,
         name: 'confirmPwd',
+        hasFeedback: true,
+        rules: [
+          {
+            required: true,
+            message: 'Please confirm your password!',
+          },
+          ({ getFieldValue }) => ({
+            validator(_, value) {
+              if (!value || getFieldValue('password') === value) {
+                return Promise.resolve();
+              }
+              return Promise.reject(
+                new Error('The two passwords that you entered do not match!'),
+              );
+            },
+          }),
+        ],
       },
       comProps: {
         className: 'formItem',

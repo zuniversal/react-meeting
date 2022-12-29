@@ -9,9 +9,12 @@ import { joinMeetingConfig } from './config';
 import { formatData } from './format';
 
 const JoinMeetingTips = props => {
+  const { info } = props; //
   return (
     <div className="joinMeetingTips">
-      {props.messages.joinMeeting.paymentTip}
+      {/* {props.messages.joinMeeting.paymentTip} */}
+      Payment，Total payment is RMB {info.hotelOrderPrice}, please transfer
+      accounts to {info.total} bank：585221474511，payee：{info.total}
     </div>
   );
 };
@@ -101,7 +104,10 @@ const JoinMeeting = props => {
         msgKey={'joinMeeting'}
         config={config}
       ></InfoCol>
-      <JoinMeetingTips messages={messages}></JoinMeetingTips>
+      <JoinMeetingTips
+        info={joinMeetingItem}
+        messages={messages}
+      ></JoinMeetingTips>
       <Button type="primary" className="bigBtn" onClick={toggleIsNext}>
         {messages.previousStep}
       </Button>

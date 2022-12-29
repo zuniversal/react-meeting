@@ -1,6 +1,10 @@
 import React from 'react';
 import SmartTable from '@/common/SmartTable';
 
+const pageConfig = {
+  page_size: 50,
+};
+
 const OldMeetingsTable = props => {
   const columns = [
     {
@@ -20,7 +24,7 @@ const OldMeetingsTable = props => {
       className="whiteTable"
       {...props}
       rowSelection={null}
-      pagination={null}
+      searchInfo={pageConfig}
       noActionCol
     ></SmartTable>
   );

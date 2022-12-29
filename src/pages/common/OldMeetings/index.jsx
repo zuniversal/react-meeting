@@ -1,11 +1,9 @@
 import React from 'react';
 import './style.less';
 import { useIntl } from 'umi';
-import {
-  tableData1,
-  tableData2,
-} from './config';
+import { tableData1, tableData2 } from './config';
 import OldMeetingsTable from './OldMeetingsTable';
+import bottomImg from '@/static/img/oldMeetings/bg.png';
 
 const OldMeetings = props => {
   const { messages } = useIntl();
@@ -16,15 +14,23 @@ const OldMeetings = props => {
         <div className="oldMeetingsWrapper">
           <div className="oldMeetingsItem">
             <div className="title">{messages.oldMeetings.title1}</div>
-            <OldMeetingsTable messages={messages} dataSource={tableData1}></OldMeetingsTable>
+            <OldMeetingsTable
+              messages={messages}
+              dataSource={tableData1}
+            ></OldMeetingsTable>
           </div>
           <div className="oldMeetingsItem">
             <div className="title">{messages.oldMeetings.title2}</div>
-            <OldMeetingsTable messages={messages} dataSource={tableData2}></OldMeetingsTable>
+            <OldMeetingsTable
+              messages={messages}
+              dataSource={tableData2}
+            ></OldMeetingsTable>
           </div>
         </div>
       </div>
-      <div className="bottomBg"></div>
+      <div className="bottomBg">
+        <img src={bottomImg} className="bottomImg" />
+      </div>
     </div>
   );
 };

@@ -41,10 +41,11 @@ const paperDistributeTable = props => {
         //   }}>{text}△</div>,
         return (
           <Select
+            dropdownClassName="tbSelect"
             defaultValue="lucy"
             bordered={false}
             onChange={props.setApprover}
-            options={props.approveList}
+            options={props.approverList}
           />
         );
       },

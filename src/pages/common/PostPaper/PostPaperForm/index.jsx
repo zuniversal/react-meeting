@@ -36,18 +36,20 @@ const PostPaperForm = props => {
       },
     },
     {
+      formType: 'Select',
       itemProps: {
         label: messages.postPaper.postCommonAuthor,
         name: 'commonAuthor',
       },
       comProps: {
         className: 'formItem',
+        mode: 'tags',
       },
     },
     {
       itemProps: {
         label: messages.postPaper.company,
-        name: 'company',
+        name: 'unitName',
       },
       comProps: {
         className: 'formItem',
@@ -55,7 +57,7 @@ const PostPaperForm = props => {
     },
     paperTypeForm,
     // {
-    //   formType: 'InputNumber',  
+    //   formType: 'InputNumber',
     //   itemProps: {
     //     label: messages.postPaper.artType,
     //     name: 'submitPaperCateID',
@@ -103,19 +105,19 @@ const PostPaperForm = props => {
     //   },
     // },
     <UploadCom
-      label={messages.postPaper.uploadAuthFile}
+      label={messages.postPaper.uploadPost}
       key={'paperURLObj'}
       action={'/api/uploadFile'}
       name={'paperURLObj'}
       extra={messages.postPaper.uploadDoc}
       uploadProps={{
         disabled: props.isDisabledAll || props.action === 'detail',
-        accept: 'application/msword',
+        accept: 'application/msword,.docx',
         multiple: true,
         listType: null,
       }}
       formAction={props.action}
-      noRule
+      // noRule
       formItemCls={'ant-col-12'}
     >
       <Input
@@ -125,7 +127,7 @@ const PostPaperForm = props => {
       />
     </UploadCom>,
     <UploadCom
-      label={messages.postPaper.uploadPdf}
+      label={messages.postPaper.uploadAuthFile}
       key={'copyrightFileURLObj'}
       action={'/api/uploadFile'}
       name={'copyrightFileURLObj'}
@@ -137,7 +139,7 @@ const PostPaperForm = props => {
         listType: null,
       }}
       formAction={props.action}
-      noRule
+      // noRule
       formItemCls={'ant-col-12'}
     >
       <Input

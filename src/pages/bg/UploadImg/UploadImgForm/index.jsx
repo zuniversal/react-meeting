@@ -48,10 +48,11 @@ const UploadImgForm = props => {
       extra={messages.uploadImg.imgUploadTips}
       uploadProps={{
         disabled: props.isDisabledAll || props.action === 'detail',
-        accept: 'application/msword',
+        accept: 'image/*',
         multiple: true,
         listType: null,
       }}
+      init={props.init}
       formAction={props.action}
       noRule
     ></UploadCom>,

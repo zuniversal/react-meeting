@@ -22,7 +22,7 @@ export default function users() {
     console.log(' registerAsync res await 结果  ：', res);
     // setItem(res.token)
     if (res.code === 200) {
-      tips('注册成功！');
+      // tips('注册成功！');
       history.push('/login');
     }
   }, []);
@@ -45,7 +45,7 @@ export default function users() {
     removeItems('userInfo');
     removeItems('token');
     setUserInfo({});
-    history.push(`/login`);
+    history.push(params);
   };
 
   return {

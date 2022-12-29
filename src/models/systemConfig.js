@@ -4,7 +4,10 @@ import { getCalledList, getIdentityList } from '@/services/common';
 import { login, regester, userCenter } from '@/services/user';
 import { setItem, getItem } from '@/utils';
 
+const initActiveKey = window.location.hash.split('#')[1];
+
 export default function systemConfig() {
+  const [activeKey, setActiveKey] = useState(initActiveKey);
   const [calledList, setCalledList] = useState([]);
   const [identityList, setIdentityList] = useState([]);
 
@@ -46,6 +49,8 @@ export default function systemConfig() {
   }, []);
 
   return {
+    activeKey,
+    setActiveKey,
     userInfo,
     loginAsync,
     registerAsync,
