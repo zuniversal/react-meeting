@@ -18,6 +18,7 @@ const UploadImgHistoryTable = props => {
       columns={columns}
       {...props}
       // rowSelection={null}
+      locale="zh"
     ></SmartTable>
   );
 };

@@ -2,39 +2,40 @@ import React from 'react';
 import SmartTable from '@/common/SmartTable';
 
 const RegisterCountTable = props => {
+  const { messages } = props;
   const columns = [
     {
-      title: props.messages.name,
+      title: messages.registerCount.name,
       dataIndex: 'name',
     },
     {
-      title: props.messages.called,
+      title: messages.registerCount.called,
       dataIndex: 'called',
     },
     {
-      title: props.messages.emailAddr,
-      dataIndex: 'emailAddr',
+      title: messages.registerCount.email,
+      dataIndex: 'email',
     },
     {
-      title: props.messages.country,
+      title: messages.registerCount.country,
       dataIndex: 'country',
     },
     {
-      title: props.messages.phone,
+      title: messages.registerCount.phone,
       dataIndex: 'phone',
     },
     {
-      title: props.messages.userCenter.unitName,
+      title: messages.registerCount.unitName,
       dataIndex: 'unitName',
     },
     {
-      title: props.messages.addr,
+      title: messages.registerCount.addr,
       dataIndex: 'addr',
     },
     {
       sorter: true,
       sortKey: 'uploadTime',
-      title: props.messages.registerCount.regTime,
+      title: messages.registerCount.regTime,
       dataIndex: 'regTime',
     },
   ];
@@ -45,6 +46,7 @@ const RegisterCountTable = props => {
       {...props}
       rowSelection={null}
       noActionCol
+      locale="zh"
     ></SmartTable>
   );
 };

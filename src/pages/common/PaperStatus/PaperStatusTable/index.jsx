@@ -36,7 +36,7 @@ const PaperStatusTable = props => {
       //   }),
       render: (text, record, index, config) => {
         return (
-          <div
+          <a
             onClick={() =>
               props.showAdviseText({
                 action: 'showAdviseText',
@@ -46,7 +46,7 @@ const PaperStatusTable = props => {
             }
           >
             {messages.paperStatus.adviseText}
-          </div>
+          </a>
         );
       },
     },
@@ -82,16 +82,13 @@ const PaperStatusTable = props => {
         {messages.delete}
       </a>
       <a
-        onClick={() => {
-          props.edit({
-            action: 'showDetail',
-            d_id: record.id,
-          });
-        }}
+        onClick={() =>
+          downLoad(record.firstOpinionURL, { name: record.firstOpinionURL })
+        }
       >
         {messages.check}
       </a>
-      <a
+      {/* <a
         onClick={() => {
           props.edit({
             action: 'uploadEditedPaper',
@@ -100,8 +97,8 @@ const PaperStatusTable = props => {
         }}
       >
         {messages.paperStatus.uploadEditedPaper}
-      </a>
-      <a
+      </a> */}
+      {/* <a
         onClick={() => {
           props.edit({
             action: 'uploadEditedRevision',
@@ -110,7 +107,7 @@ const PaperStatusTable = props => {
         }}
       >
         {messages.paperStatus.uploadEditedRevision}
-      </a>
+      </a> */}
     </>
   );
 

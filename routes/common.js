@@ -4,4 +4,5 @@ export default [
   { path: '/setPwd', component: '@/pages/common/SetPwd' },
   { path: '/register', component: '@/pages/common/Register' },
   { path: '/selectIdentity', component: '@/pages/common/SelectIdentity' },
+  { path: '/test', component: '@/pages/common/Test' },
 ];

@@ -492,12 +492,12 @@ class SmartTable extends PureComponent {
 
   actionCol = e => {
     // console.log('    actionCol ： ', e, this.state, this.props);
-    const { edit, remove, extra, actionConfig } = this.props;
+    const { edit, remove, extra, actionConfig, locale } = this.props;
 
     // 通用操作列
     const actionCol = {
       fixed: 'right',
-      title: 'Operation',
+      title: locale === 'en' ? 'Operation' : '操作',
       className: 'actionCol',
       render: (text, record, index) => {
         // console.log(' text, record, index ： ', text, record, index,  )//
@@ -788,6 +788,7 @@ SmartTable.defaultProps = {
   noRequest: false,
   showQuickJumper: true,
   showSizeChanger: true,
+  locale: 'en',
 };
 
 SmartTable.propTypes = {
@@ -810,6 +811,7 @@ SmartTable.propTypes = {
   count: PropTypes.number,
   animation: PropTypes.string,
   noRequest: PropTypes.bool,
+  locale: PropTypes.string,
 };
 
 export default SmartTable;

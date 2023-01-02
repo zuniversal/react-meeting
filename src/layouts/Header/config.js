@@ -8,6 +8,7 @@ export const bgRoutes = [
   'uploadImgHistory',
   'payReview',
   'paperDistribute',
+  'login?p=admin',
 ].map(v => `/${v}`);
 
 export const hiddenRoutes = [
@@ -15,18 +16,19 @@ export const hiddenRoutes = [
   'register',
   'setPwd',
   'selectIdentity',
+  'userCenter',
   'paperStatus',
   'joinMeeting',
 ].map(v => `/${v}`);
 
 export const hiddenFeTabs = hiddenRoutes.map(v => ({
-  tab: '',
+  tab: v,
   label: '',
   key: v,
 }));
 
 export const hiddenTabsConfig = bgRoutes.map(v => ({
-  tab: '',
+  tab: v,
   label: '',
   key: v,
 }));

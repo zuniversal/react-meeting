@@ -1,20 +1,21 @@
 import React from 'react';
 import SmartTable from '@/common/SmartTable';
+import { downLoad } from '@/utils';
 
 const PaperApproveTable = props => {
   const { messages } = props; //
   const columns = [
     {
       title: messages.paperApprove.no,
-      dataIndex: 'no',
+      dataIndex: 'id',
     },
     {
       title: messages.paperApprove.paperTitle,
-      dataIndex: 'paperTitle',
+      dataIndex: 'title',
     },
     {
       title: messages.paperApprove.paperType,
-      dataIndex: 'paperType',
+      dataIndex: 'submitPaperCateID',
     },
     {
       title: messages.paperApprove.contactAuthor,
@@ -26,13 +27,13 @@ const PaperApproveTable = props => {
     },
     {
       title: messages.paperApprove.approvalStatus,
-      dataIndex: 'approvalStatus',
+      dataIndex: 'sumResult',
     },
     {
       sorter: true,
-      sortKey: 'uploadTime',
+      sortKey: 'submitTime',
       title: messages.uploadTime,
-      dataIndex: 'uploadTime',
+      dataIndex: 'submitTime',
     },
   ];
 
@@ -49,14 +50,11 @@ const PaperApproveTable = props => {
         {props.messages.paperApprove.approve}
       </a>
       <a
-        onClick={() => {
-          props.edit({
-            action: 'approve',
-            d_id: record.id,
-          });
-        }}
+        onClick={() =>
+          downLoad(record.firstOpinionURL, { name: record.firstOpinionURL })
+        }
       >
-        {props.messages.download}
+        {messages.download_zh}
       </a>
     </>
   );
@@ -66,8 +64,8 @@ const PaperApproveTable = props => {
       columns={columns}
       extra={extra}
       {...props}
-      rowSelection={null}
       noDefault
+      locale="zh"
     ></SmartTable>
   );
 };

@@ -62,14 +62,14 @@ export const getStatusMsg = (status, url) => {
 };
 
 export const isTips = res => {
-  console.log('  isTips  !res ', !res, res);
+  // console.log('  isTips  !res ', !res, res);
   if (!res) {
-    tips('未知错误！', 2);
+    tips('Unknown error！', 2);
     return;
   }
 
   const { status, data, config } = res;
-  const { msg, code } = data;
+  const { msgEG, code } = data;
   // const { noTips } = config.data;
   const { noTips } = res.config.customInfo;
   const { url } = config;
@@ -93,15 +93,15 @@ export const isTips = res => {
   }
   if (code !== NORMAL_CODE || status != NORMAL_CODE) {
     const codeMsg = getCodeMsg(code);
-    tips(msg || codeMsg, 2);
+    tips(msgEG || codeMsg, 2);
     return;
   }
   // console.log(' res.config.method ： ', res.config.method, res.config.method !== 'get' )//
   if (res.config.method !== 'get' && !noTips) {
-    tips(msg, code != NORMAL_CODE ? 2 : 1);
+    tips(msgEG, code != NORMAL_CODE ? 2 : 1);
   }
   // if ((noTips == undefined && noTips !== true)) {
-  //   tips(msg, status != NORMAL_CODE ? 2 : 1);
+  //   tips(msgEG, status != NORMAL_CODE ? 2 : 1);
   // }
   return;
   // if (codeMap[code]) {
@@ -117,14 +117,14 @@ export const isTips = res => {
       // console.log(
       //   ' 提示 对吗  !codeMsg ',
       //   history,
-      //   msg,
+      //   msgEG,
       //   code,
       //   !codeMsg,
       //   codeMsg,
       // );
 
       if (code !== 200) {
-        tips(msg || codeMsg, 2);
+        tips(msgEG || codeMsg, 2);
         return;
       }
       if (code === AUTH_FAIL && !isDev) {
@@ -133,26 +133,26 @@ export const isTips = res => {
           history.push(LOGIN);
         }
       }
-      // console.log(' codecode ： ', msg, msg ?? '操作成功', codeMsg); //
-      tips(msg || codeMsg, 2);
+      // console.log(' codecode ： ', msgEG, msgEG ?? '操作成功', codeMsg); //
+      tips(msgEG || codeMsg, 2);
       // if (!codeMsg) {
       //   tips(codeMsg, 2);
       // }
       return;
     } else {
-      // console.log(' 提示 对吗  !noTips ', !noTips, msg, noTips, status);
+      // console.log(' 提示 对吗  !noTips ', !noTips, msgEG, noTips, status);
       if (!noTips || (status != 200 && status != 201)) {
-        tips(msg, status != 200 && status != 201 ? 2 : 1);
+        tips(msgEG, status != 200 && status != 201 ? 2 : 1);
       }
       // const isNormal = `${status}`.startsWith('2')
       // console.log(' 提示 对吗  !noTips ', !noTips, noTips, status, isNormal);
       // if (!noTips || isNormal) {
-      //   tips(msg, isNormal ? 2 : 1);
+      //   tips(msgEG, isNormal ? 2 : 1);
       // }
     }
     // } else {
     //   if (!noTips) {
-    //     tips(msg, );
+    //     tips(msgEG, );
     //   }
   }
 };

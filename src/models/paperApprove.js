@@ -3,10 +3,20 @@ import {
   getPaperApproverList,
   editPaperApprover,
 } from '@/services/paperApprove';
+import { getPaperList, addPaper } from '@/services/postPaper';
 
 const formatItem = v => {};
 
 export default function paperDistribute() {
+  const [postList, setPostList] = useState([]);
+
+  const getPaperListAsync = useCallback(async params => {
+    const res = await getPaperList(params);
+    console.log(' getPaperList res await 结果  ：', res);
+    setPostList(res.data);
+    // setAction('fail')
+  }, []);
+
   const [paperApproverList, setPaperApproverList] = useState([]);
 
   const getPaperApproverListAsync = useCallback(async params => {
@@ -14,13 +24,15 @@ export default function paperDistribute() {
     setPaperApproverList(res.data);
   }, []);
 
-  const editJoinApproverAsync = useCallback(async params => {
+  const editPaperApproverAsync = useCallback(async params => {
     const res = await editPaperApprover(params);
   }, []);
 
   return {
+    postList,
+    getPaperListAsync,
     paperApproverList,
     getPaperApproverListAsync,
-    editJoinApproverAsync,
+    editPaperApproverAsync,
   };
 }

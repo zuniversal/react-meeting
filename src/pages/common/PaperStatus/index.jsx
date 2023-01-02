@@ -41,6 +41,8 @@ const CommonModal = props => {
       // title={null}
       onOk={props.common.closeCommonModal}
       onCancel={props.common.closeCommonModal}
+      hideOk
+      hideCancel
     >
       {DetailForm && (
         <DetailForm

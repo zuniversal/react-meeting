@@ -3,7 +3,7 @@ import './style.less';
 import PropTypes from 'prop-types';
 import { Upload } from 'antd';
 import { UPLOADFILE_URL } from '@/constants';
-import { getToken } from '@/utils';
+import { getToken, tips } from '@/utils';
 
 const SmartUpload = props => {
   const uploadProps = {
@@ -13,10 +13,19 @@ const SmartUpload = props => {
     headers: {
       token: getToken(),
     },
-    onChange(info) {
-      console.log(' onChange ： ', info); //
+    onChange(e) {
+      console.log(' onChange ： ', e); //
+      if (e.file.status === 'done') {
+        tips(`${e.file.name} Upload successfully！`, 1);
+        props.succ && props.succ(e);
+        props.finish && props.finish(e);
+      } else if (e.file.status === 'error') {
+        tips(`${e.file.name} Upload fail！`, 0);
+        props.fail && props.fail(e);
+        props.finish && props.finish(e);
+      }
     },
-    ...props.uploadProps,
+    ...props,
   };
   return <Upload {...uploadProps}>{props.children}</Upload>;
 };

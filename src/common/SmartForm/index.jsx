@@ -32,7 +32,15 @@ import {
 import DynamicForm from './DynamicForm/index.jsx';
 import DynamicItem from './DynamicItem/index.jsx';
 import DynamicFormTable from './DynamicFormTable/index.jsx';
-import { INPUT_TXT, SELECT_TXT, REQUIRE, ANIMATE } from '@/constants';
+import {
+  INPUT_TXT,
+  SELECT_TXT,
+  REQUIRE,
+  INPUT_TXT_EN,
+  SELECT_TXT_EN,
+  REQUIRE_EN,
+  ANIMATE,
+} from '@/constants';
 import {
   mockFormData,
   renderSelectOp,
@@ -108,22 +116,33 @@ const rowLayout = {
   },
 };
 
-export const getLabel = (label, key) => {
+export const getLabel = (label, key, locale) => {
+  // console.log(' getLabel ： ', label, key, locale    )//
+  const prefixMap = {
+    zh: {
+      INPUT_TXT,
+      SELECT_TXT,
+    },
+    en: {
+      INPUT_TXT: INPUT_TXT_EN,
+      SELECT_TXT: SELECT_TXT_EN,
+    },
+  };
   const labelMap = {
     rowText: '',
-    Input: INPUT_TXT + label,
-    InputNumber: INPUT_TXT + label,
-    TextArea: INPUT_TXT + label,
-    Select: SELECT_TXT + label,
-    Search: SELECT_TXT + label,
-    Password: INPUT_TXT + label,
-    Cascader: SELECT_TXT + label,
-    AutoComplete: INPUT_TXT + label,
-    Checkbox: SELECT_TXT + label,
-    CheckboxItem: SELECT_TXT + label,
-    Radio: SELECT_TXT + label,
-    DatePicker: SELECT_TXT + label,
-    MonthPicker: SELECT_TXT + label,
+    Input: prefixMap[locale].INPUT_TXT + label,
+    InputNumber: prefixMap[locale].INPUT_TXT + label,
+    TextArea: prefixMap[locale].INPUT_TXT + label,
+    Select: prefixMap[locale].SELECT_TXT + label,
+    Search: prefixMap[locale].SELECT_TXT + label,
+    Password: prefixMap[locale].INPUT_TXT + label,
+    Cascader: prefixMap[locale].SELECT_TXT + label,
+    AutoComplete: prefixMap[locale].INPUT_TXT + label,
+    Checkbox: prefixMap[locale].SELECT_TXT + label,
+    CheckboxItem: prefixMap[locale].SELECT_TXT + label,
+    Radio: prefixMap[locale].SELECT_TXT + label,
+    DatePicker: prefixMap[locale].SELECT_TXT + label,
+    MonthPicker: prefixMap[locale].SELECT_TXT + label,
     // RangePicker: SELECT_TXT + label,
   };
 
@@ -163,6 +182,7 @@ const SmartForm = (props, state) => {
     noRuleAll,
     size,
     noLabelLayout,
+    locale,
   } = props;
   console.log(
     ' %c SmartForm 组件 this.state, this.props ： ',
@@ -243,14 +263,29 @@ const SmartForm = (props, state) => {
   };
 
   const rules = (params, extra) => {
-    const { items, label, formType, ruleExtra } = params;
-    const message = getLabel(label, formType);
-    // console.log(' rules   params, extra,  ,   ： ', params, extra, message, label, formType,  );
+    const { items, label, formType, ruleExtra, locale } = params;
+    const prefixMap = {
+      zh: {
+        REQUIRE,
+      },
+      en: {
+        REQUIRE: REQUIRE_EN,
+      },
+    };
+    const message = getLabel(label, formType, locale);
+    console.log(
+      ' rules   params, extra,  ,   ： ',
+      params,
+      extra,
+      message,
+      label,
+      formType,
+    );
 
     return [
       {
         required: true,
-        message: label + REQUIRE,
+        message: label + prefixMap[locale].REQUIRE,
       },
       ...(ruleExtra ? ruleExtra : []),
     ];
@@ -406,12 +441,14 @@ const SmartForm = (props, state) => {
         ? formRules
         : noRule || noRuleAll
         ? undefined
-        : rules({ items, label, ruleExtra }),
+        : rules({ items, label, ruleExtra, locale }),
       ...formItemCommonProps,
       className: `formItems ${bounceIn} ${itemPropsCls}  `,
     };
 
-    const formLabel = customLabel ? customLabel : getLabel(label, formType);
+    const formLabel = customLabel
+      ? customLabel
+      : getLabel(label, formType, locale);
     // console.log('  formLabel ：', formLabel,  )//
 
     const placeholder =
@@ -785,6 +822,7 @@ SmartForm.defaultProps = {
   isDisabledAll: false,
   noRuleAll: false,
   size: '',
+  locale: 'en',
 };
 SmartForm.propTypes = {
   name: PropTypes.string,

@@ -45,6 +45,7 @@ const PaperCountTable = props => {
       {...props}
       rowSelection={null}
       noActionCol
+      locale="zh"
     ></SmartTable>
   );
 };

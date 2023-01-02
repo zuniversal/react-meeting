@@ -5,15 +5,17 @@ export const useModal = props => {
   const [action, setAction] = useState('');
   const [extraData, setExtraData] = useState(null);
 
+  const closeCommonModal = () => {
+    console.log(' closeCommonModal ： '); //
+    setIsShowCommonModal(false);
+  };
+
   const common = {
     extraData,
     action,
     isShowCommonModal,
     visible: isShowCommonModal,
-    closeCommonModal: () => {
-      console.log(' closeCommonModal ： '); //
-      setIsShowCommonModal(false);
-    },
+    closeCommonModal,
   };
 
   const showModal = params => {
@@ -25,10 +27,12 @@ export const useModal = props => {
 
   return {
     isShowCommonModal,
+    closeCommonModal,
     setIsShowCommonModal,
-    action,
     setAction,
     showModal,
+    action,
+    extraData,
     common,
   };
 };

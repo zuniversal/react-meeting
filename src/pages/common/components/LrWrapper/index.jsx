@@ -11,6 +11,7 @@ const LrWrapper = props => {
     <div className={cls({ isBgPlatform: props.isBgPlatform, lrWrapper: true })}>
       <Header></Header>
       <div className="lrFormWrapper">
+        {props.isBgPlatform && <div className="bgTitle">{props.bgTitle}</div>}
         <div className="lrForm">
           <div className="sysystemTitle">{props.title}</div>
           {props.content}
@@ -18,7 +19,7 @@ const LrWrapper = props => {
         {props.children}
       </div>
       <div className="bgPic">
-        <img src={bgImg} className="bottomImg" />
+        {/* <img src={bgImg} className="bottomImg" /> */}
       </div>
     </div>
   );

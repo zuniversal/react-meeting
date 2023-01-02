@@ -4,6 +4,7 @@ import { Input } from 'antd';
 import SmartForm from '@/common/SmartForm';
 import UploadCom from '@/components/Widgets/UploadCom';
 import { usePaperTypeForm } from '@/hooks/useFormItem';
+import { stringReg, stringRule } from '@/configs';
 
 const PostPaperForm = props => {
   const { messages } = props;
@@ -34,12 +35,30 @@ const PostPaperForm = props => {
       comProps: {
         className: 'formItem',
       },
+      formRules: [stringRule],
     },
     {
       formType: 'Select',
       itemProps: {
         label: messages.postPaper.postCommonAuthor,
         name: 'commonAuthor',
+        rules: [
+          {
+            required: true,
+            message: 'Please input string!',
+          },
+          ({ getFieldValue }) => ({
+            validator(_, value) {
+              const res = value.every(v => stringReg.test(v));
+              if (res) {
+                return Promise.resolve();
+              }
+              return Promise.reject(
+                new Error('Please enter the correct name!'),
+              );
+            },
+          }),
+        ],
       },
       comProps: {
         className: 'formItem',
@@ -56,6 +75,16 @@ const PostPaperForm = props => {
       },
     },
     paperTypeForm,
+    // {
+    //   formType: 'InputNumber',
+    //   itemProps: {
+    //     label: messages.postPaper.artType,
+    //     name: 'paperCateID',
+    //   },
+    //   comProps: {
+    //     className: 'formItem',
+    //   },
+    // },
     // {
     //   formType: 'InputNumber',
     //   itemProps: {

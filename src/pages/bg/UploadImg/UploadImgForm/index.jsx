@@ -62,6 +62,7 @@ const UploadImgForm = props => {
     <SmartForm
       className={'uploadImgForm'}
       config={config}
+      locale={'zh'}
       {...props}
     ></SmartForm>
   );

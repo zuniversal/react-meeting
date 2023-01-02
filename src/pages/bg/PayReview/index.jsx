@@ -1,14 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.less';
-import { useIntl } from 'umi';
+import { useIntl, useModel } from 'umi';
 import SearchKwForm from '@/components/Form/SearchKwForm';
 import PayReviewTable from './PayReviewTable';
 import { ynConfig } from '@/configs';
+import { formatData } from './format';
 
 const PayReview = props => {
   const { messages } = useIntl();
+  const { payReviewList, getPayReviewListAsync, editPayReviewAsync } = useModel(
+    'payReview',
+  );
+  console.log('  payReviewList ： ', payReviewList); //
+
+  useEffect(() => {
+    getPayReviewListAsync();
+  }, []);
+
   const onFieldChange = params => {
     console.log(' onFieldChange ： ', params); //
+  };
+
+  const uploadReceipt = (e, record) => {
+    console.log(' uploadReceipt ： ', e, record); //
+    editPayReviewAsync(
+      formatData({
+        email: record.email,
+        payPhotographUrl: e,
+        isPay: 1,
+      }),
+    );
   };
 
   const setIsPay = (params, item) => {
@@ -20,27 +41,6 @@ const PayReview = props => {
       placeholder: messages.payReview.searchPh,
     },
   };
-
-  const dataSource = [
-    {
-      name: 'name',
-      identity: 'identity',
-      emailAddr: 'emailAddr',
-      phone: 'phone',
-      isPay: 'isPay',
-      uploadTime: 'uploadTime',
-    },
-  ];
-  const approveList = [
-    {
-      value: 'jack',
-      label: 'Jack',
-    },
-    {
-      value: 'lucy',
-      label: 'Lucy',
-    },
-  ];
 
   return (
     <div className="adminBg">
@@ -58,10 +58,10 @@ const PayReview = props => {
             ></SearchKwForm>
           </div>
           <PayReviewTable
-            setIsPay={setIsPay}
+            uploadReceipt={uploadReceipt}
             ynConfig={ynConfig}
             messages={messages}
-            dataSource={dataSource}
+            dataSource={payReviewList}
           ></PayReviewTable>
         </div>
       </div>

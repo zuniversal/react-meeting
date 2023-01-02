@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.less';
-import { useIntl } from 'umi';
+import { useIntl, useModel } from 'umi';
 import SearchKwForm from '@/components/Form/SearchKwForm';
 import JoinCountTable from './JoinCountTable';
 
 const JoinCount = props => {
   const { messages } = useIntl();
+  const { joinCountList, getJoinCountListAsync } = useModel('admin');
+
+  useEffect(() => {
+    getJoinCountListAsync();
+  }, []);
+
   const onFieldChange = params => {
     console.log(' onFieldChange ： ', params); //
+    getJoinCountListAsync(params.value);
   };
 
   const customConfig = {
@@ -25,13 +32,16 @@ const JoinCount = props => {
             <SearchKwForm
               className={'fje'}
               onFieldChange={onFieldChange}
-              keyword={'keyword'}
+              keyword={'email'}
               label={'名称'}
               noLabel
               customConfig={customConfig}
             ></SearchKwForm>
           </div>
-          <JoinCountTable messages={messages}></JoinCountTable>
+          <JoinCountTable
+            messages={messages}
+            dataSource={joinCountList}
+          ></JoinCountTable>
         </div>
       </div>
     </div>

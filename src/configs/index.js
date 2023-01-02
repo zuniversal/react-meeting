@@ -2339,15 +2339,25 @@ export const planListInfoDescConfig = [
   },
 ];
 
+export const stringReg = /^[\u4e00-\u9fa5a-zA-Z ]+$/;
+
+export const stringRule = {
+  required: true,
+  message: 'Please input string!',
+  pattern: stringReg,
+};
+
 export const phoneRule = {
   required: true,
   message: '请输入正确的手机号',
+  message: 'Please enter the correct mobile number',
   pattern: /^1[3|4|5|7|8][0-9]\d{8}$/,
 };
 
 export const emailRule = {
   required: true,
   message: '邮箱格式不正确',
+  message: 'Incorrect mailbox format',
   pattern: /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/,
 };
 
@@ -2388,40 +2398,63 @@ export const assetDetailConfig = [
 export const calledConfig = [
   {
     value: '1',
-    label: '博士',
+    label: 'Doctor',
   },
   {
     value: '2',
-    label: '教授',
+    label: 'Prefessor',
   },
   {
     value: '3',
-    label: '先生',
+    label: 'Mr.',
   },
   {
     value: '4',
-    label: '小姐',
+    label: 'Ms.',
   },
 ];
 
 export const identityConfig = [
   {
     value: '1',
-    label: '论文通讯作者',
+    label: 'Corresponding author',
   },
   {
     value: '2',
-    label: '论文共同作者',
+    label: 'Co-author',
   },
   {
     value: '3',
-    label: '审稿人',
+    label: 'Revicwer',
   },
   {
     value: '4',
-    label: '陪同人员',
+    label: 'Entourage',
   },
 ];
+
+export const identityConfigMap = arrMapObj(identityConfig);
+
+export const paperTypeConfig = [
+  {
+    value: '1',
+    label: '船舶',
+  },
+  {
+    value: '2',
+    label: '水利',
+  },
+  {
+    value: '3',
+    label: '波纹',
+  },
+  {
+    value: '4',
+    label: '海洋',
+  },
+];
+
+export const paperTypeConfigMap = arrMapObj(paperTypeConfig);
 
 export const ynRadioConfig = [
   {
@@ -2436,7 +2469,18 @@ export const ynRadioConfig = [
 
 export const ynRadioConfigMap = arrMapObj(ynRadioConfig);
 
-export const ynConfig = ynRadioConfig;
+export const ynConfig = [
+  {
+    value: 1,
+    label: '是',
+  },
+  {
+    value: 0,
+    label: '否',
+  },
+];
+
+export const ynConfigMap = arrMapObj(ynConfig);
 
 export const approveStatusConfig = [
   {
@@ -2465,3 +2509,18 @@ export const paymentConfig = [
 ];
 
 export const paymentConfigMap = arrMapObj(paymentConfig);
+
+export const hotelConfig = [
+  {
+    value: 1,
+    label: '万达酒店',
+    price: '500.00',
+  },
+  {
+    value: 2,
+    label: '假日一号',
+    price: '600.00',
+  },
+];
+
+export const hotelConfigMap = arrMapObj(hotelConfig);

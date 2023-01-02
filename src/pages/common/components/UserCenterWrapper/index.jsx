@@ -2,8 +2,9 @@ import React from 'react';
 import './style.less';
 import { history, useModel } from 'umi';
 import { Button, Divider } from 'antd';
-import { DOWNLOAD_URL } from '@/constants';
+import { DOWNLOADS_URL } from '@/constants';
 import cls from 'classnames';
+import Download from '@/components/Widgets/Download';
 
 const UserCenterWrapper = props => {
   const { activeKey, setActiveKey } = useModel('systemConfig');
@@ -17,7 +18,7 @@ const UserCenterWrapper = props => {
 
   const { messages, className, data } = props;
   const title = props.title || messages.userCenter.title;
-  const href = DOWNLOAD_URL + data.payPhotographUrl;
+  const href = DOWNLOADS_URL + data.payPhotographUrl;
   const linkAttr = data.payPhotographUrl
     ? {
         href: href,
@@ -30,9 +31,12 @@ const UserCenterWrapper = props => {
       <div className="conWrapper">
         <div className="title">
           {title}
-          <a className="rawLink" {...linkAttr}>
+          {/* <a className="rawLink" {...linkAttr}>
             {messages.userCenter.downReceipt}
-          </a>
+          </a> */}
+          <Download url={data.payPhotographUrl}>
+            {messages.userCenter.downReceipt}
+          </Download>
         </div>
         <div className="btnWrapper">
           <Button type="primary" className="bigBtn" onClick={goPost}>

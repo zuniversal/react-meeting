@@ -9,6 +9,6 @@ export const formatData = data => {
   newData.time = formatDatePicker(newData, 'time');
 
   // const { headObj, ...restData } = newData;
-  console.log(' restData ： ', restData); //
-  return restData;
+  console.log(' newData ： ', newData); //
+  return newData;
 };

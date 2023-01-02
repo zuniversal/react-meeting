@@ -35,24 +35,24 @@ const LoginForm = props => {
         className: 'formItem',
       },
     },
-    ...(isBgPlatform
-      ? [
-          {
-            noRule: true,
-            formType: 'Checkbox',
-            checkboxData: checkboxData,
-            itemProps: {
-              label: '',
-              name: 'isReviewer',
-              className: 'approverCheckbox',
-            },
-            comProps: {
-              className: 'rememberItem',
-            },
-            extra: messages.admin.approverTips,
-          },
-        ]
-      : []),
+    // ...(isBgPlatform
+    //   ? [
+    //       {
+    //         noRule: true,
+    //         formType: 'Checkbox',
+    //         checkboxData: checkboxData,
+    //         itemProps: {
+    //           label: '',
+    //           name: 'isReviewer',
+    //           className: 'approverCheckbox',
+    //         },
+    //         comProps: {
+    //           className: 'rememberItem',
+    //         },
+    //         extra: messages.admin.approverTips,
+    //       },
+    //     ]
+    //   : []),
     <Form.Item
       key="remember"
       wrapperCol={{

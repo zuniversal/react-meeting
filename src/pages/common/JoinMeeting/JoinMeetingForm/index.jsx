@@ -1,14 +1,27 @@
 import React from 'react';
 import './style.less';
-import { Input } from 'antd';
+import { Form } from 'antd';
 import { ynRadioConfig } from '@/configs';
 import SmartForm from '@/common/SmartForm';
 import UploadCom from '@/components/Widgets/UploadCom';
-import { useCalledForm } from '@/hooks/useFormItem';
+import { useCalledForm, useHotelForm } from '@/hooks/useFormItem';
 
 const JoinMeetingForm = props => {
   console.log(' JoinMeetingForm ： ', props); //
+  const [form] = Form.useForm();
   const calledForm = useCalledForm(props);
+  const hotelForm = useHotelForm(props);
+  // const { comProps : { options: hotelList},  } = hotelForm
+  const hotelList = hotelForm.comProps.options;
+  const onHotelChange = (val, selectItem) => {
+    console.log(' onHotelChange   ,   ： ', val, selectItem);
+    form.setFieldsValue({
+      price: selectItem.price,
+    });
+  };
+  hotelForm.comProps.onChange = onHotelChange;
+  console.log(' hotelList ： ', hotelForm, hotelList); //
+
   const { messages } = props;
 
   const uploadPdf = () => {
@@ -47,15 +60,16 @@ const JoinMeetingForm = props => {
         options: ynRadioConfig,
       },
     },
-    {
-      itemProps: {
-        label: messages.joinMeeting.hotelName,
-        name: 'hotelName',
-      },
-      comProps: {
-        className: 'formItem',
-      },
-    },
+    hotelForm,
+    // {
+    //   itemProps: {
+    //     label: messages.joinMeeting.hotelName,
+    //     name: 'hotelName',
+    //   },
+    //   comProps: {
+    //     className: 'formItem',
+    //   },
+    // },
     {
       formType: 'InputNumber',
       itemProps: {
@@ -65,6 +79,7 @@ const JoinMeetingForm = props => {
       comProps: {
         className: 'formItem',
         min: 0,
+        disabled: true,
       },
     },
     {
@@ -107,6 +122,7 @@ const JoinMeetingForm = props => {
       layout={'vertical'}
       noLabelLayout
       config={config}
+      propsForm={form}
       {...props}
     ></SmartForm>
   );

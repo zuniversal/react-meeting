@@ -33,6 +33,7 @@ const UserCenter = props => {
       ...rest,
     };
     const res = await editUserInfoAsync(formatData(restParams));
+    setIsEdit(!isEdit);
   };
 
   const userInfoDetail = (

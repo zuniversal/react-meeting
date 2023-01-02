@@ -23,7 +23,7 @@ export const joinMeetingConfig = [
   {
     key: 'price',
     langKey: 'hotelPrice',
-    prefix: '$',
+    prefix: '￥',
   },
   {
     key: 'hotelRoomNumber',
@@ -36,6 +36,6 @@ export const joinMeetingConfig = [
   {
     key: 'hotelOrderPrice',
     langKey: 'hotelOrderPrice',
-    prefix: '$',
+    prefix: '￥',
   },
 ];

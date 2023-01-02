@@ -23,6 +23,7 @@ const ActionCol = props => {
     text,
     record,
     index,
+    locale,
   } = props;
   // console.log(' ActionCol props ： ', props);
 
@@ -54,7 +55,7 @@ const ActionCol = props => {
                 isDev ? false : authInfo.edit !== true && authInfo.edit != null
               }
             >
-              {messages.edit}
+              {messages[locale === 'en' ? 'edit' : 'edit_zh']}
             </a>
           )}
           {/* <a onClick={() => remove({action: 'remove', record})}>删除</a> */}
@@ -71,7 +72,7 @@ const ActionCol = props => {
                   : authInfo.delete !== true && authInfo.delete != null
               }
             >
-              {messages.delete}
+              {messages[locale === 'en' ? 'delete' : 'delete_zh']}
             </a>
           )}
         </>

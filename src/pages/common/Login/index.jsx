@@ -28,11 +28,15 @@ const Login = props => {
       );
       const loginData = {
         ...params,
-        isReviewer: params.isReviewer && params.isReviewer[0],
+        role: isBgPlatform ? 'bg' : 'fe',
+        // isReviewer: params.isReviewer && params.isReviewer[0],
       };
       setItem('loginInfo', remember ? loginData : undefined);
       setItem('remember', !!remember);
-      loginAsync(loginData);
+      loginAsync({
+        ...loginData,
+        isBgPlatform,
+      });
     } catch (error) {
       console.log(' onSubmit error ： ', error);
     }
@@ -56,6 +60,7 @@ const Login = props => {
   return (
     <LrWrapper
       isBgPlatform={isBgPlatform}
+      bgTitle={messages.expertPlatform}
       title={messages.login.title}
       content={content}
     ></LrWrapper>

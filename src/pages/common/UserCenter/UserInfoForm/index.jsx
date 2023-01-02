@@ -1,16 +1,18 @@
 import React from 'react';
 import './style.less';
 import { Input } from 'antd';
-import { calledConfig, emailRule, identityConfig, phoneRule } from '@/configs';
+import {
+  calledConfig,
+  emailRule,
+  identityConfig,
+  phoneRule,
+  stringRule,
+} from '@/configs';
 import SmartForm from '@/common/SmartForm';
 import UploadCom from '@/components/Widgets/UploadCom';
-import useHttp from '@/hooks/useHttp';
-import { getCalled } from '@/services/common';
 import { useCalledForm, useIdentityForm } from '@/hooks/useFormItem';
 
 const UserInfoForm = props => {
-  // const { data: clientList, req: getClientAsync } = useHttp(getRelatived);
-
   const calledForm = useCalledForm(props);
   // calledForm.itemProps.name = 'call'
   const identityForm = useIdentityForm(props);
@@ -63,6 +65,7 @@ const UserInfoForm = props => {
       comProps: {
         className: 'formItem',
       },
+      formRules: [stringRule],
     },
     {
       itemProps: {
@@ -72,6 +75,7 @@ const UserInfoForm = props => {
       comProps: {
         className: 'formItem',
       },
+      formRules: [stringRule],
     },
     {
       itemProps: {
@@ -123,7 +127,7 @@ const UserInfoForm = props => {
     //     options: identityConfig,
     //   },
     // },
-    identityForm,
+    // identityForm,
   ];
 
   return (

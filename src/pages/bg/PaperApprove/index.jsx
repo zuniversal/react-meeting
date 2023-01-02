@@ -26,7 +26,7 @@ const CommonModal = props => {
       action={props.common?.action}
       titleMap={titleMap}
       // title={null}
-      onOk={props.common.closeCommonModal}
+      onOk={props.onOk}
       onCancel={props.common.closeCommonModal}
     >
       {DetailForm && (
@@ -42,13 +42,10 @@ const CommonModal = props => {
 
 const PaperApprove = props => {
   const { messages } = useIntl();
-  const { paperApproverList, getPaperApproverListAsync } = useModel(
-    'paperApprove',
-  );
-  console.log(' paperApproverList ： ', paperApproverList); //
+  const { postList, getPaperListAsync } = useModel('paperApprove');
 
   useEffect(() => {
-    getPaperApproverListAsync();
+    getPaperListAsync();
   }, []);
 
   const downBatch = params => {
@@ -107,8 +104,9 @@ const PaperApprove = props => {
             </div>
           </div>
           <PaperApproveTable
-            messages={messages}
             edit={edit}
+            messages={messages}
+            dataSource={postList}
           ></PaperApproveTable>
         </div>
       </div>

@@ -15,6 +15,7 @@ import {
 } from './config';
 const { TabPane } = Tabs;
 
+const bgRole = [1, 4];
 const tabConfigs = [
   {
     tab: '首页',
@@ -63,13 +64,7 @@ const tabConfigs = [
 const tabKeys = tabConfigs.map(v => v.key);
 
 const activeKey = window.location.hash.split('#')[1];
-console.log(
-  ' activeKey ： ',
-  hiddenFeTabs,
-  hiddenTabsConfig,
-  tabKeys,
-  activeKey,
-); //
+// console.log(' activeKey ： ', tabKeys, tabConfigs); //
 
 // const mapStateToProps = ({tab}) => tab;
 // export default connect(mapStateToProps, dispatch => {
@@ -81,17 +76,15 @@ console.log(
 // })(TabsCom);
 
 const TabsCom = props => {
-  // console.log(' TabsCom props ： ', props,  )//
   const onChange = key => {
     console.log(key);
     history.push(key);
-    props.setActiveKey({
-      activeKey: key,
-    });
+    props.setActiveKey(key);
   };
   return (
     <Tabs
-      defaultActiveKey={props.activeKey}
+      // defaultActiveKey={props.activeKey}
+      activeKey={props.activeKey}
       onChange={onChange}
       items={tabConfigs}
     >
@@ -133,10 +126,7 @@ const HeaderAction = props => (
 );
 
 const UserInfo = props => {
-  const goPage = params => {
-    history.push(params);
-  };
-  const goUserCenter = params => goPage(`/userCenter`);
+  const goUserCenter = params => props.goPage(`/userCenter`);
   return (
     <div className="userInfo">
       {/* <img
@@ -165,29 +155,64 @@ const Header = props => {
   const { messages } = useIntl();
   const { activeKey, setActiveKey } = useModel('systemConfig');
   const { userInfo, logout } = useModel('users');
-  console.log(
-    ' Header ： ',
-    bgRoutes.includes(activeKey),
-    activeKey,
-    props,
-    messages,
-    userInfo,
-  ); //
+  // console.log(' Header ： ', activeKey, props, messages, userInfo); //
 
   const goPage = params => {
     history.push(params);
     setActiveKey(params);
   };
 
-  const logoutProxy = params => {
+  const logoutProxy = () => {
+    console.log(' logoutProxy   ,   ： ');
+    setActiveKey('/login');
+    logout('/login');
+  };
+
+  const logoutAdminProxy = params => {
     setActiveKey('/login?p=admin');
     logout('/login?p=admin');
   };
 
-  const info = {
-    avatar: '',
-    name: 'zyb',
-  };
+  const isExpertPlatform = bgRoutes.includes(activeKey);
+  const actionCom = Object.keys(userInfo).length ? (
+    <UserInfo
+      goPage={goPage}
+      activeKey={activeKey}
+      userInfo={userInfo}
+      messages={messages}
+      logout={logoutProxy}
+    ></UserInfo>
+  ) : (
+    <HeaderAction
+      activeKey={activeKey}
+      goPage={goPage}
+      messages={messages}
+    ></HeaderAction>
+  );
+
+  const platformCom = (
+    <div className="logoWarpper" onClick={logoutAdminProxy}>
+      <img src={platformLogo} className="platformLogo" />
+      <div className={cls({ linking: bgRoutes.includes(activeKey) })}>
+        {messages.expertPlatform}
+      </div>
+    </div>
+  );
+
+  const infoCom1 = (
+    <div className="headerRight">
+      {actionCom}
+      {platformCom}
+    </div>
+  );
+
+  const infoCom2 = (
+    <div className="headerRight">
+      {platformCom}
+      {actionCom}
+    </div>
+  );
+  const infoCom = bgRole.includes(userInfo.titleID) ? infoCom2 : infoCom1;
 
   return (
     <div className="header">
@@ -207,37 +232,15 @@ const Header = props => {
         </div>
         {/* {props.isShowTabs && <HeaderAction goPage={goPage}></HeaderAction>} */}
 
-        <div className="headerRight">
-          {Object.keys(userInfo).length ? (
-            <UserInfo
-              activeKey={activeKey}
-              userInfo={userInfo}
-              messages={messages}
-              logout={logout}
-            ></UserInfo>
-          ) : (
-            <HeaderAction
-              activeKey={activeKey}
-              goPage={goPage}
-              messages={messages}
-            ></HeaderAction>
-          )}
-          <div className="logoWarpper" onClick={logoutProxy}>
-            <img src={platformLogo} className="platformLogo" />
-            <div className={cls({ linking: bgRoutes.includes(activeKey) })}>
-              {messages.expertPlatform}
-            </div>
-          </div>
-          {/* <UserInfo userInfo={userInfo} messages={messages}></UserInfo> */}
-        </div>
+        {infoCom}
       </div>
     </div>
   );
 };
 
 Header.defaultProps = {
-  systemTitle: '',
-  isShowTabs: true,
+  // systemTitle: '',
+  // isShowTabs: true,
 };
 
 export default Header;

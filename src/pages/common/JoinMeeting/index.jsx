@@ -13,8 +13,8 @@ const JoinMeetingTips = props => {
   return (
     <div className="joinMeetingTips">
       {/* {props.messages.joinMeeting.paymentTip} */}
-      Payment，Total payment is RMB {info.hotelOrderPrice}, please transfer
-      accounts to {info.total} bank：585221474511，payee：{info.total}
+      Total payment is RMB {info.hotelOrderPrice}, please transfer accounts to{' '}
+      {info.total} bank：585221474511，payee：{info.total}
     </div>
   );
 };

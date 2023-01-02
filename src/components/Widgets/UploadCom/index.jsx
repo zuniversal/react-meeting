@@ -20,7 +20,7 @@ import {
 } from 'antd';
 import { UploadOutlined, PlusOutlined, StarOutlined } from '@ant-design/icons';
 import { getItem, getToken, tips } from '@/utils';
-import { REQUIRE } from '@/constants';
+import { REQUIRE_EN } from '@/constants';
 import SmartImg from '@/common/SmartImg';
 
 const formatFile = data =>
@@ -104,7 +104,7 @@ const UploadCom = props => {
     return [
       {
         required: true,
-        message: label + REQUIRE,
+        message: label + REQUIRE_EN,
       },
     ];
   };
@@ -129,11 +129,11 @@ const UploadCom = props => {
     setFileData(e.fileList);
 
     if (e.file.status === 'done') {
-      tips(`${e.file.name} 上传成功！`, 1);
+      tips(`${e.file.name} Upload successfully！`, 1);
       props.succ && props.succ(e);
       props.finish && props.finish(e);
     } else if (e.file.status === 'error') {
-      tips(`${e.file.name} 上传失败！`, 0);
+      tips(`${e.file.name} Upload fail！`, 0);
       props.fail && props.fail(e);
       props.finish && props.finish(e);
     }

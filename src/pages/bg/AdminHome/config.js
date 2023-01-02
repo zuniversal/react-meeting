@@ -31,8 +31,8 @@ export const bgCountConfig = [
     bg: '#5DA491',
   },
   {
-    langKey: 'apprapproval',
-    path: '/paperApprove',
+    langKey: 'payReview',
+    path: '/payReview',
     icon: p4,
     label: '缴费审核',
     bg: '#5394B7',

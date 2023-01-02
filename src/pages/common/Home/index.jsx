@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.less';
 import { Button } from 'antd';
-import { useIntl, history } from 'umi';
+import { useIntl, history, useModel } from 'umi';
 import g1 from '@/static/img/home/g1.png';
 import g2 from '@/static/img/home/g2.png';
 import g3 from '@/static/img/home/g3.png';
@@ -13,6 +13,7 @@ import {
   meetingTravelConfig,
   supporterConfig,
 } from './config';
+import Download from '@/components/Widgets/Download';
 
 const goPage = params => history.push(params);
 const goPost = params => goPage(`/postPaper`);
@@ -58,9 +59,8 @@ const FloatButton = props => {
 };
 
 const Banner = props => {
-  const goPage = params => {
-    history.push(params);
-  };
+  const { goAndSetkey } = useModel('systemConfig');
+  const goPost = params => goAndSetkey(`/postPaper`);
   return (
     <div className="banner">
       <div className="bannerCenter">
@@ -98,9 +98,14 @@ const MeetingIntro = props => {
           </div>
         ))}
         {/* <div className="meetingIntroText">{props.msg.title}</div> */}
-        <Button className="blueBtn bigBtn" type="primary" onClick={goPost}>
+        {/* <Button className="blueBtn bigBtn" type="primary" onClick={goPost}>
           {props.msg.callPaper}
-        </Button>
+        </Button> */}
+        <Download url={'xx'}>
+          <Button className="blueBtn bigBtn" type="primary">
+            {props.msg.callPaper}
+          </Button>
+        </Download>
       </div>
       <div className="meetingIntroRight">
         <img src={g1} className="g1" />

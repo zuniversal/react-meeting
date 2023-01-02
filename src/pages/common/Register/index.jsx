@@ -26,7 +26,7 @@ const Register = props => {
     };
     // setItems('regInfo', datas);
     setItems('regInfo', formProps.values);
-    history.push('/selectIdentity');
+    history.push('/setPwd');
   };
 
   const content = (

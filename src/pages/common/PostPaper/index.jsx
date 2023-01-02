@@ -33,14 +33,14 @@ const DowntTpl = ({ messages }) => (
   <div className="activeLinkWrapper">
     <a
       className="activeLink"
-      href="/api/download/paperTpl.docx"
+      href="/api/downloads/paperTpl.docx"
       download={'paperTpl.docx'}
     >
       {messages.postPaper.downloadTpl}
     </a>
     <a
       className="activeLink"
-      href="/api/download/paperAuth.pdf"
+      href="/api/downloads/paperAuth.pdf"
       download={'paperAuth.pdf'}
     >
       {messages.postPaper.downloadAuth}
@@ -106,23 +106,10 @@ const PostPaper = props => {
       ...formProps.values,
       firstName: '',
       secondName: '',
+      submitPaperCateID: 1,
       // paperURL: '/paperURL',
       // copyrightFileURL: '/copyrightFileURL',
     });
-    const res2 = {
-      commonAuthor: '论文共同作者',
-      company: '单位名称',
-      contactAuthor: '论文通讯作者',
-      copyrightFileURL: '0ea005ef712f227010e10332a6208626fb056691.pdf',
-      file: null,
-      firstName: '',
-      paperURL: 'd210dd9779f6d56ed54f5748a68f21be37b34176.doc',
-      secondName: '',
-      submitPaperCateID: 2,
-      title: '论文标题',
-    };
-    console.log('  res2 ：', res2); //
-    // addPostAsync(res2);
     addPostAsync(res);
   };
   const common = {

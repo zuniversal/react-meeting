@@ -1,38 +1,41 @@
 import React from 'react';
 import SmartTable from '@/common/SmartTable';
+import { hotelConfigMap, ynConfigMap } from '@/configs';
 
 const JoinCountTable = props => {
   const { messages } = props; //
   const columns = [
     {
-      title: messages.name,
+      title: messages.joinCount.name,
       dataIndex: 'name',
     },
     {
-      title: messages.identity,
-      dataIndex: 'identity',
+      title: messages.joinCount.identity,
+      dataIndex: 'title',
     },
     {
-      title: messages.emailAddr,
-      dataIndex: 'emailAddr',
+      title: messages.joinCount.email,
+      dataIndex: 'email',
     },
     {
-      title: messages.phone,
+      title: messages.joinCount.phone,
       dataIndex: 'phone',
     },
     {
-      title: messages.isNeedPick,
-      dataIndex: 'isNeedPick',
+      title: messages.joinCount.isNeedPick,
+      dataIndex: 'isGreet',
+      dataMap: ynConfigMap,
     },
     {
       title: messages.joinCount.hotelName,
       dataIndex: 'hotelName',
+      dataMap: hotelConfigMap,
     },
     {
       sorter: true,
-      sortKey: 'uploadTime',
+      sortKey: 'arrivetime',
       title: messages.joinCount.arriveTime,
-      dataIndex: 'arriveTime',
+      dataIndex: 'arrivetime',
     },
   ];
 
@@ -42,6 +45,8 @@ const JoinCountTable = props => {
       {...props}
       rowSelection={null}
       noActionCol
+      locale="zh"
+      rowKey="email"
     ></SmartTable>
   );
 };
