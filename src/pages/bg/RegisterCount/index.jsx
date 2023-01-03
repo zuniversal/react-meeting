@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import './style.less';
-import { useIntl } from 'umi';
+import { useIntl, useModel } from 'umi';
 import SearchKwForm from '@/components/Form/SearchKwForm';
 import RegisterCountTable from './RegisterCountTable';
 
 const RegisterCount = props => {
   const { messages } = useIntl();
+  const {
+    registerCountTotal,
+    registerCountList,
+    getRegisterCountListAsync,
+  } = useModel('admin');
+
+  useEffect(() => {
+    getRegisterCountListAsync();
+  }, []);
+
   const onFieldChange = params => {
     console.log(' onFieldChange ： ', params); //
   };
@@ -16,6 +26,17 @@ const RegisterCount = props => {
     },
   };
 
+  const tableProps = {
+    // onSelectChange: props.onSelectChange,
+    messages,
+    dataSource: registerCountList,
+    count: registerCountTotal,
+    getListAsync: getRegisterCountListAsync,
+    // getListAsync: (p) => getRegisterCountListAsync({
+    //   ...p,
+    //   per_page: 3
+    // }),
+  };
   return (
     <div className="adminBg">
       <div className="adminContent">
@@ -31,7 +52,11 @@ const RegisterCount = props => {
               customConfig={customConfig}
             ></SearchKwForm>
           </div>
-          <RegisterCountTable messages={messages}></RegisterCountTable>
+          <RegisterCountTable
+            // messages={messages}
+            // dataSource={registerCountList}
+            {...tableProps}
+          ></RegisterCountTable>
         </div>
       </div>
     </div>

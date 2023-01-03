@@ -33,6 +33,7 @@ export default function paperDistribute() {
   }, []);
 
   const addPaperDistributeAsync = useCallback(async params => {
+    console.log(' addPaperDistributeAsync ： ', params); //
     const res = await addPaperDistribute(params);
   }, []);
 
@@ -44,6 +45,19 @@ export default function paperDistribute() {
 
   return {
     approverList,
+    // approverList: [{
+    //     label: "审稿人1",
+    //     value: "1",
+    //   },
+    //   {
+    //     label: "审稿人2",
+    //     value: "2",
+    //   },
+    //   {
+    //     label: "审稿人3",
+    //     value: "3",
+    //   },
+    // ],
     getApproverListAsync,
     paperDistributeList,
     getPaperDistributeListAsync,

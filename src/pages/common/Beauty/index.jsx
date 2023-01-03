@@ -11,7 +11,7 @@ const Beauty = props => {
     <div className="beauty">
       <BeautyBanner msg={messages.beauty}></BeautyBanner>
       <div className="beautyWrapper">
-        <BeautyVideo></BeautyVideo>
+        {/* <BeautyVideo></BeautyVideo> */}
         <BeautyIntro msg={messages.beauty}></BeautyIntro>
       </div>
     </div>

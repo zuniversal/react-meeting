@@ -2414,6 +2414,8 @@ export const calledConfig = [
   },
 ];
 
+export const calledConfigMap = arrMapObj(calledConfig);
+
 export const identityConfig = [
   {
     value: '1',

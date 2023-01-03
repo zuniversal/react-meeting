@@ -14,17 +14,17 @@ const PaperDistributeForm = props => {
       msgKey={'paperApprove'}
       config={approveConfig}
     ></InfoDesc>,
-    {
-      formType: 'DatePicker',
-      itemProps: {
-        label: messages.paperDistribute.endTime,
-        name: 'endtime',
-      },
-      comProps: {
-        className: 'formItem',
-        showTime: true,
-      },
-    },
+    // {
+    //   formType: 'DatePicker',
+    //   itemProps: {
+    //     label: messages.paperDistribute.endTime,
+    //     name: 'endtime',
+    //   },
+    //   comProps: {
+    //     className: 'formItem',
+    //     showTime: true,
+    //   },
+    // },
     {
       formType: 'TextArea',
       itemProps: {

@@ -232,7 +232,11 @@ const Header = props => {
         </div>
         {/* {props.isShowTabs && <HeaderAction goPage={goPage}></HeaderAction>} */}
 
-        {infoCom}
+        {/* {infoCom} */}
+        <div className="headerRight">
+          {actionCom}
+          {!Object.keys(userInfo).length && platformCom}
+        </div>
       </div>
     </div>
   );

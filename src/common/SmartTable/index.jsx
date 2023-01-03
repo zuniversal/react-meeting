@@ -423,11 +423,11 @@ class SmartTable extends PureComponent {
       isShowResultModal: true,
     });
   };
-  onPageChange = (page, page_size) => {
+  onPageChange = (page, per_page) => {
     if (!this.props.noRequest && this.props.getListAsync) {
       this.props.getListAsync({
         page,
-        page_size,
+        per_page,
       });
     }
 
@@ -435,12 +435,12 @@ class SmartTable extends PureComponent {
     const paginationObj = {
       ...pagination,
       current: page,
-      pageSize: page_size,
+      pageSize: per_page,
     };
     console.log(
       ' onTableChange onPageChange,  , ： ',
       page,
-      page_size,
+      per_page,
       this.state,
       this.props,
       pagination,
@@ -528,11 +528,11 @@ class SmartTable extends PureComponent {
   onTableChange = (pagination, filters, sorter) => {
     console.log('    onTableChange ： ', pagination, filters, sorter);
     const { order, column: { sortKey, paramKey = '_sort' } = {} } = sorter;
-    const { current: page, pageSize: page_size } = pagination;
+    const { current: page, pageSize: per_page } = pagination;
     if (!this.props.noRequest && this.props.getListAsync) {
       const params = {
         page,
-        page_size,
+        per_page,
       };
       // params[sortKey] = order;
       if (sortKey) {
@@ -658,7 +658,7 @@ class SmartTable extends PureComponent {
       pageConfig,
       noRequest,
     } = this.props;
-    const { page_size: pageSize, page: current } = searchInfo;
+    const { per_page: pageSize, page: current } = searchInfo;
 
     const paginationConfig = {
       ...pagination,

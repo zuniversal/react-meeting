@@ -10,7 +10,7 @@ const SetPwdForm = props => {
       itemProps: {
         label: messages.login.password,
         name: 'password',
-        extra: 'Tips: 请输入大于或等于6位密码，不限制英文或数字！',
+        extra: messages.login.pwdTips,
       },
       comProps: {
         className: 'formItem',

@@ -1,7 +1,9 @@
 import React from 'react';
 import SmartTable from '@/common/SmartTable';
+import { calledConfigMap } from '@/configs';
 
 const RegisterCountTable = props => {
+  console.log(' RegisterCountTable ： ', props); //
   const { messages } = props;
   const columns = [
     {
@@ -10,7 +12,8 @@ const RegisterCountTable = props => {
     },
     {
       title: messages.registerCount.called,
-      dataIndex: 'called',
+      dataIndex: 'callID',
+      dataMap: calledConfigMap,
     },
     {
       title: messages.registerCount.email,
@@ -30,13 +33,13 @@ const RegisterCountTable = props => {
     },
     {
       title: messages.registerCount.addr,
-      dataIndex: 'addr',
+      dataIndex: 'unitAddress',
     },
     {
       sorter: true,
       sortKey: 'uploadTime',
       title: messages.registerCount.regTime,
-      dataIndex: 'regTime',
+      dataIndex: 'regesterTime',
     },
   ];
 

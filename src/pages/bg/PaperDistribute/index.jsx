@@ -77,7 +77,7 @@ const PaperDistribute = props => {
       if (action === 'noApprove') {
         editPaperDistributeAsync(
           formatData({
-            id: extraData.id,
+            id: extraData.record.id,
             ...res,
           }),
         );
@@ -96,12 +96,12 @@ const PaperDistribute = props => {
     getApproverListAsync({ paperCate: params.paperCateID });
   };
   const setApprover = (params, item) => {
-    console.log(' setApprover ： ', params, item); //
-    // addPaperDistributeAsync({
-    //   id: extraData.id,
-    //   reviewerID: ,
-    //   endtime: ,
-    // });
+    console.log(' setApprover ： ', params, item, extraData); //
+    addPaperDistributeAsync({
+      id: extraData.record.id,
+      reviewerID: params,
+      // endtime: ,
+    });
   };
 
   const customConfig = {

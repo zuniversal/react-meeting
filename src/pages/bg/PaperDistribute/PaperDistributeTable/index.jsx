@@ -1,24 +1,54 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import SmartTable from '@/common/SmartTable';
-
-import { Select } from 'antd';
 import { paperTypeConfigMap } from '@/configs';
 import SmartForm from '@/common/SmartForm';
+import { Select, Divider, Button } from 'antd';
+import { CaretDownOutlined } from '@ant-design/icons';
 
 const PaperDistributeForm = props => {
   const { messages, record } = props;
+  const ph = (
+    <div>
+      {messages.paperDistribute.distributeApprover}
+      <CaretDownOutlined />
+    </div>
+  );
+
+  const valueRef = useRef(null);
+  const onChange = (selected, selectedList) => {
+    console.log(' onChange ： ', selected, selectedList); //
+    valueRef.current = selected;
+  };
+  const setApprover = params => {
+    console.log(' setApprover ： ', params, valueRef.current); //
+    props.setApprover(valueRef.current);
+  };
+
   const config = [
     <Select
       key="tbSelect"
       mode="multiple"
       popupClassName="tbSelect"
-      placeholder={messages.paperDistribute.distributeApprover}
-      defaultValue={[messages.paperDistribute.distributeApprover]}
+      placeholder={ph}
+      // defaultValue={[messages.paperDistribute.distributeApprover]}
       bordered={false}
-      onChange={props.setApprover}
+      // onChange={props.setApprover}
+      onChange={onChange}
       onFocus={() => props.getApproverList(record)}
       // onBlur={props.setApprover}
       options={props.approverList}
+      dropdownRender={menu => (
+        <>
+          {menu}
+          <Divider style={{ margin: '8px 0' }} />
+          {/* <div style={{textAlign: 'right'}}> */}
+          <div className="tbSelectAction">
+            <Button type="primary" onClick={setApprover}>
+              {messages.paperDistribute.distribute}
+            </Button>
+          </div>
+        </>
+      )}
     />,
   ];
 

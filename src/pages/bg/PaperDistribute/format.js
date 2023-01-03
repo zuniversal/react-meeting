@@ -5,7 +5,7 @@ export const formatData = data => {
     ...data,
   };
 
-  newData.endtime = formatDatePicker(newData, 'endtime');
+  // newData.endtime = formatDatePicker(newData, 'endtime');
 
   console.log(' newData ： ', newData); //
   return newData;

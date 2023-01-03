@@ -170,6 +170,7 @@ export default {
     forgetPwdTip: `We have sent the link of password modifcation to your email, please log in to the email and click the link to reset your password.`,
     setPwdTip: `
     `,
+    pwdTips: `Please input your password，the password must be more than six figures`,
   },
   register: {
     regTitle: `Please set your new password`,
@@ -367,6 +368,8 @@ export default {
     imgUpload: `上传图片`,
     imgDrag: `将图片拖到此处,或点击上传`,
     imgUploadTips: `只能上传jpg/png文件，且不超过500kb`,
+    cancel: `取消`,
+    publish: `发布`,
   },
   uploadImgHistory: {
     title: `历史记录`,
@@ -390,6 +393,7 @@ export default {
     no: `编号`,
     searchPh: `输入论文标随或论文编号进行搜索`,
     noApprove: `审核不通过`,
+    distribute: `分配`,
     distributeApprover: `分配给审核人`,
     endTime: `截止日期`,
     advise: `填写意见`,

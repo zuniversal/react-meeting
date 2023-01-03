@@ -48,7 +48,7 @@ const UploadImg = props => {
           >
             <div className="btnWrapper">
               <Button size="large" onClick={cancel}>
-                {messages.cancel}
+                {messages.uploadImg.cancel}
               </Button>
               <Button
                 size="large"
@@ -56,7 +56,7 @@ const UploadImg = props => {
                 htmlType="submit"
                 className="rawBtn"
               >
-                {messages.publish}
+                {messages.uploadImg.publish}
               </Button>
             </div>
           </UploadImgForm>
