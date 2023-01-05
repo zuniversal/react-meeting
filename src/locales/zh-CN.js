@@ -37,6 +37,7 @@ export default {
   download: `Download`,
   download_zh: ` 下载`,
   identity: `Status`,
+  ruleName: `Please enter the correct name!`,
 
   header: {
     home: `Home Page`,
@@ -170,7 +171,7 @@ export default {
     forgetPwdTip: `We have sent the link of password modifcation to your email, please log in to the email and click the link to reset your password.`,
     setPwdTip: `
     `,
-    pwdTips: `Please input your password，the password must be more than six figures`,
+    pwdTips: `Please input your password，the password must be more than three figures`,
   },
   register: {
     regTitle: `Please set your new password`,

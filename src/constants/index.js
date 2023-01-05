@@ -78,7 +78,7 @@ export const INPUT_TXT = '请输入';
 export const REQUIRE = '字段必填！';
 export const SELECT_TXT_EN = 'Please select ';
 export const INPUT_TXT_EN = 'Please input ';
-export const REQUIRE_EN = 'Field Required!';
+export const REQUIRE_EN = 'Mandatory Field!';
 export const WORD = 'keyword';
 
 export const SIZE = 10;

@@ -57,7 +57,9 @@ const CommonModal = props => {
 
 const PaperStatus = props => {
   const { messages } = useIntl();
-  const { getPaperListAsync, postList } = useModel('postPaper');
+  const { postList, getPaperListAsync, removePaperAsync } = useModel(
+    'postPaper',
+  );
   useEffect(() => {
     getPaperListAsync();
   }, []);
@@ -70,6 +72,12 @@ const PaperStatus = props => {
     console.log(' showAdviseText   params,   ： ', params);
     showModal(params);
   };
+  const remove = params => {
+    console.log(' remove   params,   ： ', params);
+    removePaperAsync({
+      id: params.record.id,
+    });
+  };
 
   return (
     <UserCenterWrapper messages={messages} className="paperStatus">
@@ -77,6 +85,7 @@ const PaperStatus = props => {
       <PaperStatusTable
         messages={messages}
         dataSource={postList}
+        remove={remove}
         showAdviseText={showAdviseText}
       ></PaperStatusTable>
       <CommonModal

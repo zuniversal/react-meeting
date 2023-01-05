@@ -1,22 +1,44 @@
 import React from 'react';
 import { Form, Button } from 'antd';
-import { useIntl, useModel } from 'umi';
+import { history, useIntl, useModel } from 'umi';
 import LrWrapper from '@/pages/common/components/LrWrapper';
 import SetPwdForm from './SetPwdForm';
 import { setItems, getItems } from '@/utils';
 
 const SetPwd = props => {
   const { messages } = useIntl();
-  const { registerAsync } = useModel('users');
-
+  const { registerAsync, setPwdAsync } = useModel('users');
+  const {
+    location: { pathname, query },
+  } = history;
+  console.log(' history ： ', history); //
   const onSubmit = async formProps => {
-    console.log('onSubmit 提交 : ', formProps, props, getItems('regInfo'));
+    console.log(
+      'onSubmit 提交 : ',
+      formProps,
+      props,
+      getItems('regInfo'),
+      pathname,
+      query.email,
+    );
     const { confirmPwd, ...rest } = formProps.values;
-    const res = await registerAsync({
-      ...getItems('regInfo'),
-      ...rest,
-    });
-    console.log('  res await 结果  ：', res); //
+    if (pathname === '/resetPwd') {
+      console.log('  对吗  query.email ', query.email);
+      if (query.email) {
+        const res = await setPwdAsync({
+          email: query.email,
+          ...rest,
+        });
+        return;
+      }
+      return;
+    } else {
+      const res = await registerAsync({
+        ...getItems('regInfo'),
+        ...rest,
+      });
+      console.log('  res await 结果  ：', res); //
+    }
   };
 
   const content = (

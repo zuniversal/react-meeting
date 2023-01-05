@@ -5,6 +5,7 @@ import SmartForm from '@/common/SmartForm';
 import UploadCom from '@/components/Widgets/UploadCom';
 import { usePaperTypeForm } from '@/hooks/useFormItem';
 import { stringReg, stringRule } from '@/configs';
+import { REQUIRE_EN } from '@/constants';
 
 const PostPaperForm = props => {
   const { messages } = props;
@@ -35,7 +36,12 @@ const PostPaperForm = props => {
       comProps: {
         className: 'formItem',
       },
-      formRules: [stringRule],
+      formRules: [
+        {
+          ...stringRule,
+          message: messages.ruleName,
+        },
+      ],
     },
     {
       formType: 'Select',
@@ -45,11 +51,11 @@ const PostPaperForm = props => {
         rules: [
           {
             required: true,
-            message: 'Please input string!',
+            message: REQUIRE_EN,
           },
           ({ getFieldValue }) => ({
             validator(_, value) {
-              const res = value.every(v => stringReg.test(v));
+              const res = value?.every(v => stringReg.test(v));
               if (res) {
                 return Promise.resolve();
               }

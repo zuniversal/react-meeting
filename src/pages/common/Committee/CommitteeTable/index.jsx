@@ -2,7 +2,7 @@ import React from 'react';
 import SmartTable from '@/common/SmartTable';
 
 const pageConfig = {
-  page_size: 50,
+  per_page: 50,
 };
 
 export const CommitteeTable = props => {

@@ -11,7 +11,7 @@ const PaperStatusTable = props => {
   const columns = [
     {
       title: messages.paperStatus.no,
-      dataIndex: 'id',
+      dataIndex: 'paperID',
     },
     {
       title: messages.paperStatus.paperTitle,
@@ -35,6 +35,7 @@ const PaperStatusTable = props => {
       //     record,
       //   }),
       render: (text, record, index, config) => {
+        return null;
         return (
           <a
             onClick={() =>
@@ -73,9 +74,9 @@ const PaperStatusTable = props => {
     <>
       <a
         onClick={() => {
-          props.edit({
-            action: 'approvalPass',
-            d_id: record.id,
+          props.remove({
+            action: 'remove',
+            record,
           });
         }}
       >

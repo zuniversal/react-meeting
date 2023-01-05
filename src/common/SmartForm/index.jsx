@@ -285,7 +285,8 @@ const SmartForm = (props, state) => {
     return [
       {
         required: true,
-        message: label + prefixMap[locale].REQUIRE,
+        message: prefixMap[locale].REQUIRE,
+        // message: label + prefixMap[locale].REQUIRE,
       },
       ...(ruleExtra ? ruleExtra : []),
     ];

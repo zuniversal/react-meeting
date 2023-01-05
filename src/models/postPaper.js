@@ -1,9 +1,10 @@
 import { useState, useCallback } from 'react';
 import { history } from 'umi';
-import { getPaperList, addPaper } from '@/services/postPaper';
+import { getPaperList, addPaper, removePaper } from '@/services/postPaper';
 import { setItem, getItem } from '@/utils';
 
 export default function postPaper() {
+  const [isLoading, setIsLoading] = useState(false);
   const [isShowCommonModal, setIsShowCommonModal] = useState(false);
   // const [isShowCommonModal, setIsShowCommonModal] = useState(true);
 
@@ -19,11 +20,19 @@ export default function postPaper() {
   }, []);
 
   const addPostAsync = useCallback(async params => {
+    setIsLoading(true);
     const res = await addPaper(params);
+    setIsLoading(false);
     console.log(' addPostAsync res await 结果  ：', res);
     setIsShowCommonModal(true);
     // setAction(res.code === 200 ? 'succ' : 'fail');
     setAction(res.code == 200 ? 'succ' : 'fail');
+    return res;
+  }, []);
+
+  const removePaperAsync = useCallback(async params => {
+    const res = await removePaper(params);
+    getPaperListAsync();
   }, []);
 
   return {
@@ -32,6 +41,8 @@ export default function postPaper() {
     setIsShowCommonModal,
     getPaperListAsync,
     addPostAsync,
+    removePaperAsync,
     action,
+    isLoading,
   };
 }

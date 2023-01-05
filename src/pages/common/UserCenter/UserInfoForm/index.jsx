@@ -65,7 +65,12 @@ const UserInfoForm = props => {
       comProps: {
         className: 'formItem',
       },
-      formRules: [stringRule],
+      formRules: [
+        {
+          ...stringRule,
+          message: messages.ruleName,
+        },
+      ],
     },
     {
       itemProps: {
@@ -75,7 +80,12 @@ const UserInfoForm = props => {
       comProps: {
         className: 'formItem',
       },
-      formRules: [stringRule],
+      formRules: [
+        {
+          ...stringRule,
+          message: messages.ruleName,
+        },
+      ],
     },
     {
       itemProps: {

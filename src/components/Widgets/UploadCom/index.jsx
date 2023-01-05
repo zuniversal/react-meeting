@@ -105,6 +105,7 @@ const UploadCom = props => {
       {
         required: true,
         message: label + REQUIRE_EN,
+        message: REQUIRE_EN,
       },
     ];
   };

@@ -8,8 +8,17 @@ import { emailRule } from '@/configs';
 const LoginForm = props => {
   const { messages, isBgPlatform } = props;
 
+  const [form] = Form.useForm();
+
   const goPage = path => {
     history.push(path);
+  };
+
+  const forgetPwd = async params => {
+    console.log(' forgetPwd   params,   ： ', params);
+    const res = await form.validateFields(['email']);
+    console.log('  res await 结果  ：', res);
+    props.forgetPwd(res);
   };
 
   const checkboxData = [{ label: '', value: 1 }];
@@ -69,7 +78,8 @@ const LoginForm = props => {
         <Checkbox>{messages.login.remember}</Checkbox>
       </Form.Item>
       <Form.Item>
-        <span className="findPwd" onClick={() => goPage('forgetPwd')}>
+        {/* <span className="findPwd" onClick={() => goPage('forgetPwd')}> */}
+        <span className="findPwd" onClick={forgetPwd}>
           {messages.login.findPwd}
         </span>
       </Form.Item>
@@ -82,6 +92,7 @@ const LoginForm = props => {
       layout={'vertical'}
       noLabelLayout
       config={config}
+      propsForm={form}
       // init={{
       //   isReviewer: 0,
       // }}

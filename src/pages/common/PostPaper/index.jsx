@@ -88,6 +88,7 @@ const CommonModal = props => {
 const PostPaper = props => {
   const { messages } = useIntl();
   const {
+    isLoading,
     isShowCommonModal,
     setIsShowCommonModal,
     addPostAsync,
@@ -99,10 +100,10 @@ const PostPaper = props => {
     getPaperListAsync();
     setIsShowCommonModal(true);
   };
-  const onSubmit = formProps => {
+  const onSubmit = async formProps => {
     console.log('onSubmit 提交 : ', formProps, props);
     // addPostAsync(params);
-    const res = formatData({
+    const params = formatData({
       ...formProps.values,
       firstName: '',
       secondName: '',
@@ -110,7 +111,11 @@ const PostPaper = props => {
       // paperURL: '/paperURL',
       // copyrightFileURL: '/copyrightFileURL',
     });
-    addPostAsync(res);
+    const res = await addPostAsync(params);
+    console.log('  res ：', res); //
+    if (res.code == 200) {
+      formProps.form.resetFields();
+    }
   };
   const common = {
     isShowCommonModal,
@@ -153,7 +158,12 @@ const PostPaper = props => {
   const content = (
     <PostPaperForm name="form" onSubmit={onSubmit} messages={messages}>
       <Form.Item className={`btnFormItem`} noStyle>
-        <Button type="primary" htmlType="submit" className="actionBtn bigBtn">
+        <Button
+          type="primary"
+          htmlType="submit"
+          disabled={isLoading}
+          className="actionBtn bigBtn"
+        >
           {messages.postPaper.confirmPost}
         </Button>
       </Form.Item>

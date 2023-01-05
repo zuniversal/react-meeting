@@ -1,6 +1,13 @@
 import { useState, useCallback } from 'react';
 import { history } from 'umi';
-import { login, regester, getUserInfo, editUserInfo } from '@/services/user';
+import {
+  login,
+  regester,
+  forgetPwd,
+  setPwd,
+  getUserInfo,
+  editUserInfo,
+} from '@/services/user';
 import { setItem, removeItems, tips } from '@/utils';
 import { DOWNLOADS_URL } from '@/constants';
 
@@ -40,6 +47,16 @@ export default function users() {
     }
   }, []);
 
+  const forgetPwdAsync = useCallback(async params => {
+    const res = await forgetPwd(params);
+    console.log(' forgetPwdAsync res await 结果  ：', res);
+  }, []);
+
+  const setPwdAsync = useCallback(async params => {
+    const res = await setPwd(params);
+    console.log(' setPwdAsync res await 结果  ：', res);
+  }, []);
+
   const editUserInfoAsync = useCallback(async params => {
     const res = await editUserInfo(params);
     // setUserInfo(res.data[0])
@@ -66,6 +83,8 @@ export default function users() {
     userInfo,
     loginAsync,
     registerAsync,
+    forgetPwdAsync,
+    setPwdAsync,
     getUserInfoAsync,
     editUserInfoAsync,
     logout,

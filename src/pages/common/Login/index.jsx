@@ -12,7 +12,7 @@ const Login = props => {
     location: { query },
   } = history;
   const isBgPlatform = !!query.p;
-  const { loginAsync } = useModel('users');
+  const { loginAsync, forgetPwdAsync } = useModel('users');
   console.log(' loginAsync ： ', loginAsync);
 
   const onSubmit = formProps => {
@@ -42,12 +42,18 @@ const Login = props => {
     }
   };
 
+  const forgetPwd = params => {
+    console.log(' forgetPwd   params,   ： ', params);
+    forgetPwdAsync(params);
+  };
+
   const content = (
     <LoginForm
       name="form"
       onSubmit={onSubmit}
       messages={messages}
       isBgPlatform={isBgPlatform}
+      forgetPwd={forgetPwd}
     >
       <Form.Item className={`btnFormItem`} noStyle>
         <Button type="primary" htmlType="submit" className="actionBtn">

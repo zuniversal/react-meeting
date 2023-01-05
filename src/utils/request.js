@@ -91,7 +91,7 @@ export const isTips = res => {
     tips(statusMap[status], 2);
     return;
   }
-  if (code !== NORMAL_CODE || status != NORMAL_CODE) {
+  if (code !== NORMAL_CODE || (status != NORMAL_CODE && !noTips)) {
     const codeMsg = getCodeMsg(code);
     tips(msgEG || codeMsg, 2);
     return;
