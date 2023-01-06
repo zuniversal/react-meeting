@@ -8,16 +8,16 @@ const pageConfig = {
 export const CommitteeTable = props => {
   const columns = [
     {
-      title: props.messages.committee.region,
-      dataIndex: 'region',
+      title: props.messages.committee.name,
+      dataIndex: 'name',
     },
     {
       title: props.messages.committee.position,
       dataIndex: 'post',
     },
     {
-      title: props.messages.committee.name,
-      dataIndex: 'name',
+      title: props.messages.committee.region,
+      dataIndex: 'region',
     },
   ];
 
@@ -37,16 +37,16 @@ export const CommitteeTable = props => {
 export const CommitteeLocaleTable = props => {
   const columns = [
     {
-      title: props.messages.committee.workUnit,
-      dataIndex: 'company',
+      title: props.messages.committee.name,
+      dataIndex: 'name',
     },
     {
       title: props.messages.committee.position,
       dataIndex: 'status',
     },
     {
-      title: props.messages.committee.name,
-      dataIndex: 'name',
+      title: props.messages.committee.workUnit,
+      dataIndex: 'company',
     },
   ];
 

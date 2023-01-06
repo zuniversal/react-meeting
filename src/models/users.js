@@ -68,6 +68,7 @@ export default function users() {
       setUserInfo({
         ...res.data[0],
         headMap: DOWNLOADS_URL + res.data[0].head,
+        noTipsAll: true,
       });
   }, []);
 

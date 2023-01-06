@@ -54,7 +54,7 @@ const tabConfigs = [
   // },
   {
     tab: '联系我们',
-    label: 'ContactUs',
+    label: 'Contact Us',
     key: '/contactUs',
   },
   ...hiddenFeTabs,

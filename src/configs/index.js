@@ -2351,7 +2351,8 @@ export const phoneRule = {
   required: true,
   message: '请输入正确的手机号',
   message: 'Please enter the correct mobile number',
-  pattern: /^1[3|4|5|7|8][0-9]\d{8}$/,
+  // pattern: /^1[3|4|5|7|8][0-9]\d{8}$/,
+  pattern: /^[0-9]*$/,
 };
 
 export const emailRule = {
@@ -2526,3 +2527,6 @@ export const hotelConfig = [
 ];
 
 export const hotelConfigMap = arrMapObj(hotelConfig);
+
+// 管理员：1；审稿人：2；投稿人：3
+export const noUserActionRole = [1, 2];

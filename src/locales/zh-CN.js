@@ -51,25 +51,16 @@ export default {
   },
 
   home: {
-    title: `2nd INTERNATIONAL CONFER ENCE ON THE STABILITY`,
-    subTitle: `AND SAFETYOF SHIPS AND OCEAN VEHICLES`,
-    activity: `13rd 18th, October, 2024, Wuxi, Jiangsu, China`,
+    title: `2nd INTERNATIONAL CONFERENCE ON THE STABILITY`,
+    subTitle: `AND SAFETY OF SHIPS AND OCEAN VEHICLES`,
+    activity: `October 13-18, 2024, Wuxi, Jiangsu, China`,
     goPost: `Submit my paper`,
-    callPaper: `call my paper`,
+    callPaper: `call for paper`,
     meetingIntro: `Conference Overview`,
     meetingIntroContent: [
-      `The aim of the STAB&s Confcrenccs ( Stability and safety of ships and occan
-        Vehicles) is to promote the exchange of ideas, methodologies. procedures, tools,
-        dataexperiences regarding the stability and Safety of ships and ocean vehicles
-        includingnaval and small craft sectors.`,
-      `Morcower, to provide an opportunity for navalarchitects, rescarchers, regulatory bodics,
-        government officials, inspection andertifying authorities, shipbuilders and ship
-        repairers, ship and platform owners andoperators, master mariners and consultants to
-        network and to present, discuss andshare information on developments in safe operation
-        and capsize preventitypcs and sizes of foating structures.`,
-      `The 2nd Conference, STAB&S 2024, organisedby China Ship Scientific Research Center,
-        will support and further this aim through asttong technical programme with 
-        contributions from industry and academia worldwide. `,
+      `The aim of the STAB&S Conferences (Stability and Safety of Ships and Ocean Vehicles) is to promote the exchange of ideas, methodologies, procedures, tools, data, experiences regarding the stability and Safety of ships and ocean vehicles including naval and small craft sectors.`,
+      `Moreover, to provide an opportunity for naval architects, researchers, regulatory bodies, government officials, inspection and certifying authorities, shipbuilders and ship repairers, ship and platform owners and operators, master mariners and consultants to network and to present, discuss and share information on developments in safe operation and capsize prevention for all types and sizes of floating structures.`,
+      `The 2nd Conference, STAB&S 2024, organised by China Ship Scientific Research Center, will support and further this aim through a strong technical programme with contributions from industry and academia worldwide. `,
     ],
     meetingTheme: `Conference Topics`,
     meetingThemeSub: `The conference sessions will cover a wide range of topics, including the followring key areas: `,
@@ -89,7 +80,7 @@ export default {
     meetingHotel: `Conference Registration`,
     meetingTool: `meetingTool`,
     meetingToolList: [
-      { label: `Late Regisration (After18 July 2024)` },
+      { label: `Late Regisration (After 18 July 2024)` },
       { label: `Registration fee: RMB4800` },
       { label: `Student fee: RMB2400` },
       { label: `Accompanying Person fee: RMB1200` },
@@ -106,10 +97,10 @@ export default {
       { label: `Early Registration (On And Before 18 July 2024)` },
       { label: `Registration Fee: RMB4000` },
       { label: `Student fee: RMB2000` },
-      { label: `Accompanying Person fee: RMB1 200` },
+      { label: `Accompanying Person fee: RMB1200` },
     ],
     meetingRegList4: [
-      { label: `Late Regisration (After18 July 2024)` },
+      { label: `Late Regisration (After 18 July 2024)` },
       { label: `Registration fee: RMB4800` },
       { label: `Student fee: RMB2400` },
       { label: `Accompanying Person fee: RMB1200` },
@@ -122,7 +113,7 @@ export default {
     ],
     meetingInfoList2: [
       {
-        label: `Free pick-up service from Shanghai Pudong&Hongqiao International Airports to the venue of W uxi will be arranged.`,
+        label: `Free pick-up service from Shanghai Pudong&Hongqiao International Airports to the venue of Wuxi will be arranged.`,
       },
       {
         label: `(about1.5 hrs from Shanghai Hongqiao to Wuxi, about 2.5 hrs from Shanghai Pudong International Airport to Wuxi)`,
@@ -144,8 +135,11 @@ export default {
     ],
   },
   beauty: {
-    banner: `Wuxi is titled “the most picturesque site on Taihu Lake”, “the water alley on anicent canal”, “Lingshan, the blessed Buddhist land” and “a century-old industrial and commerical city”.`,
-    bannerSub: `Welcome to Wuxi, the bright pearl over the Taihu Lake and a city of charm.`,
+    banner: `Wuxi is titled “the most picturesque site on Taihu Lake”. Welcome to Wuxi, the bright pearl over the Taihu Lake and a city of charm.`,
+    banner1: `Wuxi is titled “the most picturesque site on Taihu Lake”.`,
+    banner2: `Welcome to Wuxi, the bright pearl over the Taihu `,
+    banner3: `Lake and a city of charm.`,
+    bannerSub: ``,
     title1: `Wuxi`,
     title2: `Culture`,
     title3: `Economy`,
@@ -154,8 +148,8 @@ export default {
     title6: `Society`,
     culture: `Wuxi enjoys a long history of 3000 years and is a well-known historical and cultural city in China. It is also the cradle of Wu Culture, China’s national industry and township enterprises.`,
     economy: `Wuxi enjoys a prosperous economy and its GDP has always been listed among Tops in the large and medium-sized cities in Mainland China. Per capital local GDP is over USD 20000.`,
-    nature: `Wuxi enjoys natural beauties such as rivers, canals, lakes, springs and caves. It is an international garden city and one of China’s Top Ten tourist destinations.`,
-    transportation: `Wuxi enjoys convenient transportation and is the regional trasportation hub connecting north and south, east and west. The city is equipped with a comprehensive network by water, land and air traffic, and there are over 700 flights per week traveling betwe`,
+    nature: `Wuxi enjoys a prosperous economy and its GDP has always been listed among Tops in the large and medium-sized cities in Mainland China. Per capital local GDP is over USD 20000.`,
+    transportation: `Wuxi enjoys convenient transportation and is the regional trasportation hub connecting north and south, east and west. The city is equipped with a comprehensive network by water, land and air traffic, and there are over 700 flights per week traveling between Wuxi and more than 30 cities at home and abroad.`,
     society: `Wuxi enjoys an excellent ecological environment and is a top city in eco-competitiveness in China. It enjoys a harmonious and stable social environment and is one of China’s happiest cities.`,
   },
   login: {
@@ -182,8 +176,8 @@ export default {
     email: `Email Address`,
     country: `Country`,
     tel: `Contact Number`,
-    companyName: `Company name`,
-    addr: `Cumpuny Adldress`,
+    companyName: `Company Name`,
+    addr: `Company Address`,
   },
   post: {
     regTitle: `Please set your new password`,
@@ -392,7 +386,7 @@ export default {
   paperDistribute: {
     title: `分配论文`,
     no: `编号`,
-    searchPh: `输入论文标随或论文编号进行搜索`,
+    searchPh: `请输入论文标题或编号查询`,
     noApprove: `审核不通过`,
     distribute: `分配`,
     distributeApprover: `分配给审核人`,

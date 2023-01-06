@@ -60,7 +60,7 @@ const paperDistributeTable = props => {
   const columns = [
     {
       title: messages.paperDistribute.no,
-      dataIndex: 'id',
+      dataIndex: 'paperID',
     },
     {
       title: messages.paperDistribute.paperTitle,

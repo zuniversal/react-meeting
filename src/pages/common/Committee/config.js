@@ -57,7 +57,7 @@ export const internalCommitteeData = [
   {
     region: 'National Technical University of Athens, Greece',
     post: 'Professor',
-    name: 'Konstantinos Spytou',
+    name: 'Konstantinos Spyrou',
   },
   {
     region: 'Shanghai Jiao Tong University, China',
@@ -71,7 +71,8 @@ export const internalCommitteeData = [
   },
 ];
 
-export const localCommitteeData = [{
+export const localCommitteeData = [
+  {
     company: 'Chair, CSSRC',
     status: 'Professor',
     name: 'Chunrong He',
@@ -136,5 +137,4 @@ export const localCommitteeData = [{
     status: 'Ms',
     name: 'Tianhua Wang',
   },
-
 ];

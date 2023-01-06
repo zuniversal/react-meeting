@@ -62,7 +62,7 @@ export const getStatusMsg = (status, url) => {
 };
 
 export const isTips = res => {
-  // console.log('  isTips  !res ', !res, res);
+  console.log('  isTips  !res ', !res, res);
   if (!res) {
     tips('Unknown error！', 2);
     return;
@@ -71,7 +71,7 @@ export const isTips = res => {
   const { status, data, config } = res;
   const { msgEG, code } = data;
   // const { noTips } = config.data;
-  const { noTips } = res.config.customInfo;
+  const { noTips, noTipsAll } = res.config.customInfo;
   const { url } = config;
 
   // console.log(
@@ -86,6 +86,9 @@ export const isTips = res => {
   //   res.config.customInfo,
   //   url,
   // );
+  if (noTipsAll) {
+    return;
+  }
 
   if (statusMap[status]) {
     tips(statusMap[status], 2);

@@ -9,6 +9,7 @@ import PostPaperForm from './PostPaperForm';
 import { meetingThemeConfig, importantDateConfig } from './config';
 import { formatData } from './format';
 import bottomImg from '@/static/img/postPaper/bg.png';
+import { noUserActionRole } from '@/configs';
 
 const PostSucc = ({ messages }) => (
   <div className="activeLinkWrapper">
@@ -87,6 +88,8 @@ const CommonModal = props => {
 
 const PostPaper = props => {
   const { messages } = useIntl();
+  const { userInfo } = useModel('users');
+  const isDisabled = noUserActionRole.includes(userInfo.titleID);
   const {
     isLoading,
     isShowCommonModal,
@@ -108,6 +111,7 @@ const PostPaper = props => {
       firstName: '',
       secondName: '',
       submitPaperCateID: 1,
+      noTipsAll: true,
       // paperURL: '/paperURL',
       // copyrightFileURL: '/copyrightFileURL',
     });
@@ -161,7 +165,7 @@ const PostPaper = props => {
         <Button
           type="primary"
           htmlType="submit"
-          disabled={isLoading}
+          disabled={isLoading || isDisabled}
           className="actionBtn bigBtn"
         >
           {messages.postPaper.confirmPost}

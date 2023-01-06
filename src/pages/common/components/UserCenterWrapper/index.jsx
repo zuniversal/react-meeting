@@ -5,9 +5,13 @@ import { Button, Divider } from 'antd';
 import { DOWNLOADS_URL } from '@/constants';
 import cls from 'classnames';
 import Download from '@/components/Widgets/Download';
+import { noUserActionRole } from '@/configs';
 
 const UserCenterWrapper = props => {
   const { activeKey, setActiveKey } = useModel('systemConfig');
+  const { userInfo } = useModel('users');
+  const isDisabled = noUserActionRole.includes(userInfo.titleID);
+  console.log(' userInfo ： ', userInfo); //
   const goPage = params => {
     setActiveKey(params);
     history.push(params);
@@ -38,31 +42,33 @@ const UserCenterWrapper = props => {
             {messages.userCenter.downReceipt}
           </Download>
         </div>
-        <div className="btnWrapper">
-          <Button type="primary" className="bigBtn" onClick={goPost}>
-            {messages.userCenter.goPost}
-          </Button>
-          <Button
-            type="primary"
-            className={cls({
-              active: activeKey === '/paperStatus',
-              'blueBtn bigBtn': true,
-            })}
-            onClick={goPaperStatus}
-          >
-            {messages.userCenter.postStatus}
-          </Button>
-          <Button
-            type="primary"
-            className={cls({
-              active: activeKey === '/joinMeeting',
-              'greenBtn bigBtn': true,
-            })}
-            onClick={goJoinMeeting}
-          >
-            {messages.userCenter.joinMeeting}
-          </Button>
-        </div>
+        {!isDisabled && (
+          <div className="btnWrapper">
+            <Button type="primary" className="bigBtn" onClick={goPost}>
+              {messages.userCenter.goPost}
+            </Button>
+            <Button
+              type="primary"
+              className={cls({
+                active: activeKey === '/paperStatus',
+                'blueBtn bigBtn': true,
+              })}
+              onClick={goPaperStatus}
+            >
+              {messages.userCenter.postStatus}
+            </Button>
+            <Button
+              type="primary"
+              className={cls({
+                active: activeKey === '/joinMeeting',
+                'greenBtn bigBtn': true,
+              })}
+              onClick={goJoinMeeting}
+            >
+              {messages.userCenter.joinMeeting}
+            </Button>
+          </div>
+        )}
         <Divider className="divider" />
         {props.children}
       </div>
