@@ -126,7 +126,11 @@ const HeaderAction = props => (
 );
 
 const UserInfo = props => {
-  const goUserCenter = params => props.goPage(`/userCenter`);
+  const goUserCenter = params => {
+    if (!props.userInfo.isAdminApprover) {
+      props.goPage(`/userCenter`);
+    }
+  };
   return (
     <div className="userInfo">
       {/* <img

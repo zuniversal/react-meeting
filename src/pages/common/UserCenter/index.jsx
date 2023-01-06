@@ -21,6 +21,9 @@ const UserCenter = props => {
   // const [ isEdit, setIsEdit ] = useState(true)
   const [isEdit, setIsEdit] = useState(false);
 
+  const goPage = params => history.push(params);
+  const goChangePwd = params => goPage(`/changePwd`);
+
   const toggleIsEdit = () => {
     setIsEdit(!isEdit);
   };
@@ -41,9 +44,19 @@ const UserCenter = props => {
       <div className="userInfoRow">
         <span className="primaryTitle">{messages.userCenter.userInfo}</span>
         {/* <Button type="primary" ghost onClick={goUserInfo}> */}
-        <Button type="primary" className="bigBtn" ghost onClick={toggleIsEdit}>
-          {messages.userCenter.edit}
-        </Button>
+        <div className="actionBtnWrapper">
+          <Button
+            type="primary"
+            className="bigBtn"
+            ghost
+            onClick={toggleIsEdit}
+          >
+            {messages.userCenter.edit}
+          </Button>
+          <Button type="primary" className="bigBtn" ghost onClick={goChangePwd}>
+            {messages.userCenter.changePwd}
+          </Button>
+        </div>
       </div>
       <div className="userInfo">
         {/* <UserInfo messages={messages}></UserInfo> */}

@@ -3,6 +3,7 @@ export default [
   { path: '/forgetPwd', component: '@/pages/common/ForgetPwd' },
   { path: '/setPwd', component: '@/pages/common/SetPwd' },
   { path: '/resetPwd', component: '@/pages/common/SetPwd' },
+  { path: '/changePwd', component: '@/pages/common/ChangePwd' },
   { path: '/register', component: '@/pages/common/Register' },
   { path: '/selectIdentity', component: '@/pages/common/SelectIdentity' },
   { path: '/test', component: '@/pages/common/Test' },

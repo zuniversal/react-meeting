@@ -10,6 +10,7 @@ import {
 } from '@/services/user';
 import { setItem, removeItems, tips } from '@/utils';
 import { DOWNLOADS_URL } from '@/constants';
+import { noUserActionRole } from '@/configs';
 
 // 1:对应管理员
 // 4:对应审稿人
@@ -64,10 +65,12 @@ export default function users() {
 
   const getUserInfoAsync = useCallback(async params => {
     const res = await getUserInfo(params);
+    const { head, titleID } = res.data[0];
     res.data &&
       setUserInfo({
         ...res.data[0],
-        headMap: DOWNLOADS_URL + res.data[0].head,
+        headMap: DOWNLOADS_URL + head,
+        isAdminApprover: noUserActionRole.includes(titleID),
         noTipsAll: true,
       });
   }, []);

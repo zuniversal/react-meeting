@@ -6,6 +6,15 @@ import PaperStatusTable from './PaperStatusTable';
 import SmartFormModal from '@/common/SmartFormModal';
 import { useModal } from '@/hooks/useModal';
 import { textKeys } from './config';
+import { connect } from 'umi';
+import {
+  actions,
+  mapStateToProps,
+  mapDispatchToProps,
+} from '@/models/template';
+import SmartHelpHOC from '@/common/SmartHelpHOC';
+
+const titleMap = {};
 
 const AdviseText = props => {
   return (
@@ -56,6 +65,11 @@ const CommonModal = props => {
 };
 
 const PaperStatus = props => {
+  console.log(
+    ' %c PaperStatus 组件 props ： ',
+    `color: #333; font-weight: bold`,
+    props,
+  ); //
   const { messages } = useIntl();
   const { postList, getPaperListAsync, removePaperAsync } = useModel(
     'postPaper',
@@ -97,4 +111,13 @@ const PaperStatus = props => {
   );
 };
 
-export default PaperStatus;
+// export default PaperStatus;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(
+  SmartHelpHOC({
+    actions,
+    titleMap,
+  })(PaperStatus),
+);

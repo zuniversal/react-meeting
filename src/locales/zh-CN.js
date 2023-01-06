@@ -167,6 +167,13 @@ export default {
     `,
     pwdTips: `Please input your password，the password must be more than three figures`,
   },
+  changePwd: {
+    title: `Please chang your password`,
+    oldPwd: `Original password`,
+    newPwd: `New password`,
+    newPwdConfirm: `New password confirm`,
+    pwdTips: `Please input your password，the password must be more than three figures`,
+  },
   register: {
     regTitle: `Please set your new password`,
     regAccount: `Register your account`,
@@ -253,6 +260,7 @@ export default {
     joinMeeting: `Attend the conference`,
     userInfo: `Personal information`,
     edit: `Edit`,
+    changePwd: `Change my password`,
     called: `Appellation`,
     surname: `Appellation Doctor`,
     firstName: `Given/First Name`,

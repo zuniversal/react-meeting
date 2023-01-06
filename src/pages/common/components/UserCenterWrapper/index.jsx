@@ -38,9 +38,11 @@ const UserCenterWrapper = props => {
           {/* <a className="rawLink" {...linkAttr}>
             {messages.userCenter.downReceipt}
           </a> */}
-          <Download url={data.payPhotographUrl}>
-            {messages.userCenter.downReceipt}
-          </Download>
+          {!isDisabled && (
+            <Download url={data.payPhotographUrl}>
+              {messages.userCenter.downReceipt}
+            </Download>
+          )}
         </div>
         {!isDisabled && (
           <div className="btnWrapper">
