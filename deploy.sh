@@ -9,7 +9,7 @@ git pull
 # npm run build
 echo '打包镜像'
 pwd && ls
-docker build -t react-meeting:1.0 --network=host -f Dockerfile . --no-cache
+docker build -t react-meeting:1.0 --network=host -f Dockerfile .
 # docker build -t react-meeting:1.0 -f /Volumes/Mac HDD/machhd/code/vue/vue-vite-vw/Dockerfile . --no-cache
 echo '删除旧容器'
 docker stop react-meeting

@@ -12,6 +12,6 @@ LABEL version='1.0'
 # VOLUME . /app
 VOLUME ./react.conf /etc/nginx/conf.d
 VOLUME ./gzip.conf /etc/nginx/conf.d
-COPY --from=0 /app/dist /usr/share/nginx/html
-RUN ls /usr/share/nginx/html
+COPY --from=0 /app/dist /code/www
+RUN ls /code/www
 EXPOSE 80
