@@ -15,6 +15,6 @@ echo '删除旧容器'
 docker stop react-meeting
 docker rm react-meeting
 echo '启动新容器'
-docker run -p 9099:80 --name react-meeting -d react-meeting:1.0
+docker run -p 9066:80 --name react-meeting -d react-meeting:1.0
 echo '脚本结束'
 
