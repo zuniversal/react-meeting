@@ -96,10 +96,10 @@ export const RemoveModal = props => {
         // title: '您是否确认进行删除？',
         title: resProps.removeContent
           ? resProps.removeContent
-          : '您是否确认进行删除？',
+          : 'Are you sure you want to delete?',
         // subTitle: '删除电站会删除电站下所有资产。监测点，请慎重!',
-        okText: '确认',
-        cancelText: '取消',
+        okText: 'Confirm',
+        cancelText: 'Cancel',
         ...resProps,
       }}
     >

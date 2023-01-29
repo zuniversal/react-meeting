@@ -5,7 +5,7 @@ import SmartForm from '@/common/SmartForm';
 import UploadCom from '@/components/Widgets/UploadCom';
 import { usePaperTypeForm } from '@/hooks/useFormItem';
 import { stringReg, stringRule } from '@/configs';
-import { REQUIRE_EN } from '@/constants';
+import { DOC_TYPE, INPUT_TXT_EN, PDF_TYPE, REQUIRE_EN } from '@/constants';
 
 const PostPaperForm = props => {
   const { messages } = props;
@@ -69,6 +69,7 @@ const PostPaperForm = props => {
       comProps: {
         className: 'formItem',
         mode: 'tags',
+        placeholder: INPUT_TXT_EN + messages.postPaper.postCommonAuthor,
       },
     },
     {
@@ -147,7 +148,7 @@ const PostPaperForm = props => {
       extra={messages.postPaper.uploadDoc}
       uploadProps={{
         disabled: props.isDisabledAll || props.action === 'detail',
-        accept: 'application/msword,.docx',
+        accept: DOC_TYPE,
         multiple: true,
         listType: null,
       }}
@@ -169,7 +170,7 @@ const PostPaperForm = props => {
       extra={messages.postPaper.uploadPdf}
       uploadProps={{
         disabled: props.isDisabledAll || props.action === 'detail',
-        accept: 'image/pdf,application/pdf',
+        accept: PDF_TYPE,
         multiple: true,
         listType: null,
       }}

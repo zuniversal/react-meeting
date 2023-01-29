@@ -4,7 +4,7 @@ import './style.less';
 const InfoDesc = props => {
   const { messages, msgKey, config, data } = props;
   return (
-    <div className="infoDesc">
+    <div className={`infoDesc ${props.className ?? ''}`}>
       {config.map(v => (
         <div key={v.key} className="infoDescRow">
           <div className="label">{messages[msgKey][v.langKey]}</div>

@@ -27,8 +27,8 @@ export const userInfoConfig = [
     key: 'unitAddress',
     langKey: 'unitAddr',
   },
-  {
-    key: 'titleIDMap',
-    langKey: 'identity',
-  },
+  // {
+  //   key: 'titleIDMap',
+  //   langKey: 'identity',
+  // },
 ];

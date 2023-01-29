@@ -38,6 +38,7 @@ export default {
   download_zh: ` 下载`,
   identity: `Status`,
   ruleName: `Please enter the correct name!`,
+  selectDown: `Please select the item to download!`,
 
   header: {
     home: `Home Page`,
@@ -72,7 +73,7 @@ export default {
       `Structural Integrity & Crashworthiness`,
       `Operational Safety`,
       `Damage Stability`,
-      `Design for Safety, Risk based Design, Life-cycle Risk Managecmcnt`,
+      `Design for Safety, Risk based Design, Life-cycle Risk Management`,
       `Innovative Safety concepts, Theories & Methodologies`,
       `Cybe-Physical Systems & Autonomous Vessels`,
       `Evacuation, Ship Salvage & Emergency Response`,
@@ -80,36 +81,79 @@ export default {
     meetingHotel: `Conference Registration`,
     meetingTool: `meetingTool`,
     meetingToolList: [
-      { label: `Late Regisration (After 18 July 2024)` },
-      { label: `Registration fee: RMB4800` },
-      { label: `Student fee: RMB2400` },
-      { label: `Accompanying Person fee: RMB1200` },
+      {
+        label: `Late Regisration (After 18 July 2024)`,
+      },
+      {
+        label: `Registration fee: RMB4800`,
+      },
+      {
+        label: `Student fee: RMB2400`,
+      },
+      {
+        label: `Accompanying Person fee: RMB1200`,
+      },
     ],
     meetingReg: `Conference Registration`,
-    meetingRegList1: [{ label: `Registration Fee` }, { label: `RMB4000` }],
+    meetingRegList1: [
+      {
+        label: `Registration Fee`,
+      },
+      {
+        label: `RMB4000`,
+      },
+    ],
     meetingRegList2: [
-      { label: `Included:` },
-      { label: `covering welcome reception, dinner, banquet, conference` },
-      { label: `tour, tea break and lunch during the conference,` },
-      { label: `conference proceedings are all included.` },
+      {
+        label: `Included:`,
+      },
+      {
+        label: `covering welcome reception, dinner, banquet, conference`,
+      },
+      {
+        label: `tour, tea break and lunch during the conference,`,
+      },
+      {
+        label: `conference proceedings are all included.`,
+      },
     ],
     meetingRegList3: [
-      { label: `Early Registration (On And Before 18 July 2024)` },
-      { label: `Registration Fee: RMB4000` },
-      { label: `Student fee: RMB2000` },
-      { label: `Accompanying Person fee: RMB1200` },
+      {
+        label: `Early Registration (On And Before 18 July 2024)`,
+      },
+      {
+        label: `Registration Fee: RMB4000`,
+      },
+      {
+        label: `Student fee: RMB2000`,
+      },
+      {
+        label: `Accompanying Person fee: RMB1200`,
+      },
     ],
     meetingRegList4: [
-      { label: `Late Regisration (After 18 July 2024)` },
-      { label: `Registration fee: RMB4800` },
-      { label: `Student fee: RMB2400` },
-      { label: `Accompanying Person fee: RMB1200` },
+      {
+        label: `Late Regisration (After 18 July 2024)`,
+      },
+      {
+        label: `Registration fee: RMB4800`,
+      },
+      {
+        label: `Student fee: RMB2400`,
+      },
+      {
+        label: `Accompanying Person fee: RMB1200`,
+      },
     ],
     meetingInfoTitle1: `Proposed Conference Venue`,
     meetingInfoTitle2: `Free Pick-up Service from Shanghai Airports to the Conference Venue`,
     meetingInfoList1: [
-      { label: `Proposed Conference Date: October 13-18, 2024` },
-      { label: `Proposed Conference Venue: InterContinental Hotel, Wuxi` },
+      {
+        label: `Proposed Conference Date: October 13-18, 2024`,
+      },
+      {
+        label: `Proposed Conference Venue: InterContinental Hotel, Wuxi`,
+      },
     ],
     meetingInfoList2: [
       {
@@ -146,9 +190,10 @@ export default {
     title4: `Nature`,
     title5: `Transportation`,
     title6: `Society`,
+    wuxi: `Wuxi is located in the center of the Yangtze River Delta with the Grand Canal of China passing through. Renowned as one of “the four major markets” in China and “the bright pearl over the Taihu Lake”, the city has a total area of 4627 square kilometers and a permament population of about 6.5 million.`,
     culture: `Wuxi enjoys a long history of 3000 years and is a well-known historical and cultural city in China. It is also the cradle of Wu Culture, China’s national industry and township enterprises.`,
     economy: `Wuxi enjoys a prosperous economy and its GDP has always been listed among Tops in the large and medium-sized cities in Mainland China. Per capital local GDP is over USD 20000.`,
-    nature: `Wuxi enjoys a prosperous economy and its GDP has always been listed among Tops in the large and medium-sized cities in Mainland China. Per capital local GDP is over USD 20000.`,
+    nature: `Wuxi enjoys natural beauties such as rivers, canals, lakes, springs and caves. It is an international garden city and one of China’s Top Ten tourist destinations.`,
     transportation: `Wuxi enjoys convenient transportation and is the regional trasportation hub connecting north and south, east and west. The city is equipped with a comprehensive network by water, land and air traffic, and there are over 700 flights per week traveling between Wuxi and more than 30 cities at home and abroad.`,
     society: `Wuxi enjoys an excellent ecological environment and is a top city in eco-competitiveness in China. It enjoys a harmonious and stable social environment and is one of China’s happiest cities.`,
   },
@@ -254,7 +299,7 @@ export default {
   },
   userCenter: {
     title: `User Center`,
-    downReceipt: `Download the recipt`,
+    downReceipt: `Download the receipt`,
     goPost: `Submit my paper`,
     postStatus: `Rate of submission`,
     joinMeeting: `Attend the conference`,
@@ -289,8 +334,9 @@ export default {
     adviseText: `opinions`,
     adviseFile: `file of opinions`,
     uploadEditedRevision: `Submit the revision`,
-    uploadEditedPaper: `Submit the paper`,
+    uploadEditedPaper: `Upload the body of the paper`,
     submitTime: `Submission time`,
+    stage: `Stage`,
   },
   joinMeeting: {
     title: `Details`,
@@ -344,10 +390,11 @@ export default {
     approve: `审核`,
     advise: `填写意见`,
     uploadAdvise: `上传意见`,
-    uploadTips: `只能上传动.docx形式文襆`,
+    uploadTips: `只能上传.docx或.doc形式文档`,
     approveResult: `审核结果`,
     paperContacter: `论文通讯作者`,
     paperAuthor: `论文共同作者`,
+    stage: `上传类型`,
   },
   registerCount: {
     title: `注册统计`,
@@ -406,9 +453,11 @@ export default {
     commonAuthor: `共同作者`,
     approveStatus: `审核状态`,
     approver: `审核人`,
+    stage: `上传类型`,
   },
   payReview: {
     title: `缴费审核`,
+    searchPh: `输入参会人员姓名进行搜索`,
     name: `姓名`,
     identity: `身份`,
     emailAddr: `邮箱/用户名`,

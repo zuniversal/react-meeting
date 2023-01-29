@@ -1,68 +1,200 @@
-import { useState, useCallback } from 'react';
-import { getApproverList } from '@/services/paperDistribute';
-import {
-  getPaperDistributeList,
-  addPaperDistribute,
-  editPaperDistribute,
-} from '@/services/paperDistribute';
+import { init } from '@/utils/createAction';
+import * as services from '@/services/paperDistribute';
 import { formatSelectList } from '@/utils';
-import { useModal } from '@/hooks/useModal';
+
+const namespace = 'paperDistribute';
+const { createAction, createDispatch } = init(namespace);
 
 const formatItem = v => {
   return {
     ...v,
-    reviewerList: JSON.parse(v.reviewerList),
+    reviewerListId: v.reviewerList.map(v => v.id),
+    approverList: formatSelectList(v.reviewerList, 'name'),
+    reviewerList: v.reviewerList,
   };
 };
 
-export default function paperDistribute() {
-  const { closeCommonModal, ...rest } = useModal();
+const model = {
+  namespace,
 
-  const [approverList, setApproverList] = useState([]);
-  const [paperDistributeList, setPaperDistributeList] = useState([]);
+  state: {
+    searchInfo: {},
+    dataList: [],
+    approverList: [],
+    extraData: {},
+  },
 
-  const getApproverListAsync = useCallback(async params => {
-    const res = await getApproverList(params);
-    // setApproverList(res.data.map(formatItem));
-    setApproverList(formatSelectList(res.data, 'name'));
-  }, []);
+  reducers: {
+    showFormModal(state, { payload, type }) {
+      console.log(' showFormModal 修改  ： ', state, payload, type);
+      return {
+        ...state,
+        isShowModal: true,
+        action: payload.action,
+      };
+    },
+    onCancel(state, { payload, type }) {
+      console.log(' onCancel 修改  ： ', state, payload, type);
+      return {
+        ...state,
+        isShowModal: false,
+        itemDetail: {},
+      };
+    },
+    getList(state, { payload, type, res }) {
+      console.log(' getList ： ', payload, res);
+      return {
+        ...state,
+        dataList: res.data,
+        dataList: res.data.map(formatItem),
+        count: res.total,
+        isShowModal: false,
+        searchInfo: payload,
+      };
+    },
+    getItem(state, { payload, type }) {
+      console.log(' getItemgetItem ： ', payload);
+      return {
+        ...state,
+        action: payload.payload.action,
+        isShowModal: true,
+        d_id: payload.payload.d_id,
+        itemDetail: payload.bean,
+      };
+    },
+    addItem(state, { payload, type }) {
+      return {
+        ...state,
+        dataList: [payload.bean, ...state.dataList],
+        isShowModal: false,
+        count: state.count + 1,
+      };
+    },
+    editItem(state, { payload, type }) {
+      return {
+        ...state,
+        dataList: state.dataList.map(v => ({
+          ...(v.id !== payload.payload.d_id ? payload : v),
+        })),
+        isShowModal: false,
+      };
+    },
+    removeItem(state, { payload, type }) {
+      const removeList = payload.payload.filter(v => v.id);
+      return {
+        ...state,
+        dataList: state.dataList.filter(v =>
+          removeList.some(item => v.id === item),
+        ),
+      };
+    },
+    getPaperApproverListAsync(state, { payload, type, res }) {
+      console.log(' getPaperApproverListAsync ： ', payload, res);
+      return {
+        ...state,
+        dataList: res.data,
+        count: res.total,
+        isShowModal: false,
+      };
+    },
+    editPaperApprover(state, { payload, type }) {
+      return {
+        ...state,
+        dataList: state.dataList.map(v => ({
+          ...(v.id !== payload.payload.d_id ? payload : v),
+        })),
+        isShowModal: false,
+      };
+    },
+    getApproverList(state, { payload, type, res }) {
+      console.log(' getApproverList ： ', res); //
+      return {
+        ...state,
+        approverList: formatSelectList(res.data, 'name'),
+      };
+    },
+    setExtraData(state, { payload, type }) {
+      console.log(' setExtraData ： ', payload); //
+      return {
+        ...state,
+        extraData: payload.record,
+      };
+    },
+  },
 
-  const getPaperDistributeListAsync = useCallback(async params => {
-    const res = await getPaperDistributeList(params);
-    setPaperDistributeList(res.data.map(formatItem));
-  }, []);
+  effects: {
+    *getListAsync({ payload, type }, { call, put, select }) {
+      const { searchInfo } = yield select(state => state[namespace]);
+      const params = {
+        ...searchInfo,
+        ...payload,
+      };
+      const res = yield call(services.getPaperDistributeList, params);
+      console.log(' getListAsync res ： ', res, payload, searchInfo, params); //
+      yield put({
+        res,
+        type: `getList`,
+        payload: params,
+      });
+    },
+    *getItemAsync({ payload, type }, { call, put }) {
+      const res = yield call(services.getItem, payload);
+      yield put({
+        res,
+        type: `getItem`,
+        payload,
+      });
+    },
+    *addItemAsync({ payload, type }, { call, put }) {
+      const res = yield call(services.addPaperDistribute, payload);
+      yield put({
+        type: 'getListAsync',
+      });
+    },
+    *editItemAsync({ payload, type }, { call, put }) {
+      const res = yield call(services.editPaperDistribute, payload);
+      yield put({
+        type: 'getListAsync',
+      });
+    },
+    *removeItemAsync({ payload, type }, { call, put }) {
+      const res = yield call(services.removePaper, payload);
+      yield put({
+        type: 'getListAsync',
+      });
+    },
+    *getPaperApproverListAsync({ payload, type }, { call, put }) {
+      const res = yield call(
+        paperApproveServices.getPaperApproverList,
+        payload,
+      );
+      console.log(' getPaperApproverListAsync res ： ', res); //
+      yield put({
+        res,
+        type: `getPaperApproverList`,
+        payload,
+      });
+    },
+    *editPaperDistributeAsync({ payload, type }, { call, put }) {
+      const res = yield call(services.editPaperDistribute, payload);
+      yield put({
+        type: 'getListAsync',
+      });
+      return res;
+    },
+    *getApproverListAsync({ payload, type }, { call, put }) {
+      const res = yield call(services.getApproverList, payload);
+      yield put({
+        res,
+        type: `getApproverList`,
+        payload,
+      });
+    },
+  },
+};
 
-  const addPaperDistributeAsync = useCallback(async params => {
-    console.log(' addPaperDistributeAsync ： ', params); //
-    const res = await addPaperDistribute(params);
-  }, []);
+export const actions = createAction(model);
+export const mapStateToProps = state => state[namespace];
+export const mapDispatchToProps = createDispatch(model);
 
-  const editPaperDistributeAsync = useCallback(async params => {
-    const res = await editPaperDistribute(params);
-    closeCommonModal();
-    return res;
-  }, []);
-
-  return {
-    approverList,
-    // approverList: [{
-    //     label: "审稿人1",
-    //     value: "1",
-    //   },
-    //   {
-    //     label: "审稿人2",
-    //     value: "2",
-    //   },
-    //   {
-    //     label: "审稿人3",
-    //     value: "3",
-    //   },
-    // ],
-    getApproverListAsync,
-    paperDistributeList,
-    getPaperDistributeListAsync,
-    addPaperDistributeAsync,
-    editPaperDistributeAsync,
-    ...rest,
-  };
-}
+export default model;

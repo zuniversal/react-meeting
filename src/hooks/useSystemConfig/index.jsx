@@ -16,7 +16,9 @@ export const useSystemConfig = props => {
   }, []);
 
   return {
-    calledListMap: arrMapObj(calledList, { label: 'callName', key: 'id' }),
-    identityListMap: arrMapObj(identityList, { label: 'titleName', key: 'id' }),
+    // calledListMap: arrMapObj(calledList, { label: 'callName', key: 'id' }),
+    // identityListMap: arrMapObj(identityList, { label: 'titleName', key: 'id' }),
+    calledListMap: arrMapObj(calledList),
+    identityListMap: arrMapObj(identityList),
   };
 };

@@ -110,7 +110,7 @@ export const formatSelectList = (
     ...v,
     label: v[labelKey],
     value: `${v[idKey]}`,
-    // value: v[idKey],
+    value: v[idKey],
     // title: v[labelKey] + '2222222222',
   }));
   // console.log(' formatSelectList res ： ', res);
@@ -420,10 +420,14 @@ export const formatConfig = (
   return configs;
 };
 
-export const downLoad = (url, { name } = { name: '默认文件名' }) => {
+export const downLoad = (
+  url,
+  { name, prefix = '/api/downloads/' } = { name: '默认文件名' },
+) => {
   let a = document.createElement('a');
   a.download = name; // 设置下载的文件名，默认是'下载'
-  a.href = url;
+  a.href = prefix + url;
+  console.log(' a.href  ： ', a.href); //
   document.body.appendChild(a);
   a.click();
   a.remove(); // 下载之后把创建的元素删除
@@ -704,7 +708,7 @@ export const TOKEN_PREFIX = ''; //
 
 export const getToken = (k = 'token', prefix = TOKEN_PREFIX) => {
   const token =
-    localStorage.getItem(k) != undefined ? localStorage.getItem(k) : 'no_token';
+    localStorage.getItem(k) != undefined ? localStorage.getItem(k) : '';
   // console.log(' prefix, k ： ', prefix, k, token);
   return prefix + token;
 };

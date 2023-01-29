@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.less';
 import { Form, Button } from 'antd';
 import { useIntl, useModel } from 'umi';
@@ -34,8 +34,8 @@ const DowntTpl = ({ messages }) => (
   <div className="activeLinkWrapper">
     <a
       className="activeLink"
-      href="/api/downloads/paperTpl.docx"
-      download={'paperTpl.docx'}
+      href="/api/downloads/Paper_template_STABS2024.doc"
+      download={'Paper_template_STABS2024.doc'}
     >
       {messages.postPaper.downloadTpl}
     </a>
@@ -89,6 +89,8 @@ const CommonModal = props => {
 const PostPaper = props => {
   const { messages } = useIntl();
   const { userInfo } = useModel('users');
+  const [formKey, setFormKey] = useState(0);
+
   const isDisabled = noUserActionRole.includes(userInfo.titleID);
   const {
     isLoading,
@@ -119,6 +121,7 @@ const PostPaper = props => {
     console.log('  res ：', res); //
     if (res.code == 200) {
       formProps.form.resetFields();
+      setFormKey(formKey + 1);
     }
   };
   const common = {
@@ -160,7 +163,12 @@ const PostPaper = props => {
   };
 
   const content = (
-    <PostPaperForm name="form" onSubmit={onSubmit} messages={messages}>
+    <PostPaperForm
+      name="form"
+      onSubmit={onSubmit}
+      messages={messages}
+      key={formKey}
+    >
       <Form.Item className={`btnFormItem`} noStyle>
         <Button
           type="primary"

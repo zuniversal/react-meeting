@@ -33,6 +33,7 @@ export const useModal = props => {
     showModal,
     action,
     extraData,
+    setExtraData,
     common,
   };
 };

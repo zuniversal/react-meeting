@@ -1,19 +1,21 @@
 import React from 'react';
 import SmartTable from '@/common/SmartTable';
+import { PRIMARY } from '@/constants';
+import { Tag } from 'antd';
 
 const PaperCountTable = props => {
   const columns = [
     {
       title: props.messages.paperCount.no,
-      dataIndex: 'no',
+      dataIndex: 'paperID',
     },
     {
       title: props.messages.paperCount.paperTitle,
-      dataIndex: 'paperTitle',
+      dataIndex: 'title',
     },
     {
       title: props.messages.paperCount.paperType,
-      dataIndex: 'paperType',
+      dataIndex: 'paperCate',
     },
     {
       title: props.messages.paperCount.contactAuthor,
@@ -25,17 +27,25 @@ const PaperCountTable = props => {
     },
     {
       sorter: true,
-      sortKey: 'uploadTime',
+      sortKey: 'submitTime',
       title: props.messages.uploadTime,
-      dataIndex: 'uploadTime',
+      dataIndex: 'submitTime',
     },
     {
       title: props.messages.paperCount.approver,
-      dataIndex: 'approver',
+      dataIndex: 'reviewerList',
+      render: (text, record, index, config) => {
+        const content = record.reviewerList.map(v => (
+          <Tag color={PRIMARY} key={v.id}>
+            {v.name}
+          </Tag>
+        ));
+        return content;
+      },
     },
     {
       title: props.messages.paperCount.approvalStatus,
-      dataIndex: 'approvalStatus',
+      dataIndex: 'sumResult',
     },
   ];
 

@@ -184,11 +184,11 @@ const SmartForm = (props, state) => {
     noLabelLayout,
     locale,
   } = props;
-  console.log(
-    ' %c SmartForm 组件 this.state, this.props ： ',
-    `color: #333; font-weight: bold`,
-    props,
-  );
+  // console.log(
+  //   ' %c SmartForm 组件 this.state, this.props ： ',
+  //   `color: #333; font-weight: bold`,
+  //   props,
+  // );
   const configs = isFormat
     ? formatConfig(config, { isSearchForm, isDisabledAll, action })
     : config;

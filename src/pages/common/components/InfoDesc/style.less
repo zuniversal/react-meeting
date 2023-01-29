@@ -4,6 +4,14 @@
   align-items: center;
 
   margin-bottom: 60px;
+  &.infoDescCol3 {
+    flex-direction: initial;
+    flex-wrap: wrap;
+    .infoDescRow {
+      flex: 0 0 33%;
+    }
+  }
+
   .infoDescRow {
     width: 100%;
     display: flex;
@@ -11,6 +19,7 @@
     // display: inline-flex;
     margin-bottom: 8px;
     font-size: 24px;
+    font-size: 16px;
     font-weight: 400;
     color: #999999;
     white-space: nowrap;

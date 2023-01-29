@@ -1,16 +1,7 @@
 import { init } from '@/utils/createAction';
-import * as services from '@/services/payReview';
-import { identityConfigMap } from '@/configs';
+import * as services from '@/services/postPaper';
 
-const formatItem = v => {
-  return {
-    ...v,
-    isPayMap: v.isPay ? '是' : '否',
-    identityMap: identityConfigMap[v.title],
-  };
-};
-
-const namespace = 'payReview';
+const namespace = 'paperCount';
 const { createAction, createDispatch } = init(namespace);
 
 const model = {
@@ -26,7 +17,7 @@ const model = {
       console.log(' getList ： ', payload, res);
       return {
         ...state,
-        dataList: res.data?.map(formatItem),
+        dataList: res.data,
         count: res.total,
         isShowModal: false,
         searchInfo: payload,
@@ -41,16 +32,13 @@ const model = {
         ...searchInfo,
         ...payload,
       };
-      const res = yield call(services.getPayReviewList, params);
+      const res = yield call(services.getPaperList, params);
       console.log(' getListAsync res ： ', res, payload, searchInfo, params); //
       yield put({
         res,
         type: `getList`,
         payload: params,
       });
-    },
-    *editItemAsync({ payload, type }, { call, put }) {
-      const res = yield call(services.editPayReview, payload);
     },
   },
 };

@@ -1,22 +1,26 @@
 export const approveConfig = [
   {
-    key: 'no',
+    key: 'paperID',
     langKey: 'no',
   },
   {
-    key: 'paperTitle',
+    key: 'title',
     langKey: 'paperTitle',
   },
   {
-    key: 'paperType',
+    key: '',
+    langKey: '',
+  },
+  {
+    key: 'paperIDMap',
     langKey: 'paperType',
   },
   {
-    key: 'paperContacter',
+    key: 'contactAuthor',
     langKey: 'paperContacter',
   },
   {
-    key: 'paperAuthor',
+    key: 'commonAuthor',
     langKey: 'paperAuthor',
   },
 ];

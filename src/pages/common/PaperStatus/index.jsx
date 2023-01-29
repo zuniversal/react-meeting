@@ -7,21 +7,21 @@ import SmartFormModal from '@/common/SmartFormModal';
 import { useModal } from '@/hooks/useModal';
 import { textKeys } from './config';
 import { connect } from 'umi';
+import SmartHelpHOC from '@/common/SmartHelpHOC';
 import {
   actions,
   mapStateToProps,
   mapDispatchToProps,
-} from '@/models/template';
-import SmartHelpHOC from '@/common/SmartHelpHOC';
-
-const titleMap = {};
+} from '@/models/paperStatus';
+import { submitPaperCateIDMap } from '@/configs';
+import { formatData } from './format';
 
 const AdviseText = props => {
   return (
     <div className={`adviseTextWrapper`}>
       {textKeys.map((v, i) => (
-        <div key={v}>
-          <div className={`adviseText`}>
+        <div key={v} className={`adviseText`}>
+          <div>
             {props.messages.paperStatus.adviseText} {i + 1}:
           </div>
           {/* {props.common.extraData.record[v]} */}
@@ -71,12 +71,12 @@ const PaperStatus = props => {
     props,
   ); //
   const { messages } = useIntl();
-  const { postList, getPaperListAsync, removePaperAsync } = useModel(
-    'postPaper',
-  );
-  useEffect(() => {
-    getPaperListAsync();
-  }, []);
+  // const { postList, getPaperListAsync, removePaperAsync } = useModel(
+  //   'postPaper',
+  // );
+  // useEffect(() => {
+  //   getPaperListAsync();
+  // }, []);
 
   const { showModal, common } = useModal();
 
@@ -86,11 +86,36 @@ const PaperStatus = props => {
     console.log(' showAdviseText   params,   ： ', params);
     showModal(params);
   };
+  const uploadEditedPaper = async (e, record) => {
+    console.log(' uploadEditedPaper   e, record,   ： ', e, record);
+    const res = await props.addItemAsync(
+      formatData({
+        paperID: record.paperID,
+        paperURLObj: e,
+        submitPaperCateID: submitPaperCateIDMap[record.sumResult],
+      }),
+    );
+  };
+  const uploadEditedRevision = async (e, record) => {
+    console.log(' uploadEditedRevision   e, record,   ： ', e, record);
+    const res = await props.addItemAsync(
+      formatData({
+        paperID: record.paperID,
+        paperURLObj: e,
+        submitPaperCateID: submitPaperCateIDMap[record.sumResult],
+      }),
+    );
+  };
   const remove = params => {
     console.log(' remove   params,   ： ', params);
-    removePaperAsync({
+    props.onRemove({
+      d_id: params.record.id,
       id: params.record.id,
     });
+    props.getListAsync();
+    // removePaperAsync({
+    //   id: params.record.id,
+    // });
   };
 
   return (
@@ -98,9 +123,14 @@ const PaperStatus = props => {
       <div className="primaryTitle">{messages.paperStatus.title}</div>
       <PaperStatusTable
         messages={messages}
-        dataSource={postList}
+        // dataSource={postList}
+        dataSource={props.dataList}
+        count={props.count}
+        getListAsync={props.getListAsync}
         remove={remove}
         showAdviseText={showAdviseText}
+        uploadEditedPaper={uploadEditedPaper}
+        uploadEditedRevision={uploadEditedRevision}
       ></PaperStatusTable>
       <CommonModal
         messages={messages}
@@ -118,6 +148,5 @@ export default connect(
 )(
   SmartHelpHOC({
     actions,
-    titleMap,
   })(PaperStatus),
 );

@@ -13,6 +13,8 @@ export const PDF_URL =
 export const MINI_POWER = 'http://81.68.221.146/#/home';
 
 export const DOWN_ASSETS_TPL = '/api/v1/export/equipment.xlsx';
+export const DOC_TYPE = 'application/msword,.docx';
+export const PDF_TYPE = 'image/pdf,application/pdf';
 
 // export const BASE_URL = `http://yapi.afafa.com.cn/mock/17/api/v1/console/`;
 // export const TEST_URL = `http://188.131.235.243:31002/api/v1/console/`;
@@ -55,7 +57,7 @@ export const BASE_URL = isDev ? PROXY_URL : TEST_URL;
 // export const URL = `${URL_PREFIX}${BASE_URL}`;
 export const URL = `${BASE_URL}`;
 
-export const PRIMARY = '#00B460';
+export const PRIMARY = '#a45e5d';
 export const DANGER = 'red'; //
 export const WARN = '#f50'; //
 export const INFO = '#108ee9'; //

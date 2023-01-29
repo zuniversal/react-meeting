@@ -1,13 +1,14 @@
 import React from 'react';
 import SmartTable from '@/common/SmartTable';
 import { downLoad } from '@/utils';
+import { paperTypeConfigMap } from '@/configs';
 
 const PaperApproveTable = props => {
   const { messages } = props; //
   const columns = [
     {
       title: messages.paperApprove.no,
-      dataIndex: 'id',
+      dataIndex: 'paperID',
     },
     {
       title: messages.paperApprove.paperTitle,
@@ -15,7 +16,12 @@ const PaperApproveTable = props => {
     },
     {
       title: messages.paperApprove.paperType,
-      dataIndex: 'submitPaperCateID',
+      dataIndex: 'paperCateID',
+      dataMap: paperTypeConfigMap,
+    },
+    {
+      title: messages.paperApprove.stage,
+      dataIndex: 'paper',
     },
     {
       title: messages.paperApprove.contactAuthor,
@@ -27,7 +33,7 @@ const PaperApproveTable = props => {
     },
     {
       title: messages.paperApprove.approvalStatus,
-      dataIndex: 'sumResult',
+      dataIndex: 'result',
     },
     {
       sorter: true,
@@ -43,17 +49,13 @@ const PaperApproveTable = props => {
         onClick={() => {
           props.edit({
             action: 'approve',
-            d_id: record.id,
+            record,
           });
         }}
       >
         {props.messages.paperApprove.approve}
       </a>
-      <a
-        onClick={() =>
-          downLoad(record.firstOpinionURL, { name: record.firstOpinionURL })
-        }
-      >
+      <a onClick={() => downLoad(record.paperURL, { name: record.paperURL })}>
         {messages.download_zh}
       </a>
     </>

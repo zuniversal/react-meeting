@@ -2398,19 +2398,19 @@ export const assetDetailConfig = [
 
 export const calledConfig = [
   {
-    value: '1',
+    value: 1,
     label: 'Doctor',
   },
   {
-    value: '2',
+    value: 2,
     label: 'Prefessor',
   },
   {
-    value: '3',
+    value: 3,
     label: 'Mr.',
   },
   {
-    value: '4',
+    value: 4,
     label: 'Ms.',
   },
 ];
@@ -2487,15 +2487,15 @@ export const ynConfigMap = arrMapObj(ynConfig);
 
 export const approveStatusConfig = [
   {
-    value: 1,
+    value: '通过',
     label: '审核通过',
   },
   {
-    value: 2,
+    value: '待修改',
     label: '需要修改',
   },
   {
-    value: 0,
+    value: '不通过',
     label: '审核不通过',
   },
 ];
@@ -2530,3 +2530,47 @@ export const hotelConfigMap = arrMapObj(hotelConfig);
 
 // 管理员：1；审稿人：2；投稿人：3
 export const noUserActionRole = [1, 2];
+
+export const deletePaperConfig = [
+  '摘要待分配',
+  '摘要待审核',
+  '摘要审核不通过',
+  '摘要修改稿待审核',
+  '摘要修改稿审核不通过',
+  '正文待审核不通过',
+  '正文审核不通过',
+  '正文修改稿待审核',
+  '正文修改稿审核不通过',
+];
+
+export const submitPaperConfig = ['摘要审核通过', '摘要修改稿审核通过'];
+
+// submitPaperCateID发送值状态：根据 sumResult
+// '摘要待审核',
+// '摘要修改稿待审核',发2
+// '摘要审核通过',
+// '摘要修改稿审核通过',发3
+// '正文待修改',
+// '正文修改稿待修改',发4
+export const submitPaperCateIDMap = {
+  摘要待修改: 2,
+  摘要修改稿待修改: 2,
+  摘要审核通过: 3,
+  摘要修改稿审核通过: 3,
+  正文待修改: 4,
+  正文修改稿待修改: 4,
+};
+
+// 摘要1 摘要修改稿2  正文3 正文修改稿4
+// export const submitRevisionConfig = [
+//   '摘要审核通过',
+//   '摘要修改稿审核通过',
+//   '正文审核通过',
+//   '正文修改稿审核通过',
+// ];
+export const submitRevisionConfig = [
+  '摘要待修改',
+  '摘要修改稿待修改',
+  '正文待修改',
+  '正文修改稿待修改',
+];

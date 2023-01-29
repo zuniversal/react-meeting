@@ -8,15 +8,17 @@ import {
   getUserInfo,
   editUserInfo,
 } from '@/services/user';
-import { setItem, removeItems, tips } from '@/utils';
+import { setItem, removeItem, removeItems, tips, getToken } from '@/utils';
 import { DOWNLOADS_URL } from '@/constants';
 import { noUserActionRole } from '@/configs';
+import { useSystemConfig } from '@/hooks/useSystemConfig';
 
 // 1:对应管理员
 // 4:对应审稿人
 // 2、3、5:分别对应：论文通讯作者、论文共同作者、陪同人员
 
 export default function users() {
+  const { calledListMap, identityListMap } = useSystemConfig();
   const [userInfo, setUserInfo] = useState({});
 
   const loginAsync = useCallback(async params => {
@@ -56,6 +58,10 @@ export default function users() {
   const setPwdAsync = useCallback(async params => {
     const res = await setPwd(params);
     console.log(' setPwdAsync res await 结果  ：', res);
+    if (res.code === 200) {
+      // tips('注册成功！');
+      history.push('/login');
+    }
   }, []);
 
   const editUserInfoAsync = useCallback(async params => {
@@ -64,21 +70,33 @@ export default function users() {
   }, []);
 
   const getUserInfoAsync = useCallback(async params => {
-    const res = await getUserInfo(params);
-    const { head, titleID } = res.data[0];
+    if (!getToken()) {
+      return;
+    }
+    const res = await getUserInfo({
+      ...params,
+      noTipsAll: true,
+    });
+    if (!res.data) {
+      return;
+    }
+
+    const { head, callID, titleID } = res.data?.[0];
+    console.log(' calledListMap ： ', calledListMap, callID); //
     res.data &&
       setUserInfo({
         ...res.data[0],
         headMap: DOWNLOADS_URL + head,
         isAdminApprover: noUserActionRole.includes(titleID),
-        noTipsAll: true,
+        callMap: calledListMap[callID],
+        titleIDMap: identityListMap[titleID],
       });
   }, []);
 
   const logout = params => {
     console.log(' logout params ： ', params); //
     removeItems('userInfo');
-    removeItems('token');
+    removeItem('token');
     setUserInfo({});
     history.push(params);
   };

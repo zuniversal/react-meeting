@@ -1,11 +1,7 @@
 import { init, action } from '@/utils/createAction';
 import * as templateServices from '@/services/template';
 import * as services from '@/services/user';
-import {
-  setItem,
-  getItem,
-  tips,
-} from '@/utils';
+import { setItem, getItem, tips } from '@/utils';
 import moment from 'moment';
 
 const namespace = 'common';
@@ -22,7 +18,7 @@ const otherActions = [
   'showItemAsync',
 ];
 
-const batchTurnActions = ['closeCommonModal'];
+const batchTurnActions = ['showCommonModal', 'closeCommonModal'];
 
 // export const commonActions = transferActions(otherActions,)
 export const commonActions = {
@@ -117,7 +113,8 @@ const model = {
       // const service = getService(payload.action);
       const service = getService(payload);
       console.log(' showItemAsync service ： ', service, payload);
-      if (!payload.action || !service) {
+      // if (!payload.action || !service) {
+      if (!payload.action) {
         tips('请传入对应详情的action参数！', 2);
         return;
       }
@@ -160,7 +157,7 @@ const model = {
   },
   subscriptions: {
     setup: props => {
-      const { dispatch,  } = props;
+      const { dispatch } = props;
       // const getUserMsg = params => {
       //   const userInfo = getItem('userInfo');
       //   if (userInfo?.id) {

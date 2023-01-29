@@ -71,10 +71,7 @@ const PaperApproveTable = props => {
         {record.isPay == 0 && record.warmPay == 0 && (
           <a
             onClick={() => {
-              props.edit({
-                action: 'approve',
-                d_id: record.id,
-              });
+              props.alertPay(record);
             }}
           >
             {props.messages.payReview.payTip}
@@ -86,7 +83,7 @@ const PaperApproveTable = props => {
 
   return (
     <SmartTable
-      rowKey={'name'}
+      rowKey={'email'}
       columns={columns}
       extra={extra}
       {...props}

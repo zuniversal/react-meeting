@@ -1,8 +1,18 @@
 import { init } from '@/utils/createAction';
-import * as services from '@/services/postPaper';
+import * as services from '@/services/meetingImg';
+import { IMG_PREFIX } from '@/constants';
 
-const namespace = 'paperStatus';
+const namespace = 'uploadImgHistory';
 const { createAction, createDispatch } = init(namespace);
+
+const formatItem = v => {
+  const url = IMG_PREFIX + v.url;
+  return {
+    ...v,
+    url: url,
+    urlObj: url,
+  };
+};
 
 const model = {
   namespace,
@@ -10,6 +20,7 @@ const model = {
   state: {
     searchInfo: {},
     dataList: [],
+    meetingImgDetail: {},
   },
 
   reducers: {
@@ -33,7 +44,7 @@ const model = {
       console.log(' getList ： ', payload, res);
       return {
         ...state,
-        dataList: res.data,
+        dataList: res.data.map(formatItem),
         count: res.total,
         isShowModal: false,
         searchInfo: payload,
@@ -75,6 +86,13 @@ const model = {
         ),
       };
     },
+    setMeetingImgDetail(state, { payload, type }) {
+      console.log(' setMeetingImgDetail ： ', payload); //
+      return {
+        ...state,
+        meetingImgDetail: payload,
+      };
+    },
   },
 
   effects: {
@@ -84,7 +102,7 @@ const model = {
         ...searchInfo,
         ...payload,
       };
-      const res = yield call(services.getPaperList, params);
+      const res = yield call(services.getMeetingImgList, params);
       console.log(' getListAsync res ： ', res, payload, searchInfo, params); //
       yield put({
         res,
@@ -101,27 +119,28 @@ const model = {
       });
     },
     *addItemAsync({ payload, type }, { call, put }) {
-      const res = yield call(services.addPaper, payload);
-      yield put({
-        type: 'getListAsync',
-      });
-      return res;
+      const res = yield call(services.addMeetingImg, payload);
+      // yield put({
+      //   res,
+      //   type: `addItem`,
+      //   payload,
+      // });
     },
     *editItemAsync({ payload, type }, { call, put }) {
-      const res = yield call(services.editItem, payload);
-      yield put({
-        res,
-        type: `editItem`,
-        payload,
-      });
+      const res = yield call(services.editMeetingImg, payload);
+      // yield put({
+      //   res,
+      //   type: `editItem`,
+      //   payload,
+      // });
     },
     *removeItemAsync({ payload, type }, { call, put }) {
-      const res = yield call(services.removePaper, payload);
-      yield put({
-        res,
-        type: `removeItem`,
-        payload,
-      });
+      const res = yield call(services.removeMeetingImg, payload);
+      // yield put({
+      //   res,
+      //   type: `removeItem`,
+      //   payload,
+      // });
     },
   },
 };

@@ -10,7 +10,6 @@ import { noUserActionRole } from '@/configs';
 const UserCenterWrapper = props => {
   const { activeKey, setActiveKey } = useModel('systemConfig');
   const { userInfo } = useModel('users');
-  const isDisabled = noUserActionRole.includes(userInfo.titleID);
   console.log(' userInfo ： ', userInfo); //
   const goPage = params => {
     setActiveKey(params);
@@ -38,13 +37,13 @@ const UserCenterWrapper = props => {
           {/* <a className="rawLink" {...linkAttr}>
             {messages.userCenter.downReceipt}
           </a> */}
-          {!isDisabled && (
+          {!userInfo.isAdminApprover && (
             <Download url={data.payPhotographUrl}>
               {messages.userCenter.downReceipt}
             </Download>
           )}
         </div>
-        {!isDisabled && (
+        {!userInfo.isAdminApprover && (
           <div className="btnWrapper">
             <Button type="primary" className="bigBtn" onClick={goPost}>
               {messages.userCenter.goPost}

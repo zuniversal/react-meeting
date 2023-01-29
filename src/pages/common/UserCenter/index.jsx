@@ -15,9 +15,8 @@ const UserCenter = props => {
   const { calledListMap, identityListMap } = useSystemConfig();
   const userInfoMap = {
     ...userInfo,
-    callMap: calledListMap[userInfo.callID],
-    titleIDMap: identityListMap[userInfo.titleID],
   };
+  console.log(' userInfo ： ', userInfo); //
   // const [ isEdit, setIsEdit ] = useState(true)
   const [isEdit, setIsEdit] = useState(false);
 
@@ -53,9 +52,16 @@ const UserCenter = props => {
           >
             {messages.userCenter.edit}
           </Button>
-          <Button type="primary" className="bigBtn" ghost onClick={goChangePwd}>
-            {messages.userCenter.changePwd}
-          </Button>
+          {!userInfo.isAdminApprover && (
+            <Button
+              type="primary"
+              className="bigBtn"
+              ghost
+              onClick={goChangePwd}
+            >
+              {messages.userCenter.changePwd}
+            </Button>
+          )}
         </div>
       </div>
       <div className="userInfo">

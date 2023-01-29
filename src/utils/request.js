@@ -34,6 +34,7 @@ export const AUTH_FAIL = 104000;
 // export const AUTH_FAIL = 104007;
 
 const codeMap = {
+  100: '正常码',
   // 100000: '正常码',
   105001: '系统错误',
   104000: '用户认证错误',
@@ -54,6 +55,7 @@ export const getCodeMsg = code => {
 
 const statusMap = {
   404: '404 请求路径不存在！',
+  500: '500 服务端报错！',
 };
 
 export const getStatusMsg = (status, url) => {

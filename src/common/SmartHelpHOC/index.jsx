@@ -179,7 +179,7 @@ export default ({
       setRemoveParams({});
     };
     const renderRemoveModal = params => {
-      const { removeTitle = '删除提示' } = removeParams;
+      const { removeTitle = 'Delete confirm' } = removeParams;
 
       const modalProps = {
         title: removeTitle,
@@ -267,6 +267,7 @@ export default ({
           //   create: true,
           //   edit: true,
           //   delete: true,}}
+          selectedInfo={selectedInfo}
           onRemove={onRemove}
           onBatchRemove={onBatchRemove}
           onSelectChange={onSelectChange}

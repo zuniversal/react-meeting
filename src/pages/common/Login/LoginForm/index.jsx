@@ -21,6 +21,13 @@ const LoginForm = props => {
     props.forgetPwd(res);
   };
 
+  const onFocus = () => {
+    console.log(' onFocus   ,   ： ');
+  };
+  const onBlur = () => {
+    console.log(' onBlur   ,   ： ');
+  };
+
   const checkboxData = [{ label: '', value: 1 }];
 
   const config = [
@@ -77,12 +84,14 @@ const LoginForm = props => {
       >
         <Checkbox>{messages.login.remember}</Checkbox>
       </Form.Item>
-      <Form.Item>
-        {/* <span className="findPwd" onClick={() => goPage('forgetPwd')}> */}
-        <span className="findPwd" onClick={forgetPwd}>
-          {messages.login.findPwd}
-        </span>
-      </Form.Item>
+      {!isBgPlatform && (
+        <Form.Item>
+          {/* <span className="findPwd" onClick={() => goPage('forgetPwd')}> */}
+          <a className="findPwd" onClick={forgetPwd}>
+            {messages.login.findPwd}
+          </a>
+        </Form.Item>
+      )}
     </Form.Item>,
   ];
 

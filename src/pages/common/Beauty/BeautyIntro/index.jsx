@@ -20,7 +20,7 @@ const BeautyIntro = props => {
         <div className="beautyIntroHalf beautyIntroEnd">
           <div className="beautyIntroText introTextHalf70">
             <div className="beautyIntroTitle">{props.msg.title1}</div>
-            {props.msg.culture}
+            {props.msg.wuxi}
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@ const BeautyIntro = props => {
         <div className="beautyIntroHalf beautyIntroEnd">
           <div className="beautyIntroText introTextHalf70">
             <div className="beautyIntroTitle">{props.msg.title2}</div>
-            {props.msg.economy}
+            {props.msg.culture}
           </div>
         </div>
       </div>
@@ -53,7 +53,7 @@ const BeautyIntro = props => {
         <div className="beautyIntroHalf beautyIntroEnd">
           <div className="beautyIntroText introTextHalf70">
             <div className="beautyIntroTitle">{props.msg.title3}</div>
-            {props.msg.nature}
+            {props.msg.economy}
           </div>
         </div>
       </div>

@@ -8,8 +8,8 @@ const ChangePwd = props => {
   const { messages } = useIntl();
   const { userInfo, setPwdAsync } = useModel('users');
   const onSubmit = async formProps => {
-    console.log('onSubmit 提交 : ', formProps, props);
-    const { oldPwd, confirmPwd, ...rest } = formProps.values;
+    console.log('onSubmit 提交 : ', formProps, props, userInfo);
+    const { confirmPwd, ...rest } = formProps.values;
     const res = await setPwdAsync({
       email: userInfo.email,
       ...rest,

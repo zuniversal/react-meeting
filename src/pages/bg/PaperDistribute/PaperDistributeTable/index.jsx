@@ -1,15 +1,34 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import SmartTable from '@/common/SmartTable';
 import { paperTypeConfigMap } from '@/configs';
 import SmartForm from '@/common/SmartForm';
-import { Select, Divider, Button } from 'antd';
+import { Select, Divider, Button, Tag } from 'antd';
 import { CaretDownOutlined } from '@ant-design/icons';
+import { PRIMARY } from '@/constants';
 
 const PaperDistributeForm = props => {
+  const [open, setOpen] = useState(false);
   const { messages, record } = props;
+  const haveApprover = record.reviewerListId.length;
+  console.log(
+    ' PaperDistributeForm ： ',
+    props,
+    haveApprover,
+    record.reviewerList,
+  ); //
+  const options = props.approverList.length
+    ? props.approverList
+    : record.approverList;
+  const content = haveApprover
+    ? record.reviewerList.map(v => (
+        <Tag color={PRIMARY} key={v.id}>
+          {v.name}
+        </Tag>
+      ))
+    : messages.paperDistribute.distributeApprover;
   const ph = (
     <div>
-      {messages.paperDistribute.distributeApprover}
+      {content}
       <CaretDownOutlined />
     </div>
   );
@@ -22,6 +41,12 @@ const PaperDistributeForm = props => {
   const setApprover = params => {
     console.log(' setApprover ： ', params, valueRef.current); //
     props.setApprover(valueRef.current);
+    setOpen(false);
+  };
+  const getApproverList = params => {
+    console.log(' getApproverList ： ', params, record); //
+    props.getApproverList(record);
+    setOpen(true);
   };
 
   const config = [
@@ -29,14 +54,16 @@ const PaperDistributeForm = props => {
       key="tbSelect"
       mode="multiple"
       popupClassName="tbSelect"
+      open={open}
+      onDropdownVisibleChange={visible => setOpen(visible)}
       placeholder={ph}
-      // defaultValue={[messages.paperDistribute.distributeApprover]}
+      defaultValue={record.reviewerListId}
       bordered={false}
       // onChange={props.setApprover}
       onChange={onChange}
-      onFocus={() => props.getApproverList(record)}
+      onFocus={getApproverList}
       // onBlur={props.setApprover}
-      options={props.approverList}
+      options={options}
       dropdownRender={menu => (
         <>
           {menu}
@@ -68,7 +95,11 @@ const paperDistributeTable = props => {
     },
     {
       title: messages.paperDistribute.approveStatus,
-      dataIndex: 'approveStatus',
+      dataIndex: 'sumResult',
+    },
+    {
+      title: messages.paperDistribute.stage,
+      dataIndex: 'paper',
     },
     {
       title: messages.paperDistribute.paperType,
@@ -126,16 +157,18 @@ const paperDistributeTable = props => {
         /> */}
         <PaperDistributeForm record={record} {...props}></PaperDistributeForm>
       </a>
-      <a
-        onClick={() => {
-          props.edit({
-            action: 'noApprove',
-            record,
-          });
-        }}
-      >
-        {messages.paperDistribute.noApprove}
-      </a>
+      {record.sumResult !== '不通过' && (
+        <a
+          onClick={() => {
+            props.edit({
+              action: 'noApprove',
+              record,
+            });
+          }}
+        >
+          {messages.paperDistribute.noApprove}
+        </a>
+      )}
     </>
   );
 

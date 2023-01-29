@@ -5,6 +5,7 @@ import UploadCom from '@/components/Widgets/UploadCom';
 import { approveStatusConfig } from '@/configs';
 import { approveConfig } from '../config';
 import InfoDesc from '@/pages/common/components/InfoDesc';
+import { DOC_TYPE } from '@/constants';
 
 const PostPaperForm = props => {
   const { messages } = props;
@@ -16,6 +17,7 @@ const PostPaperForm = props => {
       messages={messages}
       msgKey={'paperApprove'}
       config={approveConfig}
+      className={'infoDescCol3'}
     ></InfoDesc>,
     // <div className="btnWrapper">
     //   <Button size='large' onClick={cancel}>
@@ -29,7 +31,7 @@ const PostPaperForm = props => {
       formType: 'TextArea',
       itemProps: {
         label: messages.paperApprove.advise,
-        name: 'advise',
+        name: 'opinionText',
       },
       comProps: {
         className: 'formItem',
@@ -41,13 +43,13 @@ const PostPaperForm = props => {
     },
     <UploadCom
       label={messages.paperApprove.uploadAdvise}
-      key={'paperURLObj'}
+      key={'opinionURLObj'}
       action={'/api/uploadFile'}
-      name={'paperURLObj'}
+      name={'opinionURLObj'}
       extra={messages.paperApprove.uploadTips}
       uploadProps={{
         disabled: props.isDisabledAll || props.action === 'detail',
-        accept: 'application/msword',
+        accept: DOC_TYPE,
         multiple: true,
       }}
       formAction={props.action}
@@ -57,7 +59,7 @@ const PostPaperForm = props => {
       formType: 'Radio',
       itemProps: {
         label: messages.paperApprove.approveResult,
-        name: 'approveResult',
+        name: 'result',
         className: 'radioFormItem',
       },
       comProps: {
@@ -68,6 +70,7 @@ const PostPaperForm = props => {
 
   return (
     <SmartForm
+      className={'infoDescCol3'}
       layout={'vertical'}
       noLabelLayout
       config={config}

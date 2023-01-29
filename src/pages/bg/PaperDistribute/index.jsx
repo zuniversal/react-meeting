@@ -6,6 +6,15 @@ import PaperDistributeTable from './PaperDistributeTable';
 import SmartFormModal from '@/common/SmartFormModal';
 import PaperDistributeForm from './PaperDistributeForm';
 import { formatData } from './format';
+import { connect } from 'umi';
+import SmartHelpHOC from '@/common/SmartHelpHOC';
+import {
+  actions,
+  mapStateToProps,
+  mapDispatchToProps,
+} from '@/models/paperDistribute';
+import { paperTypeConfigMap } from '@/configs';
+import { NORMAL_CODE } from '@/utils/request';
 
 const CommonModal = props => {
   console.log(' CommonModal ： ', props); //
@@ -30,7 +39,7 @@ const CommonModal = props => {
       {DetailForm && (
         <DetailForm
           {...props}
-          init={props.common?.itemDetail}
+          // init={props.common?.itemDetail}
           // action={'detail'}
         ></DetailForm>
       )}
@@ -43,64 +52,90 @@ const PaperDistribute = props => {
   const {
     approverList,
     getApproverListAsync,
-    paperDistributeList,
-    getPaperDistributeListAsync,
-    addPaperDistributeAsync,
-    editPaperDistributeAsync,
     action,
     extraData,
-    showModal,
-    common,
-  } = useModel('paperDistribute');
+    setExtraData,
+  } = props; //
+  // const {
+  //   approverList,
+  //   getApproverListAsync,
+  //   paperDistributeList,
+  //   getPaperDistributeListAsync,
+  //   addPaperDistributeAsync,
+  //   editPaperDistributeAsync,
+  //   action,
+  //   extraData,
+  //   setExtraData,
+  //   showModal,
+  //   common,
+  // } = useModel('paperDistribute');
 
-  useEffect(() => {
-    getPaperDistributeListAsync();
-  }, []);
+  // useEffect(() => {
+  //   getPaperDistributeListAsync();
+  // }, []);
 
+  // const itemDetail = {
+  //   no: 'no',
+  //   paperTitle: 'paperTitle',
+  //   paperType: 'paperType',
+  //   paperContacter: 'paperContacter',
+  //   paperAuthor: 'paperAuthor',
+  // };
   const itemDetail = {
-    no: 'no',
-    paperTitle: 'paperTitle',
-    paperType: 'paperType',
-    paperContacter: 'paperContacter',
-    paperAuthor: 'paperAuthor',
+    ...extraData.record,
+    paperIDMap: paperTypeConfigMap[extraData.record?.paperID],
+  };
+
+  const common = {
+    // extraData,
+    action: props.common.action,
+    isShowCommonModal: props.common.isShowCommonModal,
+    visible: props.common.isShowCommonModal,
+    closeCommonModal: props.closeCommonModal,
+    itemDetail,
   };
 
   const onFieldChange = params => {
     console.log(' onFieldChange ： ', params); //
+    props.getListAsync({ params: params.value.params });
   };
   const onOk = async params => {
     console.log(' onOk ： ', params); //
     const { form } = params;
-    try {
-      const res = await form.validateFields();
-      console.log('  res await 结果  ：', res, action);
-      if (action === 'noApprove') {
-        editPaperDistributeAsync(
-          formatData({
-            id: extraData.record.id,
-            ...res,
-          }),
-        );
+    const res = await form.validateFields();
+    console.log('  res await 结果  ：', res, action, extraData);
+    if (extraData.action === 'noApprove') {
+      const reqRes = await props.editPaperDistributeAsync({
+        id: extraData.record.id,
+        ...res,
+      });
+      if (reqRes.code === NORMAL_CODE) {
+        props.closeCommonModal();
       }
-    } catch (error) {
-      console.log(' error ： ', error);
     }
   };
   const edit = params => {
     console.log(' edit ： ', params); //
-    showModal(params);
-    getPaperDistributeListAsync(params);
+    // showModal(params);
+    // props.getPaperDistributeListAsync(params);
+    // props.showItemAsync(params);
+    // props.getListAsync();
+    props.showCommonModal(params);
+    setExtraData({ record: params });
   };
   const getApproverList = params => {
     console.log(' getApproverList ： ', params); //
     getApproverListAsync({ paperCate: params.paperCateID });
+    setExtraData({ record: params });
   };
   const setApprover = (params, item) => {
     console.log(' setApprover ： ', params, item, extraData); //
-    addPaperDistributeAsync({
-      id: extraData.record.id,
+    // addPaperDistributeAsync({
+    props.addItemAsync({
+      // id: extraData.record.id,
+      id: extraData.id,
       reviewerID: params,
-      // endtime: ,
+      endtime: '2030-12-30 14:26:50',
     });
   };
 
@@ -119,24 +154,35 @@ const PaperDistribute = props => {
             <SearchKwForm
               className={'fje'}
               onFieldChange={onFieldChange}
-              keyword={'keyword'}
+              keyword={'params'}
               label={'名称'}
               noLabel
               customConfig={customConfig}
             ></SearchKwForm>
           </div>
           <PaperDistributeTable
+            messages={messages}
+            // dataSource={paperDistributeList}
+            dataSource={props.dataList}
+            count={props.count}
+            searchInfo={props.searchInfo}
+            getListAsync={props.getListAsync}
             edit={edit}
             setApprover={setApprover}
             getApproverList={getApproverList}
             approverList={approverList}
-            messages={messages}
-            dataSource={paperDistributeList}
           ></PaperDistributeTable>
         </div>
       </div>
+      {/* <CommonModal
+        messages={messages}
+        common={common}
+        itemDetail={itemDetail}
+        onOk={onOk}
+      ></CommonModal> */}
       <CommonModal
         messages={messages}
+        // common={props.common}
         common={common}
         itemDetail={itemDetail}
         onOk={onOk}
@@ -145,4 +191,12 @@ const PaperDistribute = props => {
   );
 };
 
-export default PaperDistribute;
+// export default PaperDistribute;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(
+  SmartHelpHOC({
+    actions,
+  })(PaperDistribute),
+);
