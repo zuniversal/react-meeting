@@ -4,6 +4,7 @@ import { downLoad } from '@/utils';
 import { downUrlKeys } from '../config';
 import {
   deletePaperConfig,
+  noOpnionConfig,
   submitPaperConfig,
   submitRevisionConfig,
 } from '@/configs';
@@ -48,17 +49,20 @@ const PaperStatusTable = props => {
       render: (text, record, index, config) => {
         // return null;
         return (
-          <a
-            onClick={() =>
-              props.showAdviseText({
-                action: 'showAdviseText',
-                d_id: record.customer_id,
-                record,
-              })
-            }
-          >
-            {messages.paperStatus.adviseText}
-          </a>
+          (record.sumResult.includes('通过') ||
+            record.sumResult.includes('修改')) && (
+            <a
+              onClick={() =>
+                props.showAdviseText({
+                  action: 'showAdviseText',
+                  d_id: record.customer_id,
+                  record,
+                })
+              }
+            >
+              {messages.paperStatus.adviseText}
+            </a>
+          )
         );
       },
     },
@@ -67,6 +71,8 @@ const PaperStatusTable = props => {
       dataIndex: 'adviseFile',
       render: (text, record, index, config) => {
         return (
+          (record.sumResult.includes('通过') ||
+            record.sumResult.includes('修改')) &&
           downUrlKeys.filter(k => record[k]).length > 0 && (
             <a onClick={() => batchDown(record)}>
               {messages.paperStatus.adviseFile}

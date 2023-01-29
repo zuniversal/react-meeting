@@ -2341,6 +2341,12 @@ export const planListInfoDescConfig = [
 
 export const stringReg = /^[\u4e00-\u9fa5a-zA-Z ]+$/;
 
+export const stringNameRule = {
+  required: true,
+  message: 'Please enter the correct name!',
+  pattern: stringReg,
+};
+
 export const stringRule = {
   required: true,
   message: 'Please input string!',
@@ -2403,7 +2409,7 @@ export const calledConfig = [
   },
   {
     value: 2,
-    label: 'Prefessor',
+    label: 'Professor',
   },
   {
     value: 3,
@@ -2574,3 +2580,5 @@ export const submitRevisionConfig = [
   '正文待修改',
   '正文修改稿待修改',
 ];
+
+export const noOpnionConfig = ['摘要待审核'];

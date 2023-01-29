@@ -51,7 +51,8 @@ const PostPaperForm = props => {
         rules: [
           {
             required: true,
-            message: REQUIRE_EN,
+            // message: REQUIRE_EN,
+            message: null,
           },
           ({ getFieldValue }) => ({
             validator(_, value) {
@@ -69,7 +70,7 @@ const PostPaperForm = props => {
       comProps: {
         className: 'formItem',
         mode: 'tags',
-        placeholder: INPUT_TXT_EN + messages.postPaper.postCommonAuthor,
+        // placeholder: INPUT_TXT_EN + messages.postPaper.postCommonAuthor,
       },
     },
     {
@@ -159,7 +160,7 @@ const PostPaperForm = props => {
       <Input
         className="uploadInput"
         addonAfter={<div onClick={uploadPdf}>{messages.upload}</div>}
-        defaultValue={messages.postPaper.chooseFile}
+        // defaultValue={messages.postPaper.chooseFile}
       />
     </UploadCom>,
     <UploadCom
@@ -181,7 +182,7 @@ const PostPaperForm = props => {
       <Input
         className="uploadInput"
         addonAfter={<div onClick={uploadPdf}>{messages.upload}</div>}
-        defaultValue={messages.postPaper.chooseFile}
+        // defaultValue={messages.postPaper.chooseFile}
       />
     </UploadCom>,
   ];
@@ -193,6 +194,7 @@ const PostPaperForm = props => {
       noLabelLayout
       config={config}
       {...props}
+      noPh
     ></SmartForm>
   );
 };

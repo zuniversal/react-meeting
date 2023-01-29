@@ -106,6 +106,7 @@ const LoginForm = props => {
       //   isReviewer: 0,
       // }}
       {...props}
+      noPh
     ></SmartForm>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.less';
 import SmartForm from '@/common/SmartForm';
-import { calledConfig, emailRule, phoneRule } from '@/configs';
+import { calledConfig, emailRule, phoneRule, stringNameRule } from '@/configs';
 import { useCalledForm } from '@/hooks/useFormItem';
 
 const RegisterForm = props => {
@@ -30,6 +30,7 @@ const RegisterForm = props => {
       comProps: {
         className: 'formItem',
       },
+      formRules: [stringNameRule],
     },
     {
       itemProps: {
@@ -40,6 +41,7 @@ const RegisterForm = props => {
       comProps: {
         className: 'formItem',
       },
+      formRules: [stringNameRule],
     },
     {
       itemProps: {
@@ -98,6 +100,7 @@ const RegisterForm = props => {
       noLabelLayout
       config={config}
       {...props}
+      noPh
     ></SmartForm>
   );
 };
