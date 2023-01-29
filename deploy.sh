@@ -18,3 +18,4 @@ echo '启动新容器'
 docker run -p 9010:80 --name react-meeting -d react-meeting:1.0
 echo '脚本结束'
 
+
