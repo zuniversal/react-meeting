@@ -1,4 +1,4 @@
-FROM node:19-alpine as build
+FROM node:14-alpine as build
 WORKDIR /app
 RUN npm config set registry https://registry.npm.taobao.org
 ADD package.json /app/
