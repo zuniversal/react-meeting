@@ -1,0 +1,6 @@
+.gitignore
+Dockerfile
+node_modules
+.git/*
+notify/node_modules
+notify/node_modules/*

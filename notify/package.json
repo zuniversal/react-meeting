@@ -1,0 +1,16 @@
+{
+  "name": "webhook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webhook.js",
+  "dependencies": {
+    "nodemailer": "^6.9.0",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node webhook.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
