@@ -7,10 +7,10 @@ ADD . /app
 RUN npm run build
 
 FROM nginx
-LABEL name='vue-vw'
+LABEL name='react-meeting'
 LABEL version='1.0'
 # VOLUME . /app
-VOLUME ./vue.conf /etc/nginx/conf.d
+VOLUME ./react.conf /etc/nginx/conf.d
 VOLUME ./gzip.conf /etc/nginx/conf.d
 COPY --from=0 /app/dist /usr/share/nginx/html
 RUN ls /usr/share/nginx/html
