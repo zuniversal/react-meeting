@@ -19,10 +19,10 @@ const PaperApproveTable = props => {
       dataIndex: 'paperCateID',
       dataMap: paperTypeConfigMap,
     },
-    {
-      title: messages.paperApprove.stage,
-      dataIndex: 'paper',
-    },
+    // {
+    //   title: messages.paperApprove.stage,
+    //   dataIndex: 'paper',
+    // },
     {
       title: messages.paperApprove.contactAuthor,
       dataIndex: 'contactAuthor',
@@ -31,14 +31,18 @@ const PaperApproveTable = props => {
       title: messages.paperApprove.commonAuthor,
       dataIndex: 'commonAuthor',
     },
+    // {
+    //   title: messages.paperApprove.approvalStatus,
+    //   dataIndex: 'result',
+    // },
     {
       title: messages.paperApprove.approvalStatus,
-      dataIndex: 'result',
+      dataIndex: 'sumResult',
     },
     {
       sorter: true,
       sortKey: 'submitTime',
-      title: messages.uploadTime,
+      title: messages.paperApprove.uploadTime,
       dataIndex: 'submitTime',
     },
   ];
@@ -53,10 +57,10 @@ const PaperApproveTable = props => {
           });
         }}
       >
-        {props.messages.paperApprove.approve}
+        {props.messages.review}
       </a>
       <a onClick={() => downLoad(record.paperURL, { name: record.paperURL })}>
-        {messages.download_zh}
+        {messages.download}
       </a>
     </>
   );
@@ -67,7 +71,7 @@ const PaperApproveTable = props => {
       extra={extra}
       {...props}
       noDefault
-      locale="zh"
+      // locale="zh"
     ></SmartTable>
   );
 };

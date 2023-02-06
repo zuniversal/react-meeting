@@ -13,6 +13,7 @@ export default [
   { path: '/exhibition', component: '@/pages/common/Exhibition' },
   { path: '/contactUs', component: '@/pages/common/ContactUs' },
 
+  { path: '/emailCenter', component: '@/pages/common/UserCenter' },
   { path: '/userCenter', component: '@/pages/common/UserCenter' },
   { path: '/paperStatus', component: '@/pages/common/PaperStatus' },
   { path: '/joinMeeting', component: '@/pages/common/JoinMeeting' },

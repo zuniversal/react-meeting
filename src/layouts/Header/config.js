@@ -17,6 +17,7 @@ export const hiddenRoutes = [
   'setPwd',
   'selectIdentity',
   'userCenter',
+  'emailCenter',
   'paperStatus',
   'joinMeeting',
 ].map(v => `/${v}`);

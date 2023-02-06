@@ -21,11 +21,13 @@ const AdviseText = props => {
     <div className={`adviseTextWrapper`}>
       {textKeys.map((v, i) => (
         <div key={v} className={`adviseText`}>
-          <div>
-            {props.messages.paperStatus.adviseText} {i + 1}:
-          </div>
+          {props.itemDetail[v] && (
+            <div>
+              {props.messages.paperStatus.adviseText} {i + 1}:{' '}
+              {props.itemDetail[v]}
+            </div>
+          )}
           {/* {props.common.extraData.record[v]} */}
-          {props.itemDetail[v]}
         </div>
       ))}
     </div>
@@ -40,7 +42,7 @@ const CommonModal = props => {
   };
   const DetailForm = detailFormMap[props.common?.action];
   const titleMap = {
-    showAdviseText: messages.paperStatus.adviseText,
+    showAdviseText: messages.paperStatus.adviseTexts,
   };
   return (
     <SmartFormModal
@@ -112,7 +114,7 @@ const PaperStatus = props => {
       d_id: params.record.id,
       id: params.record.id,
     });
-    props.getListAsync();
+    // props.getListAsync();
     // removePaperAsync({
     //   id: params.record.id,
     // });

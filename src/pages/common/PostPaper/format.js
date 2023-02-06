@@ -12,24 +12,10 @@ export const formatData = data => {
 
   newData.copyrightFileURL = formatFileRes(newData, 'copyrightFileURLObj');
   newData.paperURL = formatFileRes(newData, 'paperURLObj');
-  newData.commonAuthor = newData.commonAuthor.join(',');
+  // newData.commonAuthor = newData.commonAuthor.join(',');
 
   if (newData.file) {
     return;
-    if (
-      newData.file &&
-      newData.file.fileList &&
-      newData.file.fileList.length > 0
-    ) {
-      const fileList = newData.file.fileList;
-      console.log(' fileList ： ', fileList);
-      newData.file = fileList.map(v => v.response.url).join(',');
-      // } else {
-      //   tips('文件不能为空！', 2);
-      //   return;
-    } else {
-      params.file = null;
-    }
   } else {
     newData.file = null;
   }

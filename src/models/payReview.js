@@ -1,12 +1,12 @@
 import { init } from '@/utils/createAction';
 import * as services from '@/services/payReview';
-import { identityConfigMap } from '@/configs';
+import { calledConfigMap } from '@/configs';
 
 const formatItem = v => {
   return {
     ...v,
     isPayMap: v.isPay ? '是' : '否',
-    identityMap: identityConfigMap[v.title],
+    identityMap: calledConfigMap[v.title],
   };
 };
 

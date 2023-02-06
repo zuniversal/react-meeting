@@ -1,6 +1,15 @@
 import { init } from '@/utils/createAction';
 import * as services from '@/services/postPaper';
 
+const formatItem = v => {
+  return {
+    ...v,
+    type: v.paperCate,
+    status: v.sumResult,
+    time: v.submitTime,
+  };
+};
+
 const namespace = 'paperStatus';
 const { createAction, createDispatch } = init(namespace);
 
@@ -33,7 +42,7 @@ const model = {
       console.log(' getList ： ', payload, res);
       return {
         ...state,
-        dataList: res.data,
+        dataList: res.data.map(formatItem),
         count: res.total,
         isShowModal: false,
         searchInfo: payload,
@@ -117,10 +126,9 @@ const model = {
     },
     *removeItemAsync({ payload, type }, { call, put }) {
       const res = yield call(services.removePaper, payload);
+      console.log(' removeItemAsync ： '); //
       yield put({
-        res,
-        type: `removeItem`,
-        payload,
+        type: 'getListAsync',
       });
     },
   },

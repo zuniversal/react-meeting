@@ -16,7 +16,7 @@ import { useSystemConfig } from '@/hooks/useSystemConfig';
 // 1:对应管理员
 // 4:对应审稿人
 // 2、3、5:分别对应：论文通讯作者、论文共同作者、陪同人员
-
+// 1 管理员 2 审稿人 3 投稿人
 export default function users() {
   const { calledListMap, identityListMap } = useSystemConfig();
   const [userInfo, setUserInfo] = useState({});
@@ -64,11 +64,6 @@ export default function users() {
     }
   }, []);
 
-  const editUserInfoAsync = useCallback(async params => {
-    const res = await editUserInfo(params);
-    // setUserInfo(res.data[0])
-  }, []);
-
   const getUserInfoAsync = useCallback(async params => {
     if (!getToken()) {
       return;
@@ -91,6 +86,12 @@ export default function users() {
         callMap: calledListMap[callID],
         titleIDMap: identityListMap[titleID],
       });
+  }, []);
+
+  const editUserInfoAsync = useCallback(async params => {
+    const res = await editUserInfo(params);
+    // setUserInfo(res.data[0])
+    getUserInfoAsync();
   }, []);
 
   const logout = params => {

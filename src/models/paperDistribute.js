@@ -11,6 +11,9 @@ const formatItem = v => {
     reviewerListId: v.reviewerList.map(v => v.id),
     approverList: formatSelectList(v.reviewerList, 'name'),
     reviewerList: v.reviewerList,
+    type: v.paperCateID,
+    status: v.sumResult,
+    time: v.submitTime,
   };
 };
 

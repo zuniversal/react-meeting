@@ -124,6 +124,7 @@ const JoinMeetingForm = props => {
       config={config}
       propsForm={form}
       {...props}
+      noPh
     ></SmartForm>
   );
 };

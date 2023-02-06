@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.less';
 import { useIntl, useModel, history } from 'umi';
 import { Button, Form } from 'antd';
@@ -11,7 +11,7 @@ import { formatData } from './format';
 
 const UserCenter = props => {
   const { messages } = useIntl();
-  const { editUserInfoAsync, userInfo } = useModel('users');
+  const { editUserInfoAsync, userInfo, getUserInfoAsync } = useModel('users');
   const { calledListMap, identityListMap } = useSystemConfig();
   const userInfoMap = {
     ...userInfo,
@@ -22,6 +22,11 @@ const UserCenter = props => {
 
   const goPage = params => history.push(params);
   const goChangePwd = params => goPage(`/changePwd`);
+
+  useEffect(() => {
+    console.log(' getUserInfoAsync ： '); //
+    getUserInfoAsync();
+  }, []);
 
   const toggleIsEdit = () => {
     setIsEdit(!isEdit);

@@ -2495,14 +2495,17 @@ export const approveStatusConfig = [
   {
     value: '通过',
     label: '审核通过',
+    label: 'Passed',
   },
   {
     value: '待修改',
     label: '需要修改',
+    label: 'Need to revise',
   },
   {
     value: '不通过',
     label: '审核不通过',
+    label: 'Failed',
   },
 ];
 
@@ -2538,14 +2541,20 @@ export const hotelConfigMap = arrMapObj(hotelConfig);
 export const noUserActionRole = [1, 2];
 
 export const deletePaperConfig = [
+  // '摘要待分配',
+  // '摘要待审核',
+  // '摘要审核不通过',
+  // '摘要修改稿待审核',
+  // '摘要修改稿审核不通过',
+  // '正文待审核不通过',
+  // '正文审核不通过',
+  // '正文修改稿待审核',
+  // '正文修改稿审核不通过',
   '摘要待分配',
-  '摘要待审核',
   '摘要审核不通过',
-  '摘要修改稿待审核',
   '摘要修改稿审核不通过',
   '正文待审核不通过',
   '正文审核不通过',
-  '正文修改稿待审核',
   '正文修改稿审核不通过',
 ];
 
@@ -2582,3 +2591,28 @@ export const submitRevisionConfig = [
 ];
 
 export const noOpnionConfig = ['摘要待审核'];
+
+export const paperStatusMap = {
+  正文待分配: 'Paper to be assigned',
+  摘要待分配: 'Abstract to be reviewed',
+  摘要审核不通过: 'Failed',
+  摘要修改稿审核不通过: 'Failed',
+  正文审核不通过: 'Failed',
+  正文修改稿审核不通过: 'Failed',
+  摘要审核通过: 'Abstract approved',
+  摘要修改稿审核通过: 'Abstract approved',
+  正文审核通过: 'Paper approved',
+  正文修改稿审核通过: 'Paper approved',
+  摘要待修改: 'Abstract to be revised',
+  摘要修改稿待修改: 'Abstract to be revised',
+  正文待修改: 'Paper to be revised ',
+  正文修改稿待修改: 'Paper to be revised',
+  摘要审核中: 'Abstract to be reviewed',
+  摘要修改稿审核中: 'Abstract to be reviewed',
+  正文审核中: 'Paper to be reviewed',
+  正文修改稿审核中: 'Paper to be reviewed',
+  摘要待审核: 'Abstract to be reviewed',
+  摘要修改稿待审核: 'Abstract to be reviewed',
+  正文待审核: 'Paper to be reviewed',
+  正文修改稿待审核: 'Paper to be reviewed',
+};

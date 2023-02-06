@@ -14,6 +14,8 @@ const PaperCountTable = props => {
       dataIndex: 'title',
     },
     {
+      sorter: true,
+      sortKey: 'paperCate',
       title: props.messages.paperCount.paperType,
       dataIndex: 'paperCate',
     },
@@ -22,8 +24,10 @@ const PaperCountTable = props => {
       dataIndex: 'contactAuthor',
     },
     {
-      title: props.messages.paperCount.commonAuthor,
-      dataIndex: 'commonAuthor',
+      sorter: true,
+      sortKey: 'sumResult',
+      title: props.messages.paperCount.approvalStatus,
+      dataIndex: 'sumResult',
     },
     {
       sorter: true,
@@ -44,8 +48,8 @@ const PaperCountTable = props => {
       },
     },
     {
-      title: props.messages.paperCount.approvalStatus,
-      dataIndex: 'sumResult',
+      title: props.messages.paperCount.commonAuthor,
+      dataIndex: 'commonAuthor',
     },
   ];
 

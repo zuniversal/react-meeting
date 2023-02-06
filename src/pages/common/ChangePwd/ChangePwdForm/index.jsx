@@ -8,6 +8,7 @@ const ChangePwdForm = props => {
 
   const config = [
     {
+      formType: 'Password',
       itemProps: {
         label: messages.changePwd.oldPwd,
         name: 'oldPwd',
@@ -52,7 +53,7 @@ const ChangePwdForm = props => {
       },
       comProps: {
         className: 'formItem',
-        placeholder: INPUT_TXT_EN + messages.changePwd.newPwd + ' again',
+        // placeholder: INPUT_TXT_EN + messages.changePwd.newPwd + ' again',
       },
     },
   ];
@@ -63,6 +64,7 @@ const ChangePwdForm = props => {
       noLabelLayout
       config={config}
       {...props}
+      noPh
     ></SmartForm>
   );
 };

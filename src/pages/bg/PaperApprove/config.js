@@ -17,10 +17,10 @@ export const approveConfig = [
   },
   {
     key: 'contactAuthor',
-    langKey: 'paperContacter',
+    langKey: 'contactAuthor',
   },
   {
     key: 'commonAuthor',
-    langKey: 'paperAuthor',
+    langKey: 'commonAuthor',
   },
 ];

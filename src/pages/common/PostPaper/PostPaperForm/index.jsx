@@ -4,7 +4,7 @@ import { Input } from 'antd';
 import SmartForm from '@/common/SmartForm';
 import UploadCom from '@/components/Widgets/UploadCom';
 import { usePaperTypeForm } from '@/hooks/useFormItem';
-import { stringReg, stringRule } from '@/configs';
+import { stringNameRule, stringReg, stringRule } from '@/configs';
 import { DOC_TYPE, INPUT_TXT_EN, PDF_TYPE, REQUIRE_EN } from '@/constants';
 
 const PostPaperForm = props => {
@@ -43,35 +43,45 @@ const PostPaperForm = props => {
         },
       ],
     },
+    // {
+    //   formType: 'Select',
+    //   itemProps: {
+    //     label: messages.postPaper.postCommonAuthor,
+    //     name: 'commonAuthor',
+    //     rules: [
+    //       {
+    //         required: true,
+    //         // message: REQUIRE_EN,
+    //         message: null,
+    //       },
+    //       ({ getFieldValue }) => ({
+    //         validator(_, value) {
+    //           const res = value?.every(v => stringReg.test(v));
+    //           if (res) {
+    //             return Promise.resolve();
+    //           }
+    //           return Promise.reject(
+    //             new Error('Please enter the correct name!'),
+    //           );
+    //         },
+    //       }),
+    //     ],
+    //   },
+    //   comProps: {
+    //     className: 'formItem',
+    //     mode: 'tags',
+    //     // placeholder: INPUT_TXT_EN + messages.postPaper.postCommonAuthor,
+    //   },
+    // },
     {
-      formType: 'Select',
       itemProps: {
         label: messages.postPaper.postCommonAuthor,
         name: 'commonAuthor',
-        rules: [
-          {
-            required: true,
-            // message: REQUIRE_EN,
-            message: null,
-          },
-          ({ getFieldValue }) => ({
-            validator(_, value) {
-              const res = value?.every(v => stringReg.test(v));
-              if (res) {
-                return Promise.resolve();
-              }
-              return Promise.reject(
-                new Error('Please enter the correct name!'),
-              );
-            },
-          }),
-        ],
       },
       comProps: {
         className: 'formItem',
-        mode: 'tags',
-        // placeholder: INPUT_TXT_EN + messages.postPaper.postCommonAuthor,
       },
+      // formRules: [stringNameRule],
     },
     {
       itemProps: {

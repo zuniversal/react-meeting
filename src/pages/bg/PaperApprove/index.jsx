@@ -39,6 +39,12 @@ const CommonModal = props => {
       // title={null}
       onOk={props.onOk}
       onCancel={props.common.closeCommonModal}
+      // modalProps={{
+      //   okTxt: messages.confirm,
+      //   cancelTxt: messages.cancel,
+      // }}
+      okTxt={messages.confirm}
+      cancelTxt={messages.cancel}
     >
       {DetailForm && (
         <DetailForm

@@ -5,6 +5,7 @@ import { downUrlKeys } from '../config';
 import {
   deletePaperConfig,
   noOpnionConfig,
+  paperStatusMap,
   submitPaperConfig,
   submitRevisionConfig,
 } from '@/configs';
@@ -30,13 +31,16 @@ const PaperStatusTable = props => {
       dataIndex: 'paperCate',
     },
     {
+      sorter: true,
+      sortKey: 'status',
       title: messages.paperStatus.approvalStatus,
-      dataIndex: 'sumResult',
+      dataIndex: 'status',
+      dataMap: paperStatusMap,
     },
-    {
-      title: messages.paperStatus.stage,
-      dataIndex: 'paperEG',
-    },
+    // {
+    //   title: messages.paperStatus.stage,
+    //   dataIndex: 'paperEG',
+    // },
     {
       title: messages.paperStatus.adviseText,
       dataIndex: 'adviseText',
@@ -82,8 +86,10 @@ const PaperStatusTable = props => {
       },
     },
     {
+      sorter: true,
+      sortKey: 'time',
       title: messages.paperStatus.submitTime,
-      dataIndex: 'submitTime',
+      dataIndex: 'time',
     },
   ];
 
@@ -96,12 +102,11 @@ const PaperStatusTable = props => {
       finish: e => props.uploadEditedRevision(e, record),
       accept: DOC_TYPE,
     };
+    const isShowDelete = deletePaperConfig.includes(record.sumResult);
+    // const isShowDelete = [ deletePaperConfig.includes(record.sumResult) || record.sumResult.includes('不通过'), ]
     return (
       <>
-        {[
-          deletePaperConfig.includes(record.sumResult) ||
-            record.sumResult.includes('不通过'),
-        ] && (
+        {isShowDelete && (
           <a
             onClick={() => {
               props.remove({
@@ -113,9 +118,9 @@ const PaperStatusTable = props => {
             {messages.delete}
           </a>
         )}
-        <a onClick={() => downLoad(record.paperURL, { name: record.paperURL })}>
+        {/* <a onClick={() => downLoad(record.paperURL, { name: record.paperURL })}>
           {messages.check}
-        </a>
+        </a> */}
         {submitPaperConfig.includes(record.sumResult) && (
           <SmartUpload {...uploadEditedPaperProps}>
             <a className="uploadLink">
@@ -144,6 +149,7 @@ const PaperStatusTable = props => {
       columns={columns}
       extra={extra}
       noDefault
+      rowSelection={null}
       {...props}
     ></SmartTable>
   );

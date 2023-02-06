@@ -22,8 +22,10 @@ const JoinCountTable = props => {
       dataIndex: 'phone',
     },
     {
+      sorter: true,
+      sortKey: 'greet',
       title: messages.joinCount.isNeedPick,
-      dataIndex: 'isGreet',
+      dataIndex: 'greet',
       dataMap: ynConfigMap,
     },
     {

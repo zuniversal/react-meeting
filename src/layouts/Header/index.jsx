@@ -131,6 +131,11 @@ const UserInfo = props => {
       props.goPage(`/userCenter`);
     }
   };
+  const goUserCenter2 = params => {
+    if (!props.userInfo.isAdminApprover) {
+      props.goPage(`/emailCenter`);
+    }
+  };
   return (
     <div className="userInfo">
       {/* <img
@@ -141,13 +146,24 @@ const UserInfo = props => {
       {/* <div className="userName">{props.userInfo.firstName + props.userInfo.secondName}</div> */}
       <div
         className={cls({
-          linking: hiddenRoutes.includes(props.activeKey),
+          linking: props.activeKey === '/emailCenter',
           userName: true,
         })}
-        onClick={goUserCenter}
+        onClick={goUserCenter2}
       >
         {props.userInfo.email}
       </div>
+      {!props.userInfo.isAdminApprover && (
+        <span
+          className={cls({
+            linking: props.activeKey === '/userCenter',
+            underline: true,
+          })}
+          onClick={goUserCenter}
+        >
+          {props.messages.userCenter.title}
+        </span>
+      )}
       <div className="underline" onClick={props.logout}>
         {props.messages.logout}
       </div>
@@ -159,7 +175,7 @@ const Header = props => {
   const { messages } = useIntl();
   const { activeKey, setActiveKey } = useModel('systemConfig');
   const { userInfo, logout } = useModel('users');
-  // console.log(' Header ： ', activeKey, props, messages, userInfo); //
+  console.log(' Header ： ', activeKey, props, messages, userInfo); //
 
   const goPage = params => {
     history.push(params);

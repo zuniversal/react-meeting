@@ -7,6 +7,7 @@ const SetPwdForm = props => {
 
   const config = [
     {
+      formType: 'Password',
       itemProps: {
         label: messages.login.password,
         name: 'password',
@@ -51,6 +52,7 @@ const SetPwdForm = props => {
       noLabelLayout
       config={config}
       {...props}
+      noPh
     ></SmartForm>
   );
 };

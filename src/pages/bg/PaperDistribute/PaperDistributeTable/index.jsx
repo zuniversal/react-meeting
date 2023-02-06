@@ -1,30 +1,55 @@
 import React, { useRef, useState } from 'react';
+import './style.less';
 import SmartTable from '@/common/SmartTable';
 import { paperTypeConfigMap } from '@/configs';
 import SmartForm from '@/common/SmartForm';
-import { Select, Divider, Button, Tag } from 'antd';
+import { Select, Divider, Button, Tag, Modal } from 'antd';
 import { CaretDownOutlined } from '@ant-design/icons';
 import { PRIMARY } from '@/constants';
+import { downLoad } from '@/utils';
+
+let modal;
+const warning = props => {
+  console.log(' props warning ： ', props); //
+  modal = Modal.confirm({
+    title: '操作提示',
+    content: (
+      <div>
+        <p>
+          您选择的审稿人是: {props.approvers}，一旦确认就不能更改，是否确认？
+        </p>
+      </div>
+    ),
+    onOk: props.onOk,
+    okText: '确认',
+    cancelText: '取消',
+    onCancel: props.onCancel,
+  });
+};
 
 const PaperDistributeForm = props => {
   const [open, setOpen] = useState(false);
+  const [approverIndex, setApproverIndex] = useState(0);
   const { messages, record } = props;
-  const haveApprover = record.reviewerListId.length;
+  // const haveApprover = record.reviewerListId.length;
+  const haveApprover = record.sumResult.includes('待分配');
   console.log(
     ' PaperDistributeForm ： ',
     props,
     haveApprover,
     record.reviewerList,
   ); //
-  const options = props.approverList.length
-    ? props.approverList
-    : record.approverList;
+  // const options = props.approverList.length
+  //   ? props.approverList
+  //   : record.approverList;
+  const options = props.approverList;
+  const reviewerCom = record.reviewerList.map(v => (
+    <Tag color={PRIMARY} key={v.id}>
+      {v.name}
+    </Tag>
+  ));
   const content = haveApprover
-    ? record.reviewerList.map(v => (
-        <Tag color={PRIMARY} key={v.id}>
-          {v.name}
-        </Tag>
-      ))
+    ? reviewerCom
     : messages.paperDistribute.distributeApprover;
   const ph = (
     <div>
@@ -34,14 +59,40 @@ const PaperDistributeForm = props => {
   );
 
   const valueRef = useRef(null);
+  const selectedListRef = useRef([]);
   const onChange = (selected, selectedList) => {
     console.log(' onChange ： ', selected, selectedList); //
     valueRef.current = selected;
+    selectedListRef.current = selectedList;
   };
   const setApprover = params => {
     console.log(' setApprover ： ', params, valueRef.current); //
     props.setApprover(valueRef.current);
     setOpen(false);
+    modal.destroy();
+  };
+  const onCancel = params => {
+    console.log(' onCancel ： ', params, valueRef.current); //
+    // props.setApprover([]);
+    valueRef.current = null;
+    setOpen(false);
+    setApproverIndex(approverIndex + 1);
+    modal.destroy();
+  };
+  const setApproverConfirm = params => {
+    console.log(
+      ' setApproverConfirm ： ',
+      params,
+      selectedListRef.current,
+      selectedListRef.current.length > 0,
+    ); //
+    if (selectedListRef.current.length > 0) {
+      warning({
+        approvers: selectedListRef.current.map(v => v.name).join('、'),
+        onOk: setApprover,
+        onCancel: onCancel,
+      });
+    }
   };
   const getApproverList = params => {
     console.log(' getApproverList ： ', params, record); //
@@ -51,7 +102,7 @@ const PaperDistributeForm = props => {
 
   const config = [
     <Select
-      key="tbSelect"
+      key={`tbSelect${approverIndex}`}
       mode="multiple"
       popupClassName="tbSelect"
       open={open}
@@ -70,7 +121,10 @@ const PaperDistributeForm = props => {
           <Divider style={{ margin: '8px 0' }} />
           {/* <div style={{textAlign: 'right'}}> */}
           <div className="tbSelectAction">
-            <Button type="primary" onClick={setApprover}>
+            {!record.reviewerListId.length && (
+              <Button onClick={onCancel}>{messages.cancel_zh}</Button>
+            )}
+            <Button type="primary" onClick={setApproverConfirm}>
               {messages.paperDistribute.distribute}
             </Button>
           </div>
@@ -79,7 +133,15 @@ const PaperDistributeForm = props => {
     />,
   ];
 
-  return <SmartForm config={config} {...props}></SmartForm>;
+  const formCom = (
+    <SmartForm
+      config={config}
+      {...props}
+      className={'paperDistributeForm'}
+    ></SmartForm>
+  );
+  const com = haveApprover ? formCom : reviewerCom;
+  return com;
 };
 
 const paperDistributeTable = props => {
@@ -94,14 +156,18 @@ const paperDistributeTable = props => {
       dataIndex: 'title',
     },
     {
+      sorter: true,
+      sortKey: 'status',
       title: messages.paperDistribute.approveStatus,
       dataIndex: 'sumResult',
     },
+    // {
+    //   title: messages.paperDistribute.stage,
+    //   dataIndex: 'paper',
+    // },
     {
-      title: messages.paperDistribute.stage,
-      dataIndex: 'paper',
-    },
-    {
+      sorter: true,
+      sortKey: 'type',
       title: messages.paperDistribute.paperType,
       dataIndex: 'paperCateID',
       dataMap: paperTypeConfigMap,
@@ -137,9 +203,9 @@ const paperDistributeTable = props => {
     // },
     {
       sorter: true,
-      sortKey: 'submitTime',
+      sortKey: 'time',
       title: messages.uploadTime,
-      dataIndex: 'submitTime',
+      dataIndex: 'time',
     },
   ];
 
@@ -155,6 +221,7 @@ const paperDistributeTable = props => {
           // onBlur={props.setApprover}
           options={props.approverList}
         /> */}
+        {/* <PaperDistributeForm record={record} {...props}></PaperDistributeForm> */}
         <PaperDistributeForm record={record} {...props}></PaperDistributeForm>
       </a>
       {record.sumResult !== '不通过' && (
@@ -169,6 +236,9 @@ const paperDistributeTable = props => {
           {messages.paperDistribute.noApprove}
         </a>
       )}
+      <a onClick={() => downLoad(record.paperURL, { name: record.paperURL })}>
+        {messages.showDetail}
+      </a>
     </>
   );
 

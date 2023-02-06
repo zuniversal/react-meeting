@@ -24,6 +24,11 @@ import { Link, history, connect } from 'umi';
 import noData from '@/static/assets/noData.png';
 import dayjs from 'dayjs';
 
+const orderTextMap = {
+  ascend: 'asc',
+  descend: 'desc',
+};
+
 const { slideInUp } = ANIMATE;
 
 /* 
@@ -496,7 +501,7 @@ class SmartTable extends PureComponent {
 
     // 通用操作列
     const actionCol = {
-      fixed: 'right',
+      // fixed: 'right',
       title: locale === 'en' ? 'Operation' : '操作',
       className: 'actionCol',
       render: (text, record, index) => {
@@ -527,7 +532,11 @@ class SmartTable extends PureComponent {
   };
   onTableChange = (pagination, filters, sorter) => {
     console.log('    onTableChange ： ', pagination, filters, sorter);
-    const { order, column: { sortKey, paramKey = '_sort' } = {} } = sorter;
+    const {
+      order,
+      column: { sortKey, paramKey = '_sort' } = {},
+      field,
+    } = sorter;
     const { current: page, pageSize: per_page } = pagination;
     if (!this.props.noRequest && this.props.getListAsync) {
       const params = {
@@ -535,8 +544,16 @@ class SmartTable extends PureComponent {
         per_page,
       };
       // params[sortKey] = order;
-      if (sortKey) {
-        params[paramKey] = `${order === 'descend' ? '-' : ''}${sortKey}`;
+      // if (sortKey) {
+      if (field) {
+        // params[paramKey] = `${order === 'descend' ? '-' : ''}${sortKey}`;
+        // params[sortKey] = `${sortKey}=${order}`;
+        // params[field] = order;
+        params.order = field;
+        if (!order) {
+          params.order = null;
+        }
+        params.seq = orderTextMap[order];
       }
 
       this.props.getListAsync(params);
@@ -730,7 +747,7 @@ class SmartTable extends PureComponent {
           pagination={paginationConfig}
           // rowClassName={(record, i) => ANIMATE.bounceInRight}
           // rowClassName={(record, i) => ANIMATE.slideInRight}
-
+          // sortDirections={['asc', 'desc']}
           {...this.props}
           // dataSource={dataSource}
           dataSource={realData}

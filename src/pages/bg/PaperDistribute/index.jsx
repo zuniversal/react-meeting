@@ -125,9 +125,12 @@ const PaperDistribute = props => {
   };
   const getApproverList = params => {
     console.log(' getApproverList ： ', params); //
-    getApproverListAsync({ paperCate: params.paperCateID });
+    // getApproverListAsync({ paperCate: params.paperCateID });
     setExtraData({ record: params });
   };
+  useEffect(() => {
+    getApproverListAsync();
+  }, []);
   const setApprover = (params, item) => {
     console.log(' setApprover ： ', params, item, extraData); //
     // addPaperDistributeAsync({

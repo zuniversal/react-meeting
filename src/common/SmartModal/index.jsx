@@ -101,6 +101,12 @@ class SmartModal extends PureComponent {
       size,
       extraBtn,
     } = this.props;
+    console.log(
+      ' %c xxxxxxx 组件 this.state, this.props ： ',
+      `color: #333; font-weight: bold`,
+      this.state,
+      this.props,
+    ); //
 
     const widths = this.getWidth();
     return (

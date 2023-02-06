@@ -42,6 +42,7 @@ const PostPaperForm = props => {
       },
     },
     <UploadCom
+      text={messages.upload}
       label={messages.paperApprove.uploadAdvise}
       key={'opinionURLObj'}
       action={'/api/uploadFile'}
@@ -76,6 +77,7 @@ const PostPaperForm = props => {
       config={config}
       locale="zh"
       {...props}
+      noPh
     ></SmartForm>
   );
 };

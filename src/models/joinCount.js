@@ -1,6 +1,14 @@
 import { init } from '@/utils/createAction';
 import * as services from '@/services/admin';
 
+const formatItem = v => {
+  return {
+    ...v,
+    greet: v.isGreet,
+    time: v.submitTime,
+  };
+};
+
 const namespace = 'joinCount';
 const { createAction, createDispatch } = init(namespace);
 
@@ -18,6 +26,7 @@ const model = {
       return {
         ...state,
         dataList: res.data,
+        dataList: res.data.map(formatItem),
         count: res.total,
         isShowModal: false,
         searchInfo: payload,
