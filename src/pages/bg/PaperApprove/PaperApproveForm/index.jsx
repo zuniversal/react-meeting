@@ -17,7 +17,7 @@ const PostPaperForm = props => {
       messages={messages}
       msgKey={'paperApprove'}
       config={approveConfig}
-      className={'infoDescCol3'}
+      // className={'infoDescCol3'}
     ></InfoDesc>,
     // <div className="btnWrapper">
     //   <Button size='large' onClick={cancel}>

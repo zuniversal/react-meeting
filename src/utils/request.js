@@ -92,6 +92,12 @@ export const isTips = res => {
     return;
   }
 
+  if (code === 100) {
+    console.log(' 11111111 ： '); //
+    // history.push(LOGIN);
+    return;
+  }
+  console.log(' 11111111 22222 ： '); //
   if (statusMap[status]) {
     tips(statusMap[status], 2);
     return;
@@ -109,57 +115,6 @@ export const isTips = res => {
   //   tips(msgEG, status != NORMAL_CODE ? 2 : 1);
   // }
   return;
-  // if (codeMap[code]) {
-  //   tips(codeMap[code], 2);
-  //   return;
-  // }
-  // console.log(' codecode ： ', code); //
-  if (code !== NORMAL_CODE) {
-    if (code) {
-      // if (code) {
-      // if (false) {
-      const codeMsg = getCodeMsg(code);
-      // console.log(
-      //   ' 提示 对吗  !codeMsg ',
-      //   history,
-      //   msgEG,
-      //   code,
-      //   !codeMsg,
-      //   codeMsg,
-      // );
-
-      if (code !== 200) {
-        tips(msgEG || codeMsg, 2);
-        return;
-      }
-      if (code === AUTH_FAIL && !isDev) {
-        const { pathname } = history.location;
-        if (!noRedirectLoginPath.includes(pathname)) {
-          history.push(LOGIN);
-        }
-      }
-      // console.log(' codecode ： ', msgEG, msgEG ?? '操作成功', codeMsg); //
-      tips(msgEG || codeMsg, 2);
-      // if (!codeMsg) {
-      //   tips(codeMsg, 2);
-      // }
-      return;
-    } else {
-      // console.log(' 提示 对吗  !noTips ', !noTips, msgEG, noTips, status);
-      if (!noTips || (status != 200 && status != 201)) {
-        tips(msgEG, status != 200 && status != 201 ? 2 : 1);
-      }
-      // const isNormal = `${status}`.startsWith('2')
-      // console.log(' 提示 对吗  !noTips ', !noTips, noTips, status, isNormal);
-      // if (!noTips || isNormal) {
-      //   tips(msgEG, isNormal ? 2 : 1);
-      // }
-    }
-    // } else {
-    //   if (!noTips) {
-    //     tips(msgEG, );
-    //   }
-  }
 };
 
 const instance = axios.create({
@@ -243,10 +198,6 @@ export class Request {
         // }
 
         return res.data;
-        return {
-          ...data,
-          rest,
-        };
       },
       err => {
         console.log(' 请求发生错误了：', err, err.message, err.response, {

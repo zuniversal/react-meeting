@@ -8,6 +8,7 @@ import {
 import { login, regester, userCenter } from '@/services/user';
 import { setItem, getItem } from '@/utils';
 import { calledConfig, identityConfig } from '@/configs';
+import { usePaperTypeReq } from '@/hooks/useDataReq';
 
 const initActiveKey = window.location.hash.split('#')[1];
 
@@ -17,6 +18,7 @@ export default function systemConfig() {
   const [identityList, setIdentityList] = useState(identityConfig);
   const [hotelList, setHotelList] = useState([]);
 
+  const { paperTypeList, paperTypeListMap } = usePaperTypeReq();
   const getCalledListAsync = useCallback(async params => {
     // setCalledList((await getCalledList(params)).data);
   }, []);
@@ -76,5 +78,7 @@ export default function systemConfig() {
     getIdentityListAsync,
     getHotelListAsync,
     goAndSetkey,
+    paperTypeList,
+    paperTypeListMap,
   };
 }

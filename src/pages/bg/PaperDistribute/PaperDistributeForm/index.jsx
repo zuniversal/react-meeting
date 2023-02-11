@@ -13,7 +13,7 @@ const PaperDistributeForm = props => {
       messages={messages}
       msgKey={'paperApprove'}
       config={approveConfig}
-      className={'infoDescCol3'}
+      // className={'infoDescCol3'}
     ></InfoDesc>,
     // {
     //   formType: 'DatePicker',

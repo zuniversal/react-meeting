@@ -15,9 +15,9 @@ const PaperCountTable = props => {
     },
     {
       sorter: true,
-      sortKey: 'paperCate',
+      sortKey: 'type',
       title: props.messages.paperCount.paperType,
-      dataIndex: 'paperCate',
+      dataIndex: 'type',
     },
     {
       title: props.messages.paperCount.contactAuthor,
@@ -25,15 +25,15 @@ const PaperCountTable = props => {
     },
     {
       sorter: true,
-      sortKey: 'sumResult',
+      sortKey: 'status',
       title: props.messages.paperCount.approvalStatus,
-      dataIndex: 'sumResult',
+      dataIndex: 'status',
     },
     {
       sorter: true,
-      sortKey: 'submitTime',
+      sortKey: 'time',
       title: props.messages.uploadTime,
-      dataIndex: 'submitTime',
+      dataIndex: 'time',
     },
     {
       title: props.messages.paperCount.approver,
@@ -57,7 +57,7 @@ const PaperCountTable = props => {
     <SmartTable
       columns={columns}
       {...props}
-      rowSelection={null}
+      // rowSelection={null}
       noActionCol
       locale="zh"
     ></SmartTable>

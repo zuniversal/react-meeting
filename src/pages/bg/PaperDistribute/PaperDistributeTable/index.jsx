@@ -7,6 +7,7 @@ import { Select, Divider, Button, Tag, Modal } from 'antd';
 import { CaretDownOutlined } from '@ant-design/icons';
 import { PRIMARY } from '@/constants';
 import { downLoad } from '@/utils';
+import { useModel } from 'umi';
 
 let modal;
 const warning = props => {
@@ -48,9 +49,11 @@ const PaperDistributeForm = props => {
       {v.name}
     </Tag>
   ));
-  const content = haveApprover
-    ? reviewerCom
-    : messages.paperDistribute.distributeApprover;
+  const content =
+    record.reviewerListId.length > 0
+      ? reviewerCom
+      : messages.paperDistribute.distributeApprover;
+  // const ph = messages.paperDistribute.distributeApprover
   const ph = (
     <div>
       {content}
@@ -86,13 +89,13 @@ const PaperDistributeForm = props => {
       selectedListRef.current,
       selectedListRef.current.length > 0,
     ); //
-    if (selectedListRef.current.length > 0) {
-      warning({
-        approvers: selectedListRef.current.map(v => v.name).join('、'),
-        onOk: setApprover,
-        onCancel: onCancel,
-      });
-    }
+    // if (selectedListRef.current.length > 0) {
+    warning({
+      approvers: selectedListRef.current.map(v => v.name).join('、'),
+      onOk: setApprover,
+      onCancel: onCancel,
+    });
+    // }
   };
   const getApproverList = params => {
     console.log(' getApproverList ： ', params, record); //
@@ -121,9 +124,10 @@ const PaperDistributeForm = props => {
           <Divider style={{ margin: '8px 0' }} />
           {/* <div style={{textAlign: 'right'}}> */}
           <div className="tbSelectAction">
-            {!record.reviewerListId.length && (
+            {/* {!record.reviewerListId.length && (
               <Button onClick={onCancel}>{messages.cancel_zh}</Button>
-            )}
+            )} */}
+            <Button onClick={onCancel}>{messages.cancel_zh}</Button>
             <Button type="primary" onClick={setApproverConfirm}>
               {messages.paperDistribute.distribute}
             </Button>
@@ -140,12 +144,13 @@ const PaperDistributeForm = props => {
       className={'paperDistributeForm'}
     ></SmartForm>
   );
-  const com = haveApprover ? formCom : reviewerCom;
-  return com;
+  return formCom;
 };
 
 const paperDistributeTable = props => {
   const { messages } = props; //
+  const { paperTypeListMap } = useModel('systemConfig');
+
   const columns = [
     {
       title: messages.paperDistribute.no,
@@ -159,7 +164,7 @@ const paperDistributeTable = props => {
       sorter: true,
       sortKey: 'status',
       title: messages.paperDistribute.approveStatus,
-      dataIndex: 'sumResult',
+      dataIndex: 'status',
     },
     // {
     //   title: messages.paperDistribute.stage,
@@ -169,8 +174,8 @@ const paperDistributeTable = props => {
       sorter: true,
       sortKey: 'type',
       title: messages.paperDistribute.paperType,
-      dataIndex: 'paperCateID',
-      dataMap: paperTypeConfigMap,
+      dataIndex: 'type',
+      dataMap: paperTypeListMap,
     },
     {
       title: messages.paperDistribute.contactAuthor,

@@ -8,13 +8,13 @@ export const approveConfig = [
     langKey: 'paperTitle',
   },
   {
-    key: '',
-    langKey: '',
-  },
-  {
     key: 'paperIDMap',
     langKey: 'paperType',
   },
+  // {
+  //   key: '',
+  //   langKey: '',
+  // },
   {
     key: 'contactAuthor',
     langKey: 'contactAuthor',

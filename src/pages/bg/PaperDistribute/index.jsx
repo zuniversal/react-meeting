@@ -49,6 +49,7 @@ const CommonModal = props => {
 
 const PaperDistribute = props => {
   const { messages } = useIntl();
+  const { paperTypeListMap } = useModel('systemConfig');
   const {
     approverList,
     getApproverListAsync,
@@ -83,7 +84,7 @@ const PaperDistribute = props => {
   // };
   const itemDetail = {
     ...extraData.record,
-    paperIDMap: paperTypeConfigMap[extraData.record?.paperID],
+    paperIDMap: paperTypeListMap[extraData.record?.paperCateID],
   };
 
   const common = {

@@ -3,13 +3,13 @@ import useHttp from '@/hooks/useHttp';
 import {
   getCalledList,
   getIdentityList,
-  getPaperTypeList,
+  getPaperCateList,
   getHotelList,
 } from '@/services/common';
 import {
   calledConfig as calledList,
   identityConfig as identityList,
-  paperTypeConfig as paperTypeList,
+  // paperTypeConfig as paperTypeList,
 } from '@/configs';
 
 export const useCalledForm = props => {
@@ -69,14 +69,18 @@ export const useIdentityForm = props => {
 export const usePaperTypeForm = props => {
   const { messages } = props;
 
-  // const { data: paperTypeList } = useHttp(getPaperTypeList, {
-  //   format: data => {
-  //     return data.map(v => ({
-  //       label: v.submitPaperCateName,
-  //       value: v.id,
-  //     }));
-  //   },
-  // });
+  const { data: paperTypeList } = useHttp(
+    () => getPaperCateList({ page: 1, per_page: 20 }),
+    {
+      format: data => {
+        return data.map(v => ({
+          // label: v.submitPaperCateName,
+          label: v.paperCateName,
+          value: v.id,
+        }));
+      },
+    },
+  );
   console.log(' paperTypeList ： ', paperTypeList, props); //
 
   return {

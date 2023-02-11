@@ -9,4 +9,5 @@ export const getHotelList = p => req.get(`hotel`, p);
 //   return formatSelectList(res.data, 'hotelName')
 // });
 export const getPaperTypeList = p => req.get(`submitPaperCate`, p);
+export const getPaperCateList = p => req.get(`paperCate`, p);
 export const getUserInfo = p => req.get(`userCenter`, p);

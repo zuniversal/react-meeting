@@ -2616,3 +2616,14 @@ export const paperStatusMap = {
   正文待审核: 'Paper to be reviewed',
   正文修改稿待审核: 'Paper to be reviewed',
 };
+
+export const noReviewConfig = [
+  '摘要审核中',
+  '摘要修改稿审核中',
+  '正文审核中',
+  '正文修改稿审核中',
+  '摘要待审核',
+  '摘要修改稿待审核',
+  '正文待审核',
+  '正文修改稿待审核',
+];

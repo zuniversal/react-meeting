@@ -1,5 +1,15 @@
 import { init } from '@/utils/createAction';
 import * as services from '@/services/postPaper';
+import { downLoad } from '@/utils';
+
+const formatItem = v => {
+  return {
+    ...v,
+    type: v.paperCate,
+    status: v.sumResult,
+    time: v.submitTime,
+  };
+};
 
 const namespace = 'paperCount';
 const { createAction, createDispatch } = init(namespace);
@@ -18,6 +28,7 @@ const model = {
       return {
         ...state,
         dataList: res.data,
+        dataList: res.data.map(formatItem),
         count: res.total,
         isShowModal: false,
         searchInfo: payload,
@@ -39,6 +50,11 @@ const model = {
         type: `getList`,
         payload: params,
       });
+    },
+    *batchDownPaper({ payload, type }, { call, put }) {
+      const res = yield call(services.batchDownPaper, payload);
+      downLoad(res.data, { name: res.data });
+      return res;
     },
   },
 };

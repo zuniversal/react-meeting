@@ -62,6 +62,7 @@ const PaperApprove = props => {
   const { action, extraData, setExtraData } = props; //
   console.log(' PaperApprove ： ', props, extraData); //
   // const { postList, getPaperListAsync } = useModel('paperApprove');
+  const { paperTypeListMap } = useModel('systemConfig');
 
   // useEffect(() => {
   //   getPaperListAsync();
@@ -89,7 +90,7 @@ const PaperApprove = props => {
   // };
   const itemDetail = {
     ...extraData.record,
-    paperIDMap: paperTypeConfigMap[extraData.record?.paperID],
+    paperIDMap: paperTypeListMap[extraData.record?.paperCateID],
   };
 
   const common = {
@@ -179,9 +180,9 @@ const PaperApprove = props => {
                 noLabel
                 customConfig={customConfig}
               ></SearchKwForm>
-              <Button type="primary" onClick={batchDown}>
+              {/* <Button type="primary" onClick={batchDown}>
                 {messages.paperApprove.downBatch}
-              </Button>
+              </Button> */}
             </div>
           </div>
           <PaperApproveTable

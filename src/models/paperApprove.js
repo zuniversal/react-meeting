@@ -3,6 +3,15 @@ import * as services from '@/services/paperApprove';
 import * as paperApproveServices from '@/services/paperApprove';
 import { downLoad } from '@/utils';
 
+const formatItem = v => {
+  return {
+    ...v,
+    type: v.paperCateID,
+    status: v.sumResult,
+    time: v.submitTime,
+  };
+};
+
 const namespace = 'paperApprove';
 const { createAction, createDispatch } = init(namespace);
 
@@ -38,6 +47,7 @@ const model = {
       return {
         ...state,
         dataList: res.data,
+        dataList: res.data.map(formatItem),
         count: res.total,
         isShowModal: false,
         searchInfo: payload,

@@ -17,19 +17,31 @@ import { submitPaperCateIDMap } from '@/configs';
 import { formatData } from './format';
 
 const AdviseText = props => {
-  return (
+  const isOpinion = props.itemDetail.opinion;
+  const adminOpinion = (
+    <div className={`adviseText`}>
+      <div>
+        {props.messages.paperStatus.adviseText}: {props.itemDetail.opinion}
+      </div>
+    </div>
+  );
+  return isOpinion ? (
+    adminOpinion
+  ) : (
     <div className={`adviseTextWrapper`}>
-      {textKeys.map((v, i) => (
-        <div key={v} className={`adviseText`}>
-          {props.itemDetail[v] && (
-            <div>
-              {props.messages.paperStatus.adviseText} {i + 1}:{' '}
-              {props.itemDetail[v]}
-            </div>
-          )}
-          {/* {props.common.extraData.record[v]} */}
-        </div>
-      ))}
+      {textKeys
+        // .filter(v => props.itemDetail[v])
+        .map((v, i) => (
+          <div key={v} className={`adviseText`}>
+            {props.itemDetail[v] && (
+              <div>
+                {props.messages.paperStatus.adviseText} {i + 1}:{' '}
+                {props.itemDetail[v]}
+              </div>
+            )}
+            {/* {props.common.extraData.record[v]} */}
+          </div>
+        ))}
     </div>
   );
 };

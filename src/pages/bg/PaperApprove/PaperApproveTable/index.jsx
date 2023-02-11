@@ -1,10 +1,13 @@
 import React from 'react';
 import SmartTable from '@/common/SmartTable';
 import { downLoad } from '@/utils';
-import { paperTypeConfigMap } from '@/configs';
+import { paperTypeConfigMap, noReviewConfig, paperStatusMap } from '@/configs';
+import { useModel } from 'umi';
 
 const PaperApproveTable = props => {
   const { messages } = props; //
+  const { paperTypeListMap } = useModel('systemConfig');
+
   const columns = [
     {
       title: messages.paperApprove.no,
@@ -17,7 +20,7 @@ const PaperApproveTable = props => {
     {
       title: messages.paperApprove.paperType,
       dataIndex: 'paperCateID',
-      dataMap: paperTypeConfigMap,
+      dataMap: paperTypeListMap,
     },
     // {
     //   title: messages.paperApprove.stage,
@@ -38,27 +41,30 @@ const PaperApproveTable = props => {
     {
       title: messages.paperApprove.approvalStatus,
       dataIndex: 'sumResult',
+      dataMap: paperStatusMap,
     },
     {
-      sorter: true,
-      sortKey: 'submitTime',
-      title: messages.paperApprove.uploadTime,
-      dataIndex: 'submitTime',
+      // sorter: true,
+      // sortKey: 'time',
+      title: messages.paperApprove.submitTime,
+      dataIndex: 'time',
     },
   ];
 
   const extra = (text, record, index, props) => (
     <>
-      <a
-        onClick={() => {
-          props.edit({
-            action: 'approve',
-            record,
-          });
-        }}
-      >
-        {props.messages.review}
-      </a>
+      {noReviewConfig.some(v => v === record.sumResult) && (
+        <a
+          onClick={() => {
+            props.edit({
+              action: 'approve',
+              record,
+            });
+          }}
+        >
+          {props.messages.review}
+        </a>
+      )}
       <a onClick={() => downLoad(record.paperURL, { name: record.paperURL })}>
         {messages.download}
       </a>
@@ -69,9 +75,10 @@ const PaperApproveTable = props => {
     <SmartTable
       columns={columns}
       extra={extra}
-      {...props}
       noDefault
+      rowSelection={null}
       // locale="zh"
+      {...props}
     ></SmartTable>
   );
 };

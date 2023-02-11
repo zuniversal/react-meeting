@@ -688,6 +688,7 @@ class SmartTable extends PureComponent {
     const col = columns.map((v, i) => ({
       // render: v.render ? v.render : this.renderCol,
       dataIndex: v.dataIndex ? v.dataIndex : `field${i}`,
+      width: 300,
       ...v,
       render: (...rest) => this.renderCol(...rest, v),
       // sorter: v.autoSorter ? this.autoSorter : null,
@@ -764,7 +765,7 @@ class SmartTable extends PureComponent {
           //   y: 700,
           // }}
           // scroll={{
-          //   x: 1200,
+          //   x: 900,
           // }}
           // sticky
         />

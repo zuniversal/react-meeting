@@ -66,6 +66,8 @@ const Banner = props => {
       <div className="bannerCenter">
         <div className="title">{props.msg.title}</div>
         <div className="title">{props.msg.subTitle}</div>
+        <div className="subBoldTitle">{props.msg.thirdTitle}</div>
+        <div className="subBoldTitle">{props.msg.fourTitle}</div>
         <div className="activityInfo/">{props.msg.activity}</div>
         <Button className="postBtn bigBtn" type="primary" onClick={goPost}>
           {props.msg.goPost}
