@@ -66,8 +66,6 @@ const Banner = props => {
       <div className="bannerCenter">
         <div className="title">{props.msg.title}</div>
         <div className="title">{props.msg.subTitle}</div>
-        <div className="subBoldTitle">{props.msg.thirdTitle}</div>
-        <div className="subBoldTitle">{props.msg.fourTitle}</div>
         <div className="activityInfo/">{props.msg.activity}</div>
         <Button className="postBtn bigBtn" type="primary" onClick={goPost}>
           {props.msg.goPost}
@@ -108,6 +106,12 @@ const MeetingIntro = props => {
             {props.msg.callPaper}
           </Button>
         </Download>
+      </div>
+      <div className="extraWrapper">
+        <div className="">
+          <div className="subBoldTitle">{props.msg.thirdTitle}</div>
+          <div className="subBoldTitle">{props.msg.fourTitle}</div>
+        </div>
       </div>
       <div className="meetingIntroRight">
         <img src={g1} className="g1" />

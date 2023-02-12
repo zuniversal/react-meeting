@@ -38,15 +38,11 @@
   .title {
     margin-bottom: 20px;
   }
-  .subTitle,
-  .subBoldTitle {
+  .subTitle {
     font-size: 24px;
     font-weight: 300;
     color: #333333;
     margin-bottom: 42px;
-  }
-  .subBoldTitle {
-    font-weight: bolder;
   }
   .meetingIntro {
     display: flex;
@@ -65,10 +61,21 @@
       // display: flex;
       // flex-direction: column;
     }
+    .extraWrapper {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      display: flex;
+      white-space: nowrap;
+      justify-content: flex-end;
+      font-size: 24px;
+      font-weight: bolder;
+    }
     .meetingIntroRight {
       position: absolute;
       right: 10%;
       top: 100px;
+
       .poemWrapper {
         display: flex;
         font-size: 28px;
