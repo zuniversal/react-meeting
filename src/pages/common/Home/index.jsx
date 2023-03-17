@@ -5,6 +5,7 @@ import { useIntl, history, useModel } from 'umi';
 import g1 from '@/static/img/home/g1.png';
 import g2 from '@/static/img/home/g2.png';
 import g3 from '@/static/img/home/g3.png';
+import activityLogo from '@/static/img/home/activityLogo.png';
 import bannerImg from '@/static/img/home/banner.png';
 import backTop from '@/static/img/home/backTop.png';
 import bottomImg from '@/static/img/home/bottomBg.png';
@@ -64,8 +65,13 @@ const Banner = props => {
   return (
     <div className="banner">
       <div className="bannerCenter">
-        <div className="title">{props.msg.title}</div>
-        <div className="title">{props.msg.subTitle}</div>
+        <div className="bannerTopWrapper">
+          <img src={activityLogo} className="activityLogo" />
+          <div className="titleWrapper">
+            <div className="title bannerTitle">{props.msg.title}</div>
+            <div className="title">{props.msg.subTitle}</div>
+          </div>
+        </div>
         <div className="activityInfo/">{props.msg.activity}</div>
         <Button className="postBtn bigBtn" type="primary" onClick={goPost}>
           {props.msg.goPost}
@@ -107,18 +113,12 @@ const MeetingIntro = props => {
           </Button>
         </Download>
       </div>
-      <div className="extraWrapper">
-        <div className="">
-          <div className="subBoldTitle">{props.msg.thirdTitle}</div>
-          <div className="subBoldTitle">{props.msg.fourTitle}</div>
-        </div>
-      </div>
       <div className="meetingIntroRight">
         <img src={g1} className="g1" />
-        <div className="poemWrapper">
+        {/* <div className="poemWrapper">
           <div className="poem">魅力无锡，吴韵文化</div>
           <div className="poem">太湖明珠</div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
@@ -159,11 +159,13 @@ const MeetingReg = props => {
       <div className="title">{props.msg.meetingReg}</div>
       <div className="meetingRegWrapper">
         <div className="meetingRegLeft">
-          <img src={g2} className="g2" />
-          <div className="poemWrapper">
+          <div className="">
+            <img src={g2} className="g2" />
+          </div>
+          {/* <div className="poemWrapper">
             <div className="poem">人文无锡，江南胜地</div>
             <div className="poem">惠山锡山</div>
-          </div>
+          </div> */}
         </div>
         <div className="meetingRegRight">
           {supporterConfig.map((v, index) => (
@@ -240,6 +242,12 @@ const Supporter = props => {
             </div>
           ))}
         </div>
+        <div className="extraWrapper">
+          <div className="">
+            <div className="subBoldTitle">{props.msg.thirdTitle}</div>
+            <div className="subBoldTitle">{props.msg.fourTitle}</div>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -258,6 +266,7 @@ const Home = props => {
       <MeetingInfo msg={messages.home}></MeetingInfo>
       <MeetingTravel msg={messages.home}></MeetingTravel>
       <Supporter msg={messages.home}></Supporter>
+      {/* <Extra msg={messages.home}></Extra> */}
       <FloatButton></FloatButton>
     </div>
   );

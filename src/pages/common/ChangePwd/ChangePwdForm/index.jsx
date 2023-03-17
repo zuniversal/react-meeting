@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Checkbox } from 'antd';
 import SmartForm from '@/common/SmartForm';
 import { INPUT_TXT_EN } from '@/constants';
+import { pwdRule } from '@/configs';
 
 const ChangePwdForm = props => {
   const { messages } = props;
@@ -27,6 +28,7 @@ const ChangePwdForm = props => {
       comProps: {
         className: 'formItem',
       },
+      formRules: [pwdRule],
     },
     {
       formType: 'Password',

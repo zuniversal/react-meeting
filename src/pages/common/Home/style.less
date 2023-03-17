@@ -35,8 +35,24 @@
       }
     }
   }
+  .bannerTopWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .activityLogo {
+    // margin-right: 55px;
+    // transform: scale(2);
+    width: 250px;
+  }
   .title {
     margin-bottom: 20px;
+    &.bannerTitle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
   .subTitle {
     font-size: 24px;
@@ -61,19 +77,9 @@
       // display: flex;
       // flex-direction: column;
     }
-    .extraWrapper {
-      position: absolute;
-      top: 50px;
-      right: 0;
-      display: flex;
-      white-space: nowrap;
-      justify-content: flex-end;
-      font-size: 24px;
-      font-weight: bolder;
-    }
     .meetingIntroRight {
       position: absolute;
-      right: 10%;
+      right: 8%;
       top: 100px;
 
       .poemWrapper {
@@ -101,13 +107,13 @@
       font-size: 24px;
       font-weight: 300;
       color: #666666;
-      width: 80%;
+      width: 76%;
       line-height: 2;
       margin-bottom: 30px;
     }
     .g1 {
       width: 280px;
-      height: 280px;
+      // height: 280px;
     }
   }
 
@@ -116,6 +122,7 @@
     height: 800px;
     background: url(~@/static/img/home/centerBg.png) no-repeat;
     background-size: 100% 100%;
+    margin-top: -400px;
     .centerBg {
       // height: 800px;
     }
@@ -156,7 +163,8 @@
         &:nth-child(2),
         &:nth-child(3),
         &:nth-child(9),
-        &:nth-child(10) {
+        &:nth-child(10),
+        &:nth-child(11) {
           border-right: 0;
         }
         &:nth-child(5),
@@ -168,6 +176,7 @@
         }
         &:nth-child(8) {
           border-top: 0;
+          border-bottom: 0;
         }
         &:nth-child(1) {
           border-top-left-radius: 25px;
@@ -178,7 +187,7 @@
         &:nth-child(9) {
           border-bottom-left-radius: 25px;
         }
-        &:nth-child(11) {
+        &:nth-child(12) {
           border-bottom-right-radius: 25px;
         }
         .meetingThemeIcon {
@@ -208,7 +217,7 @@
     // height: 1000px;
     .g2 {
       width: 300px;
-      height: 300px;
+      // height: 300px;
     }
     .meetingRegWrapper {
       display: flex;
@@ -369,6 +378,18 @@
     }
   }
 
+  .extraWrapper {
+    // position: absolute;
+    top: 50px;
+    right: 0;
+    display: flex;
+    white-space: nowrap;
+    // justify-content: flex-end;
+    // font-size: 24px;
+    font-size: 22px;
+    // font-weight: bolder;
+    margin-top: 130px;
+  }
   .floatingBtnWrapper {
     position: fixed;
     right: 5%;

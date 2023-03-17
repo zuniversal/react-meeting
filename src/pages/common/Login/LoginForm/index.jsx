@@ -3,7 +3,7 @@ import './style.less';
 import { Form, Checkbox } from 'antd';
 import { history } from 'umi';
 import SmartForm from '@/common/SmartForm';
-import { emailRule } from '@/configs';
+import { emailRule, pwdRule } from '@/configs';
 
 const LoginForm = props => {
   const { messages, isBgPlatform } = props;
@@ -46,10 +46,37 @@ const LoginForm = props => {
       itemProps: {
         label: messages.login.password,
         name: 'password',
+        // rules: [
+        //   {
+        //     required: true,
+        //     message: 'Please confirm your password!',
+        //   },
+        //   ({ getFieldValue }) => ({
+        //     validator(_, value) {
+        //       if (value.length < 8) {
+        //         return Promise.reject(
+        //           new Error('The two passwords that you entered do not match!'),
+        //         );
+        //       }
+        //       return Promise.resolve();
+        //     },
+        //   }),
+        //   ({ getFieldValue }) => ({
+        //     validator(_, value) {
+        //       if (value.length < 8) {
+        //         return Promise.reject(
+        //           new Error('The two passwords that you entered do not match!'),
+        //         );
+        //       }
+        //       return Promise.resolve();
+        //     },
+        //   }),
+        // ],
       },
       comProps: {
         className: 'formItem',
       },
+      formRules: [pwdRule],
     },
     // ...(isBgPlatform
     //   ? [

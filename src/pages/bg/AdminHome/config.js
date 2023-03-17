@@ -4,6 +4,8 @@ import p3 from '@/static/img/adminHome/p3.png';
 import p4 from '@/static/img/adminHome/p4.png';
 import p5 from '@/static/img/adminHome/p5.png';
 import p6 from '@/static/img/adminHome/p6.png';
+import p7 from '@/static/img/adminHome/p7.png';
+import p8 from '@/static/img/adminHome/p8.png';
 
 export const bgCountConfig = [
   {
@@ -50,5 +52,19 @@ export const bgCountConfig = [
     icon: p6,
     label: '图片上传',
     bg: '#8D929B',
+  },
+  {
+    langKey: 'logManage',
+    path: '/logManage',
+    icon: p7,
+    label: '日志管理',
+    bg: '#C7B97B',
+  },
+  {
+    langKey: 'registerApprover',
+    path: '/registerApprover',
+    icon: p8,
+    label: '注册审稿人',
+    bg: '#769180',
   },
 ];

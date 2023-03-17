@@ -4,6 +4,7 @@ import { useIntl, useModel } from 'umi';
 import { Button, Form } from 'antd';
 import InfoCol from '@/pages/common/components/InfoCol';
 import UserCenterWrapper from '@/pages/common/components/UserCenterWrapper';
+import Download from '@/components/Widgets/Download';
 import JoinMeetingForm from './JoinMeetingForm';
 import { joinMeetingConfig } from './config';
 import { formatData } from './format';
@@ -21,6 +22,7 @@ const JoinMeetingTips = props => {
 
 const JoinMeeting = props => {
   const { messages } = useIntl();
+  const { userInfo } = useModel('users');
   const {
     joinMeetingItem,
     joinMeetingList,
@@ -122,7 +124,14 @@ const JoinMeeting = props => {
       className="joinMeeting"
       data={joinMeetingItem}
     >
-      <div className="primaryTitle">{messages.joinMeeting[titleKey]}</div>
+      <div className="titleWrapper">
+        <div className="primaryTitle">{messages.joinMeeting[titleKey]}</div>
+        {!userInfo.isAdminApprover && (
+          <Download url={joinMeetingItem.payPhotographUrl}>
+            {messages.userCenter.downReceipt}
+          </Download>
+        )}
+      </div>
       {isNext ? joinMeetingCom : paymentResult}
     </UserCenterWrapper>
   );

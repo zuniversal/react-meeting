@@ -188,6 +188,7 @@ export default ({
         onCancel: onResultModalCancel,
       };
       const resProps = {
+        ...removeParams,
         okFn: removeParams.okFn
           ? removeParams.okFn
           : !removeParams.noRemove

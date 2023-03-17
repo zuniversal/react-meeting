@@ -75,7 +75,7 @@ const PostPaperForm = props => {
       layout={'vertical'}
       noLabelLayout
       config={config}
-      locale="zh"
+      // locale="zh"
       {...props}
       noPh
     ></SmartForm>

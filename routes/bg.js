@@ -8,4 +8,6 @@ export default [
   { path: '/uploadImgHistory', component: '@/pages/bg/UploadImgHistory' },
   { path: '/payReview', component: '@/pages/bg/PayReview' },
   { path: '/paperDistribute', component: '@/pages/bg/PaperDistribute' },
+  { path: '/logManage', component: '@/pages/bg/LogManage' },
+  { path: '/registerApprover', component: '@/pages/bg/RegisterApprover' },
 ];

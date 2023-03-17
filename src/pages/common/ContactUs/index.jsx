@@ -21,7 +21,7 @@ const ContactUs = props => {
     <div className="contactUs">
       <div className="conWrapper">
         <div className="title">{messages.contactUs.title}</div>
-        <img src={intro} className="contactUsImg" />
+        {/* <img src={intro} className="contactUsImg" /> */}
         <div className="contactUsTitle">{messages.contactUs.name}</div>
         <ContactUsList messages={messages} config={infoConfig}></ContactUsList>
       </div>

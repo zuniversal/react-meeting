@@ -144,6 +144,7 @@ export const getLabel = (label, key, locale) => {
     DatePicker: prefixMap[locale].SELECT_TXT + label,
     MonthPicker: prefixMap[locale].SELECT_TXT + label,
     // RangePicker: SELECT_TXT + label,
+    RangePicker: '',
   };
 
   return labelMap[key];

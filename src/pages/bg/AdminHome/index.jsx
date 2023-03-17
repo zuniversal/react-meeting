@@ -25,7 +25,9 @@ const AdminHomeGrid = ({ messages, data }) => {
             <div className="adminHomeLabel">
               {messages.adminHome[v.langKey]}
             </div>
-            <div className="adminHomeNum">{v.key && data[v.key]}</div>
+            {v.key && data[v.key] != null && (
+              <div className="adminHomeNum">{v.key && data[v.key]}</div>
+            )}
           </div>
         </div>
       ))}

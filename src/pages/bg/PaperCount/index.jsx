@@ -51,10 +51,10 @@ const PaperCount = props => {
 
   const batchDown = params => {
     console.log(' batchDown ： ', params, props); //
-    if (!props.selectedInfo.selectedRowKeys.length) {
-      tips(messages.selectDown, 2);
-      return;
-    }
+    // if (!props.selectedInfo.selectedRowKeys.length) {
+    //   tips(messages.selectDown, 2);
+    //   return;
+    // }
     props.showCommonModal({
       action: 'selectDownlaod',
     });

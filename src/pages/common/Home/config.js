@@ -9,6 +9,7 @@ import t8 from '@/static/img/home/meetingTheme/8.png';
 import t9 from '@/static/img/home/meetingTheme/9.png';
 import t10 from '@/static/img/home/meetingTheme/10.png';
 import t11 from '@/static/img/home/meetingTheme/11.png';
+import t12 from '@/static/img/home/meetingTheme/12.png';
 import p1 from '@/static/img/home/p1.png';
 import p2 from '@/static/img/home/p2.png';
 import p3 from '@/static/img/home/p3.png';
@@ -60,6 +61,10 @@ export const meetingThemeConfig = [
   },
   {
     src: t11,
+    label: '博士',
+  },
+  {
+    src: t12,
     label: '博士',
   },
 ];

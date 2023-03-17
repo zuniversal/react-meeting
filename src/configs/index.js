@@ -2339,6 +2339,13 @@ export const planListInfoDescConfig = [
   },
 ];
 
+export const pwdReg = /(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~!@#$%^&*_.]).{8,}/;
+export const pwdRule = {
+  required: true,
+  message: 'Incorrect format!',
+  pattern: pwdReg,
+};
+
 export const stringReg = /^[\u4e00-\u9fa5a-zA-Z ]+$/;
 
 export const stringNameRule = {
@@ -2366,6 +2373,26 @@ export const emailRule = {
   message: '邮箱格式不正确',
   message: 'Incorrect mailbox format',
   pattern: /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/,
+};
+
+export const stringRuleZh = {
+  ...stringRule,
+  message: '格式不正确',
+};
+
+export const pwdRuleZh = {
+  ...pwdRule,
+  message: '密码格式不正确',
+};
+
+export const phoneRuleZh = {
+  ...phoneRule,
+  message: '请输入正确的手机号',
+};
+
+export const emailRuleZh = {
+  ...emailRule,
+  message: '邮箱格式不正确',
 };
 
 export const assetDetailConfig = [
