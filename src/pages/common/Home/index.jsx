@@ -253,6 +253,19 @@ const Supporter = props => {
   );
 };
 
+const ExtraInfo = props => {
+  return (
+    <div className="extraInfo">
+      <div className="extraWrapper">
+        <div className="">
+          <div className="subBoldTitle">{props.msg.thirdTitle}</div>
+          <div className="subBoldTitle">{props.msg.fourTitle}</div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Home = props => {
   console.log(' Home       ： ', props);
   const { messages } = useIntl();
@@ -265,7 +278,8 @@ const Home = props => {
       <MeetingReg msg={messages.home}></MeetingReg>
       <MeetingInfo msg={messages.home}></MeetingInfo>
       <MeetingTravel msg={messages.home}></MeetingTravel>
-      <Supporter msg={messages.home}></Supporter>
+      {/* <Supporter msg={messages.home}></Supporter> */}
+      <ExtraInfo msg={messages.home}></ExtraInfo>
       {/* <Extra msg={messages.home}></Extra> */}
       <FloatButton></FloatButton>
     </div>
