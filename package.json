@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "start": "set NODE_OPTIONS=--openssl-legacy-provider && umi dev",
-    "build2": "set NODE_OPTIONS=--openssl-legacy-provider && npx umi build",
+    "build2": "set NODE_OPTIONS=--openssl-legacy-provider && umi build",
     "build": "set NODE_OPTIONS=--openssl-legacy-provider && umi build && scp -r ./dist/ root@8.136.3.138:/code/meeting/react-meeting/",
     "postinstall": "umi generate tmp",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
