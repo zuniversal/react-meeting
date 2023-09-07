@@ -34,15 +34,15 @@ const DowntTpl = ({ messages }) => (
   <div className="activeLinkWrapper">
     <a
       className="activeLink"
-      href="/api/downloads/Paper_template_STABS2024.doc"
-      download={'Paper_template_STABS2024.doc'}
+      href="/api/downloads/Paper_template_STABS2024.pdf"
+      download={'Paper_template_STABS2024.pdf'}
     >
       {messages.postPaper.downloadPaper}
     </a>
     <a
       className="activeLink"
-      href="/api/downloads/Paper_template_STABS2024.pdf"
-      download={'Paper_template_STABS2024.pdf'}
+      href="/api/downloads/Paper_template_STABS2024.doc"
+      download={'Paper_template_STABS2024.doc'}
     >
       {messages.postPaper.downloadTpl}
     </a>
