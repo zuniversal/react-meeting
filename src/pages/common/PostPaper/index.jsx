@@ -37,15 +37,22 @@ const DowntTpl = ({ messages }) => (
       href="/api/downloads/Paper_template_STABS2024.doc"
       download={'Paper_template_STABS2024.doc'}
     >
-      {messages.postPaper.downloadTpl}
+      {messages.postPaper.downloadPaper}
     </a>
     <a
+      className="activeLink"
+      href="/api/downloads/Paper_template_STABS2024.pdf"
+      download={'Paper_template_STABS2024.pdf'}
+    >
+      {messages.postPaper.downloadTpl}
+    </a>
+    {/* <a
       className="activeLink"
       href="/api/downloads/paperAuth.pdf"
       download={'paperAuth.pdf'}
     >
       {messages.postPaper.downloadAuth}
-    </a>
+    </a> */}
   </div>
 );
 

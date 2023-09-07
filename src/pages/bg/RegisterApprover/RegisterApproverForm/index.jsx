@@ -1,6 +1,7 @@
 import React from 'react';
 import SmartForm from '@/common/SmartForm';
 import { emailRuleZh, pwdRuleZh, stringRuleZh } from '@/configs';
+import { usePaperTypeReq } from '@/hooks/useDataReq';
 
 const nameFormCol = {
   labelCol: {
@@ -27,6 +28,7 @@ const formLayouts = {
 };
 
 const RegisterApproverForm = props => {
+  const { paperTypeList } = usePaperTypeReq();
   const { messages } = props;
 
   const config = [
@@ -82,6 +84,18 @@ const RegisterApproverForm = props => {
         className: 'formItem',
       },
       formRules: [pwdRuleZh],
+    },
+    {
+      formType: 'Select',
+      itemProps: {
+        label: messages.registerApprover.field,
+        name: 'paperCateID',
+      },
+      comProps: {
+        className: 'formItem',
+        options: paperTypeList,
+        mode: 'multiple',
+      },
     },
   ];
 

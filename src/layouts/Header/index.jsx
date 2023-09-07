@@ -134,6 +134,8 @@ const UserInfo = props => {
   const goUserCenter2 = params => {
     if (!props.userInfo.isAdminApprover) {
       props.goPage(`/emailCenter`);
+    } else {
+      props.goPage(`/adminHome`);
     }
   };
   return (

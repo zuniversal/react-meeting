@@ -2339,7 +2339,7 @@ export const planListInfoDescConfig = [
   },
 ];
 
-export const pwdReg = /(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~!@#$%^&*_.]).{8,}/;
+export const pwdReg = /(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~!@#$%^&*_.)-]).{8,}/;
 export const pwdRule = {
   required: true,
   message: 'Incorrect format!',

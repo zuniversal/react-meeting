@@ -55,6 +55,7 @@ export default defineConfig({
       component: '@/layouts/index',
       // component: '@/pages/common/Home',
       routes: [
+        { path: '/', component: '@/pages/common/Home' },
         { path: '/home', component: '@/pages/common/Home' },
         { path: '/om/test', component: '@/pages/Test' },
         ...routes,

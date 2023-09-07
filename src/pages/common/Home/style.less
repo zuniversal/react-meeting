@@ -1,6 +1,7 @@
 .home {
   width: 100%;
   height: 100%;
+
   .banner {
     // height: 100%;
     // min-height: 800px;
@@ -9,32 +10,55 @@
     // background-size: 100% 100%;
     text-align: center;
     position: relative;
+
     .bannerCenter {
       padding-top: 60px;
       font-size: 30px;
       font-weight: 900;
-      color: #333333;
+      color: #333;
       z-index: 2;
       position: absolute;
       width: 100%;
       left: 0;
       top: 0;
+      @media only screen and (max-width: 1000px) {
+        .activityLogo {
+          width: 100px;
+        }
+
+        .bannerTitle {
+          font-size: 22px;
+        }
+
+        .activityInfo {
+          font-size: 16px;
+        }
+      }
+
       .activityInfo {
         margin: 50px 0;
         font-size: 18px;
+        // font-size: 2vw;
       }
+
+      .title {
+        // font-size: 2.5vw;
+      }
+
       .bigBtn {
         margin-top: 40px;
         border-radius: 100px;
         padding: 4px 30px;
       }
     }
+
     .bannerImgWrapper {
       .bannerImg {
         width: 100%;
       }
     }
   }
+
   .bannerTopWrapper {
     display: flex;
     justify-content: center;
@@ -46,20 +70,25 @@
     // transform: scale(2);
     width: 250px;
   }
+
   .title {
     margin-bottom: 20px;
+
     &.bannerTitle {
       display: flex;
       justify-content: center;
       align-items: center;
+      // font-size: 2.5vw;
     }
   }
+
   .subTitle {
     font-size: 24px;
     font-weight: 300;
-    color: #333333;
+    color: #333;
     margin-bottom: 42px;
   }
+
   .meetingIntro {
     display: flex;
     position: relative;
@@ -67,6 +96,7 @@
     padding-top: 200px;
     max-width: 1000px;
     margin: 0 auto;
+
     .bigBtn {
       margin-top: 45px;
     }
@@ -77,6 +107,7 @@
       // display: flex;
       // flex-direction: column;
     }
+
     .meetingIntroRight {
       position: absolute;
       right: 8%;
@@ -90,6 +121,7 @@
         position: absolute;
         top: 90px;
         right: 64px;
+
         .poem {
           width: 40px;
           word-break: break-word;
@@ -106,11 +138,12 @@
     .meetingIntroText {
       font-size: 24px;
       font-weight: 300;
-      color: #666666;
+      color: #666;
       width: 76%;
       line-height: 2;
       margin-bottom: 30px;
     }
+
     .g1 {
       width: 280px;
       // height: 280px;
@@ -123,10 +156,12 @@
     background: url(~@/static/img/home/centerBg.png) no-repeat;
     background-size: 100% 100%;
     margin-top: -400px;
+
     .centerBg {
       // height: 800px;
     }
   }
+
   .meetingThemeWrapper {
     border: 1px solid #d1d5db;
     border-radius: 20px;
@@ -135,16 +170,19 @@
     padding: 110px 0;
     background: white;
   }
+
   .meetingTheme {
     // padding: 0 360px;
     max-width: 1000px;
     margin: 0 auto;
     border-radius: 20px;
+
     .meetingThemeGrid {
       display: flex;
       flex-wrap: wrap;
       // width: 800px;
       margin: 0 auto;
+
       .meetingThemeGridItem {
         // flex: 0 0 250px;
         width: 25%;
@@ -159,6 +197,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
         &:nth-child(1),
         &:nth-child(2),
         &:nth-child(3),
@@ -167,6 +206,7 @@
         &:nth-child(11) {
           border-right: 0;
         }
+
         &:nth-child(5),
         &:nth-child(6),
         &:nth-child(7) {
@@ -174,22 +214,33 @@
           border-top: 0;
           border-bottom: 0;
         }
+
         &:nth-child(8) {
           border-top: 0;
           border-bottom: 0;
         }
+
         &:nth-child(1) {
           border-top-left-radius: 25px;
         }
+
         &:nth-child(4) {
           border-top-right-radius: 25px;
         }
-        &:nth-child(9) {
+        // &:nth-child(9) {
+        //   border-bottom-left-radius: 25px;
+        // }
+        // &:nth-child(12) {
+        //   border-bottom-right-radius: 25px;
+        // }
+        &:nth-child(13) {
           border-bottom-left-radius: 25px;
         }
-        &:nth-child(12) {
+
+        &:nth-child(14) {
           border-bottom-right-radius: 25px;
         }
+
         .meetingThemeIcon {
           // flex: 1;
           margin-top: 40px;
@@ -200,6 +251,7 @@
           justify-content: center;
           align-items: flex-end;
         }
+
         .meetingThemeLabel {
           flex: 1;
           text-align: center;
@@ -208,6 +260,7 @@
       }
     }
   }
+
   .meetingReg {
     position: relative;
     // padding: 0 360px;
@@ -219,6 +272,7 @@
       width: 300px;
       // height: 300px;
     }
+
     .meetingRegWrapper {
       display: flex;
     }
@@ -229,6 +283,7 @@
       // top: 100px;
       position: relative;
       display: inline-flex;
+
       .poemWrapper {
         display: flex;
         font-size: 28px;
@@ -239,6 +294,7 @@
         // right: 40px;
         top: 111px;
         left: 176px;
+
         .poem {
           width: 40px;
           word-break: break-word;
@@ -247,22 +303,27 @@
         }
       }
     }
+
     .meetingRegRight {
-      color: #333333;
+      color: #333;
       display: inline-flex;
       flex-direction: column;
       margin-left: 117px;
+
       .meetingRegIndex {
         font-size: 90px;
         font-weight: 900;
       }
+
       .meetingRegItem {
         font-size: 24px;
         // font-size: 20px;
         margin-bottom: 98px;
+
         .meetingRegTitle {
           margin-top: 12px;
           margin-bottom: 18px;
+
           &:nth-child(2) {
             font-weight: bold;
           }
@@ -270,6 +331,7 @@
       }
     }
   }
+
   .meetingInfo {
     // height: 762px;
     // padding: 160px 360px;
@@ -278,23 +340,26 @@
     background: #f9f9f9;
     position: relative;
     padding: 162px 0;
+
     .meetingInfoRow {
       &:not(:last-child) {
         margin-bottom: 50px;
       }
     }
+
     .meetingInfoTitle {
       font-size: 40px;
       font-size: 26px;
       font-weight: bold;
-      color: #333333;
+      color: #333;
       margin-bottom: 20px;
     }
+
     .meetingInfoItem {
       font-size: 24px;
       // font-size: 16px;
       font-weight: 300;
-      color: #333333;
+      color: #333;
       margin-bottom: 10px;
     }
 
@@ -311,13 +376,16 @@
       // height: 300px;
     }
   }
+
   .meetingTravel {
     // padding: 160px 360px;
     max-width: 1000px;
     margin: 0 auto;
     padding: 120px 0 80px;
+
     .meetingTravelGrid {
       display: flex;
+
       .meetingTravelGridItem {
         // flex: 0 0 373px;
         width: 33%;
@@ -328,6 +396,7 @@
         align-items: center;
         font-size: 24px;
         text-align: center;
+
         .meetingTravelIcon {
           margin-bottom: 32px;
           width: 100%;
@@ -336,19 +405,28 @@
       }
     }
   }
+
   .supporter {
     height: 762px;
     // padding: 160px 360px;
     background: url(~@/static/img/home/bottomBg.png) no-repeat;
     background-size: 100% 100%;
+
     .supporterWrapper {
       max-width: 1000px;
       margin: 0 auto;
     }
 
+    .supporterIcon1 {
+      transform: scale(1.1);
+      display: flex;
+    }
+
     .supporterGrid {
       display: flex;
+      justify-content: center;
       margin-top: 51px;
+
       .supporterGridItem {
         // flex: 0 0 373px;
         width: 25%;
@@ -358,6 +436,8 @@
         align-items: center;
         font-size: 24px;
         text-align: center;
+        margin: 0 40px;
+
         .supporterIcon {
           // width: 146px;
           // height: 132px;
@@ -368,7 +448,12 @@
           flex-direction: column;
           justify-content: center;
           align-items: center;
+
+          > img {
+            max-width: 100px;
+          }
         }
+
         .supporterLabel {
           // flex: 1;
           text-align: center;
@@ -394,16 +479,19 @@
     // font-size: 24px;
     font-size: 22px;
     // font-weight: bolder;
-    // margin-top: 130px;
-    max-width: 1000px;
-    margin: 0 auto;
+
+    margin-top: 130px;
+    // max-width: 1000px;
+    // margin: 0 auto;
   }
+
   .floatingBtnWrapper {
     position: fixed;
     right: 5%;
     bottom: 10%;
     display: flex;
     flex-direction: column;
+
     .floatingBtn {
       display: flex;
       flex-direction: column;
@@ -418,11 +506,14 @@
       margin-bottom: 10px;
       font-size: 12px;
       cursor: default;
+
       &:nth-child(2) {
         cursor: pointer;
       }
+
       &.backTop {
       }
+
       .floatingIcon {
         // height: 80%;
       }

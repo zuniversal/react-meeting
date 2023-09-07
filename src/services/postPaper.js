@@ -6,3 +6,4 @@ export const removePaper = p => req.remove(`submitPaper`, p);
 
 export const getPayResult = p => req.get(`payCheck`, p);
 export const batchDownPaper = p => req.post(`downloadFiles`, p);
+export const getPaperCountList = p => req.get(`paperListCount`, p);

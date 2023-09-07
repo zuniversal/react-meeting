@@ -75,21 +75,29 @@ const RegisterForm = props => {
       formRules: [phoneRule],
     },
     {
+      formType: 'TextArea',
       itemProps: {
         label: messages.register.companyName,
         name: 'unitName',
       },
       comProps: {
         className: 'formItem',
+        autoSize: {
+          minRows: 2,
+        },
       },
     },
     {
+      formType: 'TextArea',
       itemProps: {
         label: messages.register.addr,
         name: 'unitAddress',
       },
       comProps: {
         className: 'formItem',
+        autoSize: {
+          minRows: 2,
+        },
       },
     },
   ];

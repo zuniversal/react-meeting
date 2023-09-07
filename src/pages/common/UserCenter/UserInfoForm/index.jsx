@@ -109,6 +109,7 @@ const UserInfoForm = props => {
       formRules: [phoneRule],
     },
     {
+      formType: 'TextArea',
       itemProps: {
         label: messages.userCenter.unitName,
         name: 'unitName',
@@ -118,6 +119,7 @@ const UserInfoForm = props => {
       },
     },
     {
+      formType: 'TextArea',
       itemProps: {
         label: messages.userCenter.unitAddr,
         name: 'unitAddress',

@@ -134,7 +134,16 @@ const PaperStatus = props => {
 
   return (
     <UserCenterWrapper messages={messages} className="paperStatus">
-      <div className="primaryTitle">{messages.paperStatus.title}</div>
+      <div className="fsb">
+        <div className="primaryTitle">{messages.paperStatus.title}</div>
+        <a
+          className="activeLink"
+          href="/api/downloads/paperAuth.pdf"
+          download={'paperAuth.pdf'}
+        >
+          {messages.postPaper.downloadAuth}
+        </a>
+      </div>
       <PaperStatusTable
         messages={messages}
         // dataSource={postList}

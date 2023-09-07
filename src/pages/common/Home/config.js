@@ -10,6 +10,8 @@ import t9 from '@/static/img/home/meetingTheme/9.png';
 import t10 from '@/static/img/home/meetingTheme/10.png';
 import t11 from '@/static/img/home/meetingTheme/11.png';
 import t12 from '@/static/img/home/meetingTheme/12.png';
+import t13 from '@/static/img/home/meetingTheme/13.png';
+import t14 from '@/static/img/home/meetingTheme/14.png';
 import p1 from '@/static/img/home/p1.png';
 import p2 from '@/static/img/home/p2.png';
 import p3 from '@/static/img/home/p3.png';
@@ -17,6 +19,7 @@ import s1 from '@/static/img/home/sponsors/s1.png';
 import s2 from '@/static/img/home/sponsors/s2.png';
 import s3 from '@/static/img/home/sponsors/s3.png';
 import s4 from '@/static/img/home/sponsors/s4.png';
+import s5 from '@/static/img/home/sponsors/s5.jpeg';
 
 export const meetingThemeConfig = [
   {
@@ -67,6 +70,14 @@ export const meetingThemeConfig = [
     src: t12,
     label: '博士',
   },
+  {
+    src: t13,
+    label: '博士',
+  },
+  {
+    src: t14,
+    label: '博士',
+  },
 ];
 
 export const meetingTravelConfig = [
@@ -85,20 +96,24 @@ export const meetingTravelConfig = [
 ];
 
 export const supporterConfig = [
-  {
-    src: s1,
-    label: '博士',
-  },
-  {
-    src: s2,
-    label: '博士',
-  },
+  // {
+  //   src: s1,
+  //   label: '博士',
+  // },
+  // {
+  //   src: s2,
+  //   label: '博士',
+  // },
   {
     src: s3,
     label: '博士',
   },
+  // {
+  //   src: s4,
+  //   label: '博士',
+  // },
   {
-    src: s4,
+    src: s5,
     label: '博士',
   },
 ];

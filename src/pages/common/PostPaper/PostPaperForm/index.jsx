@@ -74,22 +74,30 @@ const PostPaperForm = props => {
     //   },
     // },
     {
+      formType: 'TextArea',
       itemProps: {
         label: messages.postPaper.postCommonAuthor,
         name: 'commonAuthor',
       },
       comProps: {
         className: 'formItem',
+        autoSize: {
+          minRows: 2,
+        },
       },
       // formRules: [stringNameRule],
     },
     {
+      formType: 'TextArea',
       itemProps: {
         label: messages.postPaper.company,
         name: 'unitName',
       },
       comProps: {
         className: 'formItem',
+        autoSize: {
+          minRows: 2,
+        },
       },
     },
     paperTypeForm,
@@ -173,28 +181,28 @@ const PostPaperForm = props => {
         // defaultValue={messages.postPaper.chooseFile}
       />
     </UploadCom>,
-    <UploadCom
-      label={messages.postPaper.uploadAuthFile}
-      key={'copyrightFileURLObj'}
-      action={'/api/uploadFile'}
-      name={'copyrightFileURLObj'}
-      extra={messages.postPaper.uploadPdf}
-      uploadProps={{
-        disabled: props.isDisabledAll || props.action === 'detail',
-        accept: PDF_TYPE,
-        multiple: true,
-        listType: null,
-      }}
-      formAction={props.action}
-      // noRule
-      formItemCls={'ant-col-12'}
-    >
-      <Input
-        className="uploadInput"
-        addonAfter={<div onClick={uploadPdf}>{messages.upload}</div>}
-        // defaultValue={messages.postPaper.chooseFile}
-      />
-    </UploadCom>,
+    // <UploadCom
+    //   label={messages.postPaper.uploadAuthFile}
+    //   key={'copyrightFileURLObj'}
+    //   action={'/api/uploadFile'}
+    //   name={'copyrightFileURLObj'}
+    //   extra={messages.postPaper.uploadPdf}
+    //   uploadProps={{
+    //     disabled: props.isDisabledAll || props.action === 'detail',
+    //     accept: PDF_TYPE,
+    //     multiple: true,
+    //     listType: null,
+    //   }}
+    //   formAction={props.action}
+    //   // noRule
+    //   formItemCls={'ant-col-12'}
+    // >
+    //   <Input
+    //     className="uploadInput"
+    //     addonAfter={<div onClick={uploadPdf}>{messages.upload}</div>}
+    //     // defaultValue={messages.postPaper.chooseFile}
+    //   />
+    // </UploadCom>,
   ];
 
   return (

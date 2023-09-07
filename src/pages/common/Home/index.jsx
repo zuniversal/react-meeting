@@ -69,10 +69,10 @@ const Banner = props => {
           <img src={activityLogo} className="activityLogo" />
           <div className="titleWrapper">
             <div className="title bannerTitle">{props.msg.title}</div>
-            <div className="title">{props.msg.subTitle}</div>
+            <div className="title bannerTitle">{props.msg.subTitle}</div>
           </div>
         </div>
-        <div className="activityInfo/">{props.msg.activity}</div>
+        <div className="title activityInfo">{props.msg.activity}</div>
         <Button className="postBtn bigBtn" type="primary" onClick={goPost}>
           {props.msg.goPost}
         </Button>
@@ -107,7 +107,7 @@ const MeetingIntro = props => {
         {/* <Button className="blueBtn bigBtn" type="primary" onClick={goPost}>
           {props.msg.callPaper}
         </Button> */}
-        <Download url={'xx'}>
+        <Download url={'CALL_FOR_PAPERS_STABS2024.pdf'}>
           <Button className="blueBtn bigBtn" type="primary">
             {props.msg.callPaper}
           </Button>
@@ -236,7 +236,7 @@ const Supporter = props => {
           {supporterConfig.map((v, i) => (
             <div key={v.src} className="supporterGridItem">
               <div className="supporterIcon">
-                <img src={v.src} className="" />
+                <img src={v.src} className={`supporterIcon${i + 1}`} />
               </div>
               <div className="supporterLabel">{props.msg.supporterList[i]}</div>
             </div>
@@ -278,8 +278,8 @@ const Home = props => {
       <MeetingReg msg={messages.home}></MeetingReg>
       <MeetingInfo msg={messages.home}></MeetingInfo>
       <MeetingTravel msg={messages.home}></MeetingTravel>
-      {/* <Supporter msg={messages.home}></Supporter> */}
-      <ExtraInfo msg={messages.home}></ExtraInfo>
+      <Supporter msg={messages.home}></Supporter>
+      {/* <ExtraInfo msg={messages.home}></ExtraInfo> */}
       {/* <Extra msg={messages.home}></Extra> */}
       <FloatButton></FloatButton>
     </div>

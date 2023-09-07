@@ -10,8 +10,9 @@ export const formatData = data => {
   //   newData[key]
   // })
 
-  newData.copyrightFileURL = formatFileRes(newData, 'copyrightFileURLObj');
+  // newData.copyrightFileURL = formatFileRes(newData, 'copyrightFileURLObj');
   newData.paperURL = formatFileRes(newData, 'paperURLObj');
+  newData.copyrightFileURL = '';
   // newData.commonAuthor = newData.commonAuthor.join(',');
 
   if (newData.file) {
@@ -20,7 +21,11 @@ export const formatData = data => {
     newData.file = null;
   }
 
-  const { copyrightFileURLObj, paperURLObj, ...restData } = newData;
+  const {
+    // copyrightFileURLObj,
+    paperURLObj,
+    ...restData
+  } = newData;
   console.log(' restData ： ', restData); //
   return restData;
 };

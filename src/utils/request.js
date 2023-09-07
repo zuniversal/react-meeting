@@ -95,7 +95,7 @@ export const isTips = res => {
   if (code === 100) {
     console.log(' 11111111 ： '); //
     // history.push(LOGIN);
-    return;
+    // return;
   }
   console.log(' 11111111 22222 ： '); //
   if (statusMap[status]) {

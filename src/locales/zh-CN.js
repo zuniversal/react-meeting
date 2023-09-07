@@ -86,6 +86,8 @@ export default {
       `Cybe-Physical Systems & Autonomous Vessels`,
       `Evacuation, Ship Salvage & Emergency Response`,
       `Polar navigation Safety`,
+      `New Materials for Ship Safety`,
+      `Safe Decarbonisation`,
     ],
     meetingHotel: `Conference Registration`,
     meetingTool: `meetingTool`,
@@ -161,7 +163,7 @@ export default {
         label: `Proposed Conference Date: October 13-18, 2024`,
       },
       {
-        label: `Proposed Conference Venue: InterContinental Hotel, Wuxi`,
+        label: `Proposed Conference Venue: Wuxi Hubin Hotel，Wuxi`,
       },
     ],
     meetingInfoList2: [
@@ -173,15 +175,16 @@ export default {
       },
     ],
     meetingTravel: `EXCURSIONS`,
-    meetingTravelSub: `Wednesday October 16, 8.00 - 1.00 : Conference Tour to Suzhou`,
+    meetingTravelSub: `Wednesday 16 October–Tour to Suzhou and Shanghai`,
     meetingTravelList: [
       `The Humble Administrator's Garden`,
       `Suzhou Museum`,
       `Silk Factory`,
     ],
-    supporter: `SPONSORS`,
+    supporter: `ORGANIZERS`,
     supporterList: [
       `China Ship Scientific Research Center`,
+      `China Society of Naval Architects and Marine Engineering(CSNAME)`,
       `Shanghai Jiaotong University`,
       `China Shipbuilding Industry Corporation`,
       `China Classification Society`,
@@ -256,6 +259,7 @@ export default {
   postPaper: {
     importantDate: `Important Date`,
     post: `Paper Submission`,
+    downloadPaper: `Download the Call for Papers`,
     downloadTpl: `Download the paper template`,
     downloadAuth: `Download the copyright document`,
     auth: `作者姓`,
@@ -268,7 +272,7 @@ export default {
     postAuth: `Corresponding author`,
     postCommonAuthor: `Co-authors`,
     company: `Company name`,
-    artType: `Name of hotel`,
+    artType: `Type of the paper`,
     uploadPost: `Upload the paper`,
     uploadDoc: `Only documents with .docx or .doc suffix allowed`,
     uploadAuthFile: `Upload the copyright document`,
@@ -281,8 +285,8 @@ export default {
     postFailTip: `Please check the formal and upload your paper again`,
   },
   committee: {
-    internalCommittee: `STAB INTERNATIONAL STANDING COMITTEE`,
-    localCommittee: `STAB&S2024- LOCAL ORGANIZING COMMITTEESTAB&S2024`,
+    internalCommittee: `INTERNATIONAL STANDING COMITTEE`,
+    localCommittee: `LOCAL ORGANIZING COMMITTEE`,
     workUnit: `Company`,
     region: `Region`,
     position: `Post`,
@@ -301,8 +305,8 @@ export default {
   },
   oldMeetings: {
     title: `会议`,
-    title1: `PR EVIOUS STAB CONFER ENCES`,
-    title2: `PR EVIOUS DfS CONFER ENCES`,
+    title1: `PREVIOUS STAB CONFERENCES`,
+    title2: `PREVIOUS DfS CONFERENCES`,
     time: `Time`,
     place: `Place`,
   },
@@ -379,7 +383,8 @@ export default {
     registerApprover: '注册审稿人',
   },
   paperCount: {
-    title: `论文统计`,
+    title: `论文列表`,
+    title2: `论文统计`,
     searchPh: `输入论文标题或论文编号进行搜索`,
     no: `编号`,
     paperTitle: `论文标题`,
@@ -389,6 +394,8 @@ export default {
     approver: `审核人`,
     approvalStatus: `审核状态`,
     downBatch: `合稿下载`,
+    abstractNum: `摘要数量`,
+    paperNum: `论文数量`,
   },
   paperApprove: {
     title: `论文审稿`,
@@ -517,6 +524,7 @@ export default {
     userName: `用户名`,
     email: `邮箱地址`,
     pwd: `密码`,
+    field: `所属领域`,
   },
 
   // postType: `投稿类型`,

@@ -43,7 +43,10 @@ const PaperDistributeForm = props => {
   // const options = props.approverList.length
   //   ? props.approverList
   //   : record.approverList;
-  const options = props.approverList;
+  const options = props.approverList.filter(v =>
+    v.paperCate.includes(record.paperCateID),
+  );
+  console.log(' options ： ', options, props.approverList, record.paperCateID);
   const reviewerCom = record.reviewerList.map(v => (
     <Tag color={PRIMARY} key={v.id}>
       {v.name}

@@ -57,7 +57,7 @@ const PaperCountTable = props => {
     <SmartTable
       columns={columns}
       {...props}
-      // rowSelection={null}
+      rowSelection={null}
       noActionCol
       locale="zh"
     ></SmartTable>

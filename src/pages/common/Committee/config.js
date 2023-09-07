@@ -1,140 +1,176 @@
 export const internalCommitteeData = [
   {
-    region: 'Osaka University, Japan',
-    post: 'Professor (Chairman),',
     name: 'Naoya Umeda',
+    post: 'Professor (Chairman)',
+    region: 'Osaka University, Japan',
   },
   {
-    region: 'NSRDC, USA',
+    name: 'Vadim L. Belenky',
     post: 'Dr.',
-    name: 'Vadim Belenky',
+    region: 'David Taylor Model Basin, USA',
   },
   {
-    region: 'Herbert Sofrware, USA',
-    post: 'Dr.',
     name: 'Hendrik Bruhns',
+    post: 'Mr.',
+    region: 'Herbert Engineering Corp.,USA',
   },
   {
-    region: 'University of Trieste, Italy',
-    post: 'Professor',
     name: 'Gabriele Bulian',
+    post: 'Professor',
+    region: 'University of Trieste, Italy',
   },
   {
-    region: 'St Petersburg University, Russia',
-    post: 'Professor',
     name: 'Alexander Degtyarev',
+    post: 'Professor',
+    region: 'St. Petersburg State University, Russia',
   },
   {
-    region: 'ABS, USA',
-    post: 'Dr.',
     name: 'Jan Otto de Kat',
-  },
-  {
-    region: 'Osaka Prefecture University, Japan',
-    post: 'Professor',
-    name: 'Toru Katayama',
-  },
-  {
-    region: 'University of Madrid, Spain',
-    post: 'Professor',
-    name: 'Luis Perez-Rojas',
-  },
-  {
-    region: 'U.S. Coast Guard, USA',
-    post: 'Professor',
-    name: 'William S. Peters',
-  },
-  {
-    region: 'UFRJ, Brazil',
-    post: 'Professor',
-    name: 'Marcelo S. Neves',
-  },
-  {
-    region: 'University of Strathclyde, United Kingdom',
-    post: 'Professor',
-    name: 'Dracos Vassalos',
-  },
-  {
-    region: 'National Technical University of Athens, Greece',
-    post: 'Professor',
-    name: 'Konstantinos Spyrou',
-  },
-  {
-    region: 'Shanghai Jiao Tong University, China',
-    post: 'Professor',
-    name: 'Ning Ma',
-  },
-  {
-    region: 'Maritime Research Institute, Netherlands',
     post: 'Dr.',
+    region: 'American Bureau of Shipping,USA',
+  },
+  {
+    name: 'Toru Katayama',
+    post: 'Proffer',
+    region: 'Osaka Metropolitan University,Japan',
+  },
+  {
+    name: 'Dimitrios Konovessis',
+    post: 'Professor',
+    region: 'University of Strathclyde',
+  },
+  {
+    name: 'Ning Ma',
+    post: 'Professor',
+    region: 'Shanghai Jiao Tong University, China',
+  },
+  {
+    name: 'Alessandro Maccari',
+    post: 'Professor',
+    region: 'RINA',
+  },
+  {
+    name: 'Luis Perez-Rojas',
+    post: 'Professor',
+    region: 'University Politecnica de Madrid,Spain',
+  },
+  {
+    name: 'William S. Peters',
+    post: 'Professor',
+    region: 'U.S. Coast Guard, USA',
+  },
+  {
+    name: 'Pierre Sames',
+    post: 'Dr.',
+    region: 'DNV',
+  },
+  {
+    name: 'Kostas Spyrou',
+    post: 'Professor',
+    region: 'National Technical University of Athens, Greece',
+  },
+  {
+    name: 'Dracos Vassalos',
+    post: 'Professor',
+    region: 'University of Strathclyde, United Kingdom',
+  },
+  {
     name: 'Frans van Walree',
+    post: 'Dr.',
+    region: 'Maritime Research Institute, Netherlands',
   },
 ];
 
 export const localCommitteeData = [
+  { name: 'Chunrong He', status: 'Professor（Chairman）', company: 'CSSRC' },
   {
-    company: 'Chair, CSSRC',
-    status: 'Professor',
-    name: 'Chunrong He',
-  },
-  {
-    company: 'Chait, CSSRC',
-    status: 'Academician',
     name: 'Yousheng Wu',
+    status: 'Academician（Honorary Chairman）',
+    company: 'CSSRC',
   },
   {
-    company: 'CSSRC',
-    status: 'Professor',
     name: 'Min Gu',
+    status: 'Professor',
+    company: 'CSSRC',
   },
   {
-    company: 'CSSRC',
-    status: 'Professor',
     name: 'Jiang Lu',
-  },
-  {
+    status: 'Professor',
     company: 'CSSRC',
-    status: 'Professor',
-    name: 'Wentao Wang',
   },
   {
-    company: 'SJTU',
+    name: 'Junli Wang',
     status: 'Professor',
-    name: 'Ning Ma',
+    company: 'CSNAME',
   },
   {
-    company: 'CCS',
-    status: 'Professor',
-    name: 'Zhirong Wang',
-  },
-  {
-    company: 'MARIC ',
-    status: 'Professor',
     name: 'Sheming Fan',
-  },
-  {
-    company: 'CSSRC',
-    status: 'Dr.',
-    name: 'Shuxia Bu ',
-  },
-  {
-    company: 'HEU',
     status: 'Professor',
+    company: 'MDRIC',
+  },
+  {
+    name: 'Yi Huang',
+    status: 'Professor',
+    company: 'DUT ',
+  },
+  {
+    name: 'Chunyan Ji',
+    status: 'Professor',
+    company: 'JUST',
+  },
+  {
+    name: 'Liqin Liu',
+    status: 'Professor',
+    company: 'TJU',
+  },
+  {
+    name: 'Ning Ma',
+    status: 'Professor',
+    company: 'SJTU',
+  },
+  {
     name: 'Shan Ma',
-  },
-  {
-    company: 'CSSRC',
     status: 'Professor',
-    name: 'Liangmei Ying',
+    company: 'HEU',
   },
   {
-    company: 'CSSRC',
+    name: 'Yaohua Zhou',
     status: 'Dr.',
-    name: 'Ke Zeng',
+    company: 'CCS',
   },
   {
+    name: 'Zhiguo Zhang',
+    status: 'Professor',
+    company: 'HUST',
+  },
+  {
+    name: 'Wentao Wang',
+    status: 'Professor',
     company: 'CSSRC',
-    status: 'Ms',
+  },
+  {
+    name: 'Liangmei Ying',
+    status: 'Professor',
+    company: 'CSSRC',
+  },
+  {
+    name: 'Shuxia Bu',
+    status: 'Dr.',
+    company: 'CSSRC',
+  },
+  {
+    name: 'Ke Zeng',
+    status: 'Mr.',
+    company: 'CSSRC',
+  },
+  {
+    name: 'Jilong Chu',
+    status: 'Ms.',
+    company: 'CSSRC',
+  },
+  {
     name: 'Tianhua Wang',
+    status: 'Ms.',
+    company: 'CSSRC',
   },
 ];

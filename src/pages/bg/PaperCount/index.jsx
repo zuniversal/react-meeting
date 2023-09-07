@@ -3,6 +3,7 @@ import './style.less';
 import { useIntl, useModel } from 'umi';
 import SearchKwForm from '@/components/Form/SearchKwForm';
 import SmartFormModal from '@/common/SmartFormModal';
+import PaperListTable from './PaperListTable';
 import PaperCountTable from './PaperCountTable';
 import SelectDownlaodForm from './SelectDownlaodForm';
 import { connect } from 'umi';
@@ -15,6 +16,8 @@ import {
 import { tips } from '@/utils';
 import { Button } from 'antd';
 import { NORMAL_CODE } from '@/utils/request';
+import cls from 'classnames';
+import { useEffect } from 'react';
 
 const CommonModal = props => {
   console.log(' CommonModal ： ', props); //
@@ -40,17 +43,37 @@ const CommonModal = props => {
 };
 
 const PaperCount = props => {
-  console.log(' PaperCount ： ', props); //
-  const { action, extraData, setExtraData } = props; //
+  console.log(' PaperCount ： ', props);
+  const { action, extraData, setExtraData } = props;
+  const [activeTab, setActiveTab] = useState(0);
+
   const { paperTypeList } = useModel('systemConfig');
   const { messages } = useIntl();
   const onFieldChange = params => {
-    console.log(' onFieldChange ： ', params); //
-    props.getListAsync({ params: params.value.params });
+    console.log(' onFieldChange ： ', params);
+    // props.getListAsync({ params: params.value.params });
+    if (activeTab == 0) {
+      props.getListAsync({ params: params.value.params });
+    } else if (activeTab == 1) {
+      props.getPaperCountListAsync({ params: params.value.params });
+    }
+  };
+  useEffect(() => {
+    props.getPaperCountListAsync(paperTypeList);
+  }, []);
+
+  const getTableList = params => {
+    console.log(' getTableList ： ', params);
+    setActiveTab(params);
+    // if (params == 0) {
+    //   props.getListAsync({ params: params.value.params });
+    // } else if (params == 1) {
+    //   props.getPaperCountListAsync({ params: params.value.params });
+    // }
   };
 
   const batchDown = params => {
-    console.log(' batchDown ： ', params, props); //
+    console.log(' batchDown ： ', params, props);
     // if (!props.selectedInfo.selectedRowKeys.length) {
     //   tips(messages.selectDown, 2);
     //   return;
@@ -97,7 +120,25 @@ const PaperCount = props => {
       <div className="adminContent">
         <div className="wrap1000">
           <div className="pagesTitle">
-            {messages.paperCount.title}
+            <div className="titleTabWrapper">
+              <div
+                className={`titleTab ${cls({
+                  activeTab: activeTab === 0,
+                })}`}
+                onClick={() => getTableList(0)}
+              >
+                {messages.paperCount.title}
+              </div>
+              <div className="verticalLine">|</div>
+              <div
+                className={`titleTab ${cls({
+                  activeTab: activeTab === 1,
+                })}`}
+                onClick={() => getTableList(1)}
+              >
+                {messages.paperCount.title2}
+              </div>
+            </div>
             <div className="btnWrapper">
               <SearchKwForm
                 className={'fje'}
@@ -112,14 +153,33 @@ const PaperCount = props => {
               </Button>
             </div>
           </div>
-          <PaperCountTable
+          {/* <PaperListTable
             messages={messages}
             dataSource={props.dataList}
             count={props.count}
             searchInfo={props.searchInfo}
             getListAsync={props.getListAsync}
             onSelectChange={props.onSelectChange}
-          ></PaperCountTable>
+          ></PaperListTable> */}
+          {activeTab === 0 ? (
+            <PaperCountTable
+              messages={messages}
+              dataSource={props.dataList}
+              count={props.count}
+              searchInfo={props.searchInfo}
+              getListAsync={props.getListAsync}
+              onSelectChange={props.onSelectChange}
+            ></PaperCountTable>
+          ) : (
+            <PaperListTable
+              messages={messages}
+              dataSource={props.paperCountList}
+              // count={props.paperCount}
+              searchInfo={props.searchInfo}
+              getListAsync={props.getListAsync}
+              onSelectChange={props.onSelectChange}
+            ></PaperListTable>
+          )}
         </div>
       </div>
       <CommonModal
