@@ -39,7 +39,7 @@ const CommonModal = props => {
       //   okTxt: messages.confirm,
       //   cancelTxt: messages.cancel,
       // }}
-      width={'400px'}
+      width={'600px'}
     >
       {DetailForm && (
         <DetailForm

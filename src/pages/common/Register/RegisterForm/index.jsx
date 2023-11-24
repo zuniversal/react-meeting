@@ -2,11 +2,17 @@ import React from 'react';
 import './style.less';
 import SmartForm from '@/common/SmartForm';
 import { calledConfig, emailRule, phoneRule, stringNameRule } from '@/configs';
-import { useCalledForm } from '@/hooks/useFormItem';
+import {
+  useAttendTypeForm,
+  useCalledForm,
+  useRegIdentityForm,
+} from '@/hooks/useFormItem';
 
 const RegisterForm = props => {
   const { messages } = props;
   const calledForm = useCalledForm(props);
+  const attendTypeForm = useAttendTypeForm(props);
+  const regIdentityForm = useRegIdentityForm(props);
   console.log(' calledForm ： ', calledForm); //
 
   const config = [
@@ -21,6 +27,8 @@ const RegisterForm = props => {
     //   },
     // },
     calledForm,
+    attendTypeForm,
+    regIdentityForm,
     {
       itemProps: {
         label: messages.register.firstName,

@@ -26,6 +26,7 @@ export const hiddenFeTabs = hiddenRoutes.map(v => ({
   tab: v,
   label: '',
   key: v,
+  className: v,
 }));
 
 export const hiddenTabsConfig = bgRoutes.map(v => ({

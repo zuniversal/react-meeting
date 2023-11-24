@@ -3,6 +3,8 @@ import { formatDatePicker, formatRangePicker } from '@/utils/format';
 export const formatData = data => {
   console.log(' formatData ： ', data); //
   const newData = {
+    price: 10,
+    hotelOrderPrice: 10,
     ...data,
   };
 

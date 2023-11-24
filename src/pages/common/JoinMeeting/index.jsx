@@ -8,14 +8,25 @@ import Download from '@/components/Widgets/Download';
 import JoinMeetingForm from './JoinMeetingForm';
 import { joinMeetingConfig } from './config';
 import { formatData } from './format';
+import useHttp from '@/hooks/useHttp';
+import { getHotelList } from '@/services/common';
+import { arrMapObj } from '@/utils';
+import { useHotelReqHook } from '@/reqHook/common';
+import SmartUpload from '@/components/Widgets/SmartUpload';
 
 const JoinMeetingTips = props => {
   const { info } = props; //
   return (
     <div className="joinMeetingTips">
       {/* {props.messages.joinMeeting.paymentTip} */}
-      Total payment is RMB {info.hotelOrderPrice}, please transfer accounts to{' '}
-      {info.total} bank：585221474511，payee：{info.total}
+      {/* Total payment is RMB {info.hotelOrderPrice}, */}
+      <div>Early registration:RMB4000,Students: RMB 2000</div>
+      <div>Late registration :RMB4800,Students: RMB 2400</div>
+      <div>(After 30 July 2024)</div>
+      <div>Accompanying Person:RMB1200</div>
+      <div>RMB 2000 for online</div>
+      please transfer accounts to {info.total} bank：585221474511，payee：
+      {info.total}
     </div>
   );
 };
@@ -34,6 +45,23 @@ const JoinMeeting = props => {
   const [isNext, setIsNext] = useState(true);
   // const [isNext, setIsNext] = useState(false);
   const isPay = false;
+
+  // const { data: hotelList } = useHttp(getHotelList, {
+  //   format: data => {
+  //     return data.map(v => ({
+  //       ...v,
+  //       label: v.hotelName,
+  //       value: v.id,
+  //     }));
+  //   },
+  // });
+  // const hotelListMap = arrMapObj(hotelList);
+  const { hotelListMap } = useHotelReqHook();
+  console.log(' hotelListMap ： ', hotelListMap);
+  const joinMeetingData = {
+    ...joinMeetingItem,
+    hotelName: hotelListMap?.[joinMeetingItem.hotelName],
+  };
 
   useEffect(() => {
     getJoinMeetingListAsync();
@@ -62,11 +90,11 @@ const JoinMeeting = props => {
     } = params.form.getFieldsValue();
     const [startDay, endDay] = hotelBookDate;
     const diffDay = endDay.diff(startDay, 'day') + 1;
-    const hotelOrderPrice = hotelRoomNumber * price * diffDay;
-    console.log(' hotelOrderPrice ： ', hotelOrderPrice, diffDay); //
-    params.form.setFieldsValue({
-      hotelOrderPrice,
-    });
+    // const hotelOrderPrice = hotelRoomNumber * price * diffDay;
+    // console.log(' hotelOrderPrice ： ', hotelOrderPrice, diffDay); //
+    // params.form.setFieldsValue({
+    //   hotelOrderPrice,
+    // });
   };
 
   const joinMeetingCom = (
@@ -92,7 +120,7 @@ const JoinMeeting = props => {
     i === 0
       ? {
           ...v,
-          valCls: joinMeetingItem.isPay ? 'pay' : 'noPay',
+          valCls: joinMeetingData.isPay ? 'pay' : 'noPay',
         }
       : v,
   );
@@ -101,13 +129,13 @@ const JoinMeeting = props => {
   const paymentResult = (
     <div className="wrap1000">
       <InfoCol
-        data={joinMeetingItem}
+        data={joinMeetingData}
         messages={messages}
         msgKey={'joinMeeting'}
         config={config}
       ></InfoCol>
       <JoinMeetingTips
-        info={joinMeetingItem}
+        info={joinMeetingData}
         messages={messages}
       ></JoinMeetingTips>
       <Button type="primary" className="bigBtn" onClick={toggleIsNext}>
@@ -118,6 +146,11 @@ const JoinMeeting = props => {
 
   const titleKey = isNext ? 'title' : isPay ? 'paymentInfo' : 'paymentCost';
 
+  const uploadProps = {
+    // finish: e => props.uploadReceipt(e, record),
+    accept: 'image/png,image/jpeg',
+  };
+
   return (
     <UserCenterWrapper
       messages={messages}
@@ -126,11 +159,16 @@ const JoinMeeting = props => {
     >
       <div className="titleWrapper">
         <div className="primaryTitle">{messages.joinMeeting[titleKey]}</div>
-        {!userInfo.isAdminApprover && (
-          <Download url={joinMeetingItem.payPhotographUrl}>
-            {messages.userCenter.downReceipt}
-          </Download>
-        )}
+        <div className={`actionBtnWrapper`}>
+          <SmartUpload {...uploadProps}>
+            <a className="rawLink">{messages.userCenter.uploadReceipt}</a>
+          </SmartUpload>
+          {!userInfo.isAdminApprover && (
+            <Download url={joinMeetingItem.payPhotographUrl}>
+              {messages.userCenter.downReceipt}
+            </Download>
+          )}
+        </div>
       </div>
       {isNext ? joinMeetingCom : paymentResult}
     </UserCenterWrapper>

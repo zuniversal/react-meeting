@@ -7,10 +7,35 @@ import {
   getHotelList,
 } from '@/services/common';
 import {
+  regIdentityConfig,
+  attendTypeConfig,
   calledConfig as calledList,
   identityConfig as identityList,
   // paperTypeConfig as paperTypeList,
 } from '@/configs';
+
+export const useRegIdentityForm = props => {
+  const { messages } = props;
+
+  // const { data: calledList } = useHttp(getCalledList, {
+  //   format: data =>
+  //     data.map(v => ({
+  //       label: v.callName,
+  //       value: v.id,
+  //     })),
+  // });
+
+  return {
+    formType: 'Radio',
+    itemProps: {
+      label: messages.userCenter.identity,
+      name: 'titleID',
+    },
+    comProps: {
+      options: regIdentityConfig,
+    },
+  };
+};
 
 export const useCalledForm = props => {
   const { messages } = props;
@@ -104,7 +129,7 @@ export const useHotelForm = props => {
       return data.map(v => ({
         ...v,
         label: v.hotelName,
-        value: v.id,
+        value: `${v.id}`,
       }));
     },
   });
@@ -112,12 +137,27 @@ export const useHotelForm = props => {
   return {
     formType: 'Select',
     itemProps: {
-      label: messages.postPaper.artType,
+      label: messages.postPaper.hotelType,
       name: 'hotelName',
     },
     comProps: {
       className: 'formItem',
       options: hotelList,
+    },
+  };
+};
+
+export const useAttendTypeForm = props => {
+  const { messages } = props;
+
+  return {
+    formType: 'Radio',
+    itemProps: {
+      label: messages.register.mode,
+      name: 'formMetting',
+    },
+    comProps: {
+      options: attendTypeConfig,
     },
   };
 };

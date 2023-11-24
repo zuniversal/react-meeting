@@ -2471,6 +2471,21 @@ export const identityConfig = [
 
 export const identityConfigMap = arrMapObj(identityConfig);
 
+export const regIdentityConfig = [
+  {
+    value: 3,
+    label: 'Participant',
+  },
+  {
+    value: 4,
+    label: 'Student',
+  },
+  {
+    value: 5,
+    label: 'Companion',
+  },
+];
+
 export const paperTypeConfig = [
   {
     value: '1',
@@ -2565,7 +2580,8 @@ export const hotelConfig = [
 export const hotelConfigMap = arrMapObj(hotelConfig);
 
 // 管理员：1；审稿人：2；投稿人：3
-export const noUserActionRole = [1, 2];
+// export const noUserActionRole = [1, 2];
+export const noUserActionRole = [1];
 
 export const deletePaperConfig = [
   // '摘要待分配',
@@ -2653,4 +2669,17 @@ export const noReviewConfig = [
   '摘要修改稿待审核',
   '正文待审核',
   '正文修改稿待审核',
+];
+
+export const ALL_MAN = 15;
+
+export const attendTypeConfig = [
+  {
+    value: 0,
+    label: 'Present',
+  },
+  {
+    value: 1,
+    label: 'Online',
+  },
 ];

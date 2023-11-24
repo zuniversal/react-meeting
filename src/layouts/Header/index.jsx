@@ -44,7 +44,8 @@ const tabConfigs = [
   // },
   {
     tab: '过往会议',
-    label: 'Precious Conferences',
+    label: 'Previous Conferences',
+    label: 'Previous Sessions',
     key: '/oldMeetings',
   },
   // {
@@ -257,7 +258,8 @@ const Header = props => {
         {/* {infoCom} */}
         <div className="headerRight">
           {actionCom}
-          {!Object.keys(userInfo).length && platformCom}
+          {/* {!Object.keys(userInfo).length && platformCom} */}
+          {platformCom}
         </div>
       </div>
     </div>

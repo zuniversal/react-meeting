@@ -20,11 +20,11 @@ export const joinMeetingConfig = [
     key: 'hotelName',
     langKey: 'hotelName',
   },
-  {
-    key: 'price',
-    langKey: 'hotelPrice',
-    prefix: '￥',
-  },
+  // {
+  //   key: 'price',
+  //   langKey: 'hotelPrice',
+  //   prefix: '￥',
+  // },
   {
     key: 'hotelRoomNumber',
     langKey: 'hotelOrderNum',
@@ -33,9 +33,9 @@ export const joinMeetingConfig = [
     key: 'hotelBookDateMap',
     langKey: 'hotelOrderDay',
   },
-  {
-    key: 'hotelOrderPrice',
-    langKey: 'hotelOrderPrice',
-    prefix: '￥',
-  },
+  // {
+  //   key: 'hotelOrderPrice',
+  //   langKey: 'hotelOrderPrice',
+  //   prefix: '￥',
+  // },
 ];

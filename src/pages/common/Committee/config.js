@@ -106,7 +106,7 @@ export const localCommitteeData = [
   {
     name: 'Sheming Fan',
     status: 'Professor',
-    company: 'MDRIC',
+    company: 'MARIC',
   },
   {
     name: 'Yi Huang',

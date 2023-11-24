@@ -10,26 +10,33 @@
   justify-content: center;
   height: 64px;
   // padding: 0 100px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgb(255 255 255 / 50%);
   background: #f4f4f4;
   background: #fff;
+
   .headerRight {
     display: flex;
     cursor: pointer;
     white-space: nowrap;
     font-size: 16px;
+    margin-left: -120px;
+    z-index: 99;
+
     .logoWarpper {
       display: flex;
       margin-left: 14px;
       white-space: nowrap;
       margin-right: 25px;
+
       .platformLogo {
         margin-right: 6px;
       }
     }
   }
+
   .btnWrapper {
     font-weight: bold;
+
     .loginBtn {
       margin-right: 10px;
     }
@@ -43,14 +50,16 @@
     display: flex;
     cursor: pointer;
     align-items: center;
+
     .avatar {
       width: 22px;
       height: 22px;
-      background: rgba(51, 51, 51, 0.2);
+      background: rgb(51 51 51 / 20%);
       border-radius: 50%;
       border: 1px solid #ccc;
       margin-right: 10px;
     }
+
     .underline {
       margin-left: 10px;
     }
@@ -64,6 +73,11 @@
     margin-left: 36px;
     margin-left: 10px;
   }
+
+  .ant-tabs-tab-btn {
+    // margin-left: 10px;
+  }
+
   .ant-tabs-ink-bar {
     position: absolute;
     background: #a45e5d;
@@ -77,10 +91,12 @@
     justify-content: space-between;
     width: 100%;
     max-width: 1200px;
+
     .headerDropdown {
       display: flex;
       align-items: center;
       padding-left: 15px;
+
       .anticon {
         margin-left: 10px;
       }
@@ -89,11 +105,13 @@
     .headerLeft {
       display: flex;
       align-items: center;
+
       .logoWarpper {
         display: flex;
         align-items: center;
         white-space: nowrap;
       }
+
       .logo {
         // width: 150px;
         // height: 30px;
@@ -103,9 +121,11 @@
       }
     }
   }
+
   .ant-btn {
     font-size: 12px;
   }
+
   .ant-btn-background-ghost {
     color: #000;
     border: none;
@@ -114,19 +134,25 @@
   .ant-tabs {
     margin-top: 18px;
     color: #000;
+    // width: 700px;
+
     .ant-tabs-tab {
       padding: 18px 0;
       // font-size: 12px;
     }
+
     .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
       // color: #000;
     }
+
     .ant-tabs-tab-btn:hover {
       // color: #000;
     }
+
     .ant-tabs-nav::before {
       border-bottom: 1px solid transparent;
     }
+
     .ant-tabs-ink-bar {
       // background: #fff;
     }
@@ -139,19 +165,22 @@
     color: #fff;
     background: #111;
     background: #fff;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgb(255 255 255 / 50%);
+
     .ant-dropdown-menu-item {
       &:not(:last-child) {
         border-bottom: 1px solid #999;
       }
+
       margin: 0 5px;
       color: #000;
     }
+
     .ant-dropdown-menu-item-active {
       color: #000;
       background: #111;
       background: #fff;
-      background: rgba(255, 255, 255, 0.5);
+      background: rgb(255 255 255 / 50%);
     }
   }
 }

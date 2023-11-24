@@ -17,8 +17,8 @@ export default defineConfig({
   links: [{ rel: 'icon', href: 'favicon.ico' }],
   locale: {
     antd: true,
-    // default: 'zh-CN', //
-    default: 'en-US', //
+    default: 'zh-CN', //
+    // default: 'en-US', //
     baseSeparator: '-',
   },
 
@@ -88,6 +88,11 @@ export default defineConfig({
       pathRewrite: {
         '^/api': '',
       },
+    },
+    '/api': {
+      target: 'http://stabs2024.cssrc.com',
+      // target: 'http://8.136.3.138:8000',
+      changeOrigin: true,
     },
   },
 });

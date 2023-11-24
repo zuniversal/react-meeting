@@ -2,6 +2,8 @@ import { animate, createProperty } from '@/utils';
 
 export const isDev = process.env.NODE_ENV === 'development';
 
+export const TYPE_ALL = 15;
+
 export const PROXY_IMG_URL = '/img/';
 export const IMG_URL =
   'https://images-1302976931.cos.ap-shanghai.myqcloud.com/';

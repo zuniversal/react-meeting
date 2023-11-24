@@ -101,7 +101,7 @@ export const importantDateConfig = [
   },
   {
     label: 'Notice of abstract acceptance',
-    time: '10 February 2024',
+    time: '10 January 2024',
   },
   {
     label: 'Deadline for paper submission',

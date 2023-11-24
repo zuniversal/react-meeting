@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react';
 import './style.less';
 import SmartTable from '@/common/SmartTable';
-import { paperTypeConfigMap } from '@/configs';
+import { ALL_MAN, paperTypeConfigMap } from '@/configs';
 import SmartForm from '@/common/SmartForm';
 import { Select, Divider, Button, Tag, Modal } from 'antd';
 import { CaretDownOutlined } from '@ant-design/icons';
-import { PRIMARY } from '@/constants';
+import { PRIMARY, TYPE_ALL } from '@/constants';
 import { downLoad } from '@/utils';
 import { useModel } from 'umi';
 
@@ -43,9 +43,15 @@ const PaperDistributeForm = props => {
   // const options = props.approverList.length
   //   ? props.approverList
   //   : record.approverList;
-  const options = props.approverList.filter(v =>
-    v.paperCate.includes(record.paperCateID),
-  );
+  // all 类型的不用过滤审稿人
+  const options =
+    record.paperCateID == TYPE_ALL
+      ? props.approverList
+      : props.approverList.filter(
+          v =>
+            v.paperCate.includes(record.paperCateID) ||
+            v.paperCate.includes(ALL_MAN),
+        );
   console.log(' options ： ', options, props.approverList, record.paperCateID);
   const reviewerCom = record.reviewerList.map(v => (
     <Tag color={PRIMARY} key={v.id}>

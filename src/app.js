@@ -1,4 +1,7 @@
 ﻿import { message } from 'antd';
+import { setLocale } from 'umi';
+console.log(' XXXXXXXXXX ： ');
+setLocale('zh-CN');
 
 export const dva = {
   config: {

@@ -37,7 +37,9 @@ export default function joinMeeting() {
 
   const getJoinMeetingListAsync = useCallback(async params => {
     const res = await getJoinMeetingList(params);
-    setJoinMeetingList(res.data.map(formatItem));
+    if (res.data) {
+      setJoinMeetingList(res.data.map(formatItem));
+    }
   }, []);
 
   const addJoinMeetingAsync = useCallback(async params => {

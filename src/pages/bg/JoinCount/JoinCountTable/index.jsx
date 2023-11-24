@@ -39,6 +39,10 @@ const JoinCountTable = props => {
       title: messages.joinCount.arriveTime,
       dataIndex: 'arrivetime',
     },
+    {
+      title: messages.joinCount.isPay,
+      dataIndex: 'isPay',
+    },
   ];
 
   return (

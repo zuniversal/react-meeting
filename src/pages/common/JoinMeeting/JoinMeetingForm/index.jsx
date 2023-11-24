@@ -70,18 +70,18 @@ const JoinMeetingForm = props => {
     //     className: 'formItem',
     //   },
     // },
-    {
-      formType: 'InputNumber',
-      itemProps: {
-        label: messages.joinMeeting.hotelPrice,
-        name: 'price',
-      },
-      comProps: {
-        className: 'formItem',
-        min: 0,
-        disabled: true,
-      },
-    },
+    // {
+    //   formType: 'InputNumber',
+    //   itemProps: {
+    //     label: messages.joinMeeting.hotelPrice,
+    //     name: 'price',
+    //   },
+    //   comProps: {
+    //     className: 'formItem',
+    //     min: 0,
+    //     disabled: true,
+    //   },
+    // },
     {
       formType: 'InputNumber',
       itemProps: {
@@ -103,17 +103,17 @@ const JoinMeetingForm = props => {
         className: 'formItem',
       },
     },
-    {
-      formType: 'InputNumber',
-      itemProps: {
-        label: messages.joinMeeting.hotelOrderPrice,
-        name: 'hotelOrderPrice',
-      },
-      comProps: {
-        className: 'formItem',
-        disabled: true,
-      },
-    },
+    // {
+    //   formType: 'InputNumber',
+    //   itemProps: {
+    //     label: messages.joinMeeting.hotelOrderPrice,
+    //     name: 'hotelOrderPrice',
+    //   },
+    //   comProps: {
+    //     className: 'formItem',
+    //     disabled: true,
+    //   },
+    // },
   ];
 
   return (

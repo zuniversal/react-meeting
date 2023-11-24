@@ -542,14 +542,14 @@ const SmartForm = (props, state) => {
       Input: (
         <Input
           allowClear
-          maxLength={32}
+          maxLength={100}
           onPressEnter={e => {
             console.log(' onPressEnter ： ', e);
           }}
           {...realComProps}
         />
       ),
-      InputNumber: <InputNumber maxLength={32} {...realComProps} />,
+      InputNumber: <InputNumber maxLength={100} {...realComProps} />,
       // InputCompact: <Input allowClear maxLength={32} {...realComProps} />,
       TextArea: (
         <TextArea

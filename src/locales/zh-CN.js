@@ -184,7 +184,7 @@ export default {
     supporter: `ORGANIZERS`,
     supporterList: [
       `China Ship Scientific Research Center`,
-      `China Society of Naval Architects and Marine Engineering(CSNAME)`,
+      `China Society of Naval Architects and Marine Engineers(CSNAME)`,
       `Shanghai Jiaotong University`,
       `China Shipbuilding Industry Corporation`,
       `China Classification Society`,
@@ -242,6 +242,7 @@ export default {
     tel: `Contact Number`,
     companyName: `Company Name`,
     addr: `Company Address`,
+    mode: `Mode`,
   },
   post: {
     regTitle: `Please set your new password`,
@@ -258,7 +259,7 @@ export default {
   },
   postPaper: {
     importantDate: `Important Date`,
-    post: `Paper Submission`,
+    post: `Abstract Submission`,
     downloadPaper: `Download the Call for Papers`,
     downloadTpl: `Download the paper template`,
     downloadAuth: `Download the copyright document`,
@@ -273,6 +274,7 @@ export default {
     postCommonAuthor: `Co-authors`,
     company: `Company name`,
     artType: `Type of the paper`,
+    hotelType: `Type of the hotel`,
     uploadPost: `Upload the paper`,
     uploadDoc: `Only documents with .docx or .doc suffix allowed`,
     uploadAuthFile: `Upload the copyright document`,
@@ -329,6 +331,7 @@ export default {
     unitName: `Company name`,
     unitAddr: `Company Address`,
     identity: `Status`,
+    uploadReceipt: `Upload the payment voucher`,
 
     editInfo: `Edit your information`,
     changeAvatar: `Change your portrait`,
@@ -471,6 +474,7 @@ export default {
     isNeedPick: `是否接机`,
     hotelName: `酒店名称`,
     arriveTime: `到无锡时间`,
+    isPay: `是否缴费`,
   },
   paperDistribute: {
     title: `分配论文`,
@@ -498,6 +502,7 @@ export default {
     phone: `电话`,
     isPay: `是否缴费`,
     uploadReceipt: `上传缴费票据`,
+    downReceipt: `下载缴费票据`,
     payTip: `提示缴费`,
   },
   logManage: {

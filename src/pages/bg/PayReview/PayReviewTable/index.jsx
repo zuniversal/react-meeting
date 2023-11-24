@@ -1,8 +1,10 @@
 import React from 'react';
+import './style.less';
 import SmartTable from '@/common/SmartTable';
 import { Select, Upload } from 'antd';
 import UploadCom from '@/components/Widgets/UploadCom';
 import SmartUpload from '@/components/Widgets/SmartUpload';
+import Download from '@/components/Widgets/Download';
 
 const PaperApproveTable = props => {
   const { messages } = props;
@@ -46,13 +48,17 @@ const PaperApproveTable = props => {
     };
     return (
       <>
-        {record.isPay == 0 && (
+        {/* {record.isPay == 0 && (
           <SmartUpload {...uploadProps}>
             <a className="uploadLink">
               {props.messages.payReview.uploadReceipt}
             </a>
           </SmartUpload>
-        )}
+        )} */}
+        <Download url={record.payPhotographUrl} className="">
+          {/* <Download url={'record.payPhotographUrl'} className=""> */}
+          {props.messages.payReview.downReceipt}
+        </Download>
         {/* <UploadCom
           label={''}
           key={'paperURLObj'}
@@ -83,6 +89,7 @@ const PaperApproveTable = props => {
 
   return (
     <SmartTable
+      className={`paperApproveTable`}
       rowKey={'email'}
       columns={columns}
       extra={extra}
