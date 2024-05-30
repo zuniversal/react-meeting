@@ -63,7 +63,7 @@ export default {
     activity: `October 13-18, 2024, Wuxi, Jiangsu, China`,
     thirdTitle: `All the Chinese paintings are provided freely by Xun Jiang.`,
     fourTitle: `Xun Jiang is the famous painter in Wuxi and the director of Wuxi Artists Association.`,
-    goPost: `Submit my paper`,
+    goPost: `Submit my abstract`,
     callPaper: `call for paper`,
     meetingIntro: `Conference Overview`,
     meetingIntroContent: [
@@ -72,7 +72,7 @@ export default {
       `The 2nd Conference, STAB&S 2024, organised by China Ship Scientific Research Center, will support and further this aim through a strong technical programme with contributions from industry and academia worldwide. `,
     ],
     meetingTheme: `Conference Topics`,
-    meetingThemeSub: `The conference sessions will cover a wide range of topics, including the followring key areas: `,
+    meetingThemeSub: `The conference sessions will cover a wide range of topics, including the following key areas: `,
     meetingThemeList: [
       `Intact Stability`,
       `Fire Safety`,

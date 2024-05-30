@@ -284,7 +284,7 @@ UploadCom.defaultProps = {
   formItemProps: {},
   init: {},
   formItemLayout: {},
-  size: 1024,
+  size: 10240,
   // size: 2,
 };
 

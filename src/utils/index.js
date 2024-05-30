@@ -224,11 +224,6 @@ export const renderRadioOp = (
       {radioItems}
     </RadioGroup>
   );
-  return opType === 'group' ? (
-    <RadioGroup>{radioItems}</RadioGroup>
-  ) : (
-    radioItems
-  );
 };
 
 export const renderCheckboxOp = (
@@ -425,12 +420,16 @@ export const downLoad = (
   { name, prefix = '/api/downloads/' } = { name: '默认文件名' },
 ) => {
   let a = document.createElement('a');
-  a.download = name; // 设置下载的文件名，默认是'下载'
   a.href = prefix + url;
-  console.log(' a.href  ： ', a.href); //
+  a.download = name; // 设置下载的文件名，默认是'下载'
+  // a.setAttribute('download', name);
+  console.log(' fileName a.href  ： ', a, name, a.href); //
+  a.innerHTML = name;
   document.body.appendChild(a);
   a.click();
-  a.remove(); // 下载之后把创建的元素删除
+  setTimeout(() => {
+    // a.remove(); // 下载之后把创建的元素删除
+  }, 100);
 };
 
 export const downLoadFile = (clickItem, { downEle = 'qrCode' }) => {
@@ -442,6 +441,13 @@ export const downLoadFile = (clickItem, { downEle = 'qrCode' }) => {
   clickItem.href = img.src;
   clickItem.download = '二维码'; // 图片name
 };
+
+// const downloadFile = (blob, fileName) => {
+//   const link = document.createElement("a");
+//   link.href = window.URL.createObjectURL(new Blob([blob], { type: "application/octet-stream" }));
+//   link.download = fileName;
+//   link.click();
+// };
 
 // 把base64 转 file文件
 export const dataURLtoFile = (dataurl, filename) => {
@@ -552,8 +558,6 @@ export const getLengthLimit = text => {
     // return 15;
     return 20;
   }
-  console.log(' 默认长度 ： ', isNaN(text), text, textLength);
-  return textLength;
 };
 
 // 得到最终的格式化后的文本

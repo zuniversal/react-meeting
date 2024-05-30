@@ -97,15 +97,15 @@ export const supporterConfig = [
 export const importantDateConfig = [
   {
     label: 'Deadline for abstract submission',
-    time: '20 December 2023',
+    time: '20 January 2024',
   },
   {
     label: 'Notice of abstract acceptance',
-    time: '10 January 2024',
+    time: '8 March 2024',
   },
   {
     label: 'Deadline for paper submission',
-    time: '31 March 2024',
+    time: '30 April 2024',
   },
   {
     label: 'Notification of paper acceptance',

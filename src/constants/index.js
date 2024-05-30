@@ -92,6 +92,7 @@ export const CHECK_TXT = 'ON';
 export const UN_CHECK_TXT = 'OFF';
 export const TIME_ZERO = ' 00:00:00';
 
+export const POST_PAPER = '/postPaper';
 export const LOGIN = '/login';
 export const HOME = '/om/home';
 export const CRM_HOME = '/crm/clientList';

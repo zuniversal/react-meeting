@@ -13,6 +13,7 @@ import {
   hiddenRoutes,
   hiddenFeTabs,
 } from './config';
+import { LOGIN, POST_PAPER } from '@/constants';
 const { TabPane } = Tabs;
 
 const bgRole = [1, 4];
@@ -77,10 +78,15 @@ const activeKey = window.location.hash.split('#')[1];
 // })(TabsCom);
 
 const TabsCom = props => {
+  const { userInfo } = useModel('users');
   const onChange = key => {
-    console.log(key);
-    history.push(key);
-    props.setActiveKey(key);
+    console.log(' onChange userInfo ： ', userInfo, key);
+    if (key === POST_PAPER && !Object.keys(userInfo).length) {
+      history.push(LOGIN);
+    } else {
+      history.push(key);
+      props.setActiveKey(key);
+    }
   };
   return (
     <Tabs

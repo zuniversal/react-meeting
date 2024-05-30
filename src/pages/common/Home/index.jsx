@@ -60,8 +60,11 @@ const FloatButton = props => {
 };
 
 const Banner = props => {
+  const { userInfo } = useModel('users');
   const { goAndSetkey } = useModel('systemConfig');
-  const goPost = params => goAndSetkey(`/postPaper`);
+  console.log(' userInfo ： ', userInfo);
+  const goPost = params =>
+    Object.keys(userInfo).length ? goAndSetkey(`/postPaper`) : goPage(`/login`);
   return (
     <div className="banner">
       <div className="bannerCenter">
@@ -73,9 +76,9 @@ const Banner = props => {
           </div>
         </div>
         <div className="title activityInfo">{props.msg.activity}</div>
-        <Button className="postBtn bigBtn" type="primary" onClick={goPost}>
+        {/* <Button className="postBtn bigBtn" type="primary" onClick={goPost}>
           {props.msg.goPost}
-        </Button>
+        </Button> */}
       </div>
       <div className="bannerImgWrapper">
         <img src={bannerImg} className="bannerImg" />

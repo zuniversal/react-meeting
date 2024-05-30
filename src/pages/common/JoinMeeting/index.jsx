@@ -25,8 +25,8 @@ const JoinMeetingTips = props => {
       <div>(After 30 July 2024)</div>
       <div>Accompanying Person:RMB1200</div>
       <div>RMB 2000 for online</div>
-      please transfer accounts to {info.total} bank：585221474511，payee：
-      {info.total}
+      {/* please transfer accounts to {info.total} bank：585221474511，payee：
+      {info.total} */}
     </div>
   );
 };

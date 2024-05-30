@@ -250,7 +250,15 @@ const paperDistributeTable = props => {
           {messages.paperDistribute.noApprove}
         </a>
       )}
-      <a onClick={() => downLoad(record.paperURL, { name: record.paperURL })}>
+      <a
+        onClick={() => {
+          const paperURLList = record.paperURL?.split('/');
+          const fileName =
+            record.paperID + paperURLList[paperURLList.length - 1];
+          console.log('  fileName ：', fileName);
+          downLoad(record.paperURL, { name: fileName });
+        }}
+      >
         {messages.showDetail}
       </a>
     </>
