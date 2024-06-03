@@ -1,5 +1,9 @@
 import { useState, useCallback } from 'react';
-import { getJoinMeetingList, addJoinMeeting } from '@/services/user';
+import {
+  getJoinMeetingList,
+  addJoinMeeting,
+  updateAttendMethod,
+} from '@/services/user';
 import { ynRadioConfigMap, paymentConfigMap } from '@/configs';
 import moment from 'moment';
 
@@ -46,6 +50,10 @@ export default function joinMeeting() {
     const res = await addJoinMeeting(params);
   }, []);
 
+  const updateAttendMethodAsync = useCallback(async params => {
+    const res = await updateAttendMethod(params);
+  }, []);
+
   return {
     joinMeetingItem: {
       ...joinMeetingList[0],
@@ -53,5 +61,6 @@ export default function joinMeeting() {
     joinMeetingList,
     getJoinMeetingListAsync,
     addJoinMeetingAsync,
+    updateAttendMethodAsync,
   };
 }

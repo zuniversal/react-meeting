@@ -10,7 +10,9 @@ import { joinMeetingConfig } from './config';
 import { formatData } from './format';
 import useHttp from '@/hooks/useHttp';
 import { getHotelList } from '@/services/common';
-import { arrMapObj } from '@/utils';
+import * as payApi from '@/services/pay';
+import { attendMethodConfigMap } from '@/configs';
+import { arrMapObj, setItem } from '@/utils';
 import { useHotelReqHook } from '@/reqHook/common';
 import SmartUpload from '@/components/Widgets/SmartUpload';
 
@@ -39,6 +41,7 @@ const JoinMeeting = props => {
     joinMeetingList,
     getJoinMeetingListAsync,
     addJoinMeetingAsync,
+    updateAttendMethodAsync,
   } = useModel('joinMeeting');
   console.log(' joinMeetingItem ： ', joinMeetingItem); //
 
@@ -78,6 +81,9 @@ const JoinMeeting = props => {
     console.log('onSubmit 提交 : ', formProps, props);
     // formatData(formProps.values)
     addJoinMeetingAsync(formatData(formProps.values));
+    updateAttendMethodAsync({
+      attendMethod: formProps.values.attendMethod,
+    });
     getJoinMeetingListAsync();
     setIsNext(!isNext);
   };
@@ -97,6 +103,58 @@ const JoinMeeting = props => {
     // });
   };
 
+  const generate = async params => {
+    console.log(' generate , ： ', params, joinMeetingItem);
+    const attendMethodMoney =
+      attendMethodConfigMap[joinMeetingItem.attendMethod];
+    console.log(' attendMethodMoney ： ', attendMethodMoney);
+    if (attendMethodMoney) {
+      const res = await payApi.generate({
+        amt: attendMethodMoney * 100,
+        baseURL: '/java',
+        ...params,
+      });
+      console.log('  res await 结果  ：', res);
+      setItem('form', res.data.form, true);
+      const url = `/#/pay?outTradeNo=${res.data.outTradeNo}`;
+      console.log(' url ： ', url);
+      window.open(url);
+    }
+  };
+  // const overseasPay = async () => {
+  //   console.log(' overseasPay , ： ');
+  // };
+  // const domesticPay = async () => {
+  //   console.log(' domesticPay , ： ');
+  // };
+
+  const payBtn = (
+    <div className="payWrapper">
+      <Button
+        type="primary"
+        className="bigBtn"
+        onClick={() =>
+          generate({
+            type: 1,
+          })
+        }
+      >
+        {messages.overseasPay}
+      </Button>
+      <Button
+        type="primary"
+        className="bigBtn"
+        onClick={() =>
+          generate({
+            type: 2,
+          })
+        }
+      >
+        {messages.domesticPay}
+      </Button>
+    </div>
+  );
+
   const joinMeetingCom = (
     <JoinMeetingForm
       messages={messages}
@@ -106,9 +164,11 @@ const JoinMeeting = props => {
       onSubmit={onSubmit}
     >
       <Form.Item className={`btnFormItem`} noStyle>
-        <Button type="primary" className="bigBtn" htmlType="submit">
-          {messages.nextStep}
-        </Button>
+        <div className="fsb">
+          <Button type="primary" className="bigBtn" htmlType="submit">
+            {messages.nextStep}
+          </Button>
+        </div>
         {/* <Button type="primary" onClick={toggleIsNext}>
           {messages.nextStep}
         </Button> */}
@@ -138,9 +198,13 @@ const JoinMeeting = props => {
         info={joinMeetingData}
         messages={messages}
       ></JoinMeetingTips>
-      <Button type="primary" className="bigBtn" onClick={toggleIsNext}>
-        {messages.previousStep}
-      </Button>
+      <div className="fsb">
+        <Button type="primary" className="bigBtn" onClick={toggleIsNext}>
+          {messages.previousStep}
+        </Button>
+
+        {payBtn}
+      </div>
     </div>
   );
 

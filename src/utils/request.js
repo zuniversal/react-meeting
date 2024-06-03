@@ -176,6 +176,10 @@ export class Request {
         } else if (config.method !== 'put') {
           config.data = config.params = rest;
         }
+        if (config.data.baseURL) {
+          config.baseURL = config.data.baseURL;
+        }
+
         // console.log(' 发送请求   ： ', config, formatParams);
         return config;
       },

@@ -659,8 +659,10 @@ export const wrapParams = p => ({
 
 export const copyData = o => JSON.parse(JSON.stringify(o));
 
-export const setItem = (k, v, isString) =>
+export const setItem = (k, v, isString) => {
+  console.log(' k, v, isString ： ', k, v, isString);
   v && localStorage.setItem(k, isString ? v : JSON.stringify(v));
+};
 export const getItem = k => JSON.parse(localStorage.getItem(k));
 export const removeItem = k => localStorage.removeItem(k);
 export const setItems = (k, v) => sessionStorage.setItem(k, JSON.stringify(v));

@@ -7,4 +7,6 @@ export default [
   { path: '/register', component: '@/pages/common/Register' },
   { path: '/selectIdentity', component: '@/pages/common/SelectIdentity' },
   { path: '/test', component: '@/pages/common/Test' },
+  { path: '/pay', component: '@/pages/common/Pay' },
+  { path: '/payResult', component: '@/pages/common/PayResult' },
 ];

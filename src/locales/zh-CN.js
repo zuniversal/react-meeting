@@ -8,6 +8,8 @@ export default {
   regTip: `如您需要投稿论文或参加会议，可在个人中心页面选择相关功能`,
   confirm: `Confirm`,
   confirm_zh: `确认`,
+  overseasPay: `Overseas payment`,
+  domesticPay: `Domestic payment`,
   nextStep: `Next`,
   previousStep: `Precious`,
   upload: `Upload`,
@@ -364,6 +366,7 @@ export default {
     hotelPrice: `Price of hotel`,
     hotelOrderNum: `Number of rooms reserved`,
     hotelOrderDay: `Date of hotel reservation`,
+    howToParticipate: `How To participate`,
     hotelOrderPrice: `Total price of hotel reservation`,
     paymentCost: `Payment`,
     paymentInfo: `具体信息`,
@@ -531,7 +534,24 @@ export default {
     pwd: `密码`,
     field: `所属领域`,
   },
-
+  pay: {
+    pay: `Payment`,
+    payResult: `Payment result`,
+    payResultCodeMap: {
+      0: 'Order status unknown',
+      1: 'In payment',
+      2: 'Payment failed',
+      3: 'Payment successful',
+      4: 'Unpaid',
+    },
+    payResultEnCodeMap: {
+      0: '订单状态未知',
+      1: '支付中',
+      2: '支付成功',
+      3: '支付失败',
+      4: '未支付',
+    },
+  },
   // postType: `投稿类型`,
   // paperStatus: `论文状态`,
 

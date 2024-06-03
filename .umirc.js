@@ -94,5 +94,10 @@ export default defineConfig({
       // target: 'http://8.136.3.138:8000',
       changeOrigin: true,
     },
+    '/java': {
+      target: 'http://stabs2024.cssrc.com',
+      // target: 'http://8.136.3.138:8000',
+      changeOrigin: true,
+    },
   },
 });

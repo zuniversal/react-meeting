@@ -10,3 +10,5 @@ export const editUserInfo = p => req.put(`userCenter`, p);
 
 export const getJoinMeetingList = p => req.get(`joinMeeting`, p);
 export const addJoinMeeting = p => req.post(`joinMeeting`, p);
+
+export const updateAttendMethod = p => req.put(`updateAttendMethod`, p);

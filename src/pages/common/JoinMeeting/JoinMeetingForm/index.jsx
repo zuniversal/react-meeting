@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.less';
 import { Form } from 'antd';
-import { ynRadioConfig } from '@/configs';
+import { ynRadioConfig, attendMethodConfig } from '@/configs';
 import SmartForm from '@/common/SmartForm';
 import UploadCom from '@/components/Widgets/UploadCom';
 import { useCalledForm, useHotelForm } from '@/hooks/useFormItem';
@@ -101,6 +101,18 @@ const JoinMeetingForm = props => {
       },
       comProps: {
         className: 'formItem',
+      },
+    },
+    {
+      formType: 'Select',
+      itemProps: {
+        label: messages.joinMeeting.howToParticipate,
+        name: 'attendMethod',
+        className: '',
+      },
+      comProps: {
+        className: 'formItem',
+        options: attendMethodConfig,
       },
     },
     // {

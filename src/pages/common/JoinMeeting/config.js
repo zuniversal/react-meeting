@@ -33,6 +33,10 @@ export const joinMeetingConfig = [
     key: 'hotelBookDateMap',
     langKey: 'hotelOrderDay',
   },
+  {
+    key: 'attendMethod',
+    langKey: 'howToParticipate',
+  },
   // {
   //   key: 'hotelOrderPrice',
   //   langKey: 'hotelOrderPrice',

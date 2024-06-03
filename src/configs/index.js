@@ -2683,3 +2683,43 @@ export const attendTypeConfig = [
     label: 'Online',
   },
 ];
+
+export const payResultCodeMap = {
+  0: '订单状态未知',
+  1: '支付中',
+  2: '支付成功',
+  3: '支付失败',
+  4: '未支付',
+};
+
+export const attendMethodConfig = [
+  {
+    value: 1,
+    label: 'Early registration: RMB 4000',
+    amt: 4000,
+  },
+  {
+    value: 2,
+    label: 'Early Students: RMB 2000',
+    amt: 2000,
+  },
+  {
+    value: 3,
+    label: 'Online conference: RMB 2000',
+    amt: 2000,
+  },
+  {
+    value: 4,
+    label: 'Accompanying Person: RMB 1200',
+    amt: 1200,
+  },
+  {
+    value: 5,
+    label: 'Accompanying Person: RMB 1',
+    amt: 1,
+  },
+];
+
+export const attendMethodConfigMap = arrMapObj(attendMethodConfig, {
+  label: 'amt',
+});
