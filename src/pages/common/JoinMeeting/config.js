@@ -34,7 +34,7 @@ export const joinMeetingConfig = [
     langKey: 'hotelOrderDay',
   },
   {
-    key: 'attendMethod',
+    key: 'attendMethodMap',
     langKey: 'howToParticipate',
   },
   // {

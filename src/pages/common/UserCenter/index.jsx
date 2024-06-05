@@ -12,7 +12,7 @@ import { formatData } from './format';
 const UserCenter = props => {
   const { messages } = useIntl();
   const { editUserInfoAsync, userInfo, getUserInfoAsync } = useModel('users');
-  const { calledListMap, identityListMap } = useSystemConfig();
+  // const { calledListMap, identityListMap } = useSystemConfig();
   const userInfoMap = {
     ...userInfo,
   };

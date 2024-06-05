@@ -1,6 +1,10 @@
 import { animate, createProperty } from '@/utils';
 
 export const isDev = process.env.NODE_ENV === 'development';
+// export const attendMethodListUrl = isDev
+//   ? 'https://stabs2024.cssrc.com'
+//   : window.location.origin;
+export const attendMethodListUrl = window.location.origin;
 
 export const TYPE_ALL = 15;
 

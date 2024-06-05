@@ -359,7 +359,7 @@ export default {
   },
   joinMeeting: {
     title: `Details`,
-    airplane: `Flight`,
+    airplane: `Arrival flight`,
     arriveTime: `Arrival time`,
     isNeedPick: `Need to pick up ?`,
     hotelName: `Name of hotel`,

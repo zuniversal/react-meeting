@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useModel } from 'umi';
 import { arrMapObj } from '@/utils';
 import { usePaperTypeReq } from '@/hooks/useDataReq';
+import * as useDataReq from '@/hooks/useDataReq';
 
 export const useSystemConfig = props => {
   const {
@@ -12,6 +13,17 @@ export const useSystemConfig = props => {
   } = useModel('systemConfig');
 
   const { paperTypeListMap } = usePaperTypeReq();
+  // const {
+  //   attendMethodList,
+  //   attendMethodListMap,
+  // } = useDataReq.useAttendMethodListReq();
+  const {
+    attendMethodList,
+    setAttendMethodList,
+    attendMethodListMap,
+    setAttendMethodListMap,
+  } = useDataReq.useAttendMethodList();
+
   useEffect(() => {
     getCalledListAsync();
     getIdentityListAsync();
@@ -23,5 +35,9 @@ export const useSystemConfig = props => {
     calledListMap: arrMapObj(calledList),
     identityListMap: arrMapObj(identityList),
     paperTypeListMap,
+    attendMethodList,
+    setAttendMethodList,
+    attendMethodListMap,
+    setAttendMethodListMap,
   };
 };

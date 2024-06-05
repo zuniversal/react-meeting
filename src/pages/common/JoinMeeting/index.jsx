@@ -10,6 +10,7 @@ import { joinMeetingConfig } from './config';
 import { formatData } from './format';
 import useHttp from '@/hooks/useHttp';
 import { getHotelList } from '@/services/common';
+import { useSystemConfig } from '@/hooks/useSystemConfig';
 import * as payApi from '@/services/pay';
 import { attendMethodConfigMap } from '@/configs';
 import { arrMapObj, setItem } from '@/utils';
@@ -43,6 +44,7 @@ const JoinMeeting = props => {
     addJoinMeetingAsync,
     updateAttendMethodAsync,
   } = useModel('joinMeeting');
+  const { attendMethodList, attendMethodListMap } = useSystemConfig();
   console.log(' joinMeetingItem ： ', joinMeetingItem); //
 
   const [isNext, setIsNext] = useState(true);
@@ -64,6 +66,10 @@ const JoinMeeting = props => {
   const joinMeetingData = {
     ...joinMeetingItem,
     hotelName: hotelListMap?.[joinMeetingItem.hotelName],
+    attendMethodMap:
+      joinMeetingItem.attendMethod != undefined
+        ? attendMethodListMap[joinMeetingItem.attendMethod]
+        : joinMeetingItem.attendMethod,
   };
 
   useEffect(() => {

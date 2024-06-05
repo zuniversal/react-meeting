@@ -5,10 +5,12 @@ import { ynRadioConfig, attendMethodConfig } from '@/configs';
 import SmartForm from '@/common/SmartForm';
 import UploadCom from '@/components/Widgets/UploadCom';
 import { useCalledForm, useHotelForm } from '@/hooks/useFormItem';
+import { useSystemConfig } from '@/hooks/useSystemConfig';
 
 const JoinMeetingForm = props => {
   console.log(' JoinMeetingForm ： ', props); //
   const [form] = Form.useForm();
+  const { attendMethodList, attendMethodListMap } = useSystemConfig();
   const calledForm = useCalledForm(props);
   const hotelForm = useHotelForm(props);
   // const { comProps : { options: hotelList},  } = hotelForm
@@ -112,7 +114,7 @@ const JoinMeetingForm = props => {
       },
       comProps: {
         className: 'formItem',
-        options: attendMethodConfig,
+        options: attendMethodList ? attendMethodList : attendMethodConfig,
       },
     },
     // {

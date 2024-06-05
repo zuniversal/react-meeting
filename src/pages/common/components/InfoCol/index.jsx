@@ -10,7 +10,7 @@ const InfoCol = props => {
           <div className="label">{messages[msgKey][v.langKey]}</div>
           <div className={`val ${v.valCls || ''}`}>
             {v.prefix}
-            {data[v.key]}
+            {v.dataMap ? v.dataMap[data[v.key]] : data[v.key]}
           </div>
         </div>
       ))}

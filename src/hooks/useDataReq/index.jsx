@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import useHttp from '@/hooks/useHttp';
 import {
   getCalledList,
   getIdentityList,
   getPaperCateList,
+  getAttendMethodList,
   getHotelList,
 } from '@/services/common';
 import { arrMapObj, formatSelectList } from '@/utils';
@@ -24,5 +25,59 @@ export const usePaperTypeReq = props => {
   return {
     paperTypeList,
     paperTypeListMap,
+  };
+};
+
+export const useAttendMethodListReq = props => {
+  const { data: attendMethodList } = useHttp(() => getAttendMethodList());
+  const attendMethodListMap = arrMapObj(attendMethodList, {
+    label: 'amt',
+  });
+  console.log(
+    ' attendMethodList ： ',
+    attendMethodList,
+    attendMethodListMap,
+    props,
+  ); //
+
+  return {
+    attendMethodList,
+    attendMethodListMap,
+  };
+};
+
+export const useAttendMethodList = (params = {}) => {
+  const { param = {} } = params;
+  const [attendMethodList, setAttendMethodList] = useState([]);
+  const [attendMethodListMap, setAttendMethodListMap] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  const getAttendMethodListAsync = async params => {
+    setLoading(true);
+    const { data } = await getAttendMethodList(params);
+    console.log(' data数据 ： ', data);
+    const formatData = data;
+    console.log(' data ： ', data, formatData);
+    setAttendMethodList(formatData);
+    const formatDataMap = arrMapObj(formatData);
+    // const formatDataMap = arrMapObj(formatData, {
+    //   label: 'amt',
+    // });
+    setAttendMethodListMap(formatDataMap);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    console.log(' useEffectuseEffect ： ');
+    getAttendMethodListAsync(param);
+  }, []);
+
+  return {
+    loading,
+    setLoading,
+    attendMethodList,
+    setAttendMethodList,
+    attendMethodListMap,
+    setAttendMethodListMap,
   };
 };
