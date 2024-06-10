@@ -1,9 +1,12 @@
 import React from 'react';
 import SmartTable from '@/common/SmartTable';
-import { hotelConfigMap, ynConfigMap } from '@/configs';
+import { hotelConfigMap, ynConfigMap, paymentConfigMap } from '@/configs';
+import { useSystemConfig } from '@/hooks/useSystemConfig';
 
 const JoinCountTable = props => {
   const { messages } = props; //
+  const { attendMethodListMap } = useSystemConfig();
+
   const columns = [
     {
       title: messages.joinCount.name,
@@ -42,6 +45,12 @@ const JoinCountTable = props => {
     {
       title: messages.joinCount.isPay,
       dataIndex: 'isPay',
+      dataMap: paymentConfigMap,
+    },
+    {
+      title: messages.joinCount.attendMethod,
+      dataIndex: 'attendMethod',
+      dataMap: attendMethodListMap,
     },
   ];
 

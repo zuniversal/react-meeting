@@ -478,6 +478,7 @@ export default {
     hotelName: `酒店名称`,
     arriveTime: `到无锡时间`,
     isPay: `是否缴费`,
+    attendMethod: `参会方式`,
   },
   paperDistribute: {
     title: `分配论文`,
