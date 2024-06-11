@@ -541,8 +541,8 @@ export default {
     payResultCodeMap: {
       0: 'Order status unknown',
       1: 'In payment',
-      2: 'Payment failed',
-      3: 'Payment successful',
+      2: 'Payment successful',
+      3: 'Payment failed',
       4: 'Unpaid',
     },
     payResultEnCodeMap: {
