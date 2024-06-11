@@ -81,3 +81,39 @@ export const useAttendMethodList = (params = {}) => {
     setAttendMethodListMap,
   };
 };
+
+export const useHotelList = (params = {}) => {
+  const { param = {} } = params;
+  const [hotelList, setHotelList] = useState([]);
+  const [hotelListMap, setHotelListMap] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  const getHotelListAsync = async params => {
+    setLoading(true);
+    const { data } = await getHotelList(params);
+    console.log(' data数据 ： ', data);
+    const formatData = formatSelectList(data, 'hotelName');
+    console.log(' data ： ', data, formatData);
+    setHotelList(formatData);
+    const formatDataMap = arrMapObj(formatData);
+    // const formatDataMap = arrMapObj(formatData, {
+    //   label: 'amt',
+    // });
+    setHotelListMap(formatDataMap);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    console.log(' useEffectuseEffect ： ');
+    getHotelListAsync(param);
+  }, []);
+
+  return {
+    loading,
+    setLoading,
+    hotelList,
+    setHotelList,
+    hotelListMap,
+    setHotelListMap,
+  };
+};

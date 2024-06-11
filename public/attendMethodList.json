@@ -3,23 +3,38 @@
   "data": [
     {
       "value": 1,
-      "label": "Early registration: RMB 4000",
-      "amt": 4000
+      "label": "(Overseas)Early Bird: CNY 4000  4120",
+      "amt": 4120
     },
     {
       "value": 2,
-      "label": "Early Students: RMB 2000",
-      "amt": 2000
+      "label": "(Overseas)Students: CNY 2000  2060",
+      "amt": 2060
     },
     {
       "value": 3,
-      "label": "Online conference: RMB 2000",
-      "amt": 2000
+      "label": "(Overseas)Online: CNY 2000  2060",
+      "amt": 2060
     },
     {
       "value": 4,
-      "label": "Accompanying Person: RMB 1200",
-      "amt": 1200
+      "label": "(Overseas)Accompanying: CNY 1200  1236",
+      "amt": 1236
+    },
+    {
+      "value": 5,
+      "label": "(Within China) Early Bird: CNY 4000  4008.4",
+      "amt": 4008.4
+    },
+    {
+      "value": 6,
+      "label": "(Within China) Students: CNY 2000  2004.2",
+      "amt": 2004.2
+    },
+    {
+      "value": 7,
+      "label": "Accompanying Person: RMB 1",
+      "amt": 1
     }
   ],
   "result": "success"

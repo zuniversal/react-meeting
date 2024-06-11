@@ -2,10 +2,13 @@ import React from 'react';
 import SmartTable from '@/common/SmartTable';
 import { hotelConfigMap, ynConfigMap, paymentConfigMap } from '@/configs';
 import { useSystemConfig } from '@/hooks/useSystemConfig';
+import { useHotelList } from '@/hooks/useDataReq';
 
 const JoinCountTable = props => {
   const { messages } = props; //
   const { attendMethodListMap } = useSystemConfig();
+  const { hotelListMap } = useHotelList();
+  console.log(' attendMethodListMap ： ', attendMethodListMap);
 
   const columns = [
     {
@@ -20,9 +23,13 @@ const JoinCountTable = props => {
       title: messages.joinCount.email,
       dataIndex: 'email',
     },
+    // {
+    //   title: messages.joinCount.phone,
+    //   dataIndex: 'phone',
+    // },
     {
-      title: messages.joinCount.phone,
-      dataIndex: 'phone',
+      title: messages.joinCount.flight,
+      dataIndex: 'flight',
     },
     {
       sorter: true,
@@ -34,7 +41,7 @@ const JoinCountTable = props => {
     {
       title: messages.joinCount.hotelName,
       dataIndex: 'hotelName',
-      dataMap: hotelConfigMap,
+      dataMap: hotelListMap,
     },
     {
       sorter: true,
