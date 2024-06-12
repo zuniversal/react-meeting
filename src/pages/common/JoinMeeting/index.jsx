@@ -23,11 +23,11 @@ const JoinMeetingTips = props => {
     <div className="joinMeetingTips">
       {/* {props.messages.joinMeeting.paymentTip} */}
       {/* Total payment is RMB {info.hotelOrderPrice}, */}
-      <div>Early registration:RMB4000,Students: RMB 2000</div>
-      <div>Late registration :RMB4800,Students: RMB 2400</div>
+      <div>Early registration:CNY4000,Students: CNY 2000</div>
+      <div>Late registration :CNY4800,Students: CNY 2400</div>
       <div>(After 30 July 2024)</div>
-      <div>Accompanying Person:RMB1200</div>
-      <div>RMB 2000 for online</div>
+      <div>Accompanying Person:CNY1200</div>
+      <div>CNY 2000 for online</div>
       <div>Overseas：+ 3% handling fee (charged by the bank)</div>
       <div>Within China：+ 2.1‰ handling fee (charged by the bank)</div>
       {/* please transfer accounts to {info.total} bank：585221474511，payee：
@@ -46,7 +46,11 @@ const JoinMeeting = props => {
     addJoinMeetingAsync,
     updateAttendMethodAsync,
   } = useModel('joinMeeting');
-  const { attendMethodList, attendMethodListMap } = useSystemConfig();
+  const {
+    attendMethodList,
+    attendMethodListMap,
+    attendMethodAmtListMap,
+  } = useSystemConfig();
   console.log(' joinMeetingItem ： ', joinMeetingItem); //
 
   const [isNext, setIsNext] = useState(true);
@@ -114,7 +118,7 @@ const JoinMeeting = props => {
   const generate = async params => {
     console.log(' generate , ： ', params, joinMeetingItem);
     const attendMethodMoney =
-      attendMethodConfigMap[joinMeetingItem.attendMethod];
+      attendMethodAmtListMap[joinMeetingItem.attendMethod];
     console.log(' attendMethodMoney ： ', attendMethodMoney);
     if (attendMethodMoney) {
       const res = await payApi.generate({

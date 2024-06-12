@@ -22,6 +22,8 @@ export const useSystemConfig = props => {
     setAttendMethodList,
     attendMethodListMap,
     setAttendMethodListMap,
+    attendMethodAmtListMap,
+    setAttendMethodAmtListMap,
   } = useDataReq.useAttendMethodList();
 
   useEffect(() => {
@@ -39,5 +41,7 @@ export const useSystemConfig = props => {
     setAttendMethodList,
     attendMethodListMap,
     setAttendMethodListMap,
+    attendMethodAmtListMap,
+    setAttendMethodAmtListMap,
   };
 };

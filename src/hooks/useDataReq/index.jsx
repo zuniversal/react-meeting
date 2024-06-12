@@ -50,6 +50,7 @@ export const useAttendMethodList = (params = {}) => {
   const { param = {} } = params;
   const [attendMethodList, setAttendMethodList] = useState([]);
   const [attendMethodListMap, setAttendMethodListMap] = useState({});
+  const [attendMethodAmtListMap, setAttendMethodAmtListMap] = useState({});
   const [loading, setLoading] = useState(false);
 
   const getAttendMethodListAsync = async params => {
@@ -64,6 +65,16 @@ export const useAttendMethodList = (params = {}) => {
     //   label: 'amt',
     // });
     setAttendMethodListMap(formatDataMap);
+    const formatDataAmtMap = arrMapObj(formatData, {
+      label: 'amt',
+    });
+    console.log(
+      ' getAttendMethodListAsync ： ',
+      formatData,
+      formatDataMap,
+      formatDataAmtMap,
+    );
+    setAttendMethodAmtListMap(formatDataAmtMap);
     setLoading(false);
   };
 
@@ -79,6 +90,8 @@ export const useAttendMethodList = (params = {}) => {
     setAttendMethodList,
     attendMethodListMap,
     setAttendMethodListMap,
+    attendMethodAmtListMap,
+    setAttendMethodAmtListMap,
   };
 };
 
