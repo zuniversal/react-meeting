@@ -35,7 +35,7 @@ const Pay = props => {
   // const formFragment = "console.log(' 22 ： ', 11111111);";
   console.log(' formFragment ： ', formFragment);
   return (
-    <div className="pay">
+    <div className="payPage">
       <div className="conWrapper">
         {/* <div className="title">{messages.pay.pay}</div> */}
         <PayFragment msg={messages.pay} data={formFragment}></PayFragment>
