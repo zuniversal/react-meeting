@@ -235,7 +235,7 @@ const JoinMeeting = props => {
     >
       <div className="titleWrapper">
         <div className="primaryTitle">{messages.joinMeeting[titleKey]}</div>
-        <div className={`actionBtnWrapper`}>
+        {/* <div className={`actionBtnWrapper`}>
           <SmartUpload {...uploadProps}>
             <a className="rawLink">{messages.userCenter.uploadReceipt}</a>
           </SmartUpload>
@@ -244,7 +244,7 @@ const JoinMeeting = props => {
               {messages.userCenter.downReceipt}
             </Download>
           )}
-        </div>
+        </div> */}
       </div>
       {isNext ? joinMeetingCom : paymentResult}
     </UserCenterWrapper>
