@@ -6,6 +6,7 @@ import { DOWNLOADS_URL } from '@/constants';
 import cls from 'classnames';
 import Download from '@/components/Widgets/Download';
 import { noUserActionRole } from '@/configs';
+import SiteFooter from '@/components/Widgets/SiteFooter';
 
 const UserCenterWrapper = props => {
   const { activeKey, setActiveKey } = useModel('systemConfig');
@@ -30,45 +31,48 @@ const UserCenterWrapper = props => {
     : {};
 
   return (
-    <div className={`userCenterWrapper ${className}`}>
-      <div className="conWrapper">
-        <div className="title">
-          {title}
-          {/* <a className="rawLink" {...linkAttr}>
+    <>
+      <div className={`userCenterWrapper ${className}`}>
+        <div className="conWrapper">
+          <div className="title">
+            {title}
+            {/* <a className="rawLink" {...linkAttr}>
             {messages.userCenter.downReceipt}
           </a> */}
-        </div>
-        {!userInfo.isAdminApprover && (
-          <div className="btnWrapper">
-            <Button type="primary" className="bigBtn" onClick={goPost}>
-              {messages.userCenter.goPost}
-            </Button>
-            <Button
-              type="primary"
-              className={cls({
-                active: activeKey === '/paperStatus',
-                'blueBtn bigBtn': true,
-              })}
-              onClick={goPaperStatus}
-            >
-              {messages.userCenter.postStatus}
-            </Button>
-            <Button
-              type="primary"
-              className={cls({
-                active: activeKey === '/joinMeeting',
-                'greenBtn bigBtn': true,
-              })}
-              onClick={goJoinMeeting}
-            >
-              {messages.userCenter.joinMeeting}
-            </Button>
           </div>
-        )}
-        <Divider className="divider" />
-        {props.children}
+          {!userInfo.isAdminApprover && (
+            <div className="btnWrapper">
+              <Button type="primary" className="bigBtn" onClick={goPost}>
+                {messages.userCenter.goPost}
+              </Button>
+              <Button
+                type="primary"
+                className={cls({
+                  active: activeKey === '/paperStatus',
+                  'blueBtn bigBtn': true,
+                })}
+                onClick={goPaperStatus}
+              >
+                {messages.userCenter.postStatus}
+              </Button>
+              <Button
+                type="primary"
+                className={cls({
+                  active: activeKey === '/joinMeeting',
+                  'greenBtn bigBtn': true,
+                })}
+                onClick={goJoinMeeting}
+              >
+                {messages.userCenter.joinMeeting}
+              </Button>
+            </div>
+          )}
+          <Divider className="divider" />
+          {props.children}
+        </div>
       </div>
-    </div>
+      <SiteFooter></SiteFooter>
+    </>
   );
 };
 
