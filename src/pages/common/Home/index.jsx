@@ -199,6 +199,12 @@ const MeetingInfo = props => {
               {v.label}
             </div>
           ))}
+          <a
+            className="hotelLink"
+            onClick={() => window.open('http://junahotels.com/en')}
+          >
+            http://junahotels.com/en
+          </a>
         </div>
         <div className="meetingInfoRow">
           <div className="meetingInfoTitle">{props.msg.meetingInfoTitle2}</div>

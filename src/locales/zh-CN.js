@@ -165,7 +165,7 @@ export default {
         label: `Proposed Conference Date: October 13-18, 2024`,
       },
       {
-        label: `Proposed Conference Venue: Wuxi Hubin Hotel，Wuxi`,
+        label: `Proposed Conference Venue: Wuxi Juna Hubin Hotel`,
       },
     ],
     meetingInfoList2: [
