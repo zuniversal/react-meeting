@@ -79,6 +79,13 @@ const Banner = props => {
         {/* <Button className="postBtn bigBtn" type="primary" onClick={goPost}>
           {props.msg.goPost}
         </Button> */}
+        <a
+          className="ant-btn ant-btn-primary downloadBtn bigBtn"
+          href="/api/downloads/STABS+2024+Programme-1006.pdf"
+          download={'STABS+2024+Programme-1006.pdf'}
+        >
+          {props.msg.schedule}
+        </a>
       </div>
       <div className="bannerImgWrapper">
         <img src={bannerImg} className="bannerImg" />

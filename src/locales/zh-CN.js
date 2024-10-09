@@ -66,6 +66,7 @@ export default {
     thirdTitle: `All the Chinese paintings are provided freely by Xun Jiang.`,
     fourTitle: `Xun Jiang is the famous painter in Wuxi and the director of Wuxi Artists Association.`,
     goPost: `Submit my abstract`,
+    schedule: `Schedule`,
     callPaper: `call for paper`,
     meetingIntro: `Conference Overview`,
     meetingIntroContent: [
@@ -316,6 +317,7 @@ export default {
   },
   userCenter: {
     title: `User Center`,
+    downProceedings: `Download the Proceedings`,
     downReceipt: `Download the receipt`,
     goPost: `Submit my paper`,
     postStatus: `Rate of submission`,

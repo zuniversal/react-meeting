@@ -35,10 +35,19 @@ const UserCenterWrapper = props => {
       <div className={`userCenterWrapper ${className}`}>
         <div className="conWrapper">
           <div className="title">
-            {title}
-            {/* <a className="rawLink" {...linkAttr}>
+            <div className="">
+              {title}
+              <a
+                className="ant-btn ant-btn-primary downloadBtn bigBtn"
+                href="/api/downloads/PROCEEDINGS-OF-STAB-S2024-final.pdf"
+                download={'PROCEEDINGS-OF-STAB-S2024-final.pdf'}
+              >
+                {messages.userCenter.downProceedings}
+              </a>
+              {/* <a className="rawLink" {...linkAttr}>
             {messages.userCenter.downReceipt}
           </a> */}
+            </div>
           </div>
           {!userInfo.isAdminApprover && (
             <div className="btnWrapper">

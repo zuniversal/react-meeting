@@ -24,6 +24,7 @@ export default {
     subTitle: `船舶和海洋车辆`,
     activity: `2024年10月13-18日，中国江苏无锡`,
     goPost: `我要投稿`,
+    schedule: `Schedule`,
     meetingIntro: `会议概述`,
     meetingTheme: `会议主题`,
     meetingHotel: `会议住宿`,
@@ -127,6 +128,7 @@ export default {
   },
   userCenter: {
     title: `用户中心`,
+    downProceedings: `Download the Proceedings`,
     downReceipt: `缴费收据下载`,
     goPost: `我要投稿`,
     postStatus: `投稿状态`,
