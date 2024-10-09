@@ -128,7 +128,7 @@ export default {
   },
   userCenter: {
     title: `用户中心`,
-    downProceedings: `Download the Proceedings`,
+    downProceedings: `Download the proceedings`,
     downReceipt: `缴费收据下载`,
     goPost: `我要投稿`,
     postStatus: `投稿状态`,

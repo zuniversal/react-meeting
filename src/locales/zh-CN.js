@@ -317,7 +317,7 @@ export default {
   },
   userCenter: {
     title: `User Center`,
-    downProceedings: `Download the Proceedings`,
+    downProceedings: `Download the proceedings`,
     downReceipt: `Download the receipt`,
     goPost: `Submit my paper`,
     postStatus: `Rate of submission`,
